@@ -1,0 +1,16 @@
+title: Redakteur
+description: Hat Zugriff auf alle Website-Inhalte, aber keine administrativen Tools.
+
+permissions:
+  access:
+    *: false
+    panel: true
+    site: true
+    account: true
+  users:
+    *: false
+
+# Hidden element to hide notice in user management
+# Remove if you want to implement fields for your users
+fields:
+  hidden: true

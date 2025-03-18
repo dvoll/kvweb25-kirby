@@ -1,0 +1,30 @@
+parameters:
+  level: 6
+  checkAlwaysTrueCheckTypeFunctionCall: false
+  paths:
+    - site
+    - plugins
+  excludePaths:
+    analyse:
+        - vendor/*
+        - site/plugins/*
+
+  ignoreErrors:
+    -
+      message: '#Variable \$(slot) might not be defined.#'
+      paths:
+        - site/snippets
+        - site/templates
+    -
+      message: '#Function vite not found.#'
+    -
+      message: '#Call to an undefined method Kirby\\CLI\\CLI::info\(\).#'
+    -
+      message: '#Call to an undefined method Kirby\\Cms\\Block::.*.#'
+      paths:
+        - site/snippets
+        - site/templates
+    -
+      message: '#Call to an undefined method Kirby\\Content\\Field::.*\(\).#'
+    -
+      message: '#Call to an undefined method Kirby\\Cms\\Page::.*\(\).#'
