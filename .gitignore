@@ -12,7 +12,7 @@ Icon
 pnpm-lock.yaml
 /vendor
 /kirby
-/site/config/vite.config.php
+# /site/config/vite.config.php
 /site/config/retour.yml
 
 # Editors
