@@ -17,23 +17,27 @@
 
 import { defineConfig } from 'vite';
 import kirby from 'vite-plugin-kirby'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig(({ mode }) => ({
-  base: mode === 'development' ? '/' : '/assets/dist/',
+    base: mode === 'development' ? '/' : '/assets/dist/',
 
-  build: {
-    outDir: "public/assets/dist",
-    copyPublicDir: false,
-    assetsDir: '',
-    rollupOptions: {
-      input: ['src/main.ts']
-    }
-  },
+    build: {
+        outDir: "public/assets/dist",
+        copyPublicDir: false,
+        assetsDir: '',
+        rollupOptions: {
+            input: ['src/main.ts']
+        }
+    },
 
-  plugins: [kirby({
-    watch: [
-      './site/(templates|snippets|controllers|models|layouts)/**/*.php',
-      './content/**/*',
+    plugins: [
+        tailwindcss(),
+        kirby({
+            watch: [
+                './site/(templates|snippets|controllers|models|layouts)/**/*.php',
+                './content/**/*',
+            ],
+        })
     ],
-  })],
 }));
