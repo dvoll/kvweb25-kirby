@@ -23,13 +23,13 @@ jobs:
       - name: Deploy Specific Files via Rsync
         run: |
           rsync -avz --delete \
-            --include='plugins/' \
-            --include='public/' \
-            --include='site/' \
-            --include='storage/' \
+            --include='plugins/***' \
+            --include='public/***' \
+            --include='site/***' \
             --include='.env.example' \
             --include='composer.json' \
             --include='composer.lock' \
+            --include='README.md' \
             --exclude='*' \
             -e "ssh -i ~/.ssh/deploy_key" ./ \
             ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }}:${{ secrets.DEPLOY_SSH_PATH_STAGING }}
@@ -38,15 +38,15 @@ jobs:
         run: |
           ssh -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }} << 'EOF'
             cd ${{ secrets.DEPLOY_SSH_PATH_STAGING }}
-            /usr/local/bin/php8.3 /cvbin/composer install --no-progress --no-dev--optimize-autoloader
+            composer install --no-progress --no-dev --optimize-autoloader
           EOF
 
       - name: Run deployment optimizations
         run: |
           ssh -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }} << 'EOF'
             cd ${{ secrets.DEPLOY_SSH_PATH_STAGING }}
-            /usr/local/bin/php8.3 ./vendor/bin/kirby scaffold
-            /usr/local/bin/php8.3 ./vendor/bin/kirby clear:cache uuid
-            /usr/local/bin/php8.3 ./vendor/bin/kirby clear:cache pages
-            /usr/local/bin/php8.3 ./vendor/bin/kirby clear:cache uuid:populate
+            php8.3-cli ./vendor/bin/kirby scaffold
+            php8.3-cli ./vendor/bin/kirby clear:cache uuid
+            php8.3-cli ./vendor/bin/kirby clear:cache pages
+            php8.3-cli ./vendor/bin/kirby clear:cache uuid:populate
           EOF
