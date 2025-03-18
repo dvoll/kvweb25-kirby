@@ -1,0 +1,52 @@
+name: Staging Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ secrets.DEPLOY_SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy Specific Files via Rsync
+        run: |
+          rsync -avz --delete \
+            --include='plugins/' \
+            --include='public/' \
+            --include='site/' \
+            --include='storage/' \
+            --include='.env.example' \
+            --include='composer.json' \
+            --include='composer.lock' \
+            --exclude='*' \
+            -e "ssh -i ~/.ssh/deploy_key" ./ \
+            ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }}:${{ secrets.DEPLOY_SSH_PATH_STAGING }}
+
+      - name: Run Composer Install on Server
+        run: |
+          ssh -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }} << 'EOF'
+            cd ${{ secrets.DEPLOY_SSH_PATH_STAGING }}
+            /usr/local/bin/php8.3 /cvbin/composer install --no-progress --no-dev--optimize-autoloader
+          EOF
+
+      - name: Run deployment optimizations
+        run: |
+          ssh -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }} << 'EOF'
+            cd ${{ secrets.DEPLOY_SSH_PATH_STAGING }}
+            /usr/local/bin/php8.3 ./vendor/bin/kirby scaffold
+            /usr/local/bin/php8.3 ./vendor/bin/kirby clear:cache uuid
+            /usr/local/bin/php8.3 ./vendor/bin/kirby clear:cache pages
+            /usr/local/bin/php8.3 ./vendor/bin/kirby clear:cache uuid:populate
+          EOF
