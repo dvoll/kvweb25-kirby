@@ -19,10 +19,12 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
 
     <?php snippet('seo/head') ?>
 
-    <link rel="icon" href="/favicon.svg" />
-    <link rel="mask-icon" href="/favicon.svg" color="#000000" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/png" href="/assets/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="CVJM KV Bünde" />
+    <link rel="manifest" href="/assets/favicons/site.webmanifest" />
 
     <?= vite()->css('src/main.ts') ?>
 </head>
