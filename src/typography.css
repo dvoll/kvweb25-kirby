@@ -1,0 +1,48 @@
+
+@layer base {
+    .typo {
+      @apply font-body text-base text-contrast;
+    }
+
+    .typo-xs {
+      font-size: var(--text-xs);
+      line-height: var(--text-xs--line-height);
+    }
+
+    .heading-title {
+      @apply font-style font-semibold text-contrast;
+      font-size: var(--text-5xl);
+      line-height: var(--text-5xl--line-height);
+    }
+
+    .heading-lv1 {
+      @apply font-style font-semibold text-contrast;
+      font-size: var(--text-5xl);
+      line-height: var(--text-5xl--line-height);
+    }
+
+    .heading-lv2 {
+      @apply font-style font-semibold text-contrast;
+      font-size: var(--text-2xl);
+      line-height: var(--text-2xl--line-height);
+    }
+
+    .heading-lv3 {
+      @apply font-style font-semibold text-contrast;
+      font-size: var(--text-xl);
+      line-height: var(--text-xl--line-height);
+    }
+
+    .heading-lv4 {
+      @apply font-style font-semibold text-contrast;
+      font-size: var(--text-lg);
+      line-height: var(--text-lg--line-height);
+    }
+
+    .heading-lv5,
+    .heading-lv6 {
+      @apply font-style font-normal;
+      font-size: var(--text-lg);
+      line-height: var(--text-lg--line-height);
+    }
+}

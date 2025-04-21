@@ -1,0 +1,22 @@
+name: Teaser (Seiten)
+# description: Block für Text mit Bild und Button
+# icon: image
+preview: fields
+wysiwyg: true
+
+fields:
+  location:
+    label: Ursprung
+    type: radio
+    columns: 2
+    default: "children"
+    required: true
+    options:
+      children: Unterseiten 
+      selection: Auswahl
+  pages:
+    type: pages
+    query: site.children.listed
+    when: 
+      location: selection
+    

@@ -29,16 +29,16 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
     <?= vite()->css('src/main.ts') ?>
 </head>
 
-<body class="flex flex-col min-h-screen antialiased overflow-x-clip">
+<body class="flex flex-col min-h-screen antialiased overflow-x-clip bg-baseline">
     <?php snippet('core/skip-nav') ?>
-    <?php snippet('core/nav') ?>
-    <main class="container flex-grow">
-        <div id="main"></div>
+    <?php snippet('core/header') ?>
+    <main id="main" class="flex-grow container mx-auto dvll-container">
         <?= $slot ?>
     </main>
     <?php snippet('core/footer') ?>
     <?= vite()->js('src/main.ts') ?>
     <?php snippet('seo/schemas') ?>
+    <?php snippet('core/svg-sprite') ?>
 </body>
 
 </html>

@@ -15,4 +15,17 @@ extends: pages/layout
 tabs:
   content:
     columns:
-      sidebar: false
+      # sidebar: false
+      sidebar:
+        fields:
+          children: false
+          - label: Info
+            type: info
+            theme: passive
+            text: |
+              Erst muss ein Abschnitt hinzugefügt werden, in dem dann Blöcke erstellt werden können. 
+              Zwischen Abschnitten sind die Abstände größer. 
+              
+              Siehe dazu: (link: https://cvjm-kreisverband.de text: Info zu Layouts ⮺ target: _blank)
+
+

@@ -1,4 +1,20 @@
-label: content
-type: blocks
+label: Inhalt
+type: layout
+help: 'Erst muss ein Abschnitt hinzugefügt werden, in dem dann Blöcke erstellt werden können. Zwischen Abschnitten sind die Abstände größer.'
 fieldsets:
-  example: blocks/example
+  - example
+  - picture
+  - code
+  - gallery
+  - heading
+  - image
+  - line
+  - list
+  - markdown
+  - quote
+  - table
+  - text
+  - text-image
+  - teaser-pages
+  - video
+

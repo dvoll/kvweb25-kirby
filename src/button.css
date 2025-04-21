@@ -1,0 +1,42 @@
+@layer base {
+    .btn {
+        @apply font-style font-semibold text-sm py-1 px-2 rounded inline-flex items-center;
+        transition: background-color .2s ease-in;
+
+        > .icon {
+            @apply w-3.5 h-3.5 ml-2;
+        }
+
+        &:hover {
+            transition: none;
+        }
+
+        &:focus-visible {
+            @apply outline-none ring-2 ring-contrast;
+        }
+    }
+
+    .btn--primary {
+        @apply bg-primary text-white;
+
+        &:hover {
+            @apply bg-tertiary;
+        }
+    }
+
+    .btn--secondary {
+        @apply bg-secondary text-contrast;
+
+        &:hover {
+            @apply bg-gray-300;
+        }
+    }
+
+    .btn--ghost {
+        @apply bg-transparent text-primary border border-primary;
+
+        &:hover {
+            @apply bg-baseline;
+        }
+    }
+}

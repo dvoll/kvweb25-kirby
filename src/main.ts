@@ -5,6 +5,7 @@ import focus from "@alpinejs/focus";
 // @ts-ignore
 import collapse from "@alpinejs/collapse";
 
+import "./components/header";
 import "./main.css";
 
 Alpine.plugin(collapse);

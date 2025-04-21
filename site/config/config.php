@@ -9,6 +9,7 @@ $dotenv = Dotenv\Dotenv::createUnsafeImmutable(realpath(__DIR__ . '/../../'));
 $dotenv->load();
 
 return [
+    'thumbs' => require __DIR__ . '/thumbs.php',
     'panel' => [
         'language' => 'de',
     ],

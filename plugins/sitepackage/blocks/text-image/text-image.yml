@@ -1,0 +1,53 @@
+name: Text-Bild
+description: Block für Text mit Bild und Button
+# icon: image
+preview: fields
+wysiwyg: true
+
+fields:
+  title:
+    label: Titel
+    type: text
+    icon: title
+    width: 1/2
+  description:
+    label: Beschreibung
+    type: text
+    icon: text
+    width: 1/2
+  image:
+    extends: fields/image
+    label: Bild
+    multiple: false
+    layout: cards
+    width: 1/2
+  linkselection:
+    label: Verlinkung über Button (Optional)
+    type: radio
+    columns: 2
+    default: "none"
+    options:
+      none: Keine Verlinkung
+      link: Button mit Link
+  link:
+    label: Link
+    required: true
+    type: link
+    options:
+      - page
+      - url
+      - file
+      - email
+      - tel
+    icon: link
+    width: 1/2
+    when:
+      linkselection: link
+  linklabel:
+    label: Label
+    required: true
+    type: text
+    icon: text
+    width: 1/2
+    when:
+      linkselection: link

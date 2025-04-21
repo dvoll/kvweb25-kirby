@@ -40,8 +40,9 @@
 
     --color-baseline: #F7F3F3;
     --color-contrast: #313131;
-    --color-primary: #FF0000;
+    --color-primary: #E31414;
     --color-secondary: #E6E5E4;
+    --color-offwhite: #F9EBDD;
     --color-tertiary: #9C171E;
     --color-image-overlay: rgba(0, 0, 0, 0.7);
 
@@ -66,26 +67,30 @@
     --breakpoint-xl: 80rem;
     --breakpoint-2xl: 96rem;
 
+    /* --spacing: 1rem; */
+
     --text-xs: 0.75rem;
-    --text-xs--line-height: calc(1 / 0.75);
+    --text-xs--line-height: calc(1.125 / 0.75);
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-base: 1rem;
-    --text-base--line-height: calc(1.5 / 1);
+    --text-base--line-height: 1.425;
     --text-lg: 1.125rem;
-    --text-lg--line-height: calc(1.75 / 1.125);
+    --text-lg--line-height: calc(4 / 3);
     --text-xl: 1.25rem;
-    --text-xl--line-height: calc(1.75 / 1.25);
-    --text-2xl: 1.5rem;
-    --text-2xl--line-height: calc(2 / 1.5);
+    --text-xl--line-height: 1.2;
+    --text-2xl: 1.375rem;
+    --text-2xl--line-height: 1.125;
+    /* --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(1.75 / 1.5); */
     --text-3xl: 1.875rem;
-    --text-3xl--line-height: calc(2.25 / 1.875);
+    --text-3xl--line-height: calc(2 / 1.875);
     --text-4xl: 2.25rem;
-    --text-4xl--line-height: calc(2.5 / 2.25);
-    --text-5xl: 3rem;
-    --text-5xl--line-height: 1;
+    --text-4xl--line-height: calc(2 / 2.25);
+    --text-5xl: 2.5rem;
+    --text-5xl--line-height: 1.125;
     --text-6xl: 3.75rem;
-    --text-6xl--line-height: 1;
+    --text-6xl--line-height: 1.125;
 
     --font-style: "RobotoFlex", sans-serif;
     --font-body: "SourceSansPro", sans-serif;
