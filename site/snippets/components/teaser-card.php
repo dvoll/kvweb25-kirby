@@ -27,15 +27,15 @@ $sizes = [
     <div class="self-center py-6 pl-6 md:basis-1/2">
         <h2 class="heading-lv3 mb-3"><?= $title ?></h2>
         <?php if (!empty($text)): ?>
-            <p class="typo text-sm">
+            <p class="typo text-sm line-clamp-3 md:line-clamp-none">
                 <?= $text ?>
             </p>
         <?php endif; ?>
         <a <?= Html::attr([
                 'href' => $url,
-                'class' => 'btn btn--secondary mt-9 mr-2',
+                'class' => 'btn btn--secondary mt-6 md:mt-9 mr-2',
                 'aria-label' => 'Mehr über unsere Arbeit'
-            ]) ?>>Zur Seite &#8222;<?= $title ?>&#8220;<?= snippet('elements/icon') ?></a>
+            ]) ?>>Zur Seite &#8222;<?= $buttonTitle ?? $title ?>&#8220;<?= snippet('elements/icon') ?></a>
     </div>
     <?php if (!empty($image)): ?>
         <?= snippet(

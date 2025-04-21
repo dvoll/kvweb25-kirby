@@ -20,6 +20,7 @@ if ($location === 'selection') {
     <?php foreach ($teaserPages as $teaserPage): ?>
         <?= snippet('components/teaser-card', [
             'title' => $teaserPage->myTitle(),
+            'buttonTitle' => $teaserPage->title(),
             'text' => $teaserPage->myTeaserText(),
             'image' => $teaserPage->myTeaserImage(),
             'url' => $teaserPage->url(),
