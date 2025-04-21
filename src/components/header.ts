@@ -1,9 +1,35 @@
 class DvllHeader extends HTMLElement {
+    scrollTimeout: number | null = null;
+
     constructor() {
         super();
     }
 
     connectedCallback() {
+        // Add scroll listener and add a class if document is scrolled
+        const header = this;
+        let lastScrollTop = 0;
+        const scrollHandler = () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            if (currentScroll > lastScrollTop) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+        };
+
+        const throttledScrollHandler = () => {
+            if (!this.scrollTimeout) {
+                this.scrollTimeout = window.setTimeout(() => {
+                    scrollHandler();
+                    this.scrollTimeout = null;
+                }, 100); // Adjust the timeout for performance
+            }
+        };
+
+        window.addEventListener('scroll', throttledScrollHandler, { passive: true });
+
         const mainMenuButton = this.querySelector('.main-nav-button');
         const modal = this.querySelector('#mobile-nav-modal') as HTMLDialogElement;
         mainMenuButton?.addEventListener('click', () => {

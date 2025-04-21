@@ -8,13 +8,17 @@
 
 snippet('layout', slots: true); ?>
 <section class="dvll-section">
-    <?= $page->content()->get('stage')->__call('toBlocks') ?>
+    <div class="dvll-section__layout">
+        <?= $page->content()->get('stage')->__call('toBlocks') ?>
+    </div>
 </section>
 <?php foreach ($page->content()->get('layouts')->toLayouts() as $layout): ?>
     <section class="dvll-section" id="<?= $layout->id() ?>">
-        <?php foreach ($layout->columns() as $column): ?>
-            <?= $column->blocks() ?>
-        <?php endforeach ?>
+        <div class="dvll-section__layout">
+            <?php foreach ($layout->columns() as $column): ?>
+                <?= $column->blocks() ?>
+            <?php endforeach ?>
+        </div>
     </section>
 <?php endforeach ?>
 <?php endsnippet() ?>
