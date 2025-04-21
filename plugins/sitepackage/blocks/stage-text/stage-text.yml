@@ -1,0 +1,20 @@
+name: Bühne Minimal
+description: Block für Bühne mit Titel und Beschreibung
+# icon: image
+preview: fields
+wysiwyg: true
+
+fields:
+  title:
+    label: Titel
+    type: text
+    icon: title
+    width: 1/2
+    placeholder: '{{page.title}}'
+  description:
+    label: Beschreibung
+    type: textarea
+    buttons: false
+    maxlength: 130
+    icon: text
+    width: 1/2

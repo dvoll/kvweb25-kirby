@@ -9,4 +9,5 @@ default:
       description: Kurze Einleitung der Seite
 fieldsets:
   - stage-text-image
+  - stage-text
 
