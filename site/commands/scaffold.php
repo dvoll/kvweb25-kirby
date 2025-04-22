@@ -32,7 +32,9 @@ return [
             $page = Page::create([
                 'slug' => 'home',
                 'template' => 'home',
-                'content' => [],
+                'content' => [
+                    'title' => 'CVJM Kreisverband Bünde'
+                ],
             ]);
             $page->changeStatus('listed');
         }
@@ -42,17 +44,35 @@ return [
             $page = Page::create([
                 'slug' => 'error',
                 'template' => 'error',
-                'content' => [],
+                'content' => [
+                    'title' => 'Fehlerseite'
+                ],
+                'draft' => false,
             ]);
         }
 
-        if (!page('blogposts')) {
+        if (!page('blog')) {
             $cli->info('Creating empty blogposts page...');
             $page = Page::create([
                 'slug' => 'blog',
                 'template' => 'blogposts',
-                'content' => [],
+                'content' => [
+                    'title' => 'Blog',
+                ],
             ]);
+            $page->changeStatus('listed');
+        }
+
+        if (!page('freizeiten')) {
+            $cli->info('Creating empty camps page...');
+            $page = Page::create([
+                'slug' => 'freizeiten',
+                'template' => 'camps',
+                'content' => [
+                    'title' => 'Freizeiten',
+                ],
+            ]);
+            $page->changeStatus('listed');
         }
 
         if (!page('images')) {
@@ -62,6 +82,7 @@ return [
                 'template' => 'images',
                 'content' => [
                     'uuid' => 'images',
+                    'title' => 'Bilder'
                 ],
             ]);
             $page->changeStatus('unlisted');
