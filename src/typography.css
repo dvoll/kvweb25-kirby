@@ -3,6 +3,11 @@
     .typo {
       @apply font-body text-base text-contrast;
     }
+    .typo--rte {
+        p {
+            @apply mb-4;
+        }
+    }
 
     .typo-xs {
       font-size: var(--text-xs);

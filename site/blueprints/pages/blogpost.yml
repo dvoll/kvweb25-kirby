@@ -1,6 +1,7 @@
 # Each page blueprint must have a title, the title may be different from the file name
 title: Beitrag
 blueprint: page
+num: '{{ page.date.toDate("Ymd") }}'
 
 # Each page can have an icon that is shown in page listings when no preview image is available.
 # icon: 
@@ -10,30 +11,86 @@ blueprint: page
 # More about page options: https://getkirby.com/docs/reference/panel/blueprints/page#options
 
 extends: pages/layout
+status:
+  draft:
+    label: Entwurf
+    text: Der Artikel befindet sich noch im Entwurfsmodus. Er kann nur von Redakteuren mit Zugriff auf das Panel gesehen werden.
+  unlisted:
+    label: In Überprüfung
+    text: Der Artikel ist online und kann über die direkte URL aufgerufen werden. Der Artikel wird aber noch nicht auf der Website aufgelistet.
+  listed:
+    label: Veröffentlicht
+    text: Der Artikel ist online und auf der Website aufgelistet.
 
 tabs:
   content:
     columns:
-      sidebar: false
+      sidebar:
+        sections:
+          children: false
+          postMeta:
+            type: fields
+            fields:
+              image:
+                extends: fields/image
+                label: Bild (Optional)
+                multiple: false
+              date:
+                label: Erstellt am
+                type: date
+                # time: true
+                default: now
+                display: DD.MM.YYYY
+              author:
+                type: users
+              tags:
+                type: tags
+                options:
+                  type: query
+                  query: site.index.filterBy("template", "in", ["camp", "layout", "offer"])
+              links:
+                label: Verlinkungen (Optional)
+                type: structure
+                fields:
+                  title:
+                    label: Titel
+                    type: text
+                  url:
+                    label: Ziel (Optional)
+                    type: link
+                    options:
+                      - page
+                      - url
+                      - file
+                      - email
+                      - tel
+              files:
+                label: Downloads
+                type: files
       main:
         sections:
           mainFields:
             fields:
               stage: false
+              layouts: false
+              text:
+                type: textarea
+                label: Text
+                size: large
               
   settings:
     sections:
       teaserFields: false
-      postMeta:
+      postSettings:
         type: fields
         fields:
-          postMetaTitle:
+          postSettingsTitle:
             type: headline
             label: Einstellungen
-          date:
-            width: 1/2
-            label: Erstellt am/um
-            type: date
-            time: true
-            default: now
-            display: DD.MM.YYYY
+          # date:
+          #   width: 1/2
+          #   label: Erstellt am/um
+          #   type: date
+          #   time: true
+          #   default: now
+          #   display: DD.MM.YYYY

@@ -18,19 +18,29 @@ tabs:
       sidebar: false
       main:
         sections:
-          blogposts:
+          blogpostDrafts:
             type: pages
-            label: Beiträge
+            label: Entwürfe
             template: blogpost
             create: 
               - blogpost
-            layout: table
+            status: draft
+            layout: cardlets
             search: true
-            columns:
-              date:
-                label: Date
-                value: "{{ page.date.toDate('d.m.Y') }}"
-            sortBy: date desc
+            info: "{{ page.date.toDate('d.m.Y') }}"
+            image: false
+            flip: true
+            empty: Es sind noch keine Beiträge vorhanden.
+          blogposts:
+            type: pages
+            label: Veröffentlichte Beiträge
+            template: blogpost
+            status: published
+            layout: cardlets
+            search: true
+            info: "{{ page.date.toDate('d.m.Y') }}"
+            image: false
+            flip: true
             empty: Es sind noch keine Beiträge vorhanden.
           mainFields:
             fields:

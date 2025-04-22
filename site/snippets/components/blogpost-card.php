@@ -9,6 +9,7 @@
 
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\Html;
+use Kirby\Toolkit\Str;
 
 $sizes = [
     // TODO: check
@@ -25,13 +26,26 @@ $sizes = [
     <a <?= Html::attr([
             'href' => $url,
             'class' => 'absolute inset-0',
-            'aria-hidden' => true,
+            'aria-hidden' => 'true',
+            'tabindex' => '-1',
             'title' => 'Zum Beitrag: ' . $title,
         ]) ?>></a>
-    <h3 class="heading-lv2"><?= $title ?></h2>
+    <div class="">
+        <h3 class="heading-lv2"><?= $title ?></h3>
+        <?php if (!empty($text)): ?>
+            <p class="text-sm text-contrast mt-2">
+                <?= $text ?>
+            </p>
+        <?php endif; ?>
+    </div>
+    <div class="flex justify-between gap-4 mt-4 items-center">
+        <?php if (!empty($date)): ?>
+            <span class="text-sm text-gray-500"><?= Html::encode($date) ?></span>
+        <?php endif; ?>
         <a <?= Html::attr([
                 'href' => $url,
-                'class' => 'btn btn--ghost mt-4 self-end',
+                'class' => 'btn btn--ghost ml-auto',
                 'aria-label' => 'Zum Beitrag: ' . $title,
             ]) ?>>Beitrag anzeigen<?= snippet('elements/icon') ?></a>
+    </div>
 </div>
