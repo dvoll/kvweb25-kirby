@@ -1,0 +1,26 @@
+title: Freizeiten
+blueprint: page
+
+extends: pages/layout
+
+tabs:
+  content:
+    columns:
+      sidebar:
+        sections:
+          children:
+            label: Freizeiten
+
+      # main:
+        # sections:
+        #   mainFields:
+        #     fields:
+        #       stage: 
+        #         extends: fields/stage-blocks
+        #         fieldsets:
+        #           - stage-text
+
+              
+  settings:
+    sections:
+      teaserFields: false

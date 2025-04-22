@@ -42,7 +42,7 @@ class DvllHeader extends HTMLElement {
         // Add event listeners to nav links with submenus
         const navLinks = this.querySelectorAll('nav.desktop-nav > ul > li > .nav-link');
         navLinks.forEach((link) => {
-            const submenu = link.nextElementSibling;
+            const submenu = link.nextElementSibling as HTMLElement;
             if (submenu) {
                 link.addEventListener('click', (event) => {
                     event.preventDefault();
@@ -67,7 +67,7 @@ class DvllHeader extends HTMLElement {
 
         document.addEventListener('click', (event) => {
             const openSubmenu = this.querySelector('nav > ul > li > ul.nav-submenu--open');
-            if (openSubmenu && !openSubmenu.contains(event.target)) {
+            if (openSubmenu && !openSubmenu.contains(event.target as Node)) {
                 this.closeAllSubmenus();
             }
         });

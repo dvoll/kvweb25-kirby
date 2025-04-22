@@ -74,7 +74,8 @@
         }
 
         .nav-submenu > li > &:hover {
-            background-color: #f2d8bc;
+            /* background-color: #f2d8bc; */
+            @apply bg-white;
         }
     }
 

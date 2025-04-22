@@ -5,7 +5,6 @@ max: 1
 default:
   - type: stage-text-image
     content:
-      title: Überschrift der Seite
       description: Kurze Einleitung der Seite
 fieldsets:
   - stage-text-image

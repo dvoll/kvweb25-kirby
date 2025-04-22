@@ -1,0 +1,29 @@
+type: fields
+fields:
+  teaserSectionTitle:
+    type: headline
+    label: Teaser
+    help: 'Hier kann der Teaser Titel, die Beschreibung und das Bild für den Teaser der Seite überschreiben werden.'
+  teaserTitle:
+    label: Teaser Titel (Überschreiben)
+    type: text
+    icon: title
+    placeholder: '{{page.myTitle}}'
+    help: 'Wenn leer, wird der Text der Bühne oder der Titel der Seite verwendet.'
+    width: 1/2
+  teaserDescription:
+    label: Teaser Beschreibung (Überschreiben)
+    type: textarea
+    buttons: false
+    maxlength: 130
+    icon: text
+    placeholder: '{{page.myTeaserText}}'
+    help: 'Wenn leer, wird der Text der Bühne verwendet (wenn vorhanden).'
+    width: 1/2
+  teaserImage:
+    extends: fields/image
+    label: Teaser Bild (Überschreiben)
+    multiple: false
+    layout: cards
+    help: 'Wenn nichts ausgewählt, wird das Bild der Bühne genutzt (wenn vorhanden).'
+    width: 1/2

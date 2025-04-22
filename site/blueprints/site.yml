@@ -17,6 +17,8 @@ tabs:
               - home
               - error
               - layout
+              - blogposts
+              - camps
             image: icon
       - width: 2/3
         sections:
@@ -27,6 +29,16 @@ tabs:
             templates:
               - images
             image: icon
+      - width: 2/3
+        sections:
+          camps:
+            label: Freizeiten
+            type: pages
+            layout: cards
+            info: '/{{ page.slug }}'
+            templates:
+              - camp
+            # image: icon
   seo:
     label: SEO-Voreinstellungen
     extends: seo/site

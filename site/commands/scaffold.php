@@ -46,6 +46,15 @@ return [
             ]);
         }
 
+        if (!page('blogposts')) {
+            $cli->info('Creating empty blogposts page...');
+            $page = Page::create([
+                'slug' => 'blog',
+                'template' => 'blogposts',
+                'content' => [],
+            ]);
+        }
+
         if (!page('images')) {
             $cli->info('Creating images page...');
             $page = Page::create([

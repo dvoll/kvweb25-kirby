@@ -14,15 +14,23 @@ tabs:
     columns:
       main:
         width: 3/4
-        type: fields
-        fields:
-          stage: fields/stage-blocks
-          layouts: fields/blocks
+        sections:
+          mainFields:
+            type: fields
+            fields:
+              stage: fields/stage-blocks
+              layouts: fields/blocks
       sidebar:
         width: 1/4
         sections:
           children:
-            label: children
+            label: Unterseiten
             type: pages
             template: layout
+  settings:
+    label: Einstellungen
+    icon: cog
+    sections:
+      teaserFields:
+        extends: sections/page-teaser
   seo: seo/page

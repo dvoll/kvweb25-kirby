@@ -16,7 +16,10 @@ fields:
       selection: Auswahl
   pages:
     type: pages
-    query: site.children.listed
+    # query: site.children.listed
+    query: site.index.filterBy('template', 'in', ['layout', 'blogposts', 'camps', 'camp'])
+    subpages: false
+    info: '{{ page.parent.parent.title }} {{ page.parent.parent.title ? ">" : "" }} {{ page.parent.title }}'
     when: 
       location: selection
     

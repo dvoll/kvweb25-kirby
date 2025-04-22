@@ -27,6 +27,7 @@ App::plugin('dvll/sitepackage', [
         'blocks/picture'      => __DIR__ . '/blocks/picture/picture.yml',
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.yml',
         'blocks/teaser-pages'      => __DIR__ . '/blocks/teaser-pages/teaser-pages.yml',
+        'blocks/teaser-blogposts'      => __DIR__ . '/blocks/teaser-blogposts/teaser-blogposts.yml',
         'blocks/stage-text'      => __DIR__ . '/blocks/stage-text/stage-text.yml',
         'blocks/stage-text-image'      => __DIR__ . '/blocks/stage-text-image/stage-text-image.yml',
 	],
@@ -34,6 +35,7 @@ App::plugin('dvll/sitepackage', [
         'blocks/picture'      => __DIR__ . '/blocks/picture/picture.php',
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.php',
         'blocks/teaser-pages'      => __DIR__ . '/blocks/teaser-pages/teaser-pages.php',
+        'blocks/teaser-blogposts'      => __DIR__ . '/blocks/teaser-blogposts/teaser-blogposts.php',
         'blocks/stage-text'      => __DIR__ . '/blocks/stage-text/stage-text.php',
         'blocks/stage-text-image'      => __DIR__ . '/blocks/stage-text-image/stage-text-image.php',
     ]

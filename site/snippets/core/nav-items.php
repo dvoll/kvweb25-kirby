@@ -8,9 +8,10 @@ if ($items->isNotEmpty()): ?>
         <ul class="flex flex-row flex-wrap gap-x-4 gap-y-1 font-style text-sm text-contrast font-semibold">
             <?php foreach ($items as $item): ?>
                 <?php $subMenu = $item->children(); ?>
-                <li class="relative"><a class="nav-link px-4 flex gap-2 items-center group" <?php e($item->isOpen(), 'aria-current="page"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?><?php e($subMenu->isNotEmpty(), snippet('elements/icon', ['icon' => 'chevron-down', 'class' => 'w-3 h-3 group-[.nav-link--open-submenu]:rotate-180'], return: true)) ?></a>
-                    <?php if ($subMenu->isNotEmpty()): ?>
-                        <ul class="nav-submenu bg-offwhite card shadow-sm none flex-col">
+                <?php $hasSubMenu = $subMenu->isNotEmpty() && $item->title()->escape()->toString() !== 'Blog'; ?>
+                <li class="relative"><a class="nav-link px-4 flex gap-2 items-center group" <?php e($item->isOpen(), 'aria-current="page"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?><?php e($hasSubMenu, snippet('elements/icon', ['icon' => 'chevron-down', 'class' => 'w-3 h-3 group-[.nav-link--open-submenu]:rotate-180'], return: true)) ?></a>
+                    <?php if ($hasSubMenu): ?>
+                        <ul class="nav-submenu bg-gray-100 card shadow-sm none flex-col">
                             <li><a class="nav-link" <?php e($item->isOpen(), 'aria-current="page"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
                             </li>
                             <div class="h-[1px] bg-tertiary mx-4"></div>
@@ -35,7 +36,8 @@ if ($items->isNotEmpty()): ?>
                 <?php foreach ($items as $item): ?>
                     <li class="relative"><a class="nav-link px-4" <?php e($item->isOpen(), 'aria-current="page"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
                         <?php $subMenu = $item->children(); ?>
-                        <?php if ($subMenu->isNotEmpty()): ?>
+                        <?php $hasSubMenu = $subMenu->isNotEmpty() && $item->title()->escape()->toString() !== 'Blog'; ?>
+                        <?php if ($hasSubMenu): ?>
                             <ul class="mt-2 pl-4 flex flex-col gap-1">
                                 <?php foreach ($subMenu as $subItem): ?>
                                     <li>

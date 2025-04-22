@@ -2,16 +2,26 @@
     .card {
         @apply bg-white rounded-md;
         box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 0.05);
+        overflow: hidden;
         /* width: 34.25rem;
         flex-grow: 1;
         flex-shrink: 1;
         min-width: 20rem; */
     }
 
+    .card--with-hover {
+        transition: box-shadow .4s cubic-bezier(.22,.61,.36,1);
+        &:hover {
+            /* transition: none; */
+            transition: box-shadow .2s cubic-bezier(.22,.61,.36,1);
+            @apply ring-1 ring-primary;
+        }
+    }
+
     .angled-cut {
         position: relative;
         overflow: hidden;
         clip-path: polygon(3.75rem 0, 100% 0px, 100% 100%, 0 100%);
-        z-index: 1;
+        /* z-index: 1; */
     }
 }

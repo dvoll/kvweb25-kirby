@@ -62,10 +62,6 @@ return [
         $user = kirby()->user();
         if ($user && $user->role()->permissions()->for('pages', 'read')) {
             $menu[] = '-';
-            $menu['website'] = Menu::page('Website', 'email', page('home'));
-        }
-        if ($user && $user->role()->permissions()->for('pages', 'read')) {
-            $menu[] = '-';
             $menu['images'] = Menu::page('Bilder', 'images', page('page://images'));
         }
 

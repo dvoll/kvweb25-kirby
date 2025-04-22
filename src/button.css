@@ -19,7 +19,7 @@
     .btn--primary {
         @apply bg-primary text-white;
 
-        &:hover {
+        &:hover, .card:hover & {
             @apply bg-tertiary;
         }
     }
@@ -27,16 +27,16 @@
     .btn--secondary {
         @apply bg-secondary text-contrast;
 
-        &:hover {
+        &:hover, .card:hover & {
             @apply bg-gray-300;
         }
     }
 
     .btn--ghost {
-        @apply bg-transparent text-primary border border-primary;
+        @apply bg-transparent text-contrast;
 
-        &:hover {
-            @apply bg-baseline;
+        &:hover, .card:hover & {
+            @apply bg-offwhite;
         }
     }
 }

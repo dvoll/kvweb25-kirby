@@ -2,19 +2,35 @@ label: Inhalt
 type: layout
 help: 'Erst muss ein Abschnitt hinzugefügt werden, in dem dann Blöcke erstellt werden können. Zwischen Abschnitten sind die Abstände größer.'
 fieldsets:
-  - example
-  - picture
-  - code
-  - gallery
-  - heading
-  - image
-  - line
-  - list
-  - markdown
-  - quote
-  - table
-  - text
-  - text-image
-  - teaser-pages
-  - video
+  textGroup:
+    label: Text
+    type: group
+    fieldsets:
+      - heading
+      - text
+      - list
+      - quote
+  mediaGroup:
+    label: Medien
+    type: group
+    fieldsets:
+      - picture
+      - gallery
+      - image
+      - text-image
+      - video
+  otherGroup:
+    label: Andere
+    type: group
+    fieldsets:
+      - code
+      - line
+      - markdown
+      - table
+  teaser:
+    label: Teaser
+    type: group
+    fieldsets:
+      - teaser-pages
+      - teaser-blogposts
 

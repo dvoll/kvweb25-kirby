@@ -1,0 +1,18 @@
+name: Teaser (Beiträge)
+# description: Block für Text mit Bild und Button
+# icon: image
+preview: fields
+wysiwyg: true
+
+fields:
+  teaserTitle:
+    label: Teaser Titel
+    type: text
+    icon: title
+    width: 1/2
+  info:
+    label: Info zum Teaser (Beiträge)
+    type: info
+    theme: passive
+    text: 'Es werden automatisch die neusten drei Beiträge ausgespielt.'
+    

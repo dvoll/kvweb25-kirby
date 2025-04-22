@@ -1,0 +1,83 @@
+title: Freizeit
+
+# Page options allow you to control how users can interact with the page.
+# Here we prevent changing the page status (the home page cannot be renamed or deleted by default)
+# More about page options: https://getkirby.com/docs/reference/panel/blueprints/page#options
+options:
+  changeStatus: false
+
+extends: pages/layout
+
+tabs:
+  content:
+    columns:
+      sidebar: false
+      details:
+        width: 1/1
+        type: fields
+        fields:
+          title:
+            label: Title
+            type: text
+            required: true
+          text:
+            label: Text
+            type: textarea
+            required: true
+          image:
+            label: Image
+            type: files
+            layout: cards
+            multiple: false
+            size: large
+            required: true
+          link:
+            label: Link
+            type: text
+            required: true
+          linktext:
+            label: Link Text
+            type: text
+            required: true
+          blocks:
+            extends: fields/blocks
+            fields:
+              text:
+                label: Text
+                type: textarea
+              image:
+                label: Image
+                type: files
+                layout: cards
+                multiple: false
+                size: large
+              link:
+                label: Link
+                type: text
+              linktext:
+                label: Link Text
+                type: text
+              columns:
+                label: Columns
+                type: structure
+                fields:
+                  column:
+                    label: Column
+                    type: fields
+                    fields:
+                      text:
+                        label: Text
+                        type: textarea
+                      image:
+                        label: Image
+                        type: files
+                        layout: cards
+                        multiple: false
+                        size: large
+                      link:
+                        label: Link
+                        type: text
+                      linktext:
+                        label: Link Text
+                        type: text
+
