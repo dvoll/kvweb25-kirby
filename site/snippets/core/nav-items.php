@@ -11,14 +11,14 @@ if ($items->isNotEmpty()): ?>
                 <?php $hasSubMenu = $subMenu->isNotEmpty() && $item->title()->escape()->toString() !== 'Blog'; ?>
                 <li class="relative"><a class="nav-link px-4 flex gap-2 items-center group" <?php e($item->isOpen(), 'aria-current="page"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?><?php e($hasSubMenu, snippet('elements/icon', ['icon' => 'chevron-down', 'class' => 'w-3 h-3 group-[.nav-link--open-submenu]:rotate-180'], return: true)) ?></a>
                     <?php if ($hasSubMenu): ?>
-                        <ul class="nav-submenu bg-gray-100 card shadow-sm none flex-col">
-                            <li><a class="nav-link" <?php e($item->isOpen(), 'aria-current="page"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
+                        <ul class="nav-submenu bg-gray-100 card shadow-asd none flex-col p-1">
+                            <li><a class="nav-link py-3 rounded-md" <?php e($item->isOpen(), 'aria-current="page"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
                             </li>
-                            <div class="h-[1px] bg-tertiary mx-4"></div>
+                            <div class="h-[1px] my-1 bg-tertiary mx-4"></div>
                             <?php foreach ($subMenu as $subItem): ?>
                                 <li>
                                     <a
-                                        class="nav-link"
+                                        class="nav-link rounded-md"
                                         <?php e($item->isOpen(), 'aria-current="page"') ?>
                                         href="<?= $subItem->url() ?>"><?= $subItem->title() ?></a>
                                 </li>
