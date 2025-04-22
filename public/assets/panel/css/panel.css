@@ -1,0 +1,13 @@
+.k-block-type-heading-input[data-level=h1] {
+  --text-size: var(--text-2xl);
+  line-height:1.125em
+}
+.k-block-type-heading-input[data-level=h2] {
+  --text-size: var(--text-xl);
+}
+.k-block-type-heading-input[data-level=h3] {
+  --text-size: var(--text-lg)
+}
+.k-block-type-heading-input[data-level=h4] {
+  --text-size: var(--text-md)
+}

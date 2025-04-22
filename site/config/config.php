@@ -12,6 +12,7 @@ return [
     'thumbs' => require __DIR__ . '/thumbs.php',
     'panel' => [
         'language' => 'de',
+        'css' => 'assets/panel/css/panel.css',
     ],
     'cache' => [
         'pages' => [
