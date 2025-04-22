@@ -15,30 +15,62 @@ tabs:
               - layout
             templates:
               - home
-              - error
               - layout
               - blogposts
               - camps
+            image:
+              query: page.myTeaserImage
+              cover: true
+          errorPages:
+            label: Fehlerseite
+            type: pages
+            info: '/{{ page.slug }}'
+            templates:
+              - error
+            create: false
             image: icon
-      - width: 2/3
-        sections:
           images:
             label: Bilder
             type: pages
             info: '/{{ page.slug }}'
             templates:
               - images
+            create: false
             image: icon
-      - width: 2/3
-        sections:
           camps:
             label: Freizeiten
             type: pages
             layout: cards
             info: '/{{ page.slug }}'
+            parent: site.find('freizeiten') ?? site.children.template('camps').first
             templates:
               - camp
-            # image: icon
+            image:
+              query: page.myTeaserImage
+              cover: true
+          offers:
+            label: Angebote
+            type: pages
+            layout: cardlets
+            info: '/{{ page.slug }}'
+            parent: site.find('angebote') ?? site.children.template('offers').first
+            templates:
+              - camp
+            image:
+              query: page.myTeaserImage
+              cover: true
+            hidden: true
+      - width: 1/3
+        sections:
+          posts:
+            label: Beiträge
+            type: pages
+            flip: true
+            info: "{{ page.date.toDate('d.m.Y') }}"
+            parent: site.find('blog') ?? site.children.template('blogposts').first
+            templates:
+              - blogpost
+            image: false
   seo:
     label: SEO-Voreinstellungen
     extends: seo/site
