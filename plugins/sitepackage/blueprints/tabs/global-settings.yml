@@ -3,24 +3,6 @@ label: Global Settings
 columns:
   - width: 1
     fields:
-      header:
-        label: Header
-        type: headline
-      navigation:
-        label: Navigation
-        type: structure
-        fields:
-          text:
-            label: Text
-            type: text
-            required: true
-          link:
-            label: Link
-            type: link
-            required: true
-            options:
-              - page
-
       footer:
         label: Footer
         type: headline
@@ -40,26 +22,6 @@ columns:
               - page
               - url
         width: 1/2
-      metaNavigation:
-        label: Meta Navigation
-        type: structure
-        fields:
-          text:
-            label: Text
-            type: text
-            required: true
-          link:
-            label: Link
-            type: link
-            required: true
-            options:
-              - page
-              - url
-        width: 1/2
-      footerText:
-        extends: fields/writer/default
-        label: Text
-        width: 1/2
       socialMedia:
         label: Social Media
         type: structure
@@ -71,9 +33,6 @@ columns:
             required: true
             options:
               instagram: Instagram
-              linkedin: LinkedIn
-              youtube: YouTube
-              twitter: Twitter
           url:
             label: URL
             type: url
