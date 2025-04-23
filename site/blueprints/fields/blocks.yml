@@ -27,6 +27,7 @@ fieldsets:
       - line
       - markdown
       - table
+      - faq
   teaser:
     label: Teaser
     type: group

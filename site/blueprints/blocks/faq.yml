@@ -1,0 +1,23 @@
+name: FAQs - Häufige Fragen
+icon: question
+preview: fields
+wysiwyg: true
+fields:
+  heading:
+    label: Überschrift
+    type: text
+    required: true
+  einleitung:
+    label: Einleitung
+    type: textarea
+  info: 
+    label: Info
+    type: info
+    theme: passive
+    text: |
+      Füge hier häufig gestellte Fragen hinzu. Jede Frage kann eine Antwort enthalten, die bei Bedarf erweitert werden kann.
+  faq:
+    label: FAQ
+    type: blocks
+    fieldsets:
+      - accordion

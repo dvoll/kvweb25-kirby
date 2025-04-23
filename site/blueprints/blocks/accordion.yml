@@ -1,0 +1,14 @@
+name: FAQ-Eintrag
+icon: bars
+preview: fields
+wysiwyg: true
+fields:
+  summary:
+    label: Frage
+    type: text
+    required: true
+    placeholder: Wie lautet die Frage?
+  details:
+    label: Antwort
+    type: textarea
+    required: true
