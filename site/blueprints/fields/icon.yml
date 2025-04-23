@@ -1,0 +1,16 @@
+type: select
+label: Icon
+options:
+  arrow-down: arrow-down
+  arrow-left: arrow-left
+  arrow-right: arrow-right
+  chevron-down: chevron-down
+  clock: clock
+  deskphone: deskphone
+  download: download
+  email: email
+  external: external
+  fact: fact
+  location: location
+  mobilephone: mobilephone
+  person: person

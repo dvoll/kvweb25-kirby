@@ -56,7 +56,7 @@ tabs:
                     label: Titel
                     type: text
                   url:
-                    label: Ziel (Optional)
+                    label: Ziel
                     type: link
                     options:
                       - page
@@ -69,9 +69,9 @@ tabs:
                 type: files
       main:
         sections:
-          mainFields:
+          stageSection: false
+          contentSection:
             fields:
-              stage: false
               layouts: false
               text:
                 type: textarea

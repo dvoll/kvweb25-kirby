@@ -15,11 +15,16 @@ tabs:
       main:
         width: 3/4
         sections:
-          mainFields:
+          stageSection:
             type: fields
             fields:
               stage: fields/stage-blocks
-              layouts: fields/blocks
+          modelSection: false
+          contentSection:
+            type: fields
+            fields:
+              layouts:
+                extends: fields/blocks
       sidebar:
         width: 1/4
         sections:

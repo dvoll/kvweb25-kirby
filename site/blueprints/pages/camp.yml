@@ -1,83 +1,77 @@
 title: Freizeit
-
-# Page options allow you to control how users can interact with the page.
-# Here we prevent changing the page status (the home page cannot be renamed or deleted by default)
-# More about page options: https://getkirby.com/docs/reference/panel/blueprints/page#options
-options:
-  changeStatus: false
+blueprint: page
 
 extends: pages/layout
 
 tabs:
   content:
     columns:
-      sidebar: false
-      details:
-        width: 1/1
-        type: fields
-        fields:
-          title:
-            label: Title
-            type: text
-            required: true
-          text:
-            label: Text
-            type: textarea
-            required: true
-          image:
-            label: Image
-            type: files
-            layout: cards
-            multiple: false
-            size: large
-            required: true
-          link:
-            label: Link
-            type: text
-            required: true
-          linktext:
-            label: Link Text
-            type: text
-            required: true
-          blocks:
-            extends: fields/blocks
+      sidebar:
+        sections:
+          children: false
+          postMeta:
+            type: fields
             fields:
-              text:
-                label: Text
-                type: textarea
-              image:
-                label: Image
-                type: files
-                layout: cards
-                multiple: false
-                size: large
-              link:
-                label: Link
-                type: text
-              linktext:
-                label: Link Text
-                type: text
-              columns:
-                label: Columns
+              contact:
+                type: users
+                label: Kontaktperson(en)
+              links:
+                label: Verlinkungen
                 type: structure
                 fields:
-                  column:
-                    label: Column
-                    type: fields
-                    fields:
-                      text:
-                        label: Text
-                        type: textarea
-                      image:
-                        label: Image
-                        type: files
-                        layout: cards
-                        multiple: false
-                        size: large
-                      link:
-                        label: Link
-                        type: text
-                      linktext:
-                        label: Link Text
-                        type: text
+                  title:
+                    label: Titel
+                    type: text
+                    required: true
+                  url:
+                    label: Ziel
+                    type: link
+                    required: true
+                    options:
+                      - page
+                      - url
+                      - email
+                      - tel
+          files:
+            label: Downloads
+            layout: cardlets
+            text: "{{ file.title.isNotEmpty ? file.title : file.filename }}"
+            info: "{{ file.title.isNotEmpty ? file.filename : '' }}"
+            template: download
+
+
+      main:
+        sections:
+          modelSection:
+            type: fields
+            fields:
+              facts:
+                label: Fakten
+                type: structure
+                columns:
+                  icon:
+                    width: 1/5
+                  name:
+                    width: 2/5
+                  value:
+                    width: 2/5
+                fields:
+                  icon:
+                    extends: fields/icon
+                  name:
+                    label: Name des Fakts
+                    type: text
+                  value:
+                    label: Inhalt des Fakts
+                    type: text
+              campIntro:
+                label: Einleitung
+                type: textarea
+                size: medium
+                placeholder: Hier kannst du eine Einleitung für die Freizeit eingeben...
+          contentSection:
+            type: fields
+            fields:
+              layouts:
+                label: Weiterer Inhalt
 

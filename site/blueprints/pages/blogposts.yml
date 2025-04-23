@@ -42,6 +42,4 @@ tabs:
             image: false
             flip: true
             empty: Es sind noch keine Beiträge vorhanden.
-          mainFields:
-            fields:
-              layouts: false
+          contentSection: false

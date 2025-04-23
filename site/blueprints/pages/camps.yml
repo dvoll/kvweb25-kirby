@@ -10,10 +10,11 @@ tabs:
         sections:
           children:
             label: Freizeiten
+            template: camp
 
       # main:
         # sections:
-        #   mainFields:
+        #   contentSection:
         #     fields:
         #       stage: 
         #         extends: fields/stage-blocks
