@@ -6,7 +6,7 @@ wysiwyg: true
 
 fields:
   location:
-    label: Ursprung
+    label: Quelle der anzuzeigenden Seiten
     type: radio
     columns: 2
     default: "children"
