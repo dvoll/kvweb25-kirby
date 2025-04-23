@@ -1,6 +1,12 @@
 # Each page blueprint must have a title, the title may be different from the file name
 title: Beitrag
 blueprint: page
+
+extends: pages/layout
+
+image:
+  icon: draft
+  query: false
 num: '{{ page.date.toDate("Ymd") }}'
 
 # Each page can have an icon that is shown in page listings when no preview image is available.
@@ -10,7 +16,6 @@ num: '{{ page.date.toDate("Ymd") }}'
 # Here we prevent changing the page status (the home page cannot be renamed or deleted by default)
 # More about page options: https://getkirby.com/docs/reference/panel/blueprints/page#options
 
-extends: pages/layout
 status:
   draft:
     label: Entwurf

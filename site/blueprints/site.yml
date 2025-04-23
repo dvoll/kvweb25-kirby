@@ -18,9 +18,6 @@ tabs:
               - layout
               - blogposts
               - camps
-            image:
-              query: page.myTeaserImage
-              cover: true
           errorPages:
             label: Fehlerseite
             type: pages
@@ -70,7 +67,6 @@ tabs:
             parent: site.find('blog') ?? site.children.template('blogposts').first
             templates:
               - blogpost
-            image: false
   seo:
     label: SEO-Voreinstellungen
     extends: seo/site

@@ -1,7 +1,9 @@
 title: layout-page
 blueprint: page
+icon: grid
 image:
-  icon: grid
+  query: page.myTeaserImage
+  cover: true
   back: 'var(--theme-accent)'
   color: 'var(--theme-primary)'
 

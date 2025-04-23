@@ -3,6 +3,9 @@ blueprint: page
 
 extends: pages/layout
 
+image:
+  icon: file-document
+
 tabs:
   content:
     columns:
