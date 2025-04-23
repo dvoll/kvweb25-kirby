@@ -29,7 +29,7 @@ tabs:
     fields:
       link:
         label: field.blocks.image.link
-        type: link
+        type: hidden # link currently not used in template
         icon: url
       caption:
         label: field.blocks.image.caption
