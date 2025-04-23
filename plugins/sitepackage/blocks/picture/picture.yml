@@ -4,7 +4,7 @@ preview: fields
 wysiwyg: true
 tabs:
   main:
-    label: Main
+    label: Inhalt
     fields:
       image:
         extends: fields/image
@@ -23,24 +23,24 @@ tabs:
           16/9: "16:9"
           21/9: "21:9"
           4/3: "4:3"
-      caption:
-        label: field.blocks.image.caption
-        type: writer
-        icon: text
-        inline: true
-        width: 1/2
-      alt:
-        label: field.blocks.image.alt
-        type: text
-        icon: title
-        width: 1/2
 
   settings:
-    label: Settings
+    label: Einstellungen
     fields:
-      
       link:
         label: field.blocks.image.link
         type: link
         icon: url
+      caption:
+        label: field.blocks.image.caption
+        type: text
+        icon: text
+        help: Überschreibt die Bildunterschrift, welche in der Bilddatei gespeichert ist.
+        width: 1/2
+      alt:
+        label: Alternativtext
+        type: text
+        icon: title
+        help: Überschreibt den Alternativtext, welcher in der Bilddatei gespeichert ist.
+        width: 1/2
       

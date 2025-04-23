@@ -1,0 +1,14 @@
+title: Download
+blueprint: file
+
+accept:
+  extension: jpg, png, pdf, doc, docx, xls, xlsx, svg
+  mime: image/jpeg, image/png, application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, image/svg+xml
+focus: false
+fields:
+  title:
+    label: Titel
+    type: text
+    width: 1/2
+    help: |
+      Der Titel wird in der Download-Karte angezeigt und sollte den Inhalt der Datei beschreiben.

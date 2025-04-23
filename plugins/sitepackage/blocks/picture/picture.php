@@ -22,18 +22,28 @@ $sizes = [
     '(min-width: 80rem) 674px', // 1280
     '(min-width: 96rem) 816px', // 1536
     '100vw'
-]
+];
+
+$caption = $block->caption()->isNotEmpty() ? $block->caption()->html() : ($block->image()->toFile()->caption()->isNotEmpty() ? $block->image()->toFile()->caption()->html() : null);
 
 ?>
-<div class="dvll-section dvll-section--narrow">
-    <?= snippet(
-        'picture',
-        [
-            'image' => $block->image()->toFile(),
-            'cropRatio' => $calculatedRatio,
-            'sizes' => A::join($sizes, ', '),
-            'preset' => 'default',
-            // 'responsive' => true,
-        ]
-    ); ?>
+<div class="dvll-block dvll-block--narrow">
+    <figure>
+        <?= snippet(
+            'picture',
+            [
+                'image' => $block->image()->toFile(),
+                'cropRatio' => $calculatedRatio,
+                'sizes' => A::join($sizes, ', '),
+                'preset' => 'default',
+                'alt' => $block->alt()->isNotEmpty() ? $block->alt()->value() : null,
+                // 'responsive' => true,
+            ]
+        ); ?>
+        <?php if (!empty($caption)) : ?>
+        <figcaption class="text-sm text-contrast mt-2 mx-4">
+            <?= $caption ?>
+        </figcaption>
+        <?php endif; ?>
+    </figure>
 </div>

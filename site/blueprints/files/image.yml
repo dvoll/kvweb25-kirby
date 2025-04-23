@@ -1,0 +1,20 @@
+title: Bild
+blueprint: file
+accept:
+  extension: jpg, jpeg, png
+  type: image
+
+fields:
+  alt:
+    label: Alternativtext
+    type: text
+    width: 1/2
+    help: 
+      text: |
+        Der Alternativtext wird angezeigt, wenn das Bild nicht geladen werden kann. Er wird auch von Screenreadern verwendet, um den Inhalt des Bildes zu beschreiben.
+  caption:
+    label: Bildunterschrift
+    type: textarea
+    width: 1/2
+    help: |
+      Die Bildunterschrift wird unter dem Bild angezeigt. Sie kann verwendet werden, um zusätzliche Informationen oder Credits zum Bild bereitzustellen.
