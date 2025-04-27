@@ -11,7 +11,7 @@
         <div class="md:py-4">
             <h1 class="heading-title mb-6"><?= $page->myTitle() ?></h1>
             <p class="typo">
-                <?= $block->description()->escape() ?>
+                <?= $block->description()->kirbytext() ?>
             </p>
             <?= snippet('components/breadcrumb', ['class' => 'mt-3']); ?>
         </div>

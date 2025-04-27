@@ -24,7 +24,7 @@ $sizes = [
         <div class="row-start-2 md:py-4 lg:pr-6">
             <h2 class="heading-lv2 mb-6"><?= $block->title()->escape() ?></h2>
             <p class="typo">
-                <?= $block->description()->escape() ?>
+                <?= $block->description()->kirbytext() ?>
             </p>
             <?php if ($block->link()->isNotEmpty() && $block->linkLabel()->isNotEmpty()): ?>
                 <a <?= Html::attr([

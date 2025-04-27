@@ -13,8 +13,10 @@ fields:
     width: 1/2
   description:
     label: Beschreibung
-    type: text
+    type: textarea
     icon: text
+    buttons: false
+    size: small
     width: 1/2
   image:
     extends: fields/image

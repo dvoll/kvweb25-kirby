@@ -23,7 +23,7 @@ $sizes = [
         <div class="row-start-2 md:py-4 lg:pr-6">
             <h1 class="heading-title mb-6"><?= $page->myTitle() ?></h1>
             <p class="typo">
-                <?= $block->description()->escape() ?>
+                <?= $block->description()->kirbytext() ?>
             </p>
             <?= snippet('components/breadcrumb', ['class' => 'mt-3']); ?>
         </div>
