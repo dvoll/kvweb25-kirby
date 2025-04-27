@@ -23,4 +23,5 @@ fields:
     label: Bild
     multiple: false
     layout: cards
+    required: true
     width: 1/2
