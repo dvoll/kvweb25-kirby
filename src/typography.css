@@ -4,8 +4,17 @@
       @apply font-body text-base text-contrast;
     }
     .typo--rte {
-        p {
+        p:has(+ p) {
             @apply mb-4;
+        }
+
+        ul {
+            list-style: disc;
+            @apply pl-8;
+        }
+
+        li {
+            @apply pl-2;
         }
     }
 
