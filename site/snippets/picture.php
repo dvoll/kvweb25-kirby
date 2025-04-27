@@ -25,6 +25,7 @@ $attr ??= [];
 $imgClass ??= null;
 $lazy ??= true;
 $responsive ??= false;
+$sizes ??= '100vw';
 
 $srcSets = option("thumbs.srcsets.{$preset}");
 
