@@ -10,14 +10,14 @@ fields:
     label: Titel
     type: text
     icon: title
-    width: 1/2
+    width: 2/3
   description:
     label: Beschreibung
     type: textarea
     icon: text
     buttons: false
     size: small
-    width: 1/2
+    width: 2/3
   image:
     extends: fields/image
     label: Bild
@@ -25,7 +25,7 @@ fields:
     layout: cards
     width: 1/2
   linkselection:
-    label: Verlinkung über Button (Optional)
+    label: Button mit Verlinkung (Optional)
     type: radio
     columns: 2
     default: "none"
