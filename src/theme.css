@@ -96,5 +96,5 @@
     --font-body: "SourceSansPro", sans-serif;
 
     --dvll-card-size: 320px;
-    --dvll-card-grid-cols: repeat(auto-fit, minmax(var(--dvll-card-size), 1fr));
+    --dvll-card-grid-cols: repeat(auto-fit, minmax(200px, 480px));
 }

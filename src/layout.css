@@ -47,7 +47,7 @@
         }
 
         &.dvll-block--wide {
-            @apply col-start-1 col-end-10;
+            @apply col-span-full;
         }
 
         &.dvll-block--narrow {
