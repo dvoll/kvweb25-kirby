@@ -1,7 +1,7 @@
 title: Freizeiten
 blueprint: page
 
-extends: pages/layout
+extends: layouts/default
 
 image:
   icon: file-document

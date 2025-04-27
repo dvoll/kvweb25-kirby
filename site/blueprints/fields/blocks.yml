@@ -1,6 +1,5 @@
 label: Inhalt
-type: layout
-help: 'Erst muss ein Abschnitt hinzugefügt werden, in dem dann Blöcke erstellt werden können. Zwischen Abschnitten sind die Abstände größer.'
+type: blocks
 fieldsets:
   textGroup:
     label: Text
@@ -14,19 +13,18 @@ fieldsets:
     label: Medien
     type: group
     fieldsets:
-      - picture
-      - gallery
       - image
+      - gallery
       - text-image
       - video
   otherGroup:
     label: Andere
     type: group
     fieldsets:
-      - code
-      - line
-      - markdown
-      - table
+      # - code
+      # - line
+      # - markdown
+      # - table
       - faq
   teaser:
     label: Teaser

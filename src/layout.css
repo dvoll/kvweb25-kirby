@@ -38,6 +38,10 @@
     .dvll-block {
         @apply mb-8;
 
+        &.dvll-block--gap-sm {
+            @apply mb-6;
+        }
+
         &:last-child {
             @apply mb-0;
         }

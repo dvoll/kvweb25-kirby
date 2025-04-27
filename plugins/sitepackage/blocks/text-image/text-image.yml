@@ -1,6 +1,7 @@
 name: Text-Bild
+label: Block
 description: Block für Text mit Bild und Button
-# icon: image
+icon: image
 preview: fields
 wysiwyg: true
 

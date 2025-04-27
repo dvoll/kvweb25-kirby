@@ -1,0 +1,18 @@
+title: 2 Spalten
+label: Abschnitt
+blueprint: field
+preview: fields
+wysiwyg: true
+icon: angle-up
+
+tabs:
+  content:
+    label: Inhalt
+    fields:
+      col1:
+        extends: fields/blocks-minimal
+        label: Spalte 1
+      col2:
+        extends: fields/blocks-minimal
+        label: Spalte 2
+  advanced: tabs/blocks-advanced

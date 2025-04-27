@@ -2,7 +2,7 @@
 title: Beitrag
 blueprint: page
 
-extends: pages/layout
+extends: layouts/default
 
 image:
   icon: draft

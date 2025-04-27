@@ -1,0 +1,7 @@
+type: blocks
+label: Abschnitte
+help: 'Erst muss ein Abschnitt hinzugefügt werden, in dem dann Blöcke erstellt werden können. Zwischen Abschnitten sind die Abstände größer.'
+fieldsets:
+  - layout-default
+  # - layout-2col
+

@@ -11,3 +11,27 @@
 .k-block-type-heading-input[data-level=h4] {
   --text-size: var(--text-md)
 }
+
+.k-block > [data-collapsed="true"] > .k-block-type-fields-header > .k-block-title > .k-block-icon:has(> [*|href="\#icon-angle-up"]) {
+    transform: rotate(180deg);
+}
+
+/* Block Layout gap */
+.k-field-name-layouts2 {
+    > .k-blocks {
+        background: transparent;
+        box-shadow: none;
+
+        > * > .k-block-container {
+        	box-shadow: var(--shadow);
+
+            &:has(+ .k-block-container) {
+                margin-block-end: .5rem;
+            }
+        }
+    }
+
+    .k-block-type-fields-form .k-block-type-fields-form {
+        padding-inline: var(--spacing-4);
+    }
+}

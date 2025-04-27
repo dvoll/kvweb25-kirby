@@ -1,6 +1,6 @@
 title: Freizeit
 blueprint: page
-extends: pages/layout
+extends: layouts/default
 
 image:
   icon: ⛺

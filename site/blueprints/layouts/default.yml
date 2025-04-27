@@ -1,0 +1,48 @@
+blueprint: page
+
+image:
+  query: page.myTeaserImage
+  cover: true
+  back: 'var(--theme-accent)'
+  color: 'var(--theme-primary)'
+
+tabs:
+  pages: false
+  model: false
+  content:
+    label: Inhalt
+    icon: text
+    columns:
+      main:
+        width: 3/4
+        sections:
+          stageSection:
+            type: fields
+            fields:
+              stage: fields/stage-blocks
+          modelSection: false
+          contentSection:
+            type: fields
+            fields:
+              layouts:
+                extends: fields/blocks-layout
+      sidebar:
+        width: 1/4
+        sections:
+          children:
+            label: Unterseiten
+            type: pages
+            template: layout
+  settings:
+    label: Einstellungen
+    icon: cog
+    sections:
+      teaserFields: false
+        # extends: sections/page-teaser
+      allChildren:
+        label: Alle Unterseiten
+        type: pages
+      allFiles:
+        label: Alle Dateien
+        type: files
+  seo: seo/page
