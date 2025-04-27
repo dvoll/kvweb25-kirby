@@ -9,17 +9,17 @@ use Kirby\Toolkit\A;
 $sizes = [
     // TODO: check
     // '(min-width: 40rem) vw', // 640
-    '(min-width: 48rem) 389px', // 768
-    '(min-width: 64rem) 531px', // 1024
-    '(min-width: 80rem) 674px', // 1280
     '(min-width: 96rem) 816px', // 1536
+    '(min-width: 80rem) 674px', // 1280
+    '(min-width: 64rem) 531px', // 1024
+    '(min-width: 48rem) 389px', // 768
     '100vw'
 ];
 
 // $linkObject = $block->content()->get('link')->toObject();
 
 ?>
-<div class="dvll-block col-span-full lg:col-start-2 lg:col-end-9 flex flex-col-reverse md:flex-row gap-6 md:justify-center">
+<div class="dvll-block dvll-block--wide lg:col-start-2 lg:col-end-9 flex flex-col-reverse md:flex-row gap-6 md:justify-center">
     <div class="md:grid grid-cols-1 grid-rows-[1fr_auto_2fr] md:max-w-[400px] basis-1/2">
         <div class="row-start-2 md:py-4 lg:pr-6">
             <h2 class="heading-lv2 mb-6"><?= $block->title()->escape() ?></h2>

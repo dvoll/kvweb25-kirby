@@ -60,7 +60,7 @@ if (is_a($image, 'Kirby\Cms\File') || is_a($image, 'Kirby\Filesystem\Asset')) : 
             <source <?= attr([
                         'type' => "image/webp",
                         'srcset' => $image->srcset($srcsetsWebp),
-                        'sizes' => $sizes ?? '100vw',
+                        'sizes' => $sizes,
                     ]) ?>>
 
             <img <?= attr([

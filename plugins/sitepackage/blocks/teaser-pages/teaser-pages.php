@@ -7,8 +7,8 @@
  */
 
 $teaserPages = [];
-$location = $block->content()->get('location')->value();
-if ($location === 'selection') {
+$source = $block->content()->get('source')->value();
+if ($source === 'selection') {
     $teaserPages = $block->content()->get('pages')->toPages();
 } else {
     $teaserPages = $page->children()->listed();
@@ -16,7 +16,7 @@ if ($location === 'selection') {
 
 ?>
 
-<div class="dvll-block col-span-full flex flex-col md:flex-wrap md:flex-row gap-y-4 md:gap-x-6 md:justify-center">
+<div class="dvll-block dvll-block--wide grid grid-cols-(--dvll-card-grid-cols) gap-4 md:gap-6 md:justify-center">
     <?php foreach ($teaserPages as $teaserPage): ?>
         <?= snippet('components/teaser-card', [
             'title' => $teaserPage->myTitle(),

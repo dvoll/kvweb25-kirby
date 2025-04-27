@@ -14,10 +14,10 @@ use Kirby\Toolkit\Str;
 $sizes = [
     // TODO: check
     // '(min-width: 40rem) vw', // 640
-    '(min-width: 48rem) 189px', // 768
-    '(min-width: 64rem) 331px', // 1024
-    '(min-width: 80rem) 474px', // 1280
     '(min-width: 96rem) 616px', // 1536
+    '(min-width: 80rem) 474px', // 1280
+    '(min-width: 64rem) 331px', // 1024
+    '(min-width: 48rem) 189px', // 768
     '100vw'
 ]
 

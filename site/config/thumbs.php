@@ -1,11 +1,17 @@
 <?php
 
+use dvll\Sitepackage\Helper;
+
 return [
+    'driver' => Helper::getEnv('IMAGE_DRIVER', 'gd'),
     'srcsets' => [
         'default' => [
-            '300w'  => ['width' => 300],
-            '800w'  => ['width' => 800],
+            '400w'  => ['width' => 400],
+            '600w'  => ['width' => 600],
+            '900w'  => ['width' => 900],
             '1024w'  => ['width' => 1024],
+            '1280w'  => ['width' => 1280],
+            '1920w'  => ['width' => 1920],
         ],
         'teaser' => [
             '300w'  => ['width' => 300, 'height' => 300, 'crop' => true],
