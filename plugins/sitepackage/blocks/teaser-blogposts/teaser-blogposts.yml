@@ -1,4 +1,5 @@
 name: Teaser (Beiträge)
+label: Block
 # description: Block für Text mit Bild und Button
 # icon: image
 preview: fields
@@ -10,9 +11,29 @@ fields:
     type: text
     icon: title
     width: 1/2
-  info:
-    label: Info zum Teaser (Beiträge)
-    type: info
-    theme: passive
-    text: 'Es werden automatisch die neusten drei Beiträge ausgespielt.'
-    
+    required: true
+  showText:
+    label: Auszug des Beitrags anzeigen
+    type: toggle
+    default: false
+    width: 1/2
+    text:
+      - Wird aktuell nicht angezeigt
+      - Wird aktuell angezeigt
+  source:
+    label: Auswahl der anzuzeigenden Beiträge
+    type: radio
+    columns: 2
+    default: "newest"
+    required: true
+    options:
+      newest: Neuste Beiträge
+      tagged: Mit bestimmten Schlagworten 
+      # selection: Auswahl
+  tags:
+    type: tags
+    options:
+      type: query
+      query: site.index.filterBy("template", "in", ["camp", "layout"])
+    when:
+      source: tagged

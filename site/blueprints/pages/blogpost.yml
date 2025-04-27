@@ -52,7 +52,7 @@ tabs:
                 type: tags
                 options:
                   type: query
-                  query: site.index.filterBy("template", "in", ["camp", "layout", "offer"])
+                  query: site.index.filterBy("template", "in", ["camp", "layout"])
               links:
                 label: Verlinkungen (Optional)
                 type: structure

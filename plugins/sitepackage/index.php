@@ -1,5 +1,6 @@
 <?php
 
+use dvll\Sitepackage\TeaserBlogpostsBlock;
 use Kirby\Cms\App;
 use Kirby\Data\Yaml;
 use Kirby\Filesystem\F;
@@ -44,5 +45,8 @@ App::plugin('dvll/sitepackage', [
         'blocks/teaser-blogposts'      => __DIR__ . '/blocks/teaser-blogposts/teaser-blogposts.php',
         'blocks/teaser-pages'      => __DIR__ . '/blocks/teaser-pages/teaser-pages.php',
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.php',
-        ]
+    ],
+    'blockModels' => [
+        'teaser-blogposts' => TeaserBlogpostsBlock::class,
+    ]
 ]);
