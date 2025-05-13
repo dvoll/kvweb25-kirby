@@ -2,7 +2,7 @@
 
 /** @var Kirby\Cms\Site $site */ ?>
 
-<header class="absolute w-full top-0 overflow-x-clip z-20">
+<header class="fixed w-full top-0 overflow-x-clip z-20">
     <dvll-header class="max-w-[96rem] mx-auto dvll-container group">
         <div class="col-span-full flex flex-row gap-6 items-center justify-between py-4 md:py-6 px-4 md:px-6">
             <a href="<?= $site->url() ?>" class="flex items-center gap-2" title="<?= $site->title()->escape() ?>">
