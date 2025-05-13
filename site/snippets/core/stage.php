@@ -1,5 +1,15 @@
+<?php
+
+/**
+ * @var Kirby\Cms\Page $page
+ */
+
+/** @var Kirby\Cms\Field $stageField */
+$stageField = $page->content()->get('stage');
+
+?>
 <section class="dvll-section">
     <div class="dvll-section__layout">
-        <?= $page->content()->get('stage')->__call('toBlocks') ?>
+        <?= $stageField->toBlocks() ?>
     </div>
 </section>

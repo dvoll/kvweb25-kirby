@@ -1,7 +1,9 @@
 
 @layer base {
     .typo {
-      @apply font-body text-base text-contrast;
+      @apply font-body text-base;
+
+
     }
     .typo--rte {
         p:has(+ p) {
@@ -24,31 +26,31 @@
     }
 
     .heading-title {
-      @apply font-style font-semibold text-contrast;
+      @apply font-style font-semibold;
       font-size: var(--text-5xl);
       line-height: var(--text-5xl--line-height);
     }
 
     .heading-lv1 {
-      @apply font-style font-semibold text-contrast;
+      @apply font-style font-semibold;
       font-size: var(--text-5xl);
       line-height: var(--text-5xl--line-height);
     }
 
     .heading-lv2 {
-      @apply font-style font-semibold text-contrast;
+      @apply font-style font-semibold;
       font-size: var(--text-2xl);
       line-height: var(--text-2xl--line-height);
     }
 
     .heading-lv3 {
-      @apply font-style font-semibold text-contrast;
+      @apply font-style font-semibold;
       font-size: var(--text-xl);
       line-height: var(--text-xl--line-height);
     }
 
     .heading-lv4 {
-      @apply font-style font-semibold text-contrast;
+      @apply font-style font-semibold;
       font-size: var(--text-lg);
       line-height: var(--text-lg--line-height);
     }

@@ -23,7 +23,7 @@ $sizes = [
 ]
 
 ?>
-<div class="card card--with-hover relative md:basis-[28rem] max-w-[32rem] md:grow">
+<div class="card card--with-hover relative md:basis-[28rem] md:grow">
     <a <?= Html::attr([
             'href' => $url,
             'class' => 'absolute inset-0 z-1',
@@ -54,7 +54,7 @@ $sizes = [
                     'preset' => 'teaser',
                     'class' => 'w-1/3 md:basis-1/2 min-w-[8rem] block',
                     'responsive' => true,
-                    'imgClass' => 'angled-cut md:min-h-[16rem]',
+                    'imgClass' => 'angled-cut',
                 ]
             ); ?>
         <?php endif; ?>

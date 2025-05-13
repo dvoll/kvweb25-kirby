@@ -17,7 +17,7 @@
  *
  */
 
-namespace dvll\Sitepackage;
+namespace dvll\Sitepackage\Helpers;
 
 use Closure;
 use Kirby\Cms\App;

@@ -9,25 +9,29 @@
     .dvll-section {
         @apply mb-16;
 
-        @media (width >= 768px) {
+        &:first-child {
+            @apply pt-30;
+        }
+
+        &:is(.dvll-section--real-top) {
+            @apply pt-0;
+        }
+
+        @media (width >= 48rem) {
             @apply mb-24;
         }
 
         &:has(.stage-text) {
             @apply bg-offwhite;
-            @apply -mt-60 pt-64 pb-8;
-
-            @media (width >= 768px) {
-                @apply mb-24 pt-[17rem];
-            }
+            /* @apply -mt-60 pt-64 pb-8; */
         }
     }
 
     .dvll-section__layout {
-        @apply container mx-auto;
+        @apply max-w-[73.25rem] mx-auto;
         padding-inline: 1rem;
 
-        @media (width >= 768px) {
+        @media (width >= 48rem) {
             display: grid;
             grid-template-columns: repeat(9, 1fr);
             column-gap: 1.5rem;
@@ -36,14 +40,12 @@
     }
 
     .dvll-block {
-        @apply mb-8;
-
-        &.dvll-block--gap-sm {
-            @apply mb-6;
+        &:has(+ .dvll-block) {
+            @apply mb-8;
         }
 
-        &:last-child {
-            @apply mb-0;
+        &.dvll-block--gap-sm:has(+ .dvll-block) {
+            @apply mb-6;
         }
 
         &.dvll-block--wide {
@@ -51,15 +53,19 @@
         }
 
         &.dvll-block--narrow {
-            @apply col-start-2 col-end-7;
+            @apply col-start-1 col-end-9;
+
+            @media (width >= 64rem) {
+                @apply col-start-2 col-end-7;
+            }
+
+            .dvll-section__layout--two-col & {
+                /* @apply col-start-2 col-end-7; */
+
+                @media (width >= 64rem) {
+                    @apply col-start-1 col-end-6;
+                }
+            }
         }
     }
-
-    /* .dvll-first {
-        @apply pt-8;
-
-        @media (width >= 768px) {
-            @apply pt-30;
-        }
-    } */
 }

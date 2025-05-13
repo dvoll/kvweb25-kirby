@@ -4,7 +4,7 @@
  *  @var Kirby\Cms\Site $site
  *  @var Kirby\Cms\App $kirby */
 
-use dvll\Sitepackage\Helper;
+use dvll\Sitepackage\Helpers\Helper;
 
 if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
     go('/panel');

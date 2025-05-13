@@ -14,7 +14,7 @@ snippet('layout', slots: true); ?>
 </section>
 <section class="dvll-section">
     <div class="dvll-section__layout">
-        <div class="dvll-block dvll-block--wide grid grid-cols-(--dvll-card-grid-cols) gap-4 md:gap-6 md:justify-center">
+        <div class="dvll-block dvll-block--wide grid grid-cols-(--dvll-card-grid-cols--small) gap-4 md:gap-6 md:justify-center">
             <?php foreach ($page->children()->listed()->sortBy('date', 'desc') as $post): ?>
                 <?= snippet('components/blogpost-card', [
                     'title' => $post->title(),

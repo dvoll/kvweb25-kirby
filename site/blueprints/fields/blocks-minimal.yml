@@ -1,5 +1,5 @@
 label: Inhalt
-type: layout
+type: blocks
 fieldsets:
   textGroup:
     label: Text

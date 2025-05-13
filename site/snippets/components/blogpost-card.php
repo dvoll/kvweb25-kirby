@@ -19,10 +19,13 @@ $sizes = [
     '(min-width: 64rem) 331px', // 1024
     '(min-width: 48rem) 189px', // 768
     '100vw'
-]
+];
+
+$teaser = $teaser ?? false;
+$buttonText = $buttonText ?? 'Beitrag anzeigen';
 
 ?>
-<div class="card flex flex-col px-6 py-4 pt-6 justify-between relative group/card hover:ring-1 ring-primary <?= $class ?? '' ?>">
+<div class="card flex flex-col px-6 py-4 pt-6 relative group/card hover:ring-1 ring-primary <?= $class ?? '' ?> <?php e($teaser, 'bg-secondary justify-center items-center', 'justify-between') ?>">
     <a <?= Html::attr([
             'href' => $url,
             'class' => 'absolute inset-0',
@@ -31,9 +34,9 @@ $sizes = [
             'title' => 'Zum Beitrag: ' . $title,
         ]) ?>></a>
     <div class="">
-        <h3 class="heading-lv2"><?= $title ?></h3>
+        <h3 class="heading-lv3 pr-4 <?php e($teaser, 'text-gray-600 text-center') ?>"><?= $title ?></h3>
         <?php if (!empty($text)): ?>
-            <p class="text-sm text-contrast mt-2">
+            <p class="text-sm text-contrast mt-2 <?php e($teaser, 'text-gray-600 text-center') ?>">
                 <?= $text ?>
             </p>
         <?php endif; ?>
@@ -44,8 +47,8 @@ $sizes = [
         <?php endif; ?>
         <a <?= Html::attr([
                 'href' => $url,
-                'class' => 'btn btn--ghost ml-auto',
+                'class' => 'btn btn--ghost ml-auto ' . ($teaser ? 'text-gray-600 text-center' : ''),
                 'aria-label' => 'Zum Beitrag: ' . $title,
-            ]) ?>>Beitrag anzeigen<?= snippet('elements/icon') ?></a>
+            ]) ?>><?= $buttonText ?><?= snippet('elements/icon') ?></a>
     </div>
 </div>

@@ -19,7 +19,8 @@ tabs:
           stageSection:
             type: fields
             fields:
-              stage: fields/stage-blocks
+              stage:
+                extends: fields/stage-blocks
           modelSection: false
           contentSection:
             type: fields

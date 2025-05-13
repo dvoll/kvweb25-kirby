@@ -1,0 +1,27 @@
+name: Bühne Hero
+description: Block für Bühne mit großflächigem Bild
+# icon: image
+preview: fields
+wysiwyg: true
+
+fields:
+  title:
+    label: Titel
+    type: text
+    icon: title
+    width: 1/2
+    placeholder: '{{page.title}}'
+  description:
+    label: Beschreibung
+    type: textarea
+    buttons: false
+    maxlength: 130
+    icon: text
+    width: 1/2
+  image:
+    extends: fields/image
+    label: Bild
+    multiple: false
+    layout: cards
+    required: true
+    width: 1/2

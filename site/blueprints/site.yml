@@ -45,18 +45,6 @@ tabs:
             image:
               query: page.myTeaserImage
               cover: true
-          offers:
-            label: Angebote
-            type: pages
-            layout: cardlets
-            info: '/{{ page.slug }}'
-            parent: site.find('angebote') ?? site.children.template('offers').first
-            templates:
-              - camp
-            image:
-              query: page.myTeaserImage
-              cover: true
-            hidden: true
       - width: 1/3
         sections:
           posts:

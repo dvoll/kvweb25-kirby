@@ -5,7 +5,7 @@ use dvll\Sitepackage\Models\WithTeaserContentInterface;
 use Kirby\Cms\File;
 use Kirby\Cms\Page;
 
-class DefaultPage extends Page implements WithTeaserContentInterface
+class CampsPage extends Page implements WithTeaserContentInterface
 {
     public function myStageType(): ?string {
         return TeaserContentHelper::getStageType($this);

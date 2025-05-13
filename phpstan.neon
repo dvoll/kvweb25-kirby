@@ -15,6 +15,7 @@ parameters:
       paths:
         - site/snippets
         - site/templates
+        - plugins/sitepackage
     -
       message: '#Function vite not found.#'
     -
@@ -24,7 +25,10 @@ parameters:
       paths:
         - site/snippets
         - site/templates
+        - plugins/sitepackage
     -
       message: '#Call to an undefined method Kirby\\Content\\Field::.*\(\).#'
+    -
+      message: '#Call to an undefined method Kirby\\.*\(\).#'
     -
       message: '#Call to an undefined method Kirby\\Cms\\Page::.*\(\).#'

@@ -1,6 +1,6 @@
 <?php
 
-namespace dvll\Sitepackage;
+namespace dvll\Sitepackage\Helpers;
 
 use Kirby\Toolkit\Str;
 

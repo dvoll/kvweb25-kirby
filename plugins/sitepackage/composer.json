@@ -21,7 +21,8 @@
     },
     "autoload": {
         "psr-4": {
-            "dvll\\Sitepackage\\": "classes"
+            "dvll\\Sitepackage\\Helpers\\": "helpers",
+            "dvll\\Sitepackage\\Models\\": "models"
         }
     }
 }

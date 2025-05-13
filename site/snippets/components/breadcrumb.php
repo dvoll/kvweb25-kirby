@@ -12,7 +12,7 @@ $breadcrumb = $site->breadcrumb();
 <?php if ($breadcrumb->count() > 1): ?>
 
 <nav aria-label="breadcrumb" class="<?= $class ?>">
-    <ol class="flex flex-wrap gap-0 text-style text-contrast opacity-70">
+    <ol class="flex flex-wrap gap-0 text-style opacity-70">
         <?php foreach ($breadcrumb as $crumb): ?>
             <li <?php e($crumb->isActive(), 'aria-current="location"') ?> class="after:content-['›'] after:mx-2 last:after:hidden <?= $crumb->isActive() ? 'italic' : '' ?>"><a href=" <?= $crumb->url() ?>"><?= $crumb->title()->html() ?></a></li>
         <?php endforeach; ?>

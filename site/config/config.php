@@ -1,7 +1,7 @@
 <?php
 
-use dvll\Sitepackage\Menu;
-use dvll\Sitepackage\Helper;
+use dvll\Sitepackage\Helpers\Menu;
+use dvll\Sitepackage\Helpers\Helper;
 
 require_once __DIR__ . '/../../vendor/vlucas/phpdotenv/src/Dotenv.php';
 

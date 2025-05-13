@@ -44,9 +44,29 @@ tabs:
 
       main:
         sections:
+          stageSection: false
           modelSection:
             type: fields
             fields:
+              heroImage:
+                extends: fields/image
+                label: Bild
+                multiple: false
+                layout: cards
+                required: true
+              teaserTitle:
+                label: Titel
+                type: text
+                icon: title
+                width: 1/2
+                placeholder: '{{page.title}}'
+              teaserDescription:
+                label: Beschreibung (Wird nur im Seiten-Teaser angezeigt)
+                type: textarea
+                buttons: false
+                maxlength: 130
+                icon: text
+                width: 1/2
               facts:
                 label: Fakten
                 type: structure

@@ -239,7 +239,7 @@
             "dist": {
                 "type": "path",
                 "url": "./plugins/sitepackage",
-                "reference": "b3229fa52bbb71435be4ee0d80292d5b4735f830"
+                "reference": "e11b1ea9892b0ea268738f9e8b3b38da46d66cc1"
             },
             "require": {
                 "getkirby/composer-installer": "^1.2"
@@ -247,7 +247,8 @@
             "type": "kirby-plugin",
             "autoload": {
                 "psr-4": {
-                    "dvll\\Sitepackage\\": "classes"
+                    "dvll\\Sitepackage\\Helpers\\": "helpers",
+                    "dvll\\Sitepackage\\Models\\": "models"
                 }
             },
             "license": [

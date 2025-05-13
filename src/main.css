@@ -28,6 +28,10 @@
     body:has(.any-modal[open]) {
         overflow: hidden; /* Disable scrolling when modal is open */
     }
+
+    body {
+        @apply text-contrast;
+    }
 }
 
 @layer components {
@@ -100,5 +104,15 @@
 @layer utilities {
     .balanced {
         text-wrap: balance;
+    }
+
+    .grid-stacked {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
+        > * {
+            grid-column: 1 / 1;
+            grid-row: 1 / 1;
+        }
     }
 }

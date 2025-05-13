@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @var dvll\Sitepackage\TeaserBlogpostsBlock $block
+ * @var dvll\Sitepackage\Models\TeaserBlogpostsBlock $block
  * @var \Kirby\Cms\Site $site
  * @var DefaultPage $page
  * @var \Kirby\Cms\Page $teaserPage
@@ -20,8 +20,8 @@ $teaserPages = $block->myBlogposts()->limit(3);
             ]) ?>>Alle Beiträge anzeigen<?= snippet('elements/icon') ?></a>
     </div>
 </div>
-<div class="dvll-block <?php e($teaserPages->count() > 1, 'dvll-block--wide', 'dvll-block--narrow') ?>">
-    <div class="grid grid-cols-(--dvll-card-grid-cols) gap-4 md:gap-6 <?php e($teaserPages->count() > 1, 'md:justify-center') ?>">
+<div class="dvll-block dvll-block--wide">
+    <div style="--dvll-card-size: var(--dvll-card-size--small);" class="grid grid-cols-(--dvll-card-grid-cols--small) gap-4 md:gap-6 md:justify-center">
         <?php foreach ($teaserPages as $teaserPage): ?>
             <?= snippet('components/blogpost-card', [
                 'title' => $teaserPage->title(),
@@ -29,5 +29,14 @@ $teaserPages = $block->myBlogposts()->limit(3);
                 'url' => $teaserPage->url(),
             ]) ?>
         <?php endforeach; ?>
+        <?php if ($teaserPages->count() === 1): ?>
+            <?= snippet('components/blogpost-card', [
+                'title' => 'Sieh dir alle Beiträge an',
+                'text' => 'Gehe zur Seite mit allen Blogbeiträgen',
+                'url' => '/blog',
+                'teaser' => true,
+                'buttonText' => 'Zur Blog Seite'
+            ]) ?>
+        <?php endif; ?>
     </div>
 </div>

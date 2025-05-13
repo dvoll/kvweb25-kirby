@@ -3,7 +3,7 @@ label: Global Settings
 columns:
   - width: 1
     fields:
-      footer:
+      footerHeadline:
         label: Footer
         type: headline
       footerNavigation:
@@ -36,3 +36,42 @@ columns:
           url:
             label: URL
             type: url
+      headlineContacts:
+        label: Kontaktpersonen
+        type: headline
+        width: 7/12
+        help: |
+          Das Feld "Kontaktpersonen" ermöglicht es, relevante Kontaktpersonen zu verwalten. Diese können anschließend an anderer Stelle auf der Website ausgewählt und angezeigt werden.
+      infoContacts:
+        label: Informationen zum Feld "Kontaktpersonen"
+        type: info
+        width: 1/2
+        theme: warning
+        text: Das Feld "Kontaktpersonen" wird mit dem nächsten Update überarbeitet, sodass die Anzeige und Pflege verbessert wird.
+      contacts:
+        label: Kontaktpersonen
+        type: structure
+        width: 1/2
+        fields:
+          customUuid:
+            type: hidden
+          contact:
+            label: Kontaktperson
+            type: object
+            fields:
+              subject:
+                type: text
+                label: Themengebiet
+              photo:
+                label: Foto
+                type: files
+                multiple: false
+              name:
+                label: Name
+                type: text
+              email:
+                label: E-Mail
+                type: email
+              phone:
+                label: Telefon
+                type: tel

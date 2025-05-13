@@ -16,7 +16,7 @@ if ($source === 'selection') {
 
 ?>
 
-<div class="dvll-block dvll-block--wide grid grid-cols-(--dvll-card-grid-cols) gap-4 md:gap-6 md:justify-center">
+<div class="dvll-block <?php e($teaserPages->count() > 1, 'dvll-block--wide', 'dvll-block--narrow'); ?> grid grid-cols-(--dvll-card-grid-cols) gap-4 md:gap-6">
     <?php foreach ($teaserPages as $teaserPage): ?>
         <?= snippet('components/teaser-card', [
             'title' => $teaserPage->myTitle(),

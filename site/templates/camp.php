@@ -1,15 +1,30 @@
 <?php
 
 /**
- * @var Kirby\Cms\App $kirby
- * @var Kirby\Cms\Page $page
- * @var Kirby\Cms\Site $site
+ * @var CampPage $page
  */
 
+/** @var Kirby\Content\Field $stageField */
+$stageField = $page->content()->get('stage');
+
 snippet('layout', slots: true); ?>
-<?php snippet('core/stage'); ?>
+<?php if ($page->myStageType() === null): ?>
+    <?php snippet('components/stage-hero', [
+        'image' => $page->content()->get('heroImage')->toFile(),
+    ]); ?>
+<?php else: ?>
+    <?php snippet('core/stage'); ?>
+<?php endif; ?>
 <section class="dvll-section">
-    <div class="dvll-section__layout">
+    <div class="dvll-section__layout dvll-section__layout--two-col">
+        <?php if ($page->myStageType() === null): ?>
+            <div class="dvll-block dvll-block--narrow dvll-block--gap-sm">
+                <h1 class="heading-title"><?= $page->myTitle() ?></h1>
+                <?= snippet('components/breadcrumb', ['class' => '']); ?>
+            </div>
+            <div class="dvll-block dvll-block--narrow">
+            </div>
+        <?php endif; ?>
         <div class="dvll-block dvll-block--narrow">
             <ul class="flex flex-wrap gap-6">
                 <?php foreach ($page->facts()->toStructure() as $fact): ?>
@@ -24,6 +39,9 @@ snippet('layout', slots: true); ?>
         <div class="dvll-block dvll-block--narrow">
             <?= $page->campIntro()->permalinksToUrls(); ?>
         </div>
+        <?php if (($contacts = site()->contacts()->toStructure()->limit(2)) && $contacts->isNotEmpty()): ?>
+            <?php snippet('components/contact', compact('contacts')) ?>
+        <?php endif; ?>
     </div>
 </section>
 <?php snippet('core/layouts'); ?>

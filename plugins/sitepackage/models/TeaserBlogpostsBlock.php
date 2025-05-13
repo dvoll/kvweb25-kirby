@@ -4,7 +4,7 @@
  * @var \Kirby\Cms\Site $site
  */
 
-namespace dvll\Sitepackage;
+namespace dvll\Sitepackage\Models;
 
 use Kirby\Cms\Block;
 use Kirby\Cms\Pages;
