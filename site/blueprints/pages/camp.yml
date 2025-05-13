@@ -14,9 +14,8 @@ tabs:
           postMeta:
             type: fields
             fields:
-              contact:
-                type: users
-                label: Kontaktperson(en)
+              contactsSelect:
+                extends: fields/contacts-select
               links:
                 label: Verlinkungen
                 type: structure

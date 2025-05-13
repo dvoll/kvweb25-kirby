@@ -5,13 +5,15 @@
  * @var \Kirby\Cms\File $image
  * @var \Kirby\Cms\User $user
  */
-// Ensure the structured field is available
+
+ // Toggle to be used in future
+$showGeneralContact = true;
 ?>
-<div class="col-span-full mt-16 lg:mt-0 lg:col-start-7 lg:col-span-3 lg:row-start-1 lg:row-span-[30] rounded-md bg-offwhite pl-6 pr-4 py-6 self-start flex flex-col gap-8">
+<div class="col-span-full mt-16 lg:mt-0 lg:col-start-7 lg:col-span-3 lg:row-start-1 lg:row-span-[30] rounded-md bg-offwhite pl-6 pr-4 py-8 self-start flex flex-col gap-8">
     <div class="flex flex-col gap-6">
-        <h2 class="heading-lv2 mt-2">Noch Fragen?<br>
+        <h2 class="heading-lv2">Noch Fragen?<br>
             Melde dich bei uns!</h2>
-        <?php if (true): ?>
+        <?php if ($showGeneralContact): ?>
             <div class="">
                 <p class="mb-4">Bei allgemeinen Fragen nutze gerne die Kontaktmöglichkeiten auf folgender Seite:</p>
                 <a class="btn btn--secondary" href="/kontakt">Zur Kontaktseite<?= snippet('elements/icon') ?></a>
@@ -41,10 +43,10 @@
                             </svg>
                         </div>
                     <?php endif ?>
-                    <div class="flex flex-col gap-0.5">
-                        <h4 class="heading-lv4"><?= $contact->name() ?></h4>
+                    <div class="flex flex-col">
+                        <h4 class="heading-lv4 mt-2"><?= $contact->name() ?></h4>
                         <?php if ($contact->subject()->isNotEmpty()): ?>
-                            <p class="typo mb-1 italic"><?= $contact->subject()->html() ?></p>
+                            <p class="typo italic mb-1"><?= $contact->subject()->html() ?></p>
                         <?php endif ?>
                         <?php if ($contact->email()->isNotEmpty()): ?>
                             <p class="typo"><a class="flex gap-1 text-sm" href="mailto:<?= $contact->email()->html() ?>"><?= snippet('elements/icon', ['icon' => 'email', 'class' => 'w-4 pt-1']) ?> <?= $contact->email()->html() ?></a></p>

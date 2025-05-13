@@ -39,9 +39,7 @@ snippet('layout', slots: true); ?>
         <div class="dvll-block dvll-block--narrow">
             <?= $page->campIntro()->permalinksToUrls(); ?>
         </div>
-        <?php if (($contacts = site()->contacts()->toStructure()->limit(2)) && $contacts->isNotEmpty()): ?>
-            <?php snippet('components/contact', compact('contacts')) ?>
-        <?php endif; ?>
+        <?php snippet('components/contact', ['contacts' => $page->myContacts()]) ?>
     </div>
 </section>
 <?php snippet('core/layouts'); ?>

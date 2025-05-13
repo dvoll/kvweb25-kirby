@@ -1,0 +1,8 @@
+type: multiselect
+label: Kontaktperson(en) auswählen
+layout: list
+options:
+  type: query
+  query: site.contacts.toStructure
+  text: "{{ item.contact.toObject.subject }} ({{ item.contact.toObject.name }})"
+  value: "{{ item.customUuid }}"
