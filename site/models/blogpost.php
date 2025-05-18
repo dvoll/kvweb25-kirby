@@ -7,29 +7,10 @@ use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
 use Kirby\Cms\Files;
 use Kirby\Cms\Page;
+use Kirby\Exception\InvalidArgumentException;
 
-class CampPage extends Page implements WithTeaserContentInterface
+class BlogpostPage extends Page implements WithTeaserContentInterface
 {
-    public function myStageType(): ?string
-    {
-        return null;
-    }
-
-    public function myTeaserImage(): ?File
-    {
-        return $this->content()->get('heroImage')->toFile();
-    }
-
-    public function myTitle(): ?string
-    {
-        return $this->content()->get('teaserTitle')->toHtml();
-    }
-
-    public function myTeaserText(): ?string
-    {
-        return $this->content()->get('teaserDescription')->toHtml();
-    }
-
     /**
      * @return array<string, mixed>|null
      */
@@ -60,5 +41,31 @@ class CampPage extends Page implements WithTeaserContentInterface
         $downloadsField = $this->content()->get('downloads');
         return $downloadsField->toFiles();
     }
+
+    public function getContentImage(): ?File
+    {
+        return $this->content()->get('image')->toFile();
+    }
+
+    public function myStageType(): ?string
+    {
+        return TeaserContentHelper::getStageType($this);
+    }
+
+    public function myTeaserImage(): ?File
+    {
+        return TeaserContentHelper::getTeaserImage($this);
+    }
+
+    public function myTitle(): ?string
+    {
+        return TeaserContentHelper::getTitle($this);
+    }
+
+    public function myTeaserText(): ?string
+    {
+        return TeaserContentHelper::getTeaserText($this);
+    }
+
 
 }

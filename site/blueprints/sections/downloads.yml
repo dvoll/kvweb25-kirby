@@ -1,0 +1,5 @@
+label: Downloads
+layout: cardlets
+text: "{{ file.title.isNotEmpty ? file.title : file.filename }}"
+info: "{{ file.title.isNotEmpty ? file.filename : '' }}"
+template: download

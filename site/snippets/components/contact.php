@@ -8,8 +8,10 @@
 
  // Toggle to be used in future
 $showGeneralContact = true;
+
+// TODO: Remove column information from snippet
 ?>
-<div class="col-span-full mt-16 lg:mt-0 lg:col-start-7 lg:col-span-3 lg:row-start-1 lg:row-span-[30] rounded-md bg-offwhite pl-6 pr-4 py-8 self-start flex flex-col gap-8">
+<div class="rounded-md bg-offwhite pl-6 pr-4 py-8 self-start flex flex-col gap-8">
     <div class="flex flex-col gap-6">
         <h2 class="heading-lv2">Noch Fragen?<br>
             Melde dich bei uns!</h2>
@@ -20,7 +22,7 @@ $showGeneralContact = true;
             </div>
         <?php endif ?>
     </div>
-    <?php if (!empty($contacts)): ?>
+    <?php if (!empty($contacts) && is_array($contacts) && count($contacts) > 0): ?>
         <div class="flex flex-col gap-6">
             <?php foreach ($contacts as $contactEntry): ?>
                 <?php if ($contactEntry === null) continue; ?>

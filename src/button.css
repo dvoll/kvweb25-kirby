@@ -16,6 +16,10 @@
         }
     }
 
+    .btn--icon-left > .icon {
+        @apply ml-0 mr-2;
+    }
+
     .btn--primary {
         @apply bg-primary text-white;
 

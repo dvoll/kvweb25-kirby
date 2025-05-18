@@ -37,10 +37,55 @@ snippet('layout', slots: true); ?>
 
         </div>
         <div class="dvll-block dvll-block--narrow">
-            <?= $page->campIntro()->permalinksToUrls(); ?>
+            <div class="typo typo--rte"><?= $page->campIntro()->kirbytext()->permalinksToUrls(); ?></div>
         </div>
-        <?php snippet('components/contact', ['contacts' => $page->myContacts()]) ?>
+        <div class="dvll-block col-span-full lg:col-start-7 lg:col-span-3 lg:row-start-1 lg:row-span-[30]">
+            <div class="dvll-block">
+                <?php snippet('components/contact', ['contacts' => $page->myContacts()]) ?>
+            </div>
+        </div>
     </div>
 </section>
+<?php
+$downloads = $page->myDownloads();
+$links = $page->myLinks();
+if ((count($downloads) > 0) || (count($links) > 0)):
+?>
+    <section class="dvll-section">
+        <div class="dvll-section__layout">
+            <div class="dvll-block dvll-block--wide">
+                <h3 class="heading-lv3 mb-5">
+                    <?php
+                    if (count($links) > 0 && count($downloads) > 0) {
+                        echo 'Verlinkungen und Downloads';
+                    } elseif (count($downloads) > 0) {
+                        echo 'Downloads';
+                    } elseif (count($links) > 0) {
+                        echo 'Verlinkungen';
+                    }
+                    ?>
+                </h3>
+                <ul class="grid grid-cols-(--dvll-card-grid-cols--small) gap-2 w-full">
+                    <?php foreach ($links as $link): ?>
+                        <li class="">
+                            <?= $link ?>
+                        </li>
+                    <?php endforeach; ?>
+                    <?php foreach ($downloads as $file): ?>
+                        <li class="">
+                            <?= snippet(
+                                'components/asset-card',
+                                [
+                                    'assetFile' => $file,
+                                    'class' => '',
+                                ]
+                            ); ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
 <?php snippet('core/layouts'); ?>
 <?php endsnippet() ?>

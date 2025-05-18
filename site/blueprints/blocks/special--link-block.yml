@@ -1,0 +1,25 @@
+name: Verlinkung
+icon: url
+# preview: fields
+# wysiwyg: true
+fields:
+  title:
+    label: Titel
+    type: text
+    required: true
+  url:
+    label: Ziel
+    type: link
+    required: true
+    options:
+      - page
+      - url
+      # - file
+      # - email
+      # - tel
+  summary:
+    label: Kurzbeschreibung
+    type: text
+  icon:
+    type: hidden
+    extends: fields/icon

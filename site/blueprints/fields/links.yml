@@ -1,0 +1,21 @@
+# label: Verlinkungen (Optional)
+# type: structure
+# fields:
+#   title:
+#     label: Titel
+#     type: text
+#   url:
+#     label: Ziel
+#     type: link
+#     options:
+#       - page
+#       - url
+#       - file
+#       - email
+#       - tel
+
+
+label: Verlinkungen (Optional)
+type: blocks
+fieldsets:
+  - special--link-block

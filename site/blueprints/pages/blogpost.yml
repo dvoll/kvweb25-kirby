@@ -48,30 +48,18 @@ tabs:
                 display: DD.MM.YYYY
               author:
                 type: users
+              contactsSelect:
+                extends: fields/contacts-select
               tags:
                 type: tags
                 options:
                   type: query
                   query: site.index.filterBy("template", "in", ["camp", "layout"])
               links:
-                label: Verlinkungen (Optional)
-                type: structure
-                fields:
-                  title:
-                    label: Titel
-                    type: text
-                  url:
-                    label: Ziel
-                    type: link
-                    options:
-                      - page
-                      - url
-                      - file
-                      - email
-                      - tel
-              files:
-                label: Downloads
-                type: files
+                extends: fields/links
+              downloads:
+                extends: fields/downloads
+
       main:
         sections:
           stageSection: false

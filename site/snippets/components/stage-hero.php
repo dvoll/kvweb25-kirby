@@ -36,10 +36,6 @@ $image = $image ?? '';
         <div class="dvll-block dvll-block--wide ">
             <div class="md:grid grid-cols-1 grid-rows-[1fr_auto_2fr]">
                 <div class="row-start-2 md:py-4 lg:pr-6">
-                    <img src=" /assets/logos/logo.svg" alt="<?= $site->title()->escape() ?>" class="w-[8rem] h-[55.1px] md:w-[11.5rem] md:h-[73.4px] transition-transform origin-left md:origin-top-left group-[.scrolled]:scale-75" />
-                    <p class="typo">
-                        <?= 'Text' ?>
-                    </p>
                 </div>
             </div>
         </div>

@@ -17,30 +17,9 @@ tabs:
               contactsSelect:
                 extends: fields/contacts-select
               links:
-                label: Verlinkungen
-                type: structure
-                fields:
-                  title:
-                    label: Titel
-                    type: text
-                    required: true
-                  url:
-                    label: Ziel
-                    type: link
-                    required: true
-                    options:
-                      - page
-                      - url
-                      - email
-                      - tel
-          files:
-            label: Downloads
-            layout: cardlets
-            text: "{{ file.title.isNotEmpty ? file.title : file.filename }}"
-            info: "{{ file.title.isNotEmpty ? file.filename : '' }}"
-            template: download
-
-
+                extends: fields/links
+              downloads:
+                extends: fields/downloads
       main:
         sections:
           stageSection: false
