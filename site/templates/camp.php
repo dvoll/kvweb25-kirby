@@ -23,9 +23,7 @@ snippet('layout', slots: true); ?>
         <?php if ($page->myStageType() === null): ?>
             <div class="dvll-block dvll-block--narrow dvll-block--gap-sm">
                 <h1 class="heading-title"><?= $page->myTitle() ?></h1>
-                <?= snippet('components/breadcrumb', ['class' => '']); ?>
-            </div>
-            <div class="dvll-block dvll-block--narrow">
+                <?= snippet('components/breadcrumb', ['class' => 'mt-2']); ?>
             </div>
         <?php endif; ?>
         <div class="dvll-block dvll-block--narrow">
