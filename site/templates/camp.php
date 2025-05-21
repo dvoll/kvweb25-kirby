@@ -11,6 +11,9 @@ snippet('layout', slots: true); ?>
 <?php if ($page->myStageType() === null): ?>
     <?php snippet('components/stage-hero', [
         'image' => $page->content()->get('heroImage')->toFile(),
+        'logo' => $page->content()->get('heroLogo')->toFile(),
+        'subline' => $page->content()->get('heroSubline'),
+        'sublineLabel' => $page->content()->get('heroSublineLabel'),
     ]); ?>
 <?php else: ?>
     <?php snippet('core/stage'); ?>

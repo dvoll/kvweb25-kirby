@@ -19,17 +19,37 @@ tabs:
           stageSection:
             type: fields
             fields:
+              sectionHeadlineStage:
+                label: Bühne
+                type: headline
+                help: "Ein gut klingender Titel und eine kurze Zusammenfassung für den Seitenanfang. Diese Inhalte werden bei Verlinkungen (\"Teaser\") auf anderen Seiten verwendet."
+                width: 2/3
               stage:
                 extends: fields/stage-blocks
+          mainSectionIntro:
+            type: fields
+            fields:
+              sectionHeadlineContent:
+                label: Inhalt
+                type: headline
+                help: Hier ist Platz für alle weiteren Inhalte der Seite.
           modelSection: false
           contentSection:
             type: fields
             fields:
+              
               layouts:
                 extends: fields/blocks-layout
       sidebar:
         width: 1/4
         sections:
+          # sidebarSectionIntro:
+          #   type: fields
+          #   fields:
+          #     sectionHeadlineSidebar:
+          #       label: Seitenleiste
+          #       type: headline
+                # help: Hier ist Platz für alle weiteren Inhalte der Seite.
           children:
             label: Unterseiten
             type: pages

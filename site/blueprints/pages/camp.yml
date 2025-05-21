@@ -22,16 +22,9 @@ tabs:
                 extends: fields/downloads
       main:
         sections:
-          stageSection: false
-          modelSection:
-            type: fields
+          stageSection:
             fields:
-              heroImage:
-                extends: fields/image
-                label: Bild
-                multiple: false
-                layout: cards
-                required: true
+              stage: false
               teaserTitle:
                 label: Titel
                 type: text
@@ -45,6 +38,39 @@ tabs:
                 maxlength: 130
                 icon: text
                 width: 1/2
+              heroImage:
+                extends: fields/image
+                label: Bild
+                multiple: false
+                layout: cards
+                image:
+                  cover: true
+                required: true
+                width: 1/2
+              heroLogo:
+                label: Logo
+                type: files
+                uploads:
+                  template: image
+                query: page.files.filterBy("template", "in", ["image"])
+                multiple: false
+                layout: cards
+                width: 1/2
+              heroSublineLabel:
+                label: Beschriftung der Unterzeile
+                type: text
+                width: 1/2
+                help: Titel der Unterzeile.
+              heroSubline:
+                label: Unterzeile
+                type: text
+                maxlength: 20
+                width: 1/2
+                help: Wird mit sehr großer Schriftart angezeigt.
+
+          modelSection:
+            type: fields
+            fields:
               facts:
                 label: Fakten
                 type: structure

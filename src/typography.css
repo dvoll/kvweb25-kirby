@@ -1,7 +1,7 @@
 
 @layer base {
     .typo {
-      @apply font-body text-base;
+      @apply font-body text-base text-contrast;
 
 
     }

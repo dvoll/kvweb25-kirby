@@ -36,18 +36,6 @@ tabs:
           postMeta:
             type: fields
             fields:
-              image:
-                extends: fields/image
-                label: Bild (Optional)
-                multiple: false
-              date:
-                label: Erstellt am
-                type: date
-                # time: true
-                default: now
-                display: DD.MM.YYYY
-              author:
-                type: users
               contactsSelect:
                 extends: fields/contacts-select
               tags:
@@ -59,18 +47,36 @@ tabs:
                 extends: fields/links
               downloads:
                 extends: fields/downloads
+              date:
+                label: Erstellt am
+                type: date
+                default: now
+                display: DD.MM.YYYY
+              author:
+                type: users
 
       main:
         sections:
           stageSection: false
-          contentSection:
+          mainSectionIntro:
+            type: fields
             fields:
-              layouts: false
+              section-headline-content:
+                help: false
+          modelSection:
+            type: fields
+            fields:
               text:
                 type: textarea
                 label: Text
                 size: large
-              
+              image:
+                extends: fields/image
+                label: Bild (Optional)
+                multiple: false
+                layout: cards
+          contentSection: false
+
   settings:
     sections:
       teaserFields: false

@@ -24,6 +24,19 @@ return [
             '2x'  => ['width' => 150, 'height' => 150, 'crop' => true],
             '3x'  => ['width' => 225, 'height' => 225, 'crop' => true],
         ],
+        'campLogo' => [
+            '1x'  => ['width' => 420],
+            '2x'  => ['width' => 840],
+            '3x'  => ['width' => 1260],
+        ],
+        'stageHero' => [
+            '300w'  => ['width' => 300, 'height' => 700, 'crop' => true],
+            '600w'  => ['width' => 600, 'height' => 800, 'crop' => true],
+            '900w'  => ['width' => 900, 'height' => 700, 'crop' => true],
+            '1200w' => ['width' => 1200, 'height' => 900, 'crop' => true],
+            '1500w' => ['width' => 1500, 'height' => 1200, 'crop' => true],
+            '1920w' => ['width' => 1920, 'height' => 1200, 'crop' => true],
+        ],
         // Currently not in use:
         'teaser4to3' => [
             '300w'  => ['width' => 300, 'height' => 225, 'crop' => true],

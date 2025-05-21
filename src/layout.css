@@ -41,6 +41,17 @@
         }
     }
 
+    .dvll-section__full-grid-layout {
+        @apply max-w-[73.25rem] mx-auto;
+        padding-inline: 1rem;
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        column-gap: 1.5rem;
+        @media (width >= 48rem) {
+            padding-inline: 1.5rem;
+        }
+    }
+
     .dvll-block {
         &:has(+ .dvll-block) {
             @apply mb-8;
