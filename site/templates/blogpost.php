@@ -6,11 +6,9 @@
 
 
 $sizes = [
-    // '(min-width: 40rem) vw', // 640
-    '(min-width: 96rem) 816px', // 1536
-    '(min-width: 80rem) 674px', // 1280
-    '(min-width: 64rem) 531px', // 1024
-    '(min-width: 48rem) 389px', // 768
+    '(min-width: 80rem) 610px', // 1280
+    '(min-width: 64rem) 860px', // 1024
+    '(min-width: 48rem) 680px', // 768
     '100vw'
 ];
 
