@@ -9,8 +9,10 @@
     .dvll-section {
         @apply mb-16;
 
+        @apply pt-30 -mt-30;
+
         &:first-child {
-            @apply pt-30;
+            @apply pt-30 -mt-0;
         }
 
         &:is(.dvll-section--real-top) {

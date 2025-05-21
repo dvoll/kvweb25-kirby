@@ -15,7 +15,7 @@ snippet('layout', slots: true); ?>
 <?php else: ?>
     <?php snippet('core/stage'); ?>
 <?php endif; ?>
-<section class="dvll-section">
+<section id="inhalt" class="dvll-section">
     <div class="dvll-section__layout dvll-section__layout--two-col">
         <?php if ($page->myStageType() === null): ?>
             <div class="dvll-block dvll-block--narrow dvll-block--gap-sm">

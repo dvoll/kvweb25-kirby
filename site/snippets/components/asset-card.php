@@ -17,7 +17,7 @@ $iconName = $isFile ? 'download' : ($linkType === 'external' ? 'external' : 'arr
 
 $title = $isFile ? ($assetFile->title()->isNotEmpty() ? $assetFile->title() : Str::before($assetFile->filename(), '.')) : ($title ?? 'Link');
 $text = $isFile ? $assetFile->filename() : ($text ?? '');
-$buttonTitle = $isFile ? 'Anzeigen/Herunterladen' : ($linkType === 'page' ? 'Zur Seite' : 'Zur externen Seite');
+$buttonTitle = $isFile ? 'Anzeigen/Herunterladen' : ($linkType === 'page' ? 'Gehe zur Seite' : 'Gehe zur externen Seite');
 $url = $isFile ? $assetFile->url() : ($url ?? '/');
 
 $class = $class ?? '';
