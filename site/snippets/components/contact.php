@@ -6,7 +6,7 @@
  * @var \Kirby\Cms\User $user
  */
 
- // Toggle to be used in future
+// Toggle to be used in future
 $showGeneralContact = true;
 
 // TODO: Remove column information from snippet
@@ -31,7 +31,7 @@ $showGeneralContact = true;
                     <?php /** @var \Kirby\Cms\File $image */ ?>
                     <?php if ($contact->photo() && $image = $contact->photo()->toFile()): ?>
                         <img
-                            class="rounded-full"
+                            class="rounded-full shrink-0"
                             alt="Profilbild von <?= $contact->name()->escape() ?>"
                             src="<?= $image->thumb(['width' => 75, 'height' => 75, 'crop' => true])->url() ?>"
                             srcset="<?= $image->srcset('profilePicture') ?>"
