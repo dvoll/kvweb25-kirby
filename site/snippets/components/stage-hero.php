@@ -27,7 +27,9 @@ $subline = $subline ?? null;
 $sublineLabel = $sublineLabel ?? null;
 
 ?>
-<div class="dvll-section dvll-section--real-top grid grid-stacked w-full min-h-[95vh] relative">
+<div
+    class="dvll-section dvll-section--real-top grid grid-stacked w-full relative"
+    style="min-height: 95vh; min-height: 95svh;">
     <?= snippet(
         'picture',
         [
@@ -40,7 +42,7 @@ $sublineLabel = $sublineLabel ?? null;
     ); ?>
     <div class="bg-[#1D2021] opacity-60"></div>
     <div class="grid grid-cols-1 grid-rows-[3fr_auto_2fr_auto] h-full z-1 text-baseline pt-30">
-        <div class="row-start-2 p-4 lg:pr-6 justify-self-center flex flex-col items-center">
+        <div class="row-start-2 py-4 px-6 lg:pr-6 justify-self-center flex flex-col items-center">
             <div class="w-full max-w-[410px]">
                 <?= snippet(
                     'picture',
