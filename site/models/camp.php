@@ -22,7 +22,13 @@ class CampPage extends Page implements WithTeaserContentInterface
 
     public function myTitle(): ?string
     {
-        return $this->content()->get('teaserTitle')->toHtml();
+        $teaserTitle = $this->content()->get('teaserTitle');
+
+        if ($teaserTitle->isNotEmpty() && $teaserTitle instanceof \Kirby\Content\Field) {
+            return $teaserTitle->toHtml();
+        }
+
+        return $this->title()->toHtml();
     }
 
     public function myTeaserText(): ?string
