@@ -65,6 +65,20 @@
             @apply col-span-full;
         }
 
+        &.dvll-block--centered {
+            @apply col-start-1 col-end-9;
+
+            @media (width >= 64rem) {
+                @apply col-start-2 col-end-8;
+            }
+
+            .dvll-section__layout--two-col & {
+                @media (width >= 64rem) {
+                    @apply col-start-1 col-end-6;
+                }
+            }
+        }
+
         &.dvll-block--narrow {
             @apply col-start-1 col-end-9;
 
@@ -73,7 +87,6 @@
             }
 
             .dvll-section__layout--two-col & {
-                /* @apply col-start-2 col-end-7; */
 
                 @media (width >= 64rem) {
                     @apply col-start-1 col-end-6;

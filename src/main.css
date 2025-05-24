@@ -4,6 +4,7 @@
 @import "./button.css";
 @import "./layout.css";
 @import "./media.css";
+@import "./header.css";
 @import "./components/card.css";
 
 
@@ -36,69 +37,6 @@
 
 @layer components {
 
-    .nav {
-        position: relative;
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: -100vw;
-            z-index: -1;
-            bottom: 0;
-            @apply bg-white rounded-md;
-            box-shadow: -1px 1px 6px 2px rgb(0 0 0 / 0.05);
-        }
-    }
-
-    .mobile-nav {
-        position: fixed;
-        inset: 0;
-        /* display: none; */
-        height: 100%;
-        width: 100%;
-        @apply bg-white;
-        z-index: 40;
-        overflow-y: auto;
-    }
-
-    .nav-link {
-        @apply block rounded;
-        @apply font-style font-semibold text-contrast text-sm;
-        @apply px-4 py-2;
-        transition: background-color .2s cubic-bezier(.22,.61,.36,1);
-
-        &:focus-visible {
-            @apply outline-none ring-2 ring-contrast;
-        }
-
-        &:hover, &.nav-link--open-submenu {
-            @apply bg-gray-100;
-            transition: none;
-        }
-
-        .nav-submenu > li > &:hover {
-            /* background-color: #f2d8bc; */
-            @apply bg-white;
-        }
-    }
-
-    .nav-submenu {
-        box-shadow: -1px 1px 4px 2px rgb(0 0 0 / 0.05);
-        transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-        transform: translateY(-10px);
-        opacity: 0;
-        display: none;
-        position: absolute;
-        top: calc(100% + .25rem);
-        right: 0;
-        min-width: 12rem;
-
-        &.nav-submenu--open {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
 }
 
 @layer utilities {
@@ -114,5 +52,12 @@
             grid-column: 1 / 1;
             grid-row: 1 / 1;
         }
+    }
+    .area-main {
+        grid-area: main;
+    }
+
+    .area-image {
+        grid-area: img;
     }
 }

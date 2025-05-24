@@ -1,34 +1,55 @@
+:root {
+    --dvll-card-grid-cols: repeat(auto-fill, minmax(360px, 1fr));
+    --dvll-card-grid-cols--small: repeat(auto-fill, minmax(300px, 1fr));
+    --dvll-card-angled-cut-path-inline: polygon(3.75rem 0, 100% 0px, 100% 100%, 0 100%);
+    --dvll-card-angled-cut-path-inline--small: polygon(1.5rem 0, 100% 0px, 100% 100%, 0 100%);
+    --dvll-card-angled-cut-path-inline--medium: polygon(2.5rem 0, 100% 0px, 100% 100%, 0 100%);
+}
 @layer components {
     .card {
         @apply bg-white rounded-md;
         box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 0.05);
         overflow: hidden;
-        /* width: 34.25rem;
-        flex-grow: 1;
-        flex-shrink: 1;
-        min-width: 20rem; */
+        container-type: inline-size;
+
+        &.card--with-hover {
+            transition: box-shadow .4s cubic-bezier(.22,.61,.36,1);
+
+            &:hover, &:focus-within {
+                /* transition: none; */
+                transition: box-shadow .2s cubic-bezier(.22,.61,.36,1);
+                @apply ring-1 ring-primary;
+            }
+        }
     }
 
-    .card--with-hover {
-        transition: box-shadow .4s cubic-bezier(.22,.61,.36,1);
-        &:hover {
-            /* transition: none; */
-            transition: box-shadow .2s cubic-bezier(.22,.61,.36,1);
-            @apply ring-1 ring-primary;
-        }
+
+    .card__layout {
+        display: grid;
+        grid-template:
+            "main img" auto / 2fr 1fr;
     }
 
     .angled-cut {
         position: relative;
         overflow: hidden;
-        clip-path: polygon(3.75rem 0, 100% 0px, 100% 100%, 0 100%);
-        /* z-index: 1; */
+        clip-path: var(--dvll-card-angled-cut-path-inline);
+
+        .card--with-hover & {
+            transition: transform .2s cubic-bezier(.22,.61,.36,1);
+            /* transform-origin: 100% 50%; */
+            transform: scale(1);
+        }
+
+        .card--with-hover:hover &, .card--with-hover:focus-within & {
+            transform: scale(1.0325);
+        }
 
         &.angled-cut--small {
-            clip-path: polygon(1.5rem 0, 100% 0px, 100% 100%, 0 100%);
+            clip-path: var(--dvll-card-angled-cut-path-inline--small);
 
             @media (min-width: 768px) {
-                clip-path: polygon(2.5rem 0, 100% 0px, 100% 100%, 0 100%);
+                clip-path: var(--dvll-card-angled-cut-path-inline--medium);
             }
         }
     }

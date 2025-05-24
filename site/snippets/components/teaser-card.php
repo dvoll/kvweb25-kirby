@@ -13,17 +13,15 @@ use Kirby\Toolkit\A;
 use Kirby\Toolkit\Html;
 
 $sizes = [
-    // TODO: check
-    // '(min-width: 40rem) vw', // 640
-    '(min-width: 96rem) 616px', // 1536
-    '(min-width: 80rem) 474px', // 1280
-    '(min-width: 64rem) 331px', // 1024
-    '(min-width: 48rem) 189px', // 768
-    '100vw'
+    '(min-width: 64.5rem) 275px', // 1032
+    '(min-width: 57rem) 175px', // 912
+    '(min-width: 49.5rem) 200px', // 792
+    '(min-width: 28.125rem) 280px', // 450
+    '200px'
 ]
 
 ?>
-<div class="card card--with-hover relative md:basis-[28rem] md:grow">
+<div class="card card--with-hover relative @container">
     <a <?= Html::attr([
             'href' => $url,
             'class' => 'absolute inset-0 z-1',
@@ -31,8 +29,8 @@ $sizes = [
             'tabindex' => '-1',
             'title' => 'Zur Seite: ' . ($buttonTitle ?? $title),
         ]) ?>></a>
-    <div class="h-full flex items-stretch justify-between">
-        <div class="self-center py-6 pl-6 md:basis-1/2">
+    <div class="card__layout h-full @min-card-lg:grid-cols-[1fr_1fr] @min-card-xl:grid-cols-[3fr_1fr]">
+        <div class="area-main self-center py-5 pl-5 @min-card-md:py-6 @min-card-md:pl-6">
             <h3 class="heading-lv3 mb-3"><?= $title ?></h3>
             <?php if (!empty($text)): ?>
                 <p class="typo text-sm line-clamp-3 md:line-clamp-none">
@@ -52,11 +50,19 @@ $sizes = [
                     'cropRatio' => 4 / 3,
                     'sizes' => A::join($sizes, ', '),
                     'preset' => 'teaser',
-                    'class' => 'w-1/3 md:basis-1/2 min-w-[8rem] block',
+                    'class' => 'area-image angled-cut origin-right @min-card-lg:origin-center',
                     'responsive' => true,
-                    'imgClass' => 'angled-cut',
+                    'imgClass' => 'w-full',
                 ]
             ); ?>
+        <?php else: ?>
+            <div class="area-image angled-cut origin-right">
+                <div class="bg-offwhite w-full h-full flex flex-col items-center justify-center">
+                    <?= snippet('elements/icon', [
+                        'class' => 'text-tertiary size-12 ml-8 @min-card-lg:origin-center',
+                    ]) ?>
+                </div>
+            </div>
         <?php endif; ?>
     </div>
 </div>

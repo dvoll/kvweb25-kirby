@@ -21,7 +21,7 @@ $teaserPages = $block->myBlogposts()->limit(3);
     </div>
 </div>
 <div class="dvll-block dvll-block--wide">
-    <div style="--dvll-card-size: var(--dvll-card-size--small);" class="grid grid-cols-(--dvll-card-grid-cols--small) gap-4 md:gap-6 md:justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-(--dvll-card-grid-cols--small) gap-4 md:gap-6 md:justify-center">
         <?php foreach ($teaserPages as $teaserPage): ?>
             <?= snippet('components/blogpost-card', [
                 'title' => $teaserPage->title(),
@@ -29,7 +29,16 @@ $teaserPages = $block->myBlogposts()->limit(3);
                 'url' => $teaserPage->url(),
             ]) ?>
         <?php endforeach; ?>
-        <?php if ($teaserPages->count() === 1): ?>
+        <?php if ($teaserPages->count() === 0): ?>
+            <?= snippet('components/blogpost-card', [
+                'title' => 'Hier gibt es gerade nichts Passendes',
+                'text' => 'Schau doch mal auf der Seite mit allen Blogbeiträgen vorbei',
+                'url' => '/blog',
+                'teaser' => true,
+                'buttonText' => 'Zur Blog Seite'
+            ]) ?>
+        <?php endif; ?>
+        <?php if ($teaserPages->count() === 1 || $teaserPages->count() === 2): ?>
             <?= snippet('components/blogpost-card', [
                 'title' => 'Sieh dir alle Beiträge an',
                 'text' => 'Gehe zur Seite mit allen Blogbeiträgen',

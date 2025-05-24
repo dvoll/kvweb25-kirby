@@ -17,7 +17,7 @@ $ratio   = $block->ratio()->or('auto');
                         'image' => $image,
                         // 'cropRatio' => $calculatedRatio,
                         'preset' => 'default',
-                        'imgClass' => 'h-[200px] object-cover',
+                        'imgClass' => 'w-full h-[200px] object-cover',
                     ]
                 ); ?>
             </li>

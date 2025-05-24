@@ -7,25 +7,13 @@
  * @var string|null $url
  */
 
-use Kirby\Toolkit\A;
 use Kirby\Toolkit\Html;
-use Kirby\Toolkit\Str;
-
-$sizes = [
-    // TODO: check
-    // '(min-width: 40rem) vw', // 640
-    '(min-width: 96rem) 616px', // 1536
-    '(min-width: 80rem) 474px', // 1280
-    '(min-width: 64rem) 331px', // 1024
-    '(min-width: 48rem) 189px', // 768
-    '100vw'
-];
 
 $teaser = $teaser ?? false;
 $buttonText = $buttonText ?? 'Beitrag anzeigen';
 
 ?>
-<div class="card flex flex-col px-6 py-4 pt-6 relative group/card hover:ring-1 ring-primary <?= $class ?? '' ?> <?php e($teaser, 'bg-secondary justify-center items-center', 'justify-between') ?>">
+<div class="card card--with-hover flex flex-col px-5 pt-5 pb-4 @min-card-md:px-6 @min-card-md:pb-4 @min-card-md:pt-6 relative <?= $class ?? '' ?> <?php e($teaser, 'bg-secondary justify-center items-center', 'justify-between') ?>">
     <a <?= Html::attr([
             'href' => $url,
             'class' => 'absolute inset-0',
@@ -36,7 +24,7 @@ $buttonText = $buttonText ?? 'Beitrag anzeigen';
     <div class="">
         <h3 class="heading-lv3 pr-4 <?php e($teaser, 'text-gray-600 text-center') ?>"><?= $title ?></h3>
         <?php if (!empty($text)): ?>
-            <p class="text-sm text-contrast mt-2 <?php e($teaser, 'text-gray-600 text-center') ?>">
+            <p class="max-w-96 text-sm text-contrast mt-2 <?php e($teaser, 'text-gray-600 text-center') ?>">
                 <?= $text ?>
             </p>
         <?php endif; ?>

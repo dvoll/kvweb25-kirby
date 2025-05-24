@@ -16,14 +16,16 @@ if ($source === 'selection') {
 
 ?>
 
-<div class="dvll-block <?php e($teaserPages->count() > 1, 'dvll-block--wide', 'dvll-block--narrow'); ?> grid grid-cols-(--dvll-card-grid-cols) gap-4 md:gap-6">
-    <?php foreach ($teaserPages as $teaserPage): ?>
-        <?= snippet('components/teaser-card', [
-            'title' => $teaserPage->myTitle(),
-            'buttonTitle' => $teaserPage->title(),
-            'text' => $teaserPage->myTeaserText(),
-            'image' => $teaserPage->myTeaserImage(),
-            'url' => $teaserPage->url(),
-        ]) ?>
-    <?php endforeach; ?>
+<div class="dvll-block dvll-block--wide">
+    <div class="grid grid-cols-1 md:grid-cols-(--dvll-card-grid-cols) justify-center gap-4 md:gap-6">
+        <?php foreach ($teaserPages as $teaserPage): ?>
+            <?= snippet('components/teaser-card', [
+                'title' => $teaserPage->myTitle(),
+                'buttonTitle' => $teaserPage->title(),
+                'text' => $teaserPage->myTeaserText(),
+                'image' => $teaserPage->myTeaserImage(),
+                'url' => $teaserPage->url(),
+            ]) ?>
+        <?php endforeach; ?>
+    </div>
 </div>

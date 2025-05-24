@@ -8,7 +8,7 @@ use Kirby\Toolkit\A;
 
 $ratio = $block->ratio()->value();
 
-if ($ratio !== 'auto') {
+if ($ratio !== 'auto' && $ratio !== '') {
     $parts = explode('/', $ratio);
     $calculatedRatio = (int)$parts[0] / (int)$parts[1];
 } else {
@@ -16,7 +16,6 @@ if ($ratio !== 'auto') {
 }
 
 $sizes = [
-    // '(min-width: 40rem) vw', // 640
     '(min-width: 96rem) 816px', // 1536
     '(min-width: 80rem) 674px', // 1280
     '(min-width: 64rem) 531px', // 1024
@@ -27,7 +26,7 @@ $sizes = [
 $caption = $block->caption()->isNotEmpty() ? $block->caption()->html() : ($block->image()->isNotEmpty() && $block->image()->toFile()->caption()->isNotEmpty() ? $block->image()->toFile()->caption()->html() : null);
 
 ?>
-<div class="dvll-block dvll-block--narrow">
+<div class="dvll-block dvll-block--centered">
     <figure>
         <?= snippet(
             'picture',
@@ -37,7 +36,7 @@ $caption = $block->caption()->isNotEmpty() ? $block->caption()->html() : ($block
                 'sizes' => A::join($sizes, ', '),
                 'preset' => 'default',
                 'alt' => $block->alt()->isNotEmpty() ? $block->alt()->value() : null,
-                // 'responsive' => true,
+                'imgClass' => !$calculatedRatio || $calculatedRatio > 1 ? 'w-full' : 'max-h-96 w-auto',
             ]
         ); ?>
         <?php if (!empty($caption)) : ?>

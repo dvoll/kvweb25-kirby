@@ -11,6 +11,7 @@ $sizes = [
 ];
 
 $logoSizes = [
+    '(min-width: 32rem) 410px', // 448px
     '100vw'
 ];
 
@@ -50,7 +51,7 @@ $sublineLabel = $sublineLabel ?? null;
                         'image' => $logo,
                         'sizes' => A::join($logoSizes, ', '),
                         'preset' => 'campLogo',
-                        'imgClass' => 'h-auto',
+                        'imgClass' => 'w-full h-auto',
                     ]
                 ); ?>
             </div>
