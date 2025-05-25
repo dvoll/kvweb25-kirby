@@ -25,3 +25,5 @@ Alpine.start();
 
 customElements.define('dvll-header', DvllHeader);
 
+const entranceObserver = new ElementEntranceObserver();
+entranceObserver.startObserving();
