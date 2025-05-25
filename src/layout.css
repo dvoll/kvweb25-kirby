@@ -7,12 +7,12 @@
     }
 
     .dvll-section {
+        scroll-margin-block-start: 6rem;
         @apply mb-16;
 
-        @apply pt-30 -mt-30;
-
         &:first-child {
-            @apply pt-30 -mt-0;
+            @apply pt-30;
+            scroll-margin-block-start: 0;
         }
 
         &:is(.dvll-section--real-top) {
@@ -25,7 +25,6 @@
 
         &:has(.stage-text) {
             @apply bg-offwhite;
-            /* @apply -mt-60 pt-64 pb-8; */
         }
     }
 
