@@ -11,8 +11,8 @@ $showGeneralContact = true;
 
 // TODO: Remove column information from snippet
 ?>
-<div class="rounded-md bg-offwhite pl-6 pr-4 py-8 self-start flex flex-col gap-8">
-    <div class="flex flex-col gap-6">
+<div class="rounded-md bg-offwhite pl-5 md:pl-6 pr-4 pb-6 md:pb-8 pt-5 md:pt-6 self-start flex flex-col gap-8">
+    <div class="flex flex-col gap-4">
         <h2 class="heading-lv2">Noch Fragen?<br>
             Melde dich bei uns!</h2>
         <?php if ($showGeneralContact): ?>
