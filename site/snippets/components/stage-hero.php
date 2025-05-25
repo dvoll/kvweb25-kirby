@@ -39,6 +39,7 @@ $sublineLabel = $sublineLabel ?? null;
             'preset' => 'stageHero',
             'responsive' => true,
             'class' => 'absolute w-full h-full -z-1',
+            'imgClass' => 'w-full h-full object-cover',
         ]
     ); ?>
     <div class="bg-[#1D2021] opacity-60"></div>

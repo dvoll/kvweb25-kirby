@@ -1,0 +1,6 @@
+@layer components {
+    .swiper {
+        overflow: visible !important;
+    }
+}
+

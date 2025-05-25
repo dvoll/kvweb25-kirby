@@ -1,4 +1,4 @@
-class DvllHeader extends HTMLElement {
+export class DvllHeader extends HTMLElement {
     scrollTimeout: number | null = null;
 
     constructor() {
@@ -90,5 +90,3 @@ class DvllHeader extends HTMLElement {
         });
     }
 }
-
-customElements.define('dvll-header', DvllHeader);

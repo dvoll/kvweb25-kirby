@@ -71,7 +71,7 @@ if (is_a($image, 'Kirby\Cms\File') || is_a($image, 'Kirby\Filesystem\Asset')) : 
                         'height' => $cropRatio ? floor($image->width() / $cropRatio) : $image->height(),
                         'alt' => $alt ?? (is_a($image, 'Kirby\Cms\File') ? $image->alt() : null),
                         'loading' => $lazy ? "lazy" : null,
-                        'class' => [$responsive ? 'h-full object-cover' : '', $imgClass ?? 'w-full'],
+                        'class' => [$imgClass ?? 'w-full'],
                         'style' => $responsive ? 'object-position: '  . ($image->focus()->isNotEmpty() ? $image->focus() : '50% 50%') : '',
                     ]) ?>>
 

@@ -40,9 +40,9 @@ $caption = $block->caption()->isNotEmpty() ? $block->caption()->html() : ($block
             ]
         ); ?>
         <?php if (!empty($caption)) : ?>
-        <figcaption class="text-sm text-contrast mt-2 mx-4">
-            <?= $caption ?>
-        </figcaption>
+            <figcaption class="text-body text-sm text-contrast mt-2 mx-4 max-w-[40rem]">
+                <?= $caption ?>
+            </figcaption>
         <?php endif; ?>
     </figure>
 </div>

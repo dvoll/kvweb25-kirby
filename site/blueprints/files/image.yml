@@ -15,6 +15,7 @@ fields:
   caption:
     label: Bildunterschrift
     type: textarea
+    maxlength: 160
     width: 1/2
     help: |
       Die Bildunterschrift wird unter dem Bild angezeigt. Sie kann verwendet werden, um zusätzliche Informationen oder Credits zum Bild bereitzustellen.

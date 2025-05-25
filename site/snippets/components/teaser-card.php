@@ -52,7 +52,7 @@ $sizes = [
                     'preset' => 'teaser',
                     'class' => 'area-image angled-cut origin-right @min-card-lg:origin-center',
                     'responsive' => true,
-                    'imgClass' => 'w-full',
+                    'imgClass' => 'w-full h-full object-cover',
                 ]
             ); ?>
         <?php else: ?>

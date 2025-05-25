@@ -8,3 +8,4 @@ image:
   cover: false
 info: '{{ file.alt }}'
 query: site.find('page://images').images.filterBy('template', 'image')
+empty: field.blocks.gallery.images.empty

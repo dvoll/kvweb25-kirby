@@ -40,7 +40,7 @@ snippet('layout', slots: true); ?>
         <div class="dvll-block dvll-block--narrow">
             <div class="typo typo--rte"><?= $page->campIntro()->kirbytext()->permalinksToUrls(); ?></div>
         </div>
-        <div class="dvll-block col-span-full lg:col-start-7 lg:col-span-3 lg:row-start-1 lg:row-span-[30]">
+        <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
             <div class="dvll-block">
                 <?php snippet('components/contact', ['contacts' => $page->myContacts()]) ?>
             </div>
@@ -66,7 +66,7 @@ if ((count($downloads) > 0) || (count($links) > 0)):
                     }
                     ?>
                 </h3>
-                <ul class="grid grid-cols-(--dvll-card-grid-cols--small) gap-2 w-full">
+                <ul class="grid grid-cols-(--dvll-card-grid-cols--small) gap-3 w-full">
                     <?php foreach ($links as $link): ?>
                         <li class="">
                             <?= $link ?>

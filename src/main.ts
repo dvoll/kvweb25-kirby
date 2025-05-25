@@ -5,8 +5,13 @@ import focus from "@alpinejs/focus";
 // @ts-ignore
 import collapse from "@alpinejs/collapse";
 
-import "./components/header";
+import ElementEntranceObserver from "./utils/element-entrance-observer";
+
 import "./main.css";
+
+
+import { DvllHeader } from "./components/header";
+import gallery from "./components/gallery";
 
 Alpine.plugin(collapse);
 Alpine.plugin(focus);
@@ -14,6 +19,9 @@ Alpine.plugin(focus);
 // make Alpine on window available for better DX
 window.Alpine = Alpine;
 
-// Alpine.data("Gallery", Gallery);
+Alpine.data("gallery", gallery);
 
 Alpine.start();
+
+customElements.define('dvll-header', DvllHeader);
+
