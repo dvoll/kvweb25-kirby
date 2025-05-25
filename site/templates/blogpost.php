@@ -52,7 +52,7 @@ snippet('layout', slots: true); ?>
                 </figure>
             </div>
         <?php endif; ?>
-        <div class="dvll-block col-span-full lg:col-start-7 lg:col-span-3 lg:row-start-1 lg:row-span-[30]">
+        <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
             <div class="dvll-block">
 
                 <?php snippet('components/contact', ['contacts' => $page->myContacts()]) ?>
