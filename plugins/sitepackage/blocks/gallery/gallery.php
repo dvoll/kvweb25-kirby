@@ -22,7 +22,7 @@ $sizes = [
             <div class="swiper-wrapper">
                 <?php foreach ($images->values() as $key => $image): ?>
                     <div class="swiper-slide">
-                        <?php $shouldBeCropped = $image->ratio() >= 1.3 && $image->ratio() <= 1.8; ?>
+                        <?php $shouldBeCropped = $image->ratio() >= 1.3 && $image->ratio() <= 2.2; ?>
                         <?= snippet(
                             'picture',
                             [
@@ -30,7 +30,7 @@ $sizes = [
                                 'cropRatio' => $shouldBeCropped ?  16 / 9 : null,
                                 'responsive' => true,
                                 'preset' => 'default',
-                                'imgClass' => 'w-full h-full object-cover sm:object-contain',
+                                'imgClass' => 'w-full h-full object-cover ' . ($shouldBeCropped ? 'sm:object-cover' : 'sm:object-contain sm:!object-center'),
                                 'class' => 'block aspect-square sm:aspect-video rounded-md bg-offwhite overflow-clip ' . (!$shouldBeCropped ? 'shadow-md shadow-offwhite-shadow/10' : 'shadow-lg shadow-offwhite-shadow/20'),
                                 'sizes' => A::join($sizes, ', '),
                             ]
