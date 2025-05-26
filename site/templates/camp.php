@@ -45,15 +45,11 @@ snippet('layout', slots: true); ?>
                 <?php snippet('components/contact', ['contacts' => $page->myContacts()]) ?>
             </div>
         </div>
-    </div>
-</section>
-<?php
-$downloads = $page->myDownloads();
-$links = $page->myLinks();
-if ((count($downloads) > 0) || (count($links) > 0)):
-?>
-    <section class="dvll-section">
-        <div class="dvll-section__layout">
+        <?php
+        $downloads = $page->myDownloads();
+        $links = $page->myLinks();
+        if ((count($downloads) > 0) || (count($links) > 0)):
+        ?>
             <div class="dvll-block dvll-block--wide">
                 <h3 class="heading-lv3 mb-5">
                     <?php
@@ -85,8 +81,8 @@ if ((count($downloads) > 0) || (count($links) > 0)):
                     <?php endforeach; ?>
                 </ul>
             </div>
-        </div>
-    </section>
-<?php endif; ?>
+        <?php endif; ?>
+    </div>
+</section>
 <?php snippet('core/layouts'); ?>
 <?php endsnippet() ?>
