@@ -4,7 +4,7 @@
 
 $items = $pages->listed();
 if ($items->isNotEmpty()): ?>
-    <nav class="desktop-nav hidden md:block">
+    <nav class="desktop-nav hidden md:block pointer-events-auto">
         <ul class="flex flex-row flex-wrap gap-x-4 gap-y-1 font-style text-sm text-contrast font-semibold">
             <?php foreach ($items as $item): ?>
                 <?php if ($item->slug() === 'home') continue; ?>

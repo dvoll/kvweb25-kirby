@@ -17,7 +17,7 @@ $caption = ($contentImage && $contentImage->caption()->isNotEmpty()) ? $contentI
 
 snippet('layout', slots: true); ?>
 <section class="dvll-section">
-    <div class="dvll-section__layout dvll-section__layout--two-col">
+    <div class="dvll-section__layout dvll-section__layout--two-col md:pt-6">
         <?php if (($blogPage = site()->find('blog')) && $blogPage->isNotEmpty() && $blogPage->isVisible()): ?>
             <div class="dvll-block dvll-block--narrow">
                 <a href="<?= $blogPage->url() ?>" class="btn btn--secondary btn--icon-left"><?= snippet('elements/icon', ['icon' => 'arrow-left']) ?><span>Zur Übersichtsseite &#8222;Blog&#8220;</span></a>
