@@ -25,7 +25,7 @@ $blockSections = $page->content()->get('layouts');
             <?php if ($isTwoCol): ?>
                 <!-- TODO -->
             <?php elseif ($blockSection instanceof LayoutWithContactBlock && is_array($contacts = $blockSection->myContacts())): ?>
-                <div class="dvll-block col-span-full lg:col-start-7 lg:col-span-3 lg:row-start-1 lg:row-span-[30]">
+                <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
                     <div class="dvll-block">
                         <?php snippet('components/contact', compact('contacts')) ?>
                     </div>

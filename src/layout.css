@@ -86,6 +86,12 @@
             @media (width >= 64rem) {
                 @apply col-start-3 col-end-10;
             }
+
+            .dvll-section__layout--two-col & {
+                @media (width >= 64rem) {
+                    @apply col-start-2 col-end-8;
+                }
+            }
         }
 
         &.dvll-block--sidebar {
