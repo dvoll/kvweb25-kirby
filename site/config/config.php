@@ -13,6 +13,7 @@ return [
     'panel' => [
         'language' => 'de',
         'css' => 'assets/panel/css/panel.css',
+        'vue.compiler' => false,
     ],
     'cache' => [
         'pages' => [
