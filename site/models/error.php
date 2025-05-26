@@ -6,9 +6,10 @@ use Kirby\Cms\File;
 use Kirby\Cms\Page;
 use Kirby\Template\Template;
 
-class CampsPage extends Page implements WithTeaserContentInterface
+class ErrorPage extends Page implements WithTeaserContentInterface
 {
-    public function myStageType(): ?string {
+    public function myStageType(): ?string
+    {
         return TeaserContentHelper::getStageType($this);
     }
 

@@ -1,7 +1,6 @@
 <?php
 
 use dvll\Sitepackage\Models\ContactHelper;
-use dvll\Sitepackage\Models\TeaserContentHelper;
 use dvll\Sitepackage\Models\WithTeaserContentInterface;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
@@ -66,5 +65,4 @@ class CampPage extends Page implements WithTeaserContentInterface
         $downloadsField = $this->content()->get('downloads');
         return $downloadsField->toFiles();
     }
-
 }
