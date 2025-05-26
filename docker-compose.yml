@@ -13,9 +13,9 @@
 # copies or substantial portions of the Software.
 
 services:
-  php:
+  php8-4:
     build:
-      context: ./docker/php
+      context: ./docker/php8-4
       args:
         TIME_ZONE: "Europe/Berlin"
     user: 1000:1000
@@ -32,7 +32,7 @@ services:
     build:
       context: "./docker/httpd/"
     depends_on:
-      - php
+      - php8-4
     ports:
       - 8000:80
     volumes:
