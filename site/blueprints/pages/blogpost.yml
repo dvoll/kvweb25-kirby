@@ -61,7 +61,7 @@ tabs:
           mainSectionIntro:
             type: fields
             fields:
-              section-headline-content:
+              sectionHeadlineContent:
                 help: false
           modelSection:
             type: fields
