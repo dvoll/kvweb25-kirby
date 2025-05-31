@@ -1,15 +1,12 @@
 <?php
 
 use dvll\Sitepackage\Models\ContactHelper;
-use dvll\Sitepackage\Models\TeaserContentHelper;
-use dvll\Sitepackage\Models\WithTeaserContentInterface;
+use dvll\Sitepackage\Models\CustomBasePage;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
 use Kirby\Cms\Files;
-use Kirby\Cms\Page;
-use Kirby\Exception\InvalidArgumentException;
 
-class BlogpostPage extends Page implements WithTeaserContentInterface
+class BlogpostPage extends CustomBasePage
 {
     /**
      * @return array<string, mixed>|null
@@ -46,26 +43,4 @@ class BlogpostPage extends Page implements WithTeaserContentInterface
     {
         return $this->content()->get('image')->toFile();
     }
-
-    public function myStageType(): ?string
-    {
-        return TeaserContentHelper::getStageType($this);
-    }
-
-    public function myTeaserImage(): ?File
-    {
-        return TeaserContentHelper::getTeaserImage($this);
-    }
-
-    public function myTitle(): ?string
-    {
-        return TeaserContentHelper::getTitle($this);
-    }
-
-    public function myTeaserText(): ?string
-    {
-        return TeaserContentHelper::getTeaserText($this);
-    }
-
-
 }

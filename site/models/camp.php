@@ -1,24 +1,28 @@
 <?php
 
 use dvll\Sitepackage\Models\ContactHelper;
+use dvll\Sitepackage\Models\CustomBasePage;
 use dvll\Sitepackage\Models\WithTeaserContentInterface;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
 use Kirby\Cms\Files;
 use Kirby\Cms\Page;
 
-class CampPage extends Page implements WithTeaserContentInterface
+class CampPage extends CustomBasePage
 {
+    #[\Override]
     public function myStageType(): ?string
     {
         return null;
     }
 
+    #[\Override]
     public function myTeaserImage(): ?File
     {
         return $this->content()->get('heroImage')->toFile();
     }
 
+    #[\Override]
     public function myTitle(): ?string
     {
         $teaserTitle = $this->content()->get('teaserTitle');
@@ -30,6 +34,7 @@ class CampPage extends Page implements WithTeaserContentInterface
         return $this->title()->toHtml();
     }
 
+    #[\Override]
     public function myTeaserText(): ?string
     {
         return $this->content()->get('teaserDescription')->toHtml();
