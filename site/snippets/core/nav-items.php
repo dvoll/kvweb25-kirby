@@ -8,7 +8,7 @@ if ($items->isNotEmpty()): ?>
         <ul class="flex flex-row flex-wrap gap-x-4 gap-y-1 font-style text-sm text-contrast font-semibold">
             <?php foreach ($items as $item): ?>
                 <?php if ($item->slug() === 'home') continue; ?>
-                <?php $subMenu = $item->children(); ?>
+                <?php $subMenu = $item->children()->listed(); ?>
                 <?php $hasSubMenu = $subMenu->isNotEmpty() && $item->title()->escape()->toString() !== 'Blog'; ?>
                 <li class="relative"><a class="nav-link px-4 flex gap-2 items-center group" <?php e($item->isOpen(), 'aria-current="page"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?><?php e($hasSubMenu, snippet('elements/icon', ['icon' => 'chevron-down', 'class' => 'w-3 h-3 group-[.nav-link--open-submenu]:rotate-180'], return: true)) ?></a>
                     <?php if ($hasSubMenu): ?>
