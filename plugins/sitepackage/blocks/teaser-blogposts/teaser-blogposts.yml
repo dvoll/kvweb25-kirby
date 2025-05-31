@@ -31,9 +31,6 @@ fields:
       tagged: Mit bestimmten Schlagworten 
       # selection: Auswahl
   tags:
-    type: tags
-    options:
-      type: query
-      query: site.index.filterBy("template", "in", ["camp", "layout"])
+    extends: fields/tags
     when:
       source: tagged

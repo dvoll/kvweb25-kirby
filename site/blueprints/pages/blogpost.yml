@@ -39,10 +39,7 @@ tabs:
               contactsSelect:
                 extends: fields/contacts-select
               tags:
-                type: tags
-                options:
-                  type: query
-                  query: site.index.filterBy("template", "in", ["camp", "layout"])
+                extends: fields/tags
               links:
                 extends: fields/links
               downloads:
