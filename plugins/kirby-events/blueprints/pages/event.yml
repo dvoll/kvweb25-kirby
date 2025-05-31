@@ -1,0 +1,24 @@
+# Each page blueprint must have a title, the title may be different from the file name
+status:
+  draft: Draft
+  unlisted: Unlisted
+options:
+  access: true
+  read: true
+  changeSlug: false
+  changeStatus: false
+  changeTemplate: false
+  changeTitle: false
+  create: false
+  delete: false
+  duplicate: false
+  list: true
+  move: false
+  preview: true
+  # preview: "{{ page.parent.url }}/#{{ page.slug }}"
+  sort: false
+  update: false
+icon: draft
+# image:
+
+

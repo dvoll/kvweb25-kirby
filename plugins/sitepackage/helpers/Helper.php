@@ -11,6 +11,15 @@ use Kirby\Toolkit\Str;
 class Helper
 {
 
+    const KIRBYLOG_LVL_DEBUG = "DEBUG";
+    const KIRBYLOG_LVL_INFO = "INFO";
+    const KIRBYLOG_LVL_NOTICE = "NOTICE";
+    const KIRBYLOG_LVL_WARNING = "WARNING";
+    const KIRBYLOG_LVL_ERROR = "ERROR";
+    const KIRBYLOG_LVL_CRITICAL = "CRITICAL";
+    const KIRBYLOG_LVL_ALERT = "ALERT";
+    const KIRBYLOG_LVL_EMERGENCY = "EMERGENCY";
+
     /**
      * Get an environment variable as string or boolean with optional default value
      * @param string|bool $default

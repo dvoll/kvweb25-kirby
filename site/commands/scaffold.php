@@ -25,7 +25,7 @@ return [
     'args' => [],
     'command' => static function (CLI $cli): void {
         kirby()->impersonate('kirby');
-        $cli->info('Scaffolding kirby-baukasten...');
+        $cli->info('Scaffolding kirby...');
 
         if (!page('home')) {
             $cli->info('Creating empty home page...');
@@ -59,8 +59,8 @@ return [
                 'content' => [
                     'title' => 'Blog',
                 ],
+                'draft' => false,
             ]);
-            $page->changeStatus('listed');
         }
 
         if (!page('freizeiten')) {
@@ -71,8 +71,20 @@ return [
                 'content' => [
                     'title' => 'Freizeiten',
                 ],
+                'draft' => false,
             ]);
-            $page->changeStatus('listed');
+        }
+
+        if (!page('termine')) {
+            $cli->info('Creating empty camps page...');
+            $page = Page::create([
+                'slug' => 'termine',
+                'template' => 'events',
+                'content' => [
+                    'title' => 'Termine',
+                ],
+                'draft' => false,
+            ]);
         }
 
         if (!page('images')) {

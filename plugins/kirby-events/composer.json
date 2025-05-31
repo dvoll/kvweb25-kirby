@@ -1,0 +1,31 @@
+{
+    "name": "dvll/kirby-events",
+    "description": "Event plugin for a Google calendar integration",
+    "license": "MIT",
+    "type": "kirby-plugin",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Dario Voll",
+            "email": "dariovoll@gmail.com"
+        }
+    ],
+    "require": {
+        "getkirby/composer-installer": "^1.2",
+        "google/apiclient": "^2.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "getkirby/composer-installer": true
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "dvll\\KirbyEvents\\Models\\": "models",
+            "dvll\\KirbyEvents\\Services\\": "services"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

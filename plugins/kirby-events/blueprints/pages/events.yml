@@ -1,0 +1,26 @@
+# Each page blueprint must have a title, the title may be different from the file name
+title: Termine
+
+extends: layouts/default
+
+icon: draft
+# image:
+
+tabs:
+  content:
+    columns:
+      sidebar: false
+      main:
+        sections:
+          events:
+            type: pages
+            label: Veröffentlichte Termine
+            template: event
+            create: false
+            layout: table
+            search: true
+            info: "{{ page.start.toDate('d.m.Y') }}"
+            image: false
+            flip: true
+            empty: Es sind noch keine Termine vorhanden.
+          contentSection: false

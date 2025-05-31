@@ -17,7 +17,7 @@ fields:
   pages:
     type: pages
     # query: site.children.listed
-    query: site.index.filterBy('template', 'in', ['layout', 'blogposts', 'camps', 'camp'])
+    query: site.index.filterBy('intendedTemplate', 'in', ['layout', 'blogposts', 'camps', 'camp', 'events'])
     subpages: false
     info: '{{ page.parent.parent.title }} {{ page.parent.parent.title ? ">" : "" }} {{ page.parent.title }}'
     when: 

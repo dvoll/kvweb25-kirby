@@ -18,6 +18,7 @@ tabs:
               - layout
               - blogposts
               - camps
+              - events
           errorPages:
             label: Fehlerseite
             type: pages

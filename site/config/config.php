@@ -9,6 +9,7 @@ $dotenv = Dotenv\Dotenv::createUnsafeImmutable(realpath(__DIR__ . '/../../'));
 $dotenv->load();
 
 return [
+    'url'=> Helper::getEnv('APP_URL', 'http://localhost:8000'),
     'thumbs' => require __DIR__ . '/thumbs.php',
     'panel' => [
         'language' => 'de',
@@ -82,5 +83,8 @@ return [
         'panel' => [
             'favicon' => option('debug') ? 'assets/panel/favicon-dev.svg' : 'assets/panel/favicon-live.svg',
         ],
+    ],
+    'johannschopplich.kirbylog' => [
+        'filename' => Helper::getEnv("KIRBYLOG_FILENAME", 'test.log'),
     ]
 ];
