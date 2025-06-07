@@ -65,7 +65,7 @@ class EventsPage extends CustomBasePage
             }
 
             // Always perform matching for logging
-            $matchedCategory = EventCategoryMatcher::detectCategory($event->summary ?? '', $description ?? '', \dvll\KirbyEvents\Models\EventEntity::$categoryWordMap);
+            $matchedCategory = EventCategoryMatcher::detectCategory($event->summary ?? '', $description, \dvll\KirbyEvents\Models\EventEntity::$categoryWordMap);
 
             $slug = Str::slug(A::join([
                 $event->start ? date('Y-m-d', strtotime($event->start)) : Str::substr($event->id, 0, 10),
@@ -93,8 +93,10 @@ class EventsPage extends CustomBasePage
                     'location'    => $event->location,
                     'description' => $description, // use possibly cleaned description
                     'start'       => $event->start,
+                    'startDate'   => $event->startDate,
                     'end'         => $event->end,
-                    'link'        => $event->htmlLink,
+                    'endDate'     => $event->endDate,
+                    'url'         => $event->htmlLink,
                     'uuid'        => $event->id ? 'event-' . $event->id : Uuid::generate(),
                     'category'    => $explicitCategory ?? $matchedCategory, // Use explicit if present
                 ]

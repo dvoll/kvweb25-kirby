@@ -21,4 +21,26 @@ options:
 icon: draft
 # image:
 
+fields:
+  title:
+    type: text
+  location:
+    type: text
+  description:
+    type: text
+  start:
+    type: text
+  startDate:
+    type: text
+  end:
+    type: text
+  endDate:
+    type: text
+  url:
+    type: text
+  uuid:
+    type: text
+  category:
+    type: text
+
 

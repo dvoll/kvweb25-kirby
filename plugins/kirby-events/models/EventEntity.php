@@ -9,7 +9,25 @@ class EventEntity
     public ?string $location;
     public ?string $htmlLink;
     public ?string $start;
+    public ?string $startDate;
     public ?string $end;
+    public ?string $endDate;
+
+    /**
+     * @param array<string, mixed> $data
+     */
+    public function __construct(array $data)
+    {
+        $this->id = $data['id'] ?? '';
+        $this->summary = $data['summary'] ?? '';
+        $this->description = $data['description'] ?? null;
+        $this->location = $data['location'] ?? null;
+        $this->htmlLink = $data['htmlLink'] ?? null;
+        $this->start = $data['start'] ?? null;
+        $this->startDate = $data['startDate'] ?? null;
+        $this->end = $data['end'] ?? null;
+        $this->endDate = $data['endDate'] ?? null;
+    }
 
     /**
      * @var array<string, array<string, int>>
@@ -126,18 +144,4 @@ class EventEntity
             'erreichbar' => 5,
         ],
     ];
-
-    /**
-     * @param array<string, mixed> $data
-     */
-    public function __construct(array $data)
-    {
-        $this->id = $data['id'] ?? '';
-        $this->summary = $data['summary'] ?? '';
-        $this->description = $data['description'] ?? null;
-        $this->location = $data['location'] ?? null;
-        $this->htmlLink = $data['htmlLink'] ?? null;
-        $this->start = $data['start'] ?? null;
-        $this->end = $data['end'] ?? null;
-    }
 }

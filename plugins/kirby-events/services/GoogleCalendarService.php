@@ -47,14 +47,30 @@ class GoogleCalendarService
         try {
             $results = $service->events->listEvents($calendarId, $optParams);
             foreach ($results->getItems() as $item) {
+                // Robustly extract start and end (all-day or timed)
+                $startObj = $item->getStart();
+                $endObj = $item->getEnd();
+
+                $start = null;
+                if ($startObj) {
+                    $start = $startObj->getDateTime() ?: $startObj->getDate() ?: null;
+                }
+
+                $end = null;
+                if ($endObj) {
+                    $end = $endObj->getDateTime() ?: $endObj->getDate() ?: null;
+                }
+
                 $events[] = new \dvll\KirbyEvents\Models\EventEntity([
-                    'id' => $item->getId(),
-                    'summary' => $item->getSummary(),
-                    'description' => $item->getDescription(),
-                    'location' => $item->getLocation(),
-                    'htmlLink' => $item->getHtmlLink(),
-                    'start' => $item->getStart() ? $item->getStart()->getDateTime() : null,
-                    'end' => $item->getEnd() ? $item->getEnd()->getDateTime() : null,
+                    'id' => $item->getId() ?? null,
+                    'summary' => $item->getSummary() ?? '',
+                    'description' => $item->getDescription() ?? '',
+                    'location' => $item->getLocation() ?? '',
+                    'htmlLink' => $item->getHtmlLink() ?? '',
+                    'start' => $start,
+                    'startDate' => $startObj && $startObj->getDate() ? $startObj->getDate() : null,
+                    'end' => $end,
+                    'endDate' => $endObj ? $endObj->getDate() : null,
                 ]);
             }
         } catch (\Exception $e) {

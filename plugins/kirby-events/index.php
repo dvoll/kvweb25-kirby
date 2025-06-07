@@ -1,5 +1,6 @@
 <?php
 
+use dvll\KirbyEvents\Models\EventPage;
 use dvll\KirbyEvents\Models\EventsPage;
 use Kirby\Cms\App;
 use Kirby\Uuid\Uuid;
@@ -13,7 +14,8 @@ App::plugin('dvll/kirby-events', [
         'pages/events' => __DIR__ . '/blueprints/pages/events.yml'
     ],
     'pageModels' => [
-        'events' => EventsPage::class
+        'events' => EventsPage::class,
+        'event' => EventPage::class,
     ],
     'templates' => [
         'event' => __DIR__ . '/templates/event.php',

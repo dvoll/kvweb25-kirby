@@ -22,6 +22,7 @@ ARG TIME_ZONE=Europe/Berlin
 RUN apk --no-cache add shadow && usermod -u 1000 www-data && groupmod -g 1000 www-data
 
 ENV XDEBUG_MODE=off
+ENV LANG=de_DE.UTF-8
 
 # Install build dependencies
 RUN apk add --update --no-cache \
@@ -33,13 +34,16 @@ RUN apk add --update --no-cache \
   tzdata \
   zlib-dev \
   libzip-dev \
-  zip
+  zip \
+  icu-dev \
+  icu-data-full
 
 RUN apk add --no-cache --virtual .build-dependencies \
   $PHPIZE_DEPS \
   && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp \
   && docker-php-ext-install gd \
   && docker-php-ext-install zip \
+  && docker-php-ext-install intl \
   && pecl install xdebug \
   && docker-php-ext-enable xdebug \
   && apk del .build-dependencies
