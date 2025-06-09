@@ -2,7 +2,23 @@
 
 /**
  * @var dvll\KirbyEvents\Models\EventsPage $page
+ * @var Kirby\Cms\App $kirby
  */
+
+use Kirby\Http\Uri;
+
+$paginationLimit = 9;
+
+$selectedEventSlug = get('event', null);
+
+$events = $events = $page->children()->published()->sortBy('getStartDate', 'asc');
+
+$events = $events->paginate([
+    'limit' => $paginationLimit,
+    'url' => new Uri($kirby->url('current'), [
+        'params' => params(),
+    ])
+]);
 
 snippet('layout', slots: true); ?>
 
@@ -10,17 +26,86 @@ snippet('layout', slots: true); ?>
 
 <section class="dvll-section">
     <div class="dvll-section__layout">
-        <div class="dvll-block dvll-block--wide grid grid-cols-(--dvll-card-grid-cols--small) gap-4 md:gap-6 md:justify-center auto-rows-fr">
-            <?php foreach ($page->children()->published()->sortBy('getStartDate', 'asc') as $event): ?>
-                <?php
-                    /** @var dvll\KirbyEvents\Models\EventPage $event */
-                ?>
-                <?= snippet('components/event-card', [
-                    'event' => $event,
-                    'buttonLabel' => 'Termindetails ansehen',
-                ]) ?>
-            <?php endforeach ?>
-        </div>
+        <?php
+        $currentQuarter = null;
+        $quarterStartMonth = null;
+        $quarterStartYear = null;
+        $quarterEndMonth = null;
+        $quarterEndYear = null;
+
+        foreach ($events as $event):
+            /** @var dvll\KirbyEvents\Models\EventPage $event */
+            $timestamp = $event->getStartDate();
+            $month = (int)date('n', $timestamp);
+            $year = (int)date('Y', $timestamp);
+            $quarter = (int)floor(($month - 1) / 3) + 1;
+            $quarterKey = $year . '-' . $quarter;
+
+            if ($quarterKey !== $currentQuarter):
+                // Close previous quarter block
+                if ($currentQuarter !== null): ?>
     </div>
+<?php
+                endif;
+
+                $currentQuarter = $quarterKey;
+                // Calculate start and end month/year for the quarter
+                $quarterStartMonthNum = ($quarter - 1) * 3 + 1;
+                $quarterEndMonthNum = $quarterStartMonthNum + 2;
+                $quarterStartYear = $year;
+                $quarterEndYear = $year;
+
+                // Find all events in this quarter (from the paginated set)
+                $quarterEvents = $events->filter(function ($e) use ($year, $quarter) {
+                    $ts = $e->getStartDate();
+                    $m = (int)date('n', $ts);
+                    $y = (int)date('Y', $ts);
+                    $q = (int)floor(($m - 1) / 3) + 1;
+                    return $y === $year && $q === $quarter;
+                });
+
+                // Use the first and last event in the quarter for the headline
+                $firstEvent = $quarterEvents->first();
+                $lastEvent = $quarterEvents->last();
+
+                $startMonthString = $firstEvent->getStartDateMonthString();
+                $endMonthString = $lastEvent->getEndDateMonthString();
+
+                $currentYear = (int)date('Y');
+                $showYear = ($year > $currentYear);
+
+                // Only show end month if different from start month
+                $monthTitle = ($startMonthString === $endMonthString)
+                    ? $startMonthString
+                    : ($startMonthString . ' – ' . $endMonthString);
+?>
+<div class="dvll-block dvll-block--narrow">
+    <h2 class="heading-lv2 text-contrast">
+        <?= $monthTitle ?><?= $showYear ? ' ' . $year : '' ?>
+    </h2>
+</div>
+<div class="dvll-block dvll-block--wide grid grid-cols-(--dvll-card-grid-cols--small) gap-4 md:gap-6 md:justify-center auto-rows-fr">
+<?php
+            endif;
+            $eventLinks = $page->getCalendarLinks($event)
+?>
+<?= snippet('components/event-card', [
+                'event' => $event,
+                'buttonLabel' => 'Termindetails ansehen',
+                'showGoToOverviewButton' => false,
+                'isOpen' => $selectedEventSlug === $event->slug(),
+                'googleCalendarLink' => $eventLinks['google'],
+                'outlookCalendarLink' => $eventLinks['outlook'],
+            ]) ?>
+<?php endforeach ?>
+</div>
+<?php if ($events->pagination() && $events->pagination()->hasPages()): ?>
+    <div class="dvll-block dvll-block--narrow">
+        <?= snippet('components/pagination', [
+            'pagination' => $events->pagination(),
+        ]) ?>
+    </div>
+<?php endif ?>
+</div>
 </section>
 <?php endsnippet() ?>

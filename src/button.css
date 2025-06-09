@@ -16,9 +16,12 @@
             @apply outline-none ring-2 ring-contrast;
         }
 
-        &:disabled {
+        &.disabled,
+        &:disabled,
+        &[aria-disabled] {
             @apply opacity-30;
             cursor: auto;
+            pointer-events: none;
         }
     }
 

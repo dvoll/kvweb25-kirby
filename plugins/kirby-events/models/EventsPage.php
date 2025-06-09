@@ -2,11 +2,14 @@
 
 namespace dvll\KirbyEvents\Models;
 
+use DateTime;
 use Kirby\Toolkit\Str;
 use Kirby\Uuid\Uuid;
 use Pages;
 use dvll\KirbyEvents\Services\GoogleCalendarService;
 use dvll\KirbyEvents\Services\EventCategoryMatcher;
+use dvll\KirbyEvents\Services\MockGoogleCalendarService;
+use dvll\Sitepackage\Helpers\Helper;
 use dvll\Sitepackage\Models\CustomBasePage;
 use Kirby\Toolkit\A;
 
@@ -24,7 +27,7 @@ class EventsPage extends CustomBasePage
 
         $pages      = $cache->get($cacheKey);
 
-        if (!$pages) {
+        if (!$pages || Helper::getEnv('KIRBY_EVENTS_USE_MOCK', false)) {
             kirbylog('[dvll.kirby-events] Event cache empty. Fetching events from Google Calendar');
             $pages = self::fetchEventPagesFromCalendar();
 
@@ -44,7 +47,11 @@ class EventsPage extends CustomBasePage
      */
     protected static function fetchEventPagesFromCalendar(): array
     {
-        $events = GoogleCalendarService::fetchEvents();
+        if (Helper::getEnv('KIRBY_EVENTS_USE_MOCK', false)) {
+            $events = MockGoogleCalendarService::fetchEvents();
+        } else {
+            $events = GoogleCalendarService::fetchEvents();
+        }
         $pages = [];
         foreach ($events as $key => $event) {
             if (!$event->summary && !$event->start) {
@@ -103,5 +110,86 @@ class EventsPage extends CustomBasePage
             ];
         }
         return $pages;
+    }
+
+    /**
+     * Returns both Google and Outlook calendar links for an event.
+     * @param EventPage $event
+     * @return array{google: string, outlook: string}
+     */
+    public function getCalendarLinks(EventPage $event): array
+    {
+        $title = $event->title();
+        $description = $event->description()->isNotEmpty() ? $event->description()->escape() : '';
+        $location = $event->location()->isNotEmpty() ? $event->location()->escape() : '';
+        $allDay = $event->isAllDayEvent() ? true : false;
+        $start = date('Y-m-d\TH:i:s', $event->getStartDate());
+        $end = date('Y-m-d\TH:i:s', $event->getEndDate(useCorrection: false));
+
+        $google = $this->buildGoogleCalendarUrl($title, $description, $location, $start, $end, $allDay);
+        $outlook = $this->buildOutlookCalendarLink($title, $start, $end, $description, $location, $allDay);
+
+        return [
+            'google' => $google,
+            'outlook' => $outlook,
+        ];
+    }
+
+    private function buildGoogleCalendarUrl(string $title, string $description, string $location, string $start, string $end, bool $allDay = false): string
+    {
+        if ($allDay) {
+            // All-day event: use date only (Ymd)
+            $startUTC = (new DateTime($start))->format('Ymd');
+            $endUTC = (new DateTime($end))->format('Ymd');
+        } else {
+            // Timed event
+            $startUTC = (new DateTime($start))->format('Ymd\THis\Z');
+            $endUTC = (new DateTime($end))->format('Ymd\THis\Z');
+        }
+
+        // Build URL
+        $params = http_build_query([
+            'action' => 'TEMPLATE',
+            'text' => $title,
+            'dates' => "{$startUTC}/{$endUTC}",
+            'details' => $description,
+            'location' => $location,
+        ]);
+
+        return "https://calendar.google.com/calendar/render?$params";
+    }
+
+    private function buildOutlookCalendarLink(string $title, string $start, string $end, string $description = '', string $location = '', bool $allDay = false): string
+    {
+        if ($allDay) {
+            // All-day event: use date only (Y-m-d) and add 'allday' param for Outlook
+            $startUTC = (new DateTime($start))->format('Y-m-d');
+            $endUTC = (new DateTime($end))->format('Y-m-d');
+            $params = [
+                'subject' => $title,
+                'startdt' => $startUTC,
+                'enddt' => $endUTC,
+                'body' => $description,
+                'location' => $location,
+                'allday' => 'true', // Outlook recognizes this param
+            ];
+        } else {
+            $startUTC = (new DateTime($start))
+                ->format('Y-m-d\TH:i:s\Z');
+            $endUTC = (new DateTime($end))
+                ->format('Y-m-d\TH:i:s\Z');
+            $params = [
+                'subject' => $title,
+                'startdt' => $startUTC,
+                'enddt' => $endUTC,
+                'body' => $description,
+                'location' => $location,
+            ];
+        }
+
+        // Build URL
+        $query = http_build_query($params);
+
+        return "https://outlook.live.com/calendar/0/deeplink/compose?$query";
     }
 }

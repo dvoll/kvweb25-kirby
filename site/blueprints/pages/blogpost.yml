@@ -44,6 +44,17 @@ tabs:
                 extends: fields/links
               downloads:
                 extends: fields/downloads
+              event:
+                type: pages
+                label: Termin verknüpfen
+                query: site.find('termine').children.filterBy("template", "in", ["event"]).sortBy('startDate', 'DESC')
+                layout: cardlets
+                info: "{{ page.category }}"
+                text: "{{ page.getBackendTitle }}"
+                multiple: false
+                subpages: false
+                help: "Dieser Beitrag wird am verknüpften Termin angezeigt."
+                image: false
               date:
                 label: Erstellt am
                 type: date

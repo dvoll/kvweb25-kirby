@@ -5,6 +5,7 @@ use dvll\Sitepackage\Models\TeaserBlogpostsBlock;
 use Kirby\Cms\App;
 use Kirby\Data\Yaml;
 use Kirby\Filesystem\F;
+use Kirby\Http\Uri;
 use Kirby\Uuid\Uuid;
 
 App::plugin('dvll/sitepackage', [
@@ -80,4 +81,50 @@ App::plugin('dvll/sitepackage', [
             ]);
         }
     ],
+    'routes' => function (\Kirby\Cms\App $kirby) {
+        return [
+            [
+                // Redirects from short "freizeiten" slugs to the current structure
+                'pattern' => '(:any)',
+                'action'  => function ($slug) {
+                    if ($page = page('freizeiten')->find($slug)) {
+                        go("freizeiten/{$page->slug()}", 301);
+                    }
+
+                    /**
+                     * Calls the next middleware or handler in the stack.
+                     *
+                     * @var \Kirby\Http\Route $this
+                     * @phpstan-ignore variable.undefined, varTag.variableNotFound
+                     */
+                    $this->next();
+                }
+            ],
+            [
+                // Searches the "termine" page for a specific event slug and redirects to the correct page set
+                'pattern' => 'termine',
+                'action' => function () use ($kirby) {
+                    $eventSlug = get('event', null);
+                    $eventPageSet = get('event-page-set', null);
+                    if ($eventSlug && empty($eventPageSet)) {
+                        $events = $kirby->page('termine')->children()->published()->sortBy('getStartDate', 'asc');
+                        $selectedEvent = $events->filter(fn($event) => $event->slug() === $eventSlug)->first();
+                        if ($selectedEvent) {
+                            $position = $selectedEvent->indexOf($events);
+                            $customParams = array_merge(params(), ['page' => $position ? floor($position / 9) + 1 : 1]);
+                            go(new Uri($kirby->url('current'), [
+                                'params' => $customParams,
+                                'query' => ['event' => $eventSlug, 'event-page-set' => 'true']
+                            ]));
+                        }
+                    }
+                    /**
+                     * @var \Kirby\Http\Route $this
+                     * @phpstan-ignore variable.undefined, varTag.variableNotFound
+                     */
+                    $this->next();
+                }
+            ]
+        ];
+    },
 ]);

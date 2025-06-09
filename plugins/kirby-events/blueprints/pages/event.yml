@@ -14,8 +14,8 @@ options:
   duplicate: false
   list: true
   move: false
-  preview: true
-  # preview: "{{ page.parent.url }}/#{{ page.slug }}"
+  # preview: true
+  preview: "{{ page.parent.url }}/?event={{ page.slug }}"
   sort: false
   update: false
 icon: draft

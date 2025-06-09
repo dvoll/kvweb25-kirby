@@ -27,20 +27,28 @@ class EventPage extends CustomBasePage
         return $startField->toDate();
     }
 
-    public function getEndDate(): int
+    public function getBackendTitle(): string
     {
-        // If all-day event, subtract one day from end date
-        if (
-            $this->content()->get('startDate')->isNotEmpty() &&
-            $this->content()->get('endDate')->isNotEmpty()
-        ) {
-            // Subtract 1 day (86400 seconds)
-            $endTimestamp = $this->content()->get('endDate')->toDate();
+        return date('d.m.Y', $this->getStartDate()) . ' - ' . $this->title();
+    }
+
+    public function getEndDate(bool $useCorrection = true): int
+    {
+        /** @var \Kirby\Content\Field $endDate */
+        $endDate = $this->content()->get('endDate');
+
+        // If all-day event and only one day, subtract one day from end date
+        if ($useCorrection && $endDate->isNotEmpty()) {
+            $endTimestamp = $endDate->toDate();
             return $endTimestamp - 86400;
         }
 
+        if ($endDate->isNotEmpty()) {
+            return $endDate->toDate();
+        }
+
         /** @var \Kirby\Content\Field $endField */
-        $endField = $this->content()->get('endDate')->isNotEmpty() ? $this->content()->get('endDate') : $this->content()->get('end');
+        $endField = $this->content()->get('end');
         $endTimestamp = $endField->toDate();
 
         return $endTimestamp;
@@ -77,22 +85,41 @@ class EventPage extends CustomBasePage
         return $startField->toDate('Y-m-d') !== $endField->toDate('Y-m-d');
     }
 
-    public function getStartDateMonthString(): string
+    public function getStartDateMonthString(bool $cut = false): string
     {
         $monthStr = $this->getFormattedDateString($this->getStartDate());
-        if (mb_strlen($monthStr) > 4) {
+        if ($cut && mb_strlen($monthStr) > 4) {
             return mb_substr($monthStr, 0, 3) . '.';
         }
         return $monthStr;
     }
 
-    public function getEndDateMonthString(): string
+    public function getEndDateMonthString(bool $cut = false): string
     {
         $monthStr = $this->getFormattedDateString($this->getEndDate());
-        if (mb_strlen($monthStr) > 4) {
+        if ($cut && mb_strlen($monthStr) > 4) {
             return mb_substr($monthStr, 0, 3) . '.';
         }
         return $monthStr;
+    }
+
+    public function getStartDateWeekdayString(): string
+    {
+        return $this->getFormattedDateString($this->getStartDate(), 'EEEE');
+    }
+
+    public function getEndDateWeekdayString(): string
+    {
+        return $this->getFormattedDateString($this->getEndDate(), 'EEEE');
+    }
+
+    public function getConnectedBlogpost(): ?\Kirby\Cms\Page
+    {
+        $blogPost = $this->site()->find('blog')->children()->filter(fn($page) => $page->event()->isNotEmpty() &&  $page->event()->value() === "- {$this->uuid()->toString()}")->first();
+        if ($blogPost && $blogPost->isListed()) {
+            return $blogPost;
+        }
+        return null;
     }
 
     private function getFormattedDateString(int|string|\DateTimeInterface $date, string $format = 'LLLL'): string

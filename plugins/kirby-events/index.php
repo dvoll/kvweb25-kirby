@@ -19,6 +19,7 @@ App::plugin('dvll/kirby-events', [
     ],
     'templates' => [
         'event' => __DIR__ . '/templates/event.php',
+        'event.ics' => __DIR__ . '/templates/event.ics.php',
         'events' => __DIR__ . '/templates/events.php'
     ],
 ]);
