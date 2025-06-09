@@ -43,7 +43,7 @@ $page = $event->category()->isNotEmpty() ? $site->find('freizeiten/' . $event->c
                 <?php endif; ?>
             </div>
             <div class="col-start-2 row-start-2 px-3 @min-card-md:px-4 flex flex-col">
-                <h3 class="heading-lv3 leading-5 text-contrast pr-4"><?= $event->title()->excerpt(42) ?></h3>
+                <h3 class="heading-lv3 text-contrast pr-4"><?= $event->title()->excerpt(42) ?></h3>
             </div>
             <div class="col-start-2 row-start-3 px-3 @min-card-md:px-4 pb-1 flex flex-row flex-wrap-reverse items-center gap-x-2 gap-y-1">
                 <?php if ($event->category()->isNotEmpty()): ?>
