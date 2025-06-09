@@ -58,6 +58,12 @@ tabs:
     label: Einstellungen
     icon: cog
     sections:
+      settingsSectionIntro:
+        type: fields
+        fields:
+          settingsSectionHeadline:
+            label: Einstellungen
+            type: headline
       teaserFields: false
         # extends: sections/page-teaser
       allChildren:
