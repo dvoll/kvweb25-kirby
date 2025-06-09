@@ -36,7 +36,7 @@ if ($items->isNotEmpty()): ?>
                 <button class="main-nav-close-button block btn btn--secondary py-4 m-1">Menü schließen</button>
                 <?php foreach ($items as $item): ?>
                     <li class="relative"><a class="nav-link px-4" <?php e($item->isOpen(), 'aria-current="page"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
-                        <?php $subMenu = $item->children(); ?>
+                        <?php $subMenu = $item->children()->listed(); ?>
                         <?php $hasSubMenu = $subMenu->isNotEmpty() && $item->title()->escape()->toString() !== 'Blog'; ?>
                         <?php if ($hasSubMenu): ?>
                             <ul class="mt-2 pl-4 flex flex-col gap-1">
