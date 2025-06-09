@@ -104,7 +104,9 @@ snippet('layout', slots: true); ?>
             <p class="font-style font-semibold text-sm text-gray-500 mb-1">Schlagworte</p>
             <ul class="flex flex-wrap gap-2">
                 <?php foreach ($tags = $page->tags()->split(',') as $tag): ?>
-                    <li><a href="<?= site()->find($tag)->url() ?>" class="btn btn--secondary"><span><?= site()->find($tag)->title() ?></span></a></li>
+                    <?php if ($tagSite = site()->find($tag)) : ?>
+                        <li><a href="<?=$tagSite->url() ?>" class="btn btn--secondary"><span><?=$tagSite->title() ?></span></a></li>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
         </div>
