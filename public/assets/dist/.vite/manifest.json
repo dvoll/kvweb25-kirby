@@ -16,12 +16,12 @@
     "src": "src/fonts/sourcesanspro/SourceSansPro-Regular.otf"
   },
   "src/main.ts": {
-    "file": "main-B30ad_jo.js",
+    "file": "main-Z5YOcO3u.js",
     "name": "main",
     "src": "src/main.ts",
     "isEntry": true,
     "css": [
-      "main-DO9ihNLe.css"
+      "main-TV62DWGf.css"
     ],
     "assets": [
       "RobotoFlex-VariableFont_GRAD_XOPQ_XTRA_YOPQ_YTAS_YTDE_YTFI_YTLC_YTUC_opsz_slnt_wdth_wght-DJo2p2gK.ttf",
