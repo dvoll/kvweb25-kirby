@@ -72,7 +72,7 @@ $page = $event->category()->isNotEmpty() ? $site->find('freizeiten/' . $event->c
             </div>
         </div>
     </div>
-    <dialog x-ref="eventModal" class="any-modal m-auto w-full max-w-[calc(100%-1rem)] md:max-w-xl rounded-2xl shadow-gallery-image bg-baseline" x-on:close="modalOpen = false" x-effect="
+    <dialog x-ref="eventModal" class="any-modal m-auto w-full max-w-[calc(100%-1rem)] md:max-w-[40rem] rounded-2xl shadow-gallery-image bg-baseline" x-on:close="modalOpen = false" x-effect="
         if (modalOpen) {
             console.log('open modal');
             $el.showModal();
