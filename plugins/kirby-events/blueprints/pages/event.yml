@@ -22,6 +22,11 @@ icon: draft
 # image:
 
 fields:
+  info:
+    type: info
+    label: Informationen zu Terminen
+    text: 'Diese Informationen werden aus dem verknüpften Google Kalender abgerufen und können daher hier **nicht bearbeitet werden**.'
+    theme: warning
   title:
     type: text
   location:
@@ -42,5 +47,7 @@ fields:
     type: text
   category:
     type: text
+  isAllDay:
+    type: toggle
 
 
