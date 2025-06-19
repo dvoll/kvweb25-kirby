@@ -6,6 +6,13 @@ image:
   back: 'var(--theme-accent)'
   color: 'var(--theme-primary)'
 
+buttons:
+  - robots
+  - settings
+  - status
+  - preview
+  - open
+
 tabs:
   pages: false
   model: false
