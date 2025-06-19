@@ -54,6 +54,7 @@ tabs:
             flip: true
             info: "{{ page.date.toDate('d.m.Y') }}"
             parent: site.find('blog') ?? site.children.template('blogposts').first
+            sortBy: 'date asc'
             templates:
               - blogpost
   seo:
