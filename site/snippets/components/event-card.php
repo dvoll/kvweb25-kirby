@@ -2,73 +2,92 @@
 
 /**
  * @var dvll\KirbyEvents\Models\EventPage $event
+ * @var Kirby\Cms\Site $site
  */
 
+use dvll\KirbyEvents\Models\EventPage;
 use Kirby\Toolkit\Html;
+
+
+/** @var Kirby\Content\Field $eventTitle */
+$eventTitle = $event->content()->get('title');
+$eventSlug = $event->slug();
 
 $teaser = $teaser ?? false;
 $buttonLabel = $buttonLabel ?? 'Termin öffnen';
-$eventUrl = url('/termine', ['params' => ['event' => $event->slug()]]);
+$eventUrl = url('/termine', ['params' => ['event' => $eventSlug]]);
 $showGoToOverviewButton = $showGoToOverviewButton ?? true;
-$isOpen = $isOpen ?? false;
+$isInitiallyOpen = $isInitiallyOpen ?? false;
 
 $blogpost = $event->getConnectedBlogpost();
 
-$page = $event->category()->isNotEmpty() ? $site->find('freizeiten/' . $event->category()) : null;
 
-?>
-<div class="flex flex-col" x-data="{modalOpen: <?= $isOpen ? 'true' : 'false' ?>}">
+/** @var Kirby\Content\Field $eventCategory */
+$eventCategory = $event->content()->get('category');
+/** @var Kirby\Content\Field $eventLocation */
+$eventLocation = $event->content()->get('location');
+/** @var Kirby\Content\Field $eventDescription */
+$eventDescription = $event->content()->get('description');
+
+$eventStartDate = $event->getStartDate();
+$eventEndDateOnly = $event->getEndDateOnly(useCorrection: true);
+$eventStartDay = $eventStartDate->format('d');
+$eventEndDateTime = $event->getEndDateTime();
+
+$page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategory) : null;
+
+
+            ?>
+<div class="flex flex-col" x-data="{modalOpen: <?= $isInitiallyOpen ? 'true' : 'false' ?>}">
     <div class="card card--with-hover flex flex-col relative h-full">
         <a <?= Html::attr([
                 'href' => $eventUrl,
                 'class' => 'absolute inset-0',
                 'aria-hidden' => 'true',
                 'tabindex' => '-1',
-                'title' => 'Zu den Termindetails von: ' . $event->title(),
+                'title' => 'Zu den Termindetails von: ' . $eventTitle->escape(),
             ]) ?>
             @click.prevent.stop="modalOpen = true"></a>
         <div class="grid grid-cols-[auto_1fr] grid-rows-[1fr_auto_minmax(auto,2fr)_auto] h-full">
             <div class="row-span-4 bg-offwhite px-4 @min-card-small-md:px-4 py-4 flex flex-col items-center justify-center @min-card-small-md:min-w-[90px]">
-                <span class="ml-1 font-style font-semibold text-contrast text-3xl"><?= date('d', $event->getStartDate()) ?>.</span>
-                <span class="font-style font-semibold text-contrast text-sm leading-3.5"><?= $event->getStartDateMonthString(cut: true) ?></span>
-                <?php if ($event->showAsFullDayEventWithoutTime()): ?>
-                    <?php if ($event->hasMultipleDays()): ?>
-                        <span class="font-style font-semibold text-contrast text-base leading-4">–</span>
-                        <span class="ml-1 font-style font-semibold text-contrast text-3xl"><?= date('d', $event->getEndDate()) ?>.</span>
-                        <span class="font-style font-semibold text-contrast text-sm leading-3.5"><?= $event->getEndDateMonthString(cut: true); ?></span>
-                    <?php endif; ?>
-                <?php else: ?>
-                    <span class="mt-2 font-style font-semibold text-contrast text-lg"><?= date('h:i', $event->getStartDate()); ?></span>
+                <span class="ml-1 font-style font-semibold text-contrast text-3xl"><?= $eventStartDay ?>.</span>
+                <span class="font-style font-semibold text-contrast text-sm leading-3.5"><?= EventPage::getMonthString($eventStartDate, cut: true) ?></span>
+                <?php if ($event->hasMultipleDays()): ?>
+                    <span class="font-style font-semibold text-contrast text-base leading-4">–</span>
+                    <span class="ml-1 font-style font-semibold text-contrast text-3xl"><?= date('d', $eventEndDateOnly) ?>.</span>
+                    <span class="font-style font-semibold text-contrast text-sm leading-3.5"><?= EventPage::getMonthString($eventEndDateOnly, cut: true); ?></span>
+                <?php elseif (!$event->isAllDayEvent()): ?>
+                    <span class="mt-2 font-style font-semibold text-contrast text-lg"><?= $eventStartDate->format('H:i') ?></span>
                     <span class="font-style font-semibold text-contrast text-sm leading-3.5">Uhr</span>
                 <?php endif; ?>
             </div>
             <div class="col-start-2 row-start-2 px-3 @min-card-md:px-4 flex flex-col">
-                <h3 class="heading-lv3 text-contrast pr-4"><?= $event->title()->excerpt(42) ?></h3>
+                <h3 class="heading-lv3 text-contrast pr-4"><?= $eventTitle->excerpt(42) ?></h3>
             </div>
             <div class="col-start-2 row-start-3 px-3 @min-card-md:px-4 pb-1 flex flex-row flex-wrap-reverse items-center gap-x-2 gap-y-1">
-                <?php if ($event->category()->isNotEmpty()): ?>
+                <?php if ($eventCategory->isNotEmpty()): ?>
                     <span class="block font-body text-sm text-contrast bg-secondary px-2 rounded-md">
-                        <?= $event->category() ?>
+                        <?= $eventCategory ?>
                     </span>
                 <?php endif; ?>
-                <?php if ($event->location()->isNotEmpty()): ?>
+                <?php if ($eventLocation->isNotEmpty()): ?>
                     <p class="font-body text-sm text-gray-600 flex items-center gap-0.5">
                         <?= snippet('elements/icon', ['icon' => 'location', 'class' => 'size-4']) ?>
-                        <?= $event->location()->excerpt(34) ?>
+                        <?= $eventLocation->excerpt(34) ?>
                     </p>
                 <?php endif; ?>
-                <?php if ($event->category()->isEmpty() && $event->location()->isEmpty() && $event->description()->isNotEmpty()): ?>
+                <?php if ($eventCategory->isEmpty() && $eventLocation->isEmpty() && $eventDescription->isNotEmpty()): ?>
                     <p class="font-body text-sm text-gray-600">
-                        <?= $event->description()->excerpt(34) ?>
+                        <?= $eventDescription->excerpt(34) ?>
                     </p>
                 <?php endif; ?>
             </div>
             <div class="col-start-2 row-start-4 justify-self-end px-3 pb-1.5 @min-card-md:px-4">
                 <a <?= Html::attr([
                         'href' => $eventUrl,
-                        'class' => 'btn btn--ghost ml-auto ' . ($teaser ? 'text-gray-600 text-center' : ''),
-                        'aria-label' => 'Zu den Termindetails von: ' . $event->title(),
-                    ]) ?>><?= $buttonLabel ?><?= snippet('elements/icon') ?></a>
+                        'class' => 'btn btn--ghost ml-auto ',
+                        'aria-label' => 'Zu den Termindetails von: ' . $eventTitle->escape(),
+                    ]) ?>><?= $buttonLabel ?><?= snippet('elements/icon', ['icon' => 'external']) ?></a>
             </div>
         </div>
     </div>
@@ -76,10 +95,10 @@ $page = $event->category()->isNotEmpty() ? $site->find('freizeiten/' . $event->c
         if (modalOpen) {
             console.log('open modal');
             $el.showModal();
-            // history.replaceState(null, '', '/termine/event:<?= $event->slug() ?>');
+            // history.replaceState(null, '', '/termine/event:<?= $eventSlug ?>');
             if ('URLSearchParams' in window) {
                 const url = new URL(window.location);
-                url.searchParams.set('event', '<?= $event->slug() ?>');
+                url.searchParams.set('event', '<?= $eventSlug ?>');
                 url.searchParams.delete('event-page-set');
                 history.replaceState(null, '' , url);
             }
@@ -87,7 +106,7 @@ $page = $event->category()->isNotEmpty() ? $site->find('freizeiten/' . $event->c
             console.log('close modal');
             $el.close();
             const url = new URL(window.location);
-            if (url.searchParams.get('event') === '<?= $event->slug() ?>') {
+            if (url.searchParams.get('event') === '<?= $eventSlug ?>') {
                 url.searchParams.delete('event');
                 url.searchParams.delete('event-page-set');
                 history.replaceState(null, '' , url);
@@ -96,11 +115,11 @@ $page = $event->category()->isNotEmpty() ? $site->find('freizeiten/' . $event->c
         <div class=" pb-4" @click.outside="if (modalOpen) modalOpen = false">
             <div class="bg-offwhite flex flex-col items-start pl-4 md:pl-12 pr-4 md:pr-5 pt-4 pb-4 gap-2 sticky top-0">
                 <button autofocus class="self-end btn btn--ghost hover:bg-tertiary hover:text-baseline" @click="modalOpen = false">Schließen<?= snippet('elements/icon', ['icon' => 'external']) ?></button>
-                <h3 class="heading-lv3 text-contrast"><?= $event->title() ?></h3>
-                <?php if ($event->location()->isNotEmpty()): ?>
+                <h3 class="heading-lv3 text-contrast"><?= $eventTitle->escape() ?></h3>
+                <?php if ($eventLocation->isNotEmpty()): ?>
                     <p class="font-body text-sm text-gray-600 flex items-center gap-0.5">
                         <?= snippet('elements/icon', ['icon' => 'location', 'class' => 'size-4 shrink-0']) ?>
-                        <?= $event->location() ?>
+                        <?= $eventLocation ?>
                     </p>
                 <?php endif; ?>
             </div>
@@ -108,38 +127,38 @@ $page = $event->category()->isNotEmpty() ? $site->find('freizeiten/' . $event->c
                 <div class="flex flex-col gap-4 items-start shrink-0">
                     <p class="font-style text-contrast text-base">
                         <?php if ($event->isAllDayEvent()): ?>
-                            <span class="font-semibold"><?= $event->getStartDateWeekdayString(); ?>, <?= date('d', $event->getStartDate()) ?>. <?= $event->getStartDateMonthString(); ?></span>
+                            <span class="font-semibold"><?= EventPage::getDateWeekdayString($eventStartDate); ?>, <?= $eventStartDay ?>. <?= EventPage::getMonthString($eventStartDate); ?></span>
                             <?php if ($event->hasMultipleDays()): ?>
                                 <br>
-                                <span class="font-normal text-sm">bis <?= $event->getEndDateWeekdayString(); ?>, <?= date('d', $event->getEndDate()) ?>. <?= $event->getEndDateMonthString(); ?></span>
+                                <span class="font-normal text-sm">bis <?= EventPage::getDateWeekdayString($eventEndDateOnly); ?>, <?= date('d', $eventEndDateOnly); ?>. <?= EventPage::getMonthString($eventEndDateOnly); ?></span>
                             <?php endif; ?>
                         <?php else: ?>
                             <?php if ($event->hasMultipleDays()): ?>
-                                <span class="font-semibold"><?= date('d', $event->getStartDate()) ?>. <?= $event->getStartDateMonthString(); ?>, <?= date('h:i', $event->getStartDate()); ?> Uhr</span>
+                                <span class="font-semibold"><?= $eventStartDay ?>. <?= EventPage::getMonthString($eventStartDate); ?>, <?= $eventStartDate->format('H:i') ?> Uhr</span>
                                 <br>
-                                <span class="font-normal text-sm">bis <?= date('d', $event->getEndDate()) ?>. <?= $event->getEndDateMonthString(); ?>, <?= date('h:i', $event->getEndDate()); ?> Uhr</span>
+                                <span class="font-normal text-sm">bis <?= $eventEndDateTime->format('d') ?>. <?= EventPage::getMonthString($eventEndDateTime); ?>, <?= $eventEndDateTime->format('H:i') ?> Uhr</span>
                             <?php else: ?>
-                                <span class="font-semibold"><?= $event->getStartDateWeekdayString(); ?>, <?= date('d', $event->getStartDate()) ?>. <?= $event->getStartDateMonthString(); ?></span>
+                                <span class="font-semibold"><?= EventPage::getDateWeekdayString($eventStartDate); ?>, <?= $eventStartDay ?>. <?= EventPage::getMonthString($eventStartDate); ?></span>
                                 <br>
-                                <span class="font-normal text-sm"><?= date('h:i', $event->getStartDate()); ?> Uhr bis <?= date('h:i', $event->getEndDate()); ?> Uhr</span>
+                                <span class="font-normal text-sm"><?= $eventStartDate->format('H:i') ?> Uhr bis <?= $eventEndDateTime->format('H:i') ?> Uhr</span>
                             <?php endif; ?>
                         <?php endif; ?>
                     </p>
-                    <?php if ($event->category()->isNotEmpty()): ?>
+                    <?php if ($eventCategory->isNotEmpty()): ?>
                         <span class="block font-body text-sm text-contrast bg-secondary px-2 rounded-md">
-                            <?= $event->category() ?>
+                            <?= $eventCategory ?>
                         </span>
                     <?php endif; ?>
                 </div>
                 <div class="w-full flex flex-col gap-4 items-start">
-                    <?php if ($event->description()->isNotEmpty()): ?>
+                    <?php if ($eventDescription->isNotEmpty()): ?>
                         <p class="font-body text-base text-contrast">
-                            <?= $event->description() ?>
+                            <?= $eventDescription ?>
                         </p>
                     <?php endif; ?>
                     <div class="flex flex-col gap-2 items-start">
                         <p class="font-style text-contrast text-sm font-semibold">Für den eigenen Kalender:</p>
-                        <a href="/termine/<?= $event->slug() ?>.ics" download="<?= $event->slug() ?>.ics" class="btn btn--secondary">Termin als Datei herunterladen<?= snippet('elements/icon', ['icon' => 'download']) ?></a>
+                        <a href="/termine/<?= $eventSlug ?>.ics" download="<?= $eventSlug ?>.ics" class="btn btn--secondary">Termin als Datei herunterladen<?= snippet('elements/icon', ['icon' => 'download']) ?></a>
                         <?php if (!empty($googleCalendarLink)): ?>
                             <a
                                 href="<?= $googleCalendarLink ?>"

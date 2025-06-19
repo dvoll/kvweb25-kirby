@@ -53,7 +53,19 @@ class GoogleCalendarService
 
                 $start = null;
                 if ($startObj) {
-                    $start = $startObj->getDateTime() ?: $startObj->getDate() ?: null;
+                    $dateTime = $startObj->getDateTime();
+                    $timezone = $startObj->getTimeZone() ?? 'Europe/Berlin';
+                    if ($dateTime) {
+                        // Convert to UTC
+                        try {
+                            $dt = new \DateTimeImmutable($dateTime, new \DateTimeZone($timezone));
+                            $start = $dt->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d\TH:i:s\Z');
+                        } catch (\Exception $e) {
+                            $start = $dateTime; // fallback to original if conversion fails
+                        }
+                    } else if ($startObj->getDate()) {
+                        $start = $startObj->getDate();
+                    }
                 }
 
                 $end = null;
@@ -61,17 +73,18 @@ class GoogleCalendarService
                     $end = $endObj->getDateTime() ?: $endObj->getDate() ?: null;
                 }
 
-                $events[] = new \dvll\KirbyEvents\Models\EventEntity([
-                    'id' => $item->getId() ?? null,
-                    'summary' => $item->getSummary() ?? '',
-                    'description' => $item->getDescription() ?? '',
-                    'location' => $item->getLocation() ?? '',
-                    'htmlLink' => $item->getHtmlLink() ?? '',
-                    'start' => $start,
-                    'startDate' => $startObj && $startObj->getDate() ? $startObj->getDate() : null,
-                    'end' => $end,
-                    'endDate' => $endObj ? $endObj->getDate() : null,
-                ]);
+                $events[] = new \dvll\KirbyEvents\Models\EventEntity(
+                    id: $item->getId() ?? null,
+                    summary: $item->getSummary() ?? '',
+                    description: $item->getDescription() ?? '',
+                    location: $item->getLocation() ?? '',
+                    htmlLink: $item->getHtmlLink() ?? '',
+                    start: $start,
+                    startDate: $startObj && $startObj->getDate() ? $startObj->getDate() : null,
+                    end: $end,
+                    endDate: $endObj ? $endObj->getDate() : null,
+                    isAllDay: $startObj && $startObj->getDate() && $endObj && $endObj->getDate(),
+                );
             }
         } catch (\Exception $e) {
             kirbylog('[dvll.kirby-events] Error fetching events from Google Calendar: ' . $e->getMessage(), Helper::KIRBYLOG_LVL_ERROR);

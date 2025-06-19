@@ -107,7 +107,7 @@ App::plugin('dvll/sitepackage', [
                     $eventSlug = get('event', null);
                     $eventPageSet = get('event-page-set', null);
                     if ($eventSlug && empty($eventPageSet)) {
-                        $events = $kirby->page('termine')->children()->published()->sortBy('getStartDate', 'asc');
+                        $events = $kirby->page('termine')->children()->published()->sortBy('start', 'asc');
                         $selectedEvent = $events->filter(fn($event) => $event->slug() === $eventSlug)->first();
                         if ($selectedEvent) {
                             $position = $selectedEvent->indexOf($events);

@@ -5,13 +5,15 @@
  * @var Kirby\Cms\App $kirby
  */
 
+use dvll\KirbyEvents\Models\EventPage;
+use dvll\KirbyEvents\Models\EventsPage;
 use Kirby\Http\Uri;
 
 $paginationLimit = 9;
 
 $selectedEventSlug = get('event', null);
 
-$events = $events = $page->children()->published()->sortBy('getStartDate', 'asc');
+$events = $events = $page->children()->published()->sortBy('start', 'asc');
 
 $events = $events->paginate([
     'limit' => $paginationLimit,
@@ -35,9 +37,9 @@ snippet('layout', slots: true); ?>
 
         foreach ($events as $event):
             /** @var dvll\KirbyEvents\Models\EventPage $event */
-            $timestamp = $event->getStartDate();
-            $month = (int)date('n', $timestamp);
-            $year = (int)date('Y', $timestamp);
+            $dateTime = $event->getStartDate();
+            $month = (int)$dateTime->format('n');
+            $year = (int)$dateTime->format('Y');
             $quarter = (int)floor(($month - 1) / 3) + 1;
             $quarterKey = $year . '-' . $quarter;
 
@@ -57,19 +59,21 @@ snippet('layout', slots: true); ?>
 
                 // Find all events in this quarter (from the paginated set)
                 $quarterEvents = $events->filter(function ($e) use ($year, $quarter) {
-                    $ts = $e->getStartDate();
-                    $m = (int)date('n', $ts);
-                    $y = (int)date('Y', $ts);
+                    $dateTime = $e->getStartDate();
+                    $m = (int)$dateTime->format('n');
+                    $y = (int)$dateTime->format('Y');
                     $q = (int)floor(($m - 1) / 3) + 1;
                     return $y === $year && $q === $quarter;
                 });
 
                 // Use the first and last event in the quarter for the headline
+                /** @var dvll\KirbyEvents\Models\EventPage $firstEvent */
                 $firstEvent = $quarterEvents->first();
+                /** @var dvll\KirbyEvents\Models\EventPage $lastEvent */
                 $lastEvent = $quarterEvents->last();
 
-                $startMonthString = $firstEvent->getStartDateMonthString();
-                $endMonthString = $lastEvent->getEndDateMonthString();
+                $startMonthString = EventPage::getMonthString($firstEvent->getStartDate());
+                $endMonthString = EventPage::getMonthString($lastEvent->getEndDateTime());
 
                 $currentYear = (int)date('Y');
                 $showYear = ($year > $currentYear);
@@ -87,13 +91,13 @@ snippet('layout', slots: true); ?>
 <div class="dvll-block dvll-block--wide grid grid-cols-(--dvll-card-grid-cols--small) gap-4 md:gap-6 md:justify-center auto-rows-fr">
 <?php
             endif;
-            $eventLinks = $page->getCalendarLinks($event)
+            $eventLinks = EventPage::getCalendarLinks($event);
 ?>
 <?= snippet('components/event-card', [
                 'event' => $event,
                 'buttonLabel' => 'Termindetails ansehen',
                 'showGoToOverviewButton' => false,
-                'isOpen' => $selectedEventSlug === $event->slug(),
+                'isInitiallyOpen' => $selectedEventSlug === $event->slug(),
                 'googleCalendarLink' => $eventLinks['google'],
                 'outlookCalendarLink' => $eventLinks['outlook'],
             ]) ?>

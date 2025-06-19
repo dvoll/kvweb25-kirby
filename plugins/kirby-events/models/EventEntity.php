@@ -12,21 +12,44 @@ class EventEntity
     public ?string $startDate;
     public ?string $end;
     public ?string $endDate;
+    public bool $isAllDay;
 
     /**
-     * @param array<string, mixed> $data
+     *
+     * @param string $id
+     * @param string $summary
+     * @param null|string $description
+     * @param null|string $location
+     * @param null|string $htmlLink
+     * @param null|string $start
+     * @param null|string $startDate
+     * @param null|string $end
+     * @param null|string $endDate
+     * @param bool $isAllDay
+     * @return void
      */
-    public function __construct(array $data)
-    {
-        $this->id = $data['id'] ?? '';
-        $this->summary = $data['summary'] ?? '';
-        $this->description = $data['description'] ?? null;
-        $this->location = $data['location'] ?? null;
-        $this->htmlLink = $data['htmlLink'] ?? null;
-        $this->start = $data['start'] ?? null;
-        $this->startDate = $data['startDate'] ?? null;
-        $this->end = $data['end'] ?? null;
-        $this->endDate = $data['endDate'] ?? null;
+    public function __construct(
+        string $id,
+        string $summary,
+        ?string $description = null,
+        ?string $location = null,
+        ?string $htmlLink = null,
+        ?string $start = null,
+        ?string $startDate = null,
+        ?string $end = null,
+        ?string $endDate = null,
+        bool $isAllDay = false
+    ) {
+        $this->id = $id;
+        $this->summary = $summary;
+        $this->description = $description;
+        $this->location = $location;
+        $this->htmlLink = $htmlLink;
+        $this->start = $start;
+        $this->startDate = $startDate;
+        $this->end = $end;
+        $this->endDate = $endDate;
+        $this->isAllDay = $isAllDay;
     }
 
     /**
