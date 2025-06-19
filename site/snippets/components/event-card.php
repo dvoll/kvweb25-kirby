@@ -7,7 +7,7 @@
 
 use dvll\KirbyEvents\Models\EventPage;
 use Kirby\Toolkit\Html;
-
+use Kirby\Toolkit\Str;
 
 /** @var Kirby\Content\Field $eventTitle */
 $eventTitle = $event->content()->get('title');
@@ -15,7 +15,7 @@ $eventSlug = $event->slug();
 
 $teaser = $teaser ?? false;
 $buttonLabel = $buttonLabel ?? 'Termin öffnen';
-$eventUrl = url('/termine', ['params' => ['event' => $eventSlug]]);
+$eventUrl = url('/termine', ['query' => ['event' => $eventSlug]]);
 $showGoToOverviewButton = $showGoToOverviewButton ?? true;
 $isInitiallyOpen = $isInitiallyOpen ?? false;
 
@@ -37,7 +37,7 @@ $eventEndDateTime = $event->getEndDateTime();
 $page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategory) : null;
 
 
-            ?>
+?>
 <div class="flex flex-col" x-data="{modalOpen: <?= $isInitiallyOpen ? 'true' : 'false' ?>}">
     <div class="card card--with-hover flex flex-col relative h-full">
         <a <?= Html::attr([
@@ -62,7 +62,7 @@ $page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategor
                 <?php endif; ?>
             </div>
             <div class="col-start-2 row-start-2 px-3 @min-card-md:px-4 flex flex-col">
-                <h3 class="heading-lv3 text-contrast pr-4"><?= $eventTitle->excerpt(42) ?></h3>
+                <h3 class="heading-lv3 text-contrast pr-4"><?= Str::excerpt($eventTitle->escape(), 38) ?></h3>
             </div>
             <div class="col-start-2 row-start-3 px-3 @min-card-md:px-4 pb-1 flex flex-row flex-wrap-reverse items-center gap-x-2 gap-y-1">
                 <?php if ($eventCategory->isNotEmpty()): ?>
@@ -83,11 +83,12 @@ $page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategor
                 <?php endif; ?>
             </div>
             <div class="col-start-2 row-start-4 justify-self-end px-3 pb-1.5 @min-card-md:px-4">
-                <a <?= Html::attr([
-                        'href' => $eventUrl,
+                <button <?= Html::attr([
                         'class' => 'btn btn--ghost ml-auto ',
-                        'aria-label' => 'Zu den Termindetails von: ' . $eventTitle->escape(),
-                    ]) ?>><?= $buttonLabel ?><?= snippet('elements/icon', ['icon' => 'external']) ?></a>
+                        'aria-label' => 'Dialog mit Termindetails von: ' . $eventTitle->escape() . ' öffnen.',
+                    ]) ?>
+                    @click.prevent.stop="modalOpen = true"
+                    ><?= $buttonLabel ?><?= snippet('elements/icon', ['icon' => 'external']) ?></button>
             </div>
         </div>
     </div>
@@ -153,7 +154,7 @@ $page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategor
                 <div class="w-full flex flex-col gap-4 items-start">
                     <?php if ($eventDescription->isNotEmpty()): ?>
                         <p class="font-body text-base text-contrast">
-                            <?= $eventDescription ?>
+                            <?= $eventDescription->value(); // Description is trusted here ?>
                         </p>
                     <?php endif; ?>
                     <div class="flex flex-col gap-2 items-start">
@@ -163,15 +164,13 @@ $page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategor
                             <a
                                 href="<?= $googleCalendarLink ?>"
                                 target="_blank"
-                                class="btn btn--secondary"
-                            >Zum Google Kalender hinzufügen<?= snippet('elements/icon', ['icon' => 'external']) ?></a>
+                                class="btn btn--secondary">Zum Google Kalender hinzufügen<?= snippet('elements/icon', ['icon' => 'external']) ?></a>
                         <?php endif; ?>
                         <?php if (!empty($outlookCalendarLink)): ?>
                             <a
                                 href="<?= $outlookCalendarLink ?>"
                                 target="_blank"
-                                class="btn btn--secondary"
-                            >Zum Outlook Kalender hinzufügen<?= snippet('elements/icon', ['icon' => 'external']) ?></a>
+                                class="btn btn--secondary">Zum Outlook Kalender hinzufügen<?= snippet('elements/icon', ['icon' => 'external']) ?></a>
                         <?php endif; ?>
                     </div>
                 </div>
