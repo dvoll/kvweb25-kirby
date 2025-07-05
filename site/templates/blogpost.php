@@ -98,19 +98,27 @@ snippet('layout', slots: true); ?>
         </div>
     </div>
 </section>
-<section class="dvll-section">
-    <div class="dvll-section__layout">
-        <div class="dvll-block dvll-block--narrow">
-            <p class="font-style font-semibold text-sm text-gray-500 mb-1">Schlagworte</p>
-            <ul class="flex flex-wrap gap-2">
-                <?php foreach ($tags = $page->selectedTags() as $tag): ?>
-                    <?php if ($tag->page()->isNotEmpty() && ($tagSite = $tag->page()->toPage())) : ?>
-                        <li><a href="<?=$tagSite->url() ?>" class="btn btn--secondary"><span><?=$tagSite->title() ?></span></a></li>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </ul>
+<?php if (($selectedTags = $page->selectedTags()) && $selectedTags->isNotEmpty()): ?>
+    <section class="dvll-section">
+        <div class="dvll-section__layout">
+            <div class="dvll-block dvll-block--narrow">
+                <p class="font-style font-semibold text-sm text-gray-500 mb-1">Schlagworte</p>
+                <ul class="flex flex-wrap gap-2">
+                    <?php foreach ($selectedTags as $tag): ?>
+                        <li>
+                            <?php if ($tag->page()->isNotEmpty() && ($tagSite = $tag->page()->toPage())) : ?>
+                                <a href="<?= $tagSite->url() ?>" class="btn btn--secondary"><span><?= $tagSite->title() ?></span></a>
+                            <?php else: ?>
+                                <span class="block font-style text-sm text-contrast bg-secondary px-2 py-1 rounded-sm italic">
+                                    <?= $tag->name()->escape() ?>
+                                </span>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
 <?php snippet('core/layouts'); ?>
 <?php endsnippet() ?>
