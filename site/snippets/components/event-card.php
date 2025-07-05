@@ -6,6 +6,7 @@
  */
 
 use dvll\KirbyEvents\Models\EventPage;
+use dvll\Sitepackage\Helpers\UuidSelectFieldHelper;
 use Kirby\Toolkit\Html;
 use Kirby\Toolkit\Str;
 
@@ -24,6 +25,8 @@ $blogpost = $event->getConnectedBlogpost();
 
 /** @var Kirby\Content\Field $eventCategory */
 $eventCategory = $event->content()->get('category');
+$eventMatchingTag = $site->tags()->toStructure()->findBy('customuuid', $eventCategory->value());
+
 /** @var Kirby\Content\Field $eventLocation */
 $eventLocation = $event->content()->get('location');
 /** @var Kirby\Content\Field $eventDescription */
@@ -34,7 +37,7 @@ $eventEndDateOnly = $event->getEndDateOnly(useCorrection: true);
 $eventStartDay = $eventStartDate->format('d');
 $eventEndDateTime = $event->getEndDateTime();
 
-$page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategory) : null;
+$page = ($eventMatchingTag && $eventMatchingTag->isNotEmpty()) ? $eventMatchingTag->page()->toPage() : null;
 
 
 ?>
@@ -65,9 +68,9 @@ $page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategor
                 <h3 class="heading-lv3 text-contrast pr-4"><?= Str::excerpt($eventTitle->escape(), 38) ?></h3>
             </div>
             <div class="col-start-2 row-start-3 px-3 @min-card-md:px-4 pb-1 flex flex-row flex-wrap-reverse items-center gap-x-2 gap-y-1">
-                <?php if ($eventCategory->isNotEmpty()): ?>
+                <?php if ($eventMatchingTag && $eventMatchingTag->isNotEmpty()): ?>
                     <span class="block font-body text-sm text-contrast bg-secondary px-2 rounded-md">
-                        <?= $eventCategory ?>
+                        <?= $eventMatchingTag->name()->escape() ?>
                     </span>
                 <?php endif; ?>
                 <?php if ($eventLocation->isNotEmpty()): ?>
@@ -76,7 +79,7 @@ $page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategor
                         <?= $eventLocation->excerpt(34) ?>
                     </p>
                 <?php endif; ?>
-                <?php if ($eventCategory->isEmpty() && $eventLocation->isEmpty() && $eventDescription->isNotEmpty()): ?>
+                <?php if ((!$eventMatchingTag || $eventMatchingTag->isEmpty()) && $eventLocation->isEmpty() && $eventDescription->isNotEmpty()): ?>
                     <p class="font-body text-sm text-gray-600">
                         <?= $eventDescription->excerpt(34) ?>
                     </p>
@@ -84,11 +87,10 @@ $page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategor
             </div>
             <div class="col-start-2 row-start-4 justify-self-end px-3 pb-1.5 @min-card-md:px-4">
                 <button <?= Html::attr([
-                        'class' => 'btn btn--ghost ml-auto ',
-                        'aria-label' => 'Dialog mit Termindetails von: ' . $eventTitle->escape() . ' öffnen.',
-                    ]) ?>
-                    @click.prevent.stop="modalOpen = true"
-                    ><?= $buttonLabel ?><?= snippet('elements/icon', ['icon' => 'external']) ?></button>
+                            'class' => 'btn btn--ghost ml-auto ',
+                            'aria-label' => 'Dialog mit Termindetails von: ' . $eventTitle->escape() . ' öffnen.',
+                        ]) ?>
+                    @click.prevent.stop="modalOpen = true"><?= $buttonLabel ?><?= snippet('elements/icon', ['icon' => 'external']) ?></button>
             </div>
         </div>
     </div>
@@ -145,16 +147,21 @@ $page = $eventCategory->isNotEmpty() ? $site->find('freizeiten/' . $eventCategor
                             <?php endif; ?>
                         <?php endif; ?>
                     </p>
-                    <?php if ($eventCategory->isNotEmpty()): ?>
-                        <span class="block font-body text-sm text-contrast bg-secondary px-2 rounded-md">
-                            <?= $eventCategory ?>
-                        </span>
+                    <?php if ($eventMatchingTag && $eventMatchingTag->isNotEmpty()): ?>
+                        <?php if ($page && $page->isNotEmpty()): ?>
+                            <a href="<?= $page->url() ?>" class="btn btn--secondary"><span><?= $page->title() ?></span></a>
+                        <? else: ?>
+                            <span class="block font-body text-sm text-contrast bg-secondary px-2 rounded-md">
+                                <?= $eventMatchingTag->name()->escape() ?>
+                            </span>
+                        <? endif; ?>
                     <?php endif; ?>
                 </div>
                 <div class="w-full flex flex-col gap-4 items-start">
                     <?php if ($eventDescription->isNotEmpty()): ?>
                         <p class="font-body text-base text-contrast">
-                            <?= $eventDescription->value(); // Description is trusted here ?>
+                            <?= $eventDescription->value(); // Description is trusted here
+                            ?>
                         </p>
                     <?php endif; ?>
                     <div class="flex flex-col gap-2 items-start">

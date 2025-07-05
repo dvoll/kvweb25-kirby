@@ -58,6 +58,11 @@ columns:
             label: Hauptseite
             multiple: false
             query: site.index.filterBy('template', 'in', ['layout', 'camp'])
+          alternatives:
+            type: entries
+            label: Alternative Schreibweisen
+            field:
+              type: text
       infoTags:
         label: Informationen zu Schlagwörtern und Terminen
         type: info

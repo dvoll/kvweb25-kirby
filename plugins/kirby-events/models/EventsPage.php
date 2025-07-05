@@ -6,7 +6,6 @@ use Kirby\Toolkit\Str;
 use Kirby\Uuid\Uuid;
 use Pages;
 use dvll\KirbyEvents\Services\GoogleCalendarService;
-use dvll\KirbyEvents\Services\EventCategoryMatcher;
 use dvll\KirbyEvents\Services\MockGoogleCalendarService;
 use dvll\Sitepackage\Helpers\Helper;
 use dvll\Sitepackage\Models\CustomBasePage;
@@ -52,42 +51,37 @@ class EventsPage extends CustomBasePage
             $events = GoogleCalendarService::fetchEvents();
         }
         $pages = [];
+        $categories = [];
+        foreach(site()->tags()->toStructure() as $tag) {
+            $categories[$tag->name()->value()] = $tag->customuuid()->value();
+            if ($tag->alternatives()->isNotEmpty()) {
+                foreach ($tag->alternatives()->toEntries() as $alternative) {
+                    $categories[$alternative->value()] = $tag->customuuid()->value();
+                }
+            }
+        }
         foreach ($events as $key => $event) {
             if (!$event->summary && !$event->start) {
                 continue; // Skip events without a summary
             }
 
             // Check for explicit category in description: [<category>]
-            $explicitCategory = null;
+            $explicitCategoryUuid = null;
             $description = $event->description ?? '';
             if (preg_match('/\[([^\]]+)\]/', $description, $matches)) {
                 $possibleCategory = trim($matches[1]);
-                if (array_key_exists($possibleCategory, \dvll\KirbyEvents\Models\EventEntity::$categoryWordMap)) {
-                    $explicitCategory = $possibleCategory;
+                if (array_key_exists($possibleCategory, $categories)) {
+                    $explicitCategoryUuid = $categories[$possibleCategory];
                     // Remove the first occurrence of [<category>] from the description
                     $description = preg_replace('/\[([^\]]+)\]/', '', $description, 1);
                     $description = trim($description);
                 }
             }
 
-            // Always perform matching for logging
-            $matchedCategory = EventCategoryMatcher::detectCategory($event->summary ?? '', $description, \dvll\KirbyEvents\Models\EventEntity::$categoryWordMap);
-
             $slug = Str::slug(A::join([
                 $event->start ? date('Y-m-d', strtotime($event->start)) : Str::substr($event->id, 0, 10),
                 $event->summary
             ]));
-
-            if ($matchedCategory === null) {
-                kirbylog('[dvll.kirby-events] No matching category found for event: ' . $slug);
-            } else if ($explicitCategory && $explicitCategory !== $matchedCategory) {
-                kirbylog('[dvll.kirby-events] Explicit category MISMATCH: ' . $explicitCategory . ' vs ' . $matchedCategory . ' for event: ' . $slug);
-            } elseif ($explicitCategory && $explicitCategory === $matchedCategory) {
-                kirbylog('[dvll.kirby-events] Explicit category match: ' . $explicitCategory . ' for event: ' . $slug);
-            } else {
-                kirbylog('[dvll.kirby-events] Event category match: ' . $slug . ' => ' . $matchedCategory);
-            }
-            // Log the matching result
 
             $pages[] = [
                 'slug'     => $slug,
@@ -103,7 +97,7 @@ class EventsPage extends CustomBasePage
                     'endDate'     => $event->endDate,
                     'url'         => $event->htmlLink,
                     'uuid'        => $event->id ? 'event-' . $event->id : Uuid::generate(),
-                    'category'    => $explicitCategory ?? $matchedCategory, // Use explicit if present
+                    'category'    => $explicitCategoryUuid,
                     'isAllDay'    => $event->isAllDay,
                 ]
             ];
