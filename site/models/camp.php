@@ -1,12 +1,10 @@
 <?php
 
-use dvll\Sitepackage\Models\ContactHelper;
+use dvll\Sitepackage\Helpers\ContactsFieldHelper;
 use dvll\Sitepackage\Models\CustomBasePage;
-use dvll\Sitepackage\Models\WithTeaserContentInterface;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
 use Kirby\Cms\Files;
-use Kirby\Cms\Page;
 
 class CampPage extends CustomBasePage
 {
@@ -19,7 +17,9 @@ class CampPage extends CustomBasePage
     #[\Override]
     public function myTeaserImage(): ?File
     {
-        return $this->content()->get('heroImage')->toFile();
+        /** @var \Kirby\Content\Field $field */
+        $field = $this->content()->get('heroImage');
+        return $field->toFile();
     }
 
     #[\Override]
@@ -37,17 +37,19 @@ class CampPage extends CustomBasePage
     #[\Override]
     public function myTeaserText(): ?string
     {
-        return $this->content()->get('teaserDescription')->toHtml();
+        /** @var \Kirby\Content\Field $field */
+        $field = $this->content()->get('teaserDescription');
+        return $field->toHtml();
     }
 
     /**
-     * @return array<string, mixed>|null
+     * @return \Kirby\Cms\Collection<\Kirby\Content\Field>|null
      */
-    public function myContacts(): ?array
+    public function myContacts(): ?\Kirby\Cms\Collection
     {
         /** @var \Kirby\Content\Field $contactsField */
         $contactsField = $this->content()->get('contactsSelect');
-        return ContactHelper::getContacts($contactsField);
+        return ContactsFieldHelper::getContacts($contactsField);
     }
 
     /**

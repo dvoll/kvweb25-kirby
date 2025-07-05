@@ -6,18 +6,18 @@
 
 namespace dvll\Sitepackage\Models;
 
+use dvll\Sitepackage\Helpers\ContactsFieldHelper;
 use Kirby\Cms\Block;
-use Kirby\Toolkit\A;
 
 class LayoutWithContactBlock extends Block
 {
     /**
-    * @return array<string, mixed>
+     * @return \Kirby\Cms\Collection<\Kirby\Content\Field>|null
      */
-    public function myContacts(): array
+    public function myContacts(): ?\Kirby\Cms\Collection
     {
         /** @var \Kirby\Content\Field $contactsField */
         $contactsField = $this->content()->get('contactsSelect');
-        return ContactHelper::getContacts($contactsField);
+        return ContactsFieldHelper::getContacts($contactsField);
     }
 }

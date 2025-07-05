@@ -2,6 +2,7 @@
 
 /**
  * @var \Kirby\Content\Field $contact
+ * @var \Kirby\Cms\Collection<\Kirby\Content\Field>|null $contacts
  * @var \Kirby\Cms\File $image
  * @var \Kirby\Cms\User $user
  */
@@ -22,14 +23,12 @@ $showGeneralContact = true;
             </div>
         <?php endif ?>
     </div>
-    <?php if (!empty($contacts) && is_array($contacts) && count($contacts) > 0): ?>
+    <?php if ($contacts && $contacts->isNotEmpty()): ?>
         <div class="flex flex-col gap-6">
-            <?php foreach ($contacts as $contactEntry): ?>
-                <?php if ($contactEntry === null) continue; ?>
-                <?php $contact = $contactEntry->contact()->toObject(); ?>
+            <?php foreach ($contacts as $contact): ?>
                 <div class="flex gap-4 items-start">
                     <?php /** @var \Kirby\Cms\File $image */ ?>
-                    <?php if ($contact->photo() && $image = $contact->photo()->toFile()): ?>
+                    <?php if ($contact->photo()->isNotEmpty() && $image = $contact->photo()->toFile()): ?>
                         <img
                             class="rounded-full shrink-0"
                             alt="Profilbild von <?= $contact->name()->escape() ?>"

@@ -1,6 +1,6 @@
 <?php
 
-use dvll\Sitepackage\Models\ContactHelper;
+use dvll\Sitepackage\Helpers\ContactsFieldHelper;
 use dvll\Sitepackage\Models\CustomBasePage;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
@@ -9,13 +9,13 @@ use Kirby\Cms\Files;
 class BlogpostPage extends CustomBasePage
 {
     /**
-     * @return array<string, mixed>|null
+     * @return \Kirby\Cms\Collection<\Kirby\Content\Field>|null
      */
-    public function myContacts(): ?array
+    public function myContacts(): ?\Kirby\Cms\Collection
     {
         /** @var \Kirby\Content\Field $contactsField */
         $contactsField = $this->content()->get('contactsSelect');
-        return ContactHelper::getContacts($contactsField);
+        return ContactsFieldHelper::getContacts($contactsField);
     }
 
     /**
