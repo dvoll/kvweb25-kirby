@@ -21,7 +21,7 @@ tabs:
     icon: text
     columns:
       main:
-        width: 3/4
+        width: 2/3
         sections:
           stageSection:
             type: fields
@@ -48,7 +48,7 @@ tabs:
               layouts:
                 extends: fields/blocks-layout
       sidebar:
-        width: 1/4
+        width: 1/3
         sections:
           # sidebarSectionIntro:
           #   type: fields

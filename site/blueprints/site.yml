@@ -57,10 +57,10 @@ tabs:
             sortBy: 'date asc'
             templates:
               - blogpost
+  global: programmatic/global-settings
+
   seo:
     label: SEO-Voreinstellungen
     extends: seo/site
-
-  global: programmatic/global-settings
 
   admin: programmatic/admin-tools
