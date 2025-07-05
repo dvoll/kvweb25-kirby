@@ -16,6 +16,7 @@ fields:
       selection: Auswahl
   pages:
     type: pages
+    label: Seitenauswahl
     # query: site.children.listed
     query: site.index.filterBy('intendedTemplate', 'in', ['layout', 'blogposts', 'camps', 'camp', 'events'])
     subpages: false
