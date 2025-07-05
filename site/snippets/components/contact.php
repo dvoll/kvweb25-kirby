@@ -50,10 +50,10 @@ $showGeneralContact = true;
                             <p class="typo italic mb-1"><?= $contact->subject()->html() ?></p>
                         <?php endif ?>
                         <?php if ($contact->email()->isNotEmpty()): ?>
-                            <p class="typo"><a class="flex gap-1 text-sm" href="mailto:<?= $contact->email()->html() ?>"><?= snippet('elements/icon', ['icon' => 'email', 'class' => 'w-4 pt-1']) ?> <?= $contact->email()->html() ?></a></p>
+                            <a class="flex gap-1 text-sm py-0.5" href="mailto:<?= $contact->email()->html() ?>"><?= snippet('elements/icon', ['icon' => 'email', 'class' => 'w-4 pt-1']) ?> <span class="dvll-link dvll-link--small overflow-hidden text-ellipsis text-nowrap"><?= $contact->email()->html() ?></span></a>
                         <?php endif ?>
                         <?php if ($contact->phone()->isNotEmpty()): ?>
-                            <p class="typo"><a class="flex gap-1" href="tel:<?= $contact->phone()->html() ?>"><?= snippet('elements/icon', ['icon' => 'mobilephone', 'class' => 'w-4 pt-1']) ?> <?= $contact->phone()->html() ?></a></p>
+                            <a class="flex gap-1 text-sm py-0.5" href="tel:<?= $contact->phone()->html() ?>"><?= snippet('elements/icon', ['icon' => 'mobilephone', 'class' => 'w-4 pt-1']) ?> <span class="dvll-link dvll-link--small overflow-hidden text-ellipsis text-nowrap"><?= $contact->phone()->html() ?></span></a>
                         <?php endif ?>
                     </div>
                 </div>

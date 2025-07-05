@@ -27,24 +27,29 @@
 
     /* Code for link underline transition. Paste as block style in theme.json */
     .typo--rte a,
-    a.dvll-link {
+    .dvll-link {
         @apply text-gray-950 font-normal;
         transition: color .25s, background-position .5s;
         transition-timing-function: cubic-bezier(.79, .14, .15, .86);
         --a-ln-pos: 100%;
         --a-ln-clr: var(--color-gray-400);
         --a-ln-act-clr: var(--color-primary);
-        background: linear-gradient(90deg, var(--a-ln-act-clr) 0%, var(--a-ln-act-clr) 50%, var(--a-ln-clr) 50.0000001%, var(--a-ln-clr) 100%) var(--a-ln-pos) bottom / 200% 2px no-repeat;
+        --dvll-link-underline-size: 2px;
+        background: linear-gradient(90deg, var(--a-ln-act-clr) 0%, var(--a-ln-act-clr) 50%, var(--a-ln-clr) 50.0000001%, var(--a-ln-clr) 100%) var(--a-ln-pos) bottom / 200% var(--dvll-link-underline-size) no-repeat;
+    }
+
+    .dvll-link--small {
+        --dvll-link-underline-size: 1px;
     }
 
     .typo--rte a:hover,
-    a.dvll-link:hover {
+    .dvll-link:hover {
         --a-ln-pos: 0%;
         @apply text-tertiary;
     }
     /* Hover and focus styles separator because of bug in wordpress */
     .typo--rte a:focus,
-    a.dvll-link:focus {
+    .dvll-link:focus {
         --a-ln-pos: 0%;
     }
 
