@@ -3,39 +3,6 @@ label: Einstellungen
 columns:
   - width: 1
     fields:
-      footerHeadline:
-        label: Footer
-        type: headline
-      footerNavigation:
-        label: Footer Navigation
-        type: structure
-        fields:
-          text:
-            label: Text
-            type: text
-            required: true
-          link:
-            label: Link
-            type: link
-            required: true
-            options:
-              - page
-              - url
-        width: 1/2
-      socialMedia:
-        label: Social Media
-        type: structure
-        width: 1/2
-        fields:
-          service:
-            type: select
-            default: instagram
-            required: true
-            options:
-              instagram: Instagram
-          url:
-            label: URL
-            type: url
       headlineContacts:
         label: Kontaktpersonen
         type: headline
