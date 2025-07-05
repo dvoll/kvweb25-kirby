@@ -6,6 +6,18 @@ use dvll\Sitepackage\Models\CustomBasePage;
 
 class EventPage extends CustomBasePage
 {
+
+    public function getTag() {
+        /** @var Kirby\Content\Field $eventCategory */
+        $eventCategory = $this->content()->get('category');
+        $eventMatchingTag = site()->tags()->toStructure()->findBy('customuuid', $eventCategory->value());
+        return $eventMatchingTag;
+    }
+    public function getTagPage(): ?\Kirby\Cms\Page {
+        $eventMatchingTag = $this->getTag();
+        return ($eventMatchingTag && $eventMatchingTag->isNotEmpty()) ? $eventMatchingTag->page()->toPage() : null;
+    }
+
     public function getStartDate(): \DateTimeImmutable
     {
         /** @var \Kirby\Content\Field $startField */
@@ -26,7 +38,7 @@ class EventPage extends CustomBasePage
 
     public function getBackendTitle(): string
     {
-        return $this->getStartDate()->format('d.m.Y') . ' - ' . $this->title();
+        return $this->getStartDate()->format('d.m.Y') . ' | ' . $this->title();
     }
 
     public function getEndDateTime(): \DateTimeImmutable
@@ -95,13 +107,12 @@ class EventPage extends CustomBasePage
     }
 
 
-    public function getConnectedBlogpost(): ?\Kirby\Cms\Page
+    public function getConnectedBlogposts(): ?\Kirby\Cms\Pages
     {
-        $blogPost = $this->site()->find('blog')->children()->filter(fn($page) => $page->event()->isNotEmpty() &&  $page->event()->value() === "- {$this->uuid()->toString()}")->first();
-        if ($blogPost && $blogPost->isListed()) {
-            return $blogPost;
-        }
-        return null;
+        $blogPosts = $this->site()->find('blog')->children()->listed()->filter(fn($page) => $page->event()->isNotEmpty() &&  array_find_key($page->event()->yaml(), function ($blogpostEventId) {
+            return $blogpostEventId === $this->uuid()->toString();
+        }) !== null );
+        return $blogPosts;
     }
 
     public static function getMonthString(int|\DateTimeInterface $date, bool $cut = false): string

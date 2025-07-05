@@ -20,12 +20,7 @@ $eventUrl = url('/termine', ['query' => ['event' => $eventSlug]]);
 $showGoToOverviewButton = $showGoToOverviewButton ?? true;
 $isInitiallyOpen = $isInitiallyOpen ?? false;
 
-$blogpost = $event->getConnectedBlogpost();
-
-
-/** @var Kirby\Content\Field $eventCategory */
-$eventCategory = $event->content()->get('category');
-$eventMatchingTag = $site->tags()->toStructure()->findBy('customuuid', $eventCategory->value());
+$blogpostPages = $event->getConnectedBlogposts();
 
 /** @var Kirby\Content\Field $eventLocation */
 $eventLocation = $event->content()->get('location');
@@ -37,7 +32,8 @@ $eventEndDateOnly = $event->getEndDateOnly(useCorrection: true);
 $eventStartDay = $eventStartDate->format('d');
 $eventEndDateTime = $event->getEndDateTime();
 
-$page = ($eventMatchingTag && $eventMatchingTag->isNotEmpty()) ? $eventMatchingTag->page()->toPage() : null;
+$eventMatchingTag = $event->getTag();
+$eventTagPage = $event->getTagPage();
 
 
 ?>
@@ -148,8 +144,8 @@ $page = ($eventMatchingTag && $eventMatchingTag->isNotEmpty()) ? $eventMatchingT
                         <?php endif; ?>
                     </p>
                     <?php if ($eventMatchingTag && $eventMatchingTag->isNotEmpty()): ?>
-                        <?php if ($page && $page->isNotEmpty()): ?>
-                            <a href="<?= $page->url() ?>" class="btn btn--secondary"><span><?= $page->title() ?></span></a>
+                        <?php if ($eventTagPage && $eventTagPage->isNotEmpty()): ?>
+                            <a href="<?= $eventTagPage->url() ?>" class="btn btn--secondary"><span><?= $eventTagPage->title() ?></span></a>
                         <? else: ?>
                             <span class="block font-body text-sm text-contrast bg-secondary px-2 rounded-md">
                                 <?= $eventMatchingTag->name()->escape() ?>
@@ -182,27 +178,27 @@ $page = ($eventMatchingTag && $eventMatchingTag->isNotEmpty()) ? $eventMatchingT
                     </div>
                 </div>
             </div>
-            <?php if ($blogpost || $page): ?>
+            <?php if (($blogpostPages && $blogpostPages->count() > 0) || $eventTagPage): ?>
 
                 <div class="mt-12 pl-4 md:pl-12 pr-4 md:pr-8 ">
                     <h3 class="heading-lv3 text-contrast">Weitere Informationen</h3>
                 </div>
                 <div class="px-4 grid grid-cols-1 md:grid-cols-(--dvll-card-grid-cols) gap-4 md:justify-center mt-4">
-
-                    <?php if ($blogpost): ?>
+                    <?php foreach ($blogpostPages as $blogpost): ?>
                         <?= snippet('components/blogpost-card', [
                             'title' => $blogpost->title(),
                             'text' => $blogpost->text()->excerpt(140),
                             'url' => $blogpost->url(),
                         ]) ?>
-                    <?php endif; ?>
-                    <?php if ($page): ?>
+                    <? endforeach; ?>
+
+                    <?php if ($eventTagPage): ?>
                         <?= snippet('components/teaser-card', [
-                            'title' => $page->myTitle(),
-                            'buttonTitle' => $page->title(),
-                            'text' => $page->myTeaserText(),
-                            'image' => $page->myTeaserImage(),
-                            'url' => $page->url(),
+                            'title' => $eventTagPage->myTitle(),
+                            'buttonTitle' => $eventTagPage->title(),
+                            'text' => $eventTagPage->myTeaserText(),
+                            'image' => $eventTagPage->myTeaserImage(),
+                            'url' => $eventTagPage->url(),
                         ]) ?>
                     <?php endif; ?>
 

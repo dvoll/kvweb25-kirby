@@ -50,12 +50,13 @@ tabs:
                 label: Termin verknüpfen
                 query: site.find('termine').children.filterBy("template", "in", ["event"]).sortBy('startDate', 'DESC')
                 layout: cardlets
-                info: "{{ page.category }}"
+                info: "{{ page.getTag ? page.getTag.name : page.location }}"
                 text: "{{ page.getBackendTitle }}"
-                multiple: false
+                multiple: true
                 subpages: false
-                help: "Dieser Beitrag wird am verknüpften Termin angezeigt."
+                help: "Dieser Blogbeitrag wird an den hier ausgewählten Terminen angezeigt."
                 image: false
+                empty: "Keine Termine ausgewählt"
               date:
                 label: Erstellt am
                 type: date
