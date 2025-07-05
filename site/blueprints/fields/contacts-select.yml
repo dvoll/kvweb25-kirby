@@ -3,6 +3,7 @@ label: Kontaktperson(en) auswählen
 max: 4
 field:
   type: select
+  required: true
   options:
     type: query
     query: site.contacts.toStructure
