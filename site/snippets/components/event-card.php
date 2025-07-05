@@ -146,11 +146,11 @@ $eventTagPage = $event->getTagPage();
                     <?php if ($eventMatchingTag && $eventMatchingTag->isNotEmpty()): ?>
                         <?php if ($eventTagPage && $eventTagPage->isNotEmpty()): ?>
                             <a href="<?= $eventTagPage->url() ?>" class="btn btn--secondary"><span><?= $eventTagPage->title() ?></span></a>
-                        <? else: ?>
-                            <span class="block font-body text-sm text-contrast bg-secondary px-2 rounded-md">
+                        <?php else: ?>
+                            <span class="block font-style text-sm text-contrast bg-secondary px-2 py-1 rounded-sm italic">
                                 <?= $eventMatchingTag->name()->escape() ?>
                             </span>
-                        <? endif; ?>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
                 <div class="w-full flex flex-col gap-4 items-start">
@@ -190,7 +190,7 @@ $eventTagPage = $event->getTagPage();
                             'text' => $blogpost->text()->excerpt(140),
                             'url' => $blogpost->url(),
                         ]) ?>
-                    <? endforeach; ?>
+                    <?php endforeach; ?>
 
                     <?php if ($eventTagPage): ?>
                         <?= snippet('components/teaser-card', [
