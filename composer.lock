@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8acb7e2eba41159ec25ca46dc1f7f262",
+    "content-hash": "c7821cb9c799a2dc32fe891fd795b70a",
     "packages": [
         {
             "name": "arnoson/kirby-vite",
-            "version": "5.5.1",
+            "version": "5.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/arnoson/kirby-vite.git",
-                "reference": "864c7600037c5c77cef8863d7f7ace627857b38b"
+                "reference": "dc90a0cb165db094ff0bc505c3b46fea5c351a77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/arnoson/kirby-vite/zipball/864c7600037c5c77cef8863d7f7ace627857b38b",
-                "reference": "864c7600037c5c77cef8863d7f7ace627857b38b",
+                "url": "https://api.github.com/repos/arnoson/kirby-vite/zipball/dc90a0cb165db094ff0bc505c3b46fea5c351a77",
+                "reference": "dc90a0cb165db094ff0bc505c3b46fea5c351a77",
                 "shasum": ""
             },
             "require": {
@@ -42,9 +42,9 @@
             ],
             "support": {
                 "issues": "https://github.com/arnoson/kirby-vite/issues",
-                "source": "https://github.com/arnoson/kirby-vite/tree/v5.5.1"
+                "source": "https://github.com/arnoson/kirby-vite/tree/v5.6.1"
             },
-            "time": "2025-06-10T13:47:27+00:00"
+            "time": "2025-07-02T08:34:47+00:00"
         },
         {
             "name": "christian-riesen/base32",
@@ -506,16 +506,16 @@
         },
         {
             "name": "getkirby/cms",
-            "version": "5.0.0-rc.5",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getkirby/kirby.git",
-                "reference": "b0de6ab333e05fe491f8eb564d9f634749c90be0"
+                "reference": "ddd11f9b4a23e0b5d306b146ca5d6b7a1c1909a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getkirby/kirby/zipball/b0de6ab333e05fe491f8eb564d9f634749c90be0",
-                "reference": "b0de6ab333e05fe491f8eb564d9f634749c90be0",
+                "url": "https://api.github.com/repos/getkirby/kirby/zipball/ddd11f9b4a23e0b5d306b146ca5d6b7a1c1909a9",
+                "reference": "ddd11f9b4a23e0b5d306b146ca5d6b7a1c1909a9",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +541,7 @@
                 "phpmailer/phpmailer": "6.10.0",
                 "symfony/polyfill-intl-idn": "1.32.0",
                 "symfony/polyfill-mbstring": "1.32.0",
-                "symfony/yaml": "7.3.0"
+                "symfony/yaml": "7.3.1"
             },
             "replace": {
                 "symfony/polyfill-php72": "*"
@@ -606,7 +606,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2025-06-17T12:39:55+00:00"
+            "time": "2025-07-03T11:23:56+00:00"
         },
         {
             "name": "getkirby/composer-installer",
@@ -726,7 +726,7 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.399.0",
+            "version": "v0.401.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
@@ -764,7 +764,7 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.399.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.401.0"
             },
             "time": "2025-06-04T17:28:44+00:00"
         },
@@ -1887,16 +1887,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "3.0.44",
+            "version": "3.0.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "1d0b5e7e1434678411787c5a0535e68907cf82d9"
+                "reference": "56483a7de62a6c2a6635e42e93b8a9e25d4f0ec6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/1d0b5e7e1434678411787c5a0535e68907cf82d9",
-                "reference": "1d0b5e7e1434678411787c5a0535e68907cf82d9",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/56483a7de62a6c2a6635e42e93b8a9e25d4f0ec6",
+                "reference": "56483a7de62a6c2a6635e42e93b8a9e25d4f0ec6",
                 "shasum": ""
             },
             "require": {
@@ -1977,7 +1977,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
-                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.44"
+                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.46"
             },
             "funding": [
                 {
@@ -1993,7 +1993,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-15T09:59:26+00:00"
+            "time": "2025-06-26T16:29:55+00:00"
         },
         {
             "name": "psr/cache",
@@ -2826,16 +2826,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v7.3.0",
+            "version": "v7.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "cea40a48279d58dc3efee8112634cb90141156c2"
+                "reference": "0c3555045a46ab3cd4cc5a69d161225195230edb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/cea40a48279d58dc3efee8112634cb90141156c2",
-                "reference": "cea40a48279d58dc3efee8112634cb90141156c2",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/0c3555045a46ab3cd4cc5a69d161225195230edb",
+                "reference": "0c3555045a46ab3cd4cc5a69d161225195230edb",
                 "shasum": ""
             },
             "require": {
@@ -2878,7 +2878,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v7.3.0"
+                "source": "https://github.com/symfony/yaml/tree/v7.3.1"
             },
             "funding": [
                 {
@@ -2894,20 +2894,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-04-04T10:10:33+00:00"
+            "time": "2025-06-03T06:57:57+00:00"
         },
         {
             "name": "tobimori/kirby-seo",
-            "version": "2.0.0-alpha.2",
+            "version": "2.0.0-alpha.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tobimori/kirby-seo.git",
-                "reference": "19fd69342e88453a13b4fe5d3b076f9499bfbd12"
+                "reference": "3c43837e1c39693d9f22ba34cf7d0cae263e84f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tobimori/kirby-seo/zipball/19fd69342e88453a13b4fe5d3b076f9499bfbd12",
-                "reference": "19fd69342e88453a13b4fe5d3b076f9499bfbd12",
+                "url": "https://api.github.com/repos/tobimori/kirby-seo/zipball/3c43837e1c39693d9f22ba34cf7d0cae263e84f6",
+                "reference": "3c43837e1c39693d9f22ba34cf7d0cae263e84f6",
                 "shasum": ""
             },
             "require": {
@@ -2945,7 +2945,7 @@
             "homepage": "https://github.com/tobimori/kirby-seo#readme",
             "support": {
                 "issues": "https://github.com/tobimori/kirby-seo/issues",
-                "source": "https://github.com/tobimori/kirby-seo/tree/2.0.0-alpha.2"
+                "source": "https://github.com/tobimori/kirby-seo/tree/2.0.0-alpha.3"
             },
             "funding": [
                 {
@@ -2953,7 +2953,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-11T14:25:26+00:00"
+            "time": "2025-06-24T14:33:28+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3408,58 +3408,59 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.75.0",
+            "version": "v3.76.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "399a128ff2fdaf4281e4e79b755693286cdf325c"
+                "reference": "0e3c484cef0ae9314b0f85986a36296087432c40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/399a128ff2fdaf4281e4e79b755693286cdf325c",
-                "reference": "399a128ff2fdaf4281e4e79b755693286cdf325c",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/0e3c484cef0ae9314b0f85986a36296087432c40",
+                "reference": "0e3c484cef0ae9314b0f85986a36296087432c40",
                 "shasum": ""
             },
             "require": {
                 "clue/ndjson-react": "^1.0",
                 "composer/semver": "^3.4",
-                "composer/xdebug-handler": "^3.0.3",
+                "composer/xdebug-handler": "^3.0.5",
                 "ext-filter": "*",
                 "ext-hash": "*",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "fidry/cpu-core-counter": "^1.2",
                 "php": "^7.4 || ^8.0",
-                "react/child-process": "^0.6.5",
+                "react/child-process": "^0.6.6",
                 "react/event-loop": "^1.0",
-                "react/promise": "^2.0 || ^3.0",
+                "react/promise": "^2.11 || ^3.0",
                 "react/socket": "^1.0",
                 "react/stream": "^1.0",
-                "sebastian/diff": "^4.0 || ^5.1 || ^6.0 || ^7.0",
-                "symfony/console": "^5.4 || ^6.4 || ^7.0",
-                "symfony/event-dispatcher": "^5.4 || ^6.4 || ^7.0",
-                "symfony/filesystem": "^5.4 || ^6.4 || ^7.0",
-                "symfony/finder": "^5.4 || ^6.4 || ^7.0",
-                "symfony/options-resolver": "^5.4 || ^6.4 || ^7.0",
-                "symfony/polyfill-mbstring": "^1.31",
-                "symfony/polyfill-php80": "^1.31",
-                "symfony/polyfill-php81": "^1.31",
-                "symfony/process": "^5.4 || ^6.4 || ^7.2",
-                "symfony/stopwatch": "^5.4 || ^6.4 || ^7.0"
+                "sebastian/diff": "^4.0.6 || ^5.1.1 || ^6.0.2 || ^7.0",
+                "symfony/console": "^5.4.45 || ^6.4.13 || ^7.0",
+                "symfony/event-dispatcher": "^5.4.45 || ^6.4.13 || ^7.0",
+                "symfony/filesystem": "^5.4.45 || ^6.4.13 || ^7.0",
+                "symfony/finder": "^5.4.45 || ^6.4.17 || ^7.0",
+                "symfony/options-resolver": "^5.4.45 || ^6.4.16 || ^7.0",
+                "symfony/polyfill-mbstring": "^1.32",
+                "symfony/polyfill-php80": "^1.32",
+                "symfony/polyfill-php81": "^1.32",
+                "symfony/process": "^5.4.47 || ^6.4.20 || ^7.2",
+                "symfony/stopwatch": "^5.4.45 || ^6.4.19 || ^7.0"
             },
             "require-dev": {
                 "facile-it/paraunit": "^1.3.1 || ^2.6",
                 "infection/infection": "^0.29.14",
-                "justinrainbow/json-schema": "^5.3 || ^6.2",
-                "keradus/cli-executor": "^2.1",
+                "justinrainbow/json-schema": "^5.3 || ^6.4",
+                "keradus/cli-executor": "^2.2",
                 "mikey179/vfsstream": "^1.6.12",
-                "php-coveralls/php-coveralls": "^2.7",
+                "php-coveralls/php-coveralls": "^2.8",
                 "php-cs-fixer/accessible-object": "^1.1",
                 "php-cs-fixer/phpunit-constraint-isidenticalstring": "^1.6",
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.6",
-                "phpunit/phpunit": "^9.6.22 || ^10.5.45 || ^11.5.12",
-                "symfony/var-dumper": "^5.4.48 || ^6.4.18 || ^7.2.3",
-                "symfony/yaml": "^5.4.45 || ^6.4.18 || ^7.2.3"
+                "phpunit/phpunit": "^9.6.23 || ^10.5.47 || ^11.5.25",
+                "symfony/polyfill-php84": "^1.32",
+                "symfony/var-dumper": "^5.4.48 || ^6.4.23 || ^7.3.1",
+                "symfony/yaml": "^5.4.45 || ^6.4.23 || ^7.3.1"
             },
             "suggest": {
                 "ext-dom": "For handling output formats in XML",
@@ -3500,7 +3501,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.75.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.76.0"
             },
             "funding": [
                 {
@@ -3508,7 +3509,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-31T18:40:42+00:00"
+            "time": "2025-06-30T14:15:06+00:00"
         },
         {
             "name": "lukaskleinschmidt/kirby-types",
@@ -4534,16 +4535,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v7.3.0",
+            "version": "v7.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "66c1440edf6f339fd82ed6c7caa76cb006211b44"
+                "reference": "9e27aecde8f506ba0fd1d9989620c04a87697101"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/66c1440edf6f339fd82ed6c7caa76cb006211b44",
-                "reference": "66c1440edf6f339fd82ed6c7caa76cb006211b44",
+                "url": "https://api.github.com/repos/symfony/console/zipball/9e27aecde8f506ba0fd1d9989620c04a87697101",
+                "reference": "9e27aecde8f506ba0fd1d9989620c04a87697101",
                 "shasum": ""
             },
             "require": {
@@ -4608,7 +4609,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v7.3.0"
+                "source": "https://github.com/symfony/console/tree/v7.3.1"
             },
             "funding": [
                 {
@@ -4624,7 +4625,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-05-24T10:34:04+00:00"
+            "time": "2025-06-27T19:55:54+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
