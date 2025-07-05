@@ -40,7 +40,7 @@ tabs:
               contactsSelect:
                 extends: fields/contacts-select
               tags:
-                extends: fields/tags
+                extends: fields/tags-select
               links:
                 extends: fields/links
               downloads:

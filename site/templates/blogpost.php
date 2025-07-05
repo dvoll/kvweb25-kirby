@@ -103,8 +103,8 @@ snippet('layout', slots: true); ?>
         <div class="dvll-block dvll-block--narrow">
             <p class="font-style font-semibold text-sm text-gray-500 mb-1">Schlagworte</p>
             <ul class="flex flex-wrap gap-2">
-                <?php foreach ($tags = $page->tags()->split(',') as $tag): ?>
-                    <?php if ($tagSite = site()->find($tag)) : ?>
+                <?php foreach ($tags = $page->selectedTags() as $tag): ?>
+                    <?php if ($tag->page()->isNotEmpty() && ($tagSite = $tag->page()->toPage())) : ?>
                         <li><a href="<?=$tagSite->url() ?>" class="btn btn--secondary"><span><?=$tagSite->title() ?></span></a></li>
                     <?php endif; ?>
                 <?php endforeach; ?>

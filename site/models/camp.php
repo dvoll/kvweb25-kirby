@@ -1,6 +1,6 @@
 <?php
 
-use dvll\Sitepackage\Helpers\ContactsFieldHelper;
+use dvll\Sitepackage\Helpers\UuidSelectFieldHelper;
 use dvll\Sitepackage\Models\CustomBasePage;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
@@ -49,7 +49,7 @@ class CampPage extends CustomBasePage
     {
         /** @var \Kirby\Content\Field $contactsField */
         $contactsField = $this->content()->get('contactsSelect');
-        return ContactsFieldHelper::getContacts($contactsField);
+        return UuidSelectFieldHelper::getCollectionForUuids(site()->contacts(), $contactsField, 'name');
     }
 
     /**

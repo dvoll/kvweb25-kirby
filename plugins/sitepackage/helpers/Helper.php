@@ -57,4 +57,25 @@ class Helper
 
         return $value;
     }
+
+    /**
+     * Ensures each item in a structure array has a unique customuuid. If missing or duplicate, generates a new one.
+     * Returns a new array, does not mutate the input.
+     * @param array<string, mixed> $structure The structure array (e.g., from a YAML field)
+     * @return array<string, mixed> The structure array with unique customuuids
+     */
+    public static function ensureUniqueCustomUuids(array $structure): array
+    {
+        $uuids = [];
+        $result = [];
+        foreach ($structure as $index => $item) {
+            $newItem = $item;
+            if (empty($newItem['customuuid']) || in_array($newItem['customuuid'], $uuids, true)) {
+                $newItem['customuuid'] = \Kirby\Uuid\Uuid::generate();
+            }
+            $uuids[] = $newItem['customuuid'];
+            $result[$index] = $newItem;
+        }
+        return $result;
+    }
 }

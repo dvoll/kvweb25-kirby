@@ -1,4 +1,6 @@
 type: tags
 options:
   type: query
-  query: site.index.filterBy("intendedTemplate", "in", ["camp", "layout"])
+  query: site.tags.toStructure
+  text: "{{ item.name }}"
+  value: "{{ item.customUuid }}"

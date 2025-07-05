@@ -6,7 +6,7 @@ use Kirby\Cms\App;
 use Kirby\Data\Yaml;
 use Kirby\Filesystem\F;
 use Kirby\Http\Uri;
-use Kirby\Uuid\Uuid;
+use dvll\Sitepackage\Helpers\Helper;
 
 App::plugin('dvll/sitepackage', [
     'blueprints' => [
@@ -57,27 +57,18 @@ App::plugin('dvll/sitepackage', [
     ],
     'hooks' => [
         'site.update:after' => function (Kirby\Cms\Site $newSite, Kirby\Cms\Site $oldSite) {
-            // Generate custom uuids for the site structured field "contacts" to enable selecting them with a multiselect
+
             /** @var Kirby\Cms\Field $contactsField*/
             $contactsField = $newSite->content()->get('contacts');
-            $contactsStructure = $contactsField->yaml();
-            foreach ($contactsStructure as $index => &$item) {
-                // Check if a valid UUID already exists
-                if (empty($item['customuuid'])) {
-                    $item['customuuid'] = Uuid::generate();
-                } else {
-                    // Check for duplicates in newSite; If there are any, generate a new UUID for the last one
-                    $duplicates = array_filter($contactsStructure, function ($innerItem, $innerIndex) use ($item, $index) {
-                        return $innerIndex !== $index && $innerItem['customuuid'] === $item['customuuid'];
-                    }, ARRAY_FILTER_USE_BOTH);
+            $contactsStructureWithUuids = Helper::ensureUniqueCustomUuids($contactsField->yaml());
 
-                    if (!empty($duplicates)) {
-                        $item['customuuid'] = Uuid::generate();
-                    }
-                }
-            }
+            /** @var Kirby\Cms\Field tagsField */
+            $tagsField = $newSite->content()->get('tags');
+            $tagsStructureWithUuids = Helper::ensureUniqueCustomUuids($tagsField->yaml());
+
             $newSite->save([
-                'contacts' => Data::encode($contactsStructure, "yaml"),
+                'contacts' => Data::encode($contactsStructureWithUuids, "yaml"),
+                'tags' => Data::encode($tagsStructureWithUuids, "yaml"),
             ]);
         }
     ],

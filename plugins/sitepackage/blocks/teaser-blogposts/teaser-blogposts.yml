@@ -32,5 +32,7 @@ fields:
       # selection: Auswahl
   tags:
     extends: fields/tags
+    sortable: false
+    min: 1
     when:
       source: tagged

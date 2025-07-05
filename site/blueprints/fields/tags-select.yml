@@ -1,0 +1,10 @@
+type: entries
+label: Schlagwörter auswählen
+max: 4
+field:
+  type: select
+  options:
+    type: query
+    query: site.tags.toStructure
+    text: "{{ item.name }}"
+    value: "{{ item.customUuid }}"

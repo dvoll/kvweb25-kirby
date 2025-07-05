@@ -6,7 +6,7 @@
 
 namespace dvll\Sitepackage\Models;
 
-use dvll\Sitepackage\Helpers\ContactsFieldHelper;
+use dvll\Sitepackage\Helpers\UuidSelectFieldHelper;
 use Kirby\Cms\Block;
 
 class LayoutWithContactBlock extends Block
@@ -18,6 +18,6 @@ class LayoutWithContactBlock extends Block
     {
         /** @var \Kirby\Content\Field $contactsField */
         $contactsField = $this->content()->get('contactsSelect');
-        return ContactsFieldHelper::getContacts($contactsField);
+        return UuidSelectFieldHelper::getCollectionForUuids(site()->contacts(), $contactsField, 'name');
     }
 }

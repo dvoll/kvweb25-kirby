@@ -37,3 +37,31 @@ columns:
           phone:
             label: Telefon
             type: tel
+      headlineTags:
+        label: Schlagwörter
+        type: headline
+        width: 7/12
+        help: |
+          Schlagwörter können für die Verbindung von Inhalten genutzt werden, um ähnliche Inhalte zu gruppieren und somit die Navigation und Auffindbarkeit von Inhalten zu verbessern.
+      tags:
+        label: Schlagwörter
+        type: structure
+        width: 6/12
+        fields:
+          customUuid:
+            type: hidden
+          name:
+            type: text
+            label: Name
+          page:
+            type: pages
+            label: Hauptseite
+            multiple: false
+            query: site.index.filterBy('template', 'in', ['layout', 'camp'])
+      infoTags:
+        label: Informationen zu Schlagwörtern und Terminen
+        type: info
+        theme: info
+        width: 6/12
+        text: |
+          Die Schlagwörter auch mit Terminen verwendet werden. So können beispielsweise alle Termine mit dem Schlagwort "Zeltlager" auf den passenden Seiten angezeigt werden. Dafür muss in der Beschreibung des Google Kalender Termins das Schlagwort mit eckigen Klammern angegeben werden, z.B. `[Zeltlager]`

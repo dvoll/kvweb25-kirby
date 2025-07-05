@@ -1,6 +1,6 @@
 <?php
 
-use dvll\Sitepackage\Helpers\ContactsFieldHelper;
+use dvll\Sitepackage\Helpers\UuidSelectFieldHelper;
 use dvll\Sitepackage\Models\CustomBasePage;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
@@ -15,7 +15,17 @@ class BlogpostPage extends CustomBasePage
     {
         /** @var \Kirby\Content\Field $contactsField */
         $contactsField = $this->content()->get('contactsSelect');
-        return ContactsFieldHelper::getContacts($contactsField);
+        return UuidSelectFieldHelper::getCollectionForUuids(site()->contacts(), $contactsField, 'name');
+    }
+
+    /**
+     * @return \Kirby\Cms\Collection<\Kirby\Content\Field>|null
+     */
+    public function selectedTags(): ?\Kirby\Cms\Collection
+    {
+        /** @var \Kirby\Content\Field $tagsField */
+        $tagsField = $this->content()->get('tags');
+        return UuidSelectFieldHelper::getCollectionForUuids(site()->tags(), $tagsField, 'name');
     }
 
     /**
