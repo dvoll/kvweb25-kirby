@@ -36,7 +36,7 @@ $caption = $block->caption()->isNotEmpty() ? $block->caption()->html() : ($block
                 'sizes' => A::join($sizes, ', '),
                 'preset' => 'default',
                 'alt' => $block->alt()->isNotEmpty() ? $block->alt()->value() : null,
-                'imgClass' => !$calculatedRatio || $calculatedRatio > 1 ? 'w-full' : 'max-h-96 w-auto',
+                'imgClass' => 'rounded-md ' . (!$calculatedRatio || $calculatedRatio > 1 ? 'w-full' : 'max-h-96 w-auto'),
             ]
         ); ?>
         <?php if (!empty($caption)) : ?>
