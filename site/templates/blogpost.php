@@ -120,5 +120,4 @@ snippet('layout', slots: true); ?>
         </div>
     </section>
 <?php endif; ?>
-<?php snippet('core/layouts'); ?>
 <?php endsnippet() ?>

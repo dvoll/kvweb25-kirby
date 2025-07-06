@@ -8,14 +8,13 @@ use Kirby\Cms\Files;
 
 class BlogpostPage extends CustomBasePage
 {
-    /**
-     * @return \Kirby\Cms\Collection<\Kirby\Content\Field>|null
-     */
-    public function myContacts(): ?\Kirby\Cms\Collection
+    #[\Override]
+    public function shouldShowContactsInLayout(): array
     {
-        /** @var \Kirby\Content\Field $contactsField */
-        $contactsField = $this->content()->get('contactsSelect');
-        return UuidSelectFieldHelper::getCollectionForUuids(site()->contacts(), $contactsField, 'name');
+        return [
+            'show' => false,
+            'showGeneral' => false,
+        ];
     }
 
     /**

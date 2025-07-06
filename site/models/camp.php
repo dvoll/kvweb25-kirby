@@ -41,6 +41,14 @@ class CampPage extends CustomBasePage
         $field = $this->content()->get('teaserDescription');
         return $field->toHtml();
     }
+    #[\Override]
+    public function shouldShowContactsInLayout(): array
+    {
+        return [
+            'show' => false,
+            'showGeneral' => false,
+        ];
+    }
 
     /**
      * @return \Kirby\Cms\Collection<\Kirby\Content\Field>|null

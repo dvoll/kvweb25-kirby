@@ -27,6 +27,13 @@
             @apply bg-offwhite;
         }
     }
+    .dvll-section--small-gap {
+        scroll-margin-block-start: 6rem;
+        @apply mb-8;
+        @media (width >= 48rem) {
+            @apply mb-12;
+        }
+    }
 
     .dvll-section__layout {
         display: grid;
@@ -71,8 +78,10 @@
         &.dvll-block--wide {
             @apply col-start-2 col-end-11;
 
-            .dvll-section__layout2 & {
-                @apply col-start-2 col-end-11;
+            .dvll-section__layout--two-col & {
+                @media (width >= 64rem) {
+                    @apply col-start-2 col-end-8;
+                }
             }
         }
 

@@ -82,6 +82,20 @@ tabs:
       settingsContentSection:
         type: fields
         fields:
+          showContactOptions:
+            type: toggles
+            label: Anzeigeoptionen für den Kontaktbereich
+            help: Im Standardverhalten wird der Kontaktbereich nur dann angezeigt, wenn mindestens ein Kontakt ausgewählt ist. Dabei wird auch der allgemeine Text zur Kontaktmöglichkeit ausgespielt.
+            default: default
+            options:
+              - text: "Standard"
+                value: default
+              - text: "Immer anzeigen"
+                value: always
+              - text: "Nur Kontakte"
+                value: selected
+              - text: "Nichts anzeigen"
+                value: never
           layouts:
             extends: fields/blocks-layout
             pretty: true

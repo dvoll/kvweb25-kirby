@@ -2,6 +2,7 @@
 
 namespace dvll\Sitepackage\Models;
 
+use dvll\Sitepackage\Helpers\UuidSelectFieldHelper;
 use dvll\Sitepackage\Models\TeaserContentHelper;
 use dvll\Sitepackage\Models\WithTeaserContentInterface;
 use Kirby\Cms\File;
@@ -27,5 +28,57 @@ class CustomBasePage extends Page implements WithTeaserContentInterface
     public function myTeaserText(): ?string
     {
         return TeaserContentHelper::getTeaserText($this);
+    }
+
+    /**
+     * @return \Kirby\Cms\Collection<\Kirby\Content\Field>|null
+     */
+    public function myContacts(): ?\Kirby\Cms\Collection
+    {
+        /** @var \Kirby\Content\Field $contactsField */
+        $contactsField = $this->content()->get('contactsSelect');
+        return UuidSelectFieldHelper::getCollectionForUuids(site()->contacts(), $contactsField, 'name');
+    }
+
+    /**
+     * @return array<string, bool>
+     */
+    public function shouldShowContactsInLayout(): array
+    {
+        /** @var \Kirby\Content\Field $contactsField */
+        $contactsField = $this->content()->get('contactsSelect');
+        /** @var \Kirby\Content\Field $showContactOptions */
+        $showContactOptions = $this->content()->get('showContactOptions');
+
+        if ($showContactOptions->isEmpty() && $contactsField->isNotEmpty()) {
+            return [
+                'show' => true,
+                'showGeneral' => true,
+            ]; // Default to true if not set and contacts are available
+        }
+        if ($showContactOptions->isEmpty()) {
+            return [
+                'show' => false,
+                'showGeneral' => false,
+            ]; // Default to false if not set and no contacts
+        }
+        if ($showContactOptions->value() === 'always'
+         || ($showContactOptions->value() === 'default' && $contactsField->isNotEmpty())
+        ) {
+            return [
+                'show' => true,
+                'showGeneral' => true,
+            ];
+        }
+        if ($showContactOptions->value() === 'selected' && $contactsField->isNotEmpty()) {
+            return [
+                'show' => true,
+                'showGeneral' => false,
+            ];
+        }
+        return [
+            'show' => false,
+            'showGeneral' => false,
+        ];
     }
 }
