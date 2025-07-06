@@ -23,7 +23,6 @@ return [
         foreach ($pages as $page) {
             if ($page->blocks()->isNotEmpty() && $cli->arg('force')){
                 $cli->shout('Force override for Page ' . $page->title() . '');
-                continue;
             } elseif ($page->blocks()->isNotEmpty()){
                 $cli->info('[Skip] Page ' . $page->title() . ' has blocks, skipping...');
                 continue;
