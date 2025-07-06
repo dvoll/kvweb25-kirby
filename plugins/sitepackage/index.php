@@ -38,6 +38,8 @@ App::plugin('dvll/sitepackage', [
         'blocks/teaser-blogposts'      => __DIR__ . '/blocks/teaser-blogposts/teaser-blogposts.yml',
         'blocks/teaser-pages'      => __DIR__ . '/blocks/teaser-pages/teaser-pages.yml',
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.yml',
+        'blocks/text'      => __DIR__ . '/blocks/text/text.yml',
+        'blocks/spacer'      => __DIR__ . '/blocks/spacer/spacer.yml',
     ],
     'snippets'   => [
         'blocks/gallery'      => __DIR__ . '/blocks/gallery/gallery.php',
@@ -50,6 +52,8 @@ App::plugin('dvll/sitepackage', [
         'blocks/teaser-blogposts'      => __DIR__ . '/blocks/teaser-blogposts/teaser-blogposts.php',
         'blocks/teaser-pages'      => __DIR__ . '/blocks/teaser-pages/teaser-pages.php',
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.php',
+        'blocks/text'      => __DIR__ . '/blocks/text/text.php',
+        'blocks/spacer'      => __DIR__ . '/blocks/spacer/spacer.php',
     ],
     'blockModels' => [
         'teaser-blogposts' => TeaserBlogpostsBlock::class,

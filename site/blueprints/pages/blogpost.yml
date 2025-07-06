@@ -37,8 +37,6 @@ tabs:
           postMeta:
             type: fields
             fields:
-              contactsSelect:
-                extends: fields/contacts-select
               tags:
                 extends: fields/tags-select
               links:

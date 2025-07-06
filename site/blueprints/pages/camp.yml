@@ -14,8 +14,6 @@ tabs:
           postMeta:
             type: fields
             fields:
-              contactsSelect:
-                extends: fields/contacts-select
               links:
                 extends: fields/links
               downloads:
@@ -98,6 +96,6 @@ tabs:
           contentSection:
             type: fields
             fields:
-              layouts:
+              blocks:
                 label: Weiterer Inhalt
 

@@ -1,0 +1,15 @@
+title: Abstand
+label: Block
+blueprint: field
+
+fields:
+  size:
+    disabled: true
+    label: Größe
+    type: select
+    default: medium
+    options:
+      small: Klein
+      medium: Mittel
+      large: Groß
+      xlarge: Extra groß

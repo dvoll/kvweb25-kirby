@@ -8,29 +8,26 @@
 use dvll\Sitepackage\Models\LayoutWithContactBlock;
 
 /**
- * @var \Kirby\Content\Field $blockSections
+ * @var \Kirby\Content\Field $blocks
  */
-$blockSections = $page->content()->get('layouts');
+$blocks = $page->content()->get('blocks');
 ?>
 
-<?php foreach ($blockSections->toBlocks() as $blockSection): ?>
-    <section class="dvll-section" id="<?= $blockSection->id() ?>">
-        <?php $isTwoCol = ($blockSection->col2() && $blockSection->col2()->isNotEmpty()); ?>
-        <div class="dvll-section__layout <?php e($blockSection instanceof LayoutWithContactBlock || $isTwoCol, 'dvll-section__layout--two-col') ?>">
+<section class="dvll-section">
+    <div class="dvll-section__layout">
+
+        <?php foreach ($blocks->toBlocks() as $block) : ?>
             <?php
-            /** @var \Kirby\Content\Field $col1 */
-            $col1 = $blockSection->content()->get('col1');
-            ?>
-            <?= $col1->toBlocks() ?>
-            <?php if ($isTwoCol): ?>
-                <!-- TODO -->
-            <?php elseif ($blockSection instanceof LayoutWithContactBlock && ($contacts = $blockSection->myContacts()) && $contacts->isNotEmpty()): ?>
-                <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
-                    <div class="dvll-block">
-                        <?php snippet('components/contact', compact('contacts')) ?>
-                    </div>
-                </div>
+            // Render the block using the block model if available
+            if ($block->type() === 'spacer'): ?>
+
+    </div>
+</section>
+<section class="dvll-section">
+    <div class="dvll-section__layout">
+            <?php else: ?>
+                <?= $block ?>
             <?php endif; ?>
-        </div>
-    </section>
-<?php endforeach ?>
+        <?php endforeach; ?>
+    </div>
+</section>
