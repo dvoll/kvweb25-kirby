@@ -2,6 +2,8 @@
 
 use dvll\Sitepackage\Helpers\Menu;
 use dvll\Sitepackage\Helpers\Helper;
+use Kirby\Panel\Ui\Buttons\ViewButton;
+use tobimori\Seo\RobotsViewButton;
 
 require_once __DIR__ . '/../../vendor/vlucas/phpdotenv/src/Dotenv.php';
 
@@ -15,6 +17,27 @@ return [
         'language' => 'de',
         'css' => 'assets/panel/css/panel.css',
         'vue.compiler' => false,
+        'viewButtons' => [
+            'page' => [
+                'customPreview' => function (Kirby\Cms\Page $page) {
+                    return [
+                        'icon' => 'window',
+                        'text' => 'Vorschau',
+                        'link' => $page->panel()->url(true) . '/preview/changes',
+                    ];
+                },
+                'customRobots' => function (Kirby\Cms\Page $page, Kirby\Cms\App $kirby) {
+                    if (($user = $kirby->user()) && $user->isAdmin()) {
+                        return new RobotsViewButton($page);
+                    }
+                    return new ViewButton(
+                        model: $page,
+                        disabled: true,
+                        style: 'display: none'
+                    );
+                },
+            ]
+        ]
     ],
     'cache' => [
         'pages' => [

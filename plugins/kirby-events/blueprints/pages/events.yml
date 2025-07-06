@@ -7,12 +7,12 @@ icon: draft
 # image:
 
 buttons:
-  robots: true
-  refresh-events: true
-  open: true
-  preview: true
-  settings: true
-  status: true
+  - customRobots
+  - refresh-events
+  - settings
+  - status
+  - customPreview
+  - open
 
 tabs:
   content:

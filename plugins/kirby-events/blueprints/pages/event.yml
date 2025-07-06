@@ -21,6 +21,11 @@ options:
 icon: draft
 # image:
 
+buttons:
+  - settings
+  - status
+  - open
+
 fields:
   info:
     type: info

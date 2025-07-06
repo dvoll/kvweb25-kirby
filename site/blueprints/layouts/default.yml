@@ -7,10 +7,12 @@ image:
   color: 'var(--theme-primary)'
 
 buttons:
-  - robots
+  # - robots
+  - customRobots
   - settings
   - status
-  - preview
+  # preview
+  - customPreview
   - open
 
 tabs:
