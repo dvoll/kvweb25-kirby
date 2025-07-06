@@ -16,22 +16,10 @@
     transform: rotate(180deg);
 }
 
-/* Block Layout gap */
-.k-field-name-layouts {
-    > .k-blocks {
-        background: transparent;
-        box-shadow: none;
+.k-block-title {
+    padding-block: var(--spacing-2);
+}
 
-        > * > .k-block-container {
-        	box-shadow: var(--shadow);
-
-            &:has(+ .k-block-container) {
-                margin-block-end: .5rem;
-            }
-        }
-    }
-
-    .k-block-type-fields-form .k-block-type-fields-form {
-        padding-inline: var(--spacing-4);
-    }
+.k-block-type-fields-header .k-block-title {
+    padding-block: var(--spacing-4);
 }
