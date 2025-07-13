@@ -98,4 +98,10 @@ tabs:
             fields:
               blocks:
                 label: Weiterer Inhalt
+  settings:
+    sections:
+      settingsContentSection:
+        type: fields
+        fields:
+          showContactOptions: false
 
