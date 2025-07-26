@@ -19,3 +19,14 @@ tabs:
   content:
     columns:
       sidebar: false
+  settings:
+    sections:
+      settingsContentSection:
+        fields:
+          welcomeStageImages:
+            extends: fields/image
+            label: Bilder für die Bühne
+            multiple: true
+            min: 13
+            max: 13
+            required: true

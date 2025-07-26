@@ -1,0 +1,64 @@
+
+@layer components {
+    .stage-welcome {
+        --col-count: 5;
+        --row-count: 4;
+    }
+    .stage-welcome__text-box {
+        @apply font-style uppercase font-bold;
+        font-variation-settings: "opsz" 45, "GRAD" 20, "YTUC" 670;
+        text-shadow: rgba(184, 24, 24, 0.308) 60px 10px 100px;
+
+        @media (width >= 40rem) {
+            font-variation-settings: "opsz" 30, "GRAD" 20, "YTUC" 670;
+        }
+    }
+
+    .stage-welcome__image {
+        --real-position-x: calc(var(--position-x) - var(--col-count));
+        --real-position-y: calc(var(--position-y) - var(--row-count));
+        position: relative;
+        aspect-ratio: 1;
+        background-color: rgba(184, 24, 24, 0.308);
+        grid-column-end: var(--real-position-x);
+        grid-row-end: var(--real-position-y);
+        opacity: .94;
+        filter: brightness(1.2);
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: hwb(0 8% 11% / 0.659);
+            opacity: .2;
+        }
+    }
+
+    .stage-welcome__shadow {
+        --real-position-x: calc(var(--position-x) - var(--col-count));
+        --real-position-y: calc(var(--position-y) - var(--row-count));
+        position: relative;
+        z-index: -1;
+        aspect-ratio: 1;
+        grid-column-end: var(--real-position-x);
+        grid-row-end: var(--real-position-y);
+        transform: translateX(-40%) translateY(-160%);
+        background-color: hwb(0 8% 11% / 0.659);
+        opacity: calc(0 + (0.005 * (var(--position-y) + 1) * ((var(--position-x) + 1) * (var(--position-x) + 1))));
+
+        @media (width >= 40rem) {
+            transform: translateX(-160%) translateY(-120%);
+            opacity: calc(0 + (0.005 * (var(--position-y) + 1) * ((var(--position-x) + 1) * (var(--position-x) + 1))));
+        }
+
+        @media (width >= 48rem) {
+            transform: translateX(max(-17vw, -16rem)) translateY(-30px);
+            opacity: calc(0.02 + (0.01 * (var(--position-y) + 1) * ((var(--position-x) + 1))));
+        }
+
+        &[style="--position-x: 3; --position-y: 0;"],
+        &[style="--position-x: 1; --position-y: 2;"] {
+            display: none;
+        }
+    }
+}
