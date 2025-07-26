@@ -29,7 +29,7 @@ $sublineLabel = $sublineLabel ?? null;
 
 ?>
 <div
-    class="dvll-section dvll-section--real-top grid grid-stacked w-full relative"
+    class="dvll-section dvll-section--real-top grid grid-stacked w-full relative overflow-clip rounded-b-2xl shadow-md"
     style="min-height: 95vh; min-height: 95svh;">
     <?= snippet(
         'picture',
@@ -42,7 +42,7 @@ $sublineLabel = $sublineLabel ?? null;
             'imgClass' => 'w-full h-full object-cover',
         ]
     ); ?>
-    <div class="bg-[#1D2021] opacity-60"></div>
+    <div class="bg-[#352B2B] opacity-60"></div>
     <div class="grid grid-cols-1 grid-rows-[3fr_auto_2fr_auto] h-full z-1 text-baseline pt-30">
         <div class="row-start-2 py-4 px-6 lg:pr-6 justify-self-center flex flex-col items-center">
             <div class="w-full max-w-[410px]">

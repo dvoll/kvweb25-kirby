@@ -44,7 +44,8 @@ $sizes = [
             'cropRatio' => 4 / 3,
             'sizes' => A::join($sizes, ', '),
             'preset' => 'default',
-            'class' => 'md:max-w-[400px] md:basis-1/2'
+            'class' => 'md:max-w-[400px] md:basis-1/2',
+            'imgClass' => 'rounded-md',
         ]
     ); ?>
 </div>
