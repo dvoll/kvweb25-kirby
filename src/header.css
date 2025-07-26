@@ -48,7 +48,7 @@
     }
 
     .nav-submenu {
-        box-shadow: -1px 1px 4px 2px rgb(0 0 0 / 0.05);
+        box-shadow: -1px 1px 24px 2px rgb(0 0 0 / 0.05);
         transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
         transform: translateY(-10px);
         opacity: 0;
@@ -58,6 +58,7 @@
         right: 0;
         min-width: 12rem;
         z-index: 1;
+        @apply border border-gray-300;
 
         &.nav-submenu--open {
             transform: translateY(0);
