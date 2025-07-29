@@ -41,7 +41,7 @@ $positionsShadow = [
     [2, 3],
 ];
 
-$imageStartDelay = 2.4;
+$imageStartDelay = 2.2;
 $baseDelay = 0.25; // seconds
 $xDelay = 0.06; // seconds per column
 $decay = 0.65;
@@ -87,7 +87,7 @@ $delay = 0;
             <?php $position = $positions[$imageIndex] ?? ['x' => 0, 'y' => 0]; ?>
             <?php $positionStyle = '--position-x: ' . $position[0] . '; --position-y: ' . $position[1] . ';'; ?>
             <?php $delay = ($baseDelay * (1 - pow($decay, $position[1])) / (1 - $decay)) + ($position[0] * $xDelay); ?>
-            <div class="stage-welcome__image shadow-lg overflow-clip rounded-sm lg:rounded-md transition-flip" style="<?= $positionStyle ?> <?= '--transition-delay: ' . round($delay + $imageStartDelay, 3) . 's;' ?>">
+            <div class="stage-welcome__item shadow-lg overflow-clip rounded-sm lg:rounded-md transition-flip" style="<?= $positionStyle ?> <?= '--transition-delay: ' . round($delay + $imageStartDelay, 3) . 's;' ?>">
                 <?= snippet(
                     'picture',
                     [
@@ -96,7 +96,8 @@ $delay = 0;
                         'sizes' => [],
                         'preset' => 'stageWelcome',
                         'responsive' => true,
-                        'class' => 'w-full h-full object-cover',
+                        'class' => 'block w-full h-full stage-welcome__image ',
+                        'imgClass' => 'w-full h-full object-cover',
                         'alt' => '',
                     ]
                 ); ?>

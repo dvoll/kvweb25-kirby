@@ -14,21 +14,25 @@
         }
     }
 
+    .stage-welcome__item {
+        --real-position-x: calc(var(--position-x) - var(--col-count));
+        --real-position-y: calc(var(--position-y) - var(--row-count));
+        grid-column-end: var(--real-position-x);
+        grid-row-end: var(--real-position-y);
+    }
     .stage-welcome__image {
         --real-position-x: calc(var(--position-x) - var(--col-count));
         --real-position-y: calc(var(--position-y) - var(--row-count));
         position: relative;
         aspect-ratio: 1;
         background-color: rgba(184, 24, 24, 0.308);
-        grid-column-end: var(--real-position-x);
-        grid-row-end: var(--real-position-y);
         opacity: .94;
-        filter: brightness(1.2);
 
         &::after {
             content: '';
             position: absolute;
             inset: 0;
+            z-index: 1;
             background-color: hwb(0 8% 11% / 0.659);
             opacity: .2;
         }

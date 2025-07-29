@@ -1,5 +1,7 @@
 <?php
 
+use dvll\Sitepackage\Helpers\CustomGd;
+use dvll\Sitepackage\Helpers\CustomImageMagick;
 use dvll\Sitepackage\Models\LayoutWithContactBlock;
 use dvll\Sitepackage\Models\TeaserBlogpostsBlock;
 use Kirby\Cms\App;
@@ -7,6 +9,9 @@ use Kirby\Data\Yaml;
 use Kirby\Filesystem\F;
 use Kirby\Http\Uri;
 use dvll\Sitepackage\Helpers\Helper;
+
+Kirby\Image\Darkroom::$types['custom-im'] = CustomImageMagick::class;
+Kirby\Image\Darkroom::$types['custom-gd'] = CustomGd::class;
 
 App::plugin('dvll/sitepackage', [
     'blueprints' => [

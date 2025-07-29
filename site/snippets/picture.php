@@ -38,6 +38,9 @@ foreach ($srcSets as $setKey => $set) {
         'height' => $set['height'] ?? ($cropRatio ? floor($set['width'] / $cropRatio) : null),
         'crop' => $set['crop'] ?? ($cropRatio ? true : false),
     ];
+    if (isset($set['brighten']) === true) {
+        $srcsetsDefault[$setKey]['brighten'] = $set['brighten'];
+    }
     $srcsetsWebp[$setKey] = [
         ...$srcsetsDefault[$setKey],
         'format' => 'webp'

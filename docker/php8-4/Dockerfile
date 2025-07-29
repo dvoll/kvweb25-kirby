@@ -36,7 +36,9 @@ RUN apk add --update --no-cache \
   libzip-dev \
   zip \
   icu-dev \
-  icu-data-full
+  icu-data-full \
+  imagemagick \
+  imagemagick-dev
 
 RUN apk add --no-cache --virtual .build-dependencies \
   $PHPIZE_DEPS \
@@ -46,6 +48,8 @@ RUN apk add --no-cache --virtual .build-dependencies \
   && docker-php-ext-install intl \
   && pecl install xdebug \
   && docker-php-ext-enable xdebug \
+  && pecl install imagick \
+  && docker-php-ext-enable imagick \
   && apk del .build-dependencies
 
 # Set timezone
