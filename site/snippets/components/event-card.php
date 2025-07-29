@@ -196,7 +196,7 @@ $eventTagPage = $event->getTagPage();
                         <?= snippet('components/teaser-card', [
                             'title' => $eventTagPage->myTitle(),
                             'buttonTitle' => $eventTagPage->title(),
-                            'text' => $eventTagPage->myTeaserText(),
+                            'text' => Str::excerpt($eventTagPage->myTeaserText(), 130),
                             'image' => $eventTagPage->myTeaserImage(),
                             'url' => $eventTagPage->url(),
                         ]) ?>

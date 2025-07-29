@@ -15,7 +15,7 @@ fields:
     label: Beschreibung
     type: textarea
     buttons: false
-    maxlength: 130
+    maxlength: 200
     icon: text
     width: 1/2
   image:
