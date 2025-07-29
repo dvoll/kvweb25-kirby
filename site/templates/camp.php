@@ -27,7 +27,7 @@ snippet('layout', slots: true); ?>
             </div>
         <?php endif; ?>
         <div class="dvll-block dvll-block--narrow">
-            <ul class="flex flex-wrap gap-6">
+            <ul class="flex flex-wrap gap-6 py-4">
                 <?php foreach ($page->facts()->toStructure() as $fact): ?>
                     <li class="fact">
                         <h3><?= snippet('elements/icon', ['icon' => $fact->icon(), 'class' => 'w-3 h-3 inline']) ?><?= $fact->name()->html() ?></h3>

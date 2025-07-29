@@ -19,7 +19,7 @@ $sizes = [
 // $linkObject = $block->content()->get('link')->toObject();
 
 ?>
-<div class="dvll-block dvll-block--centered flex flex-col-reverse md:flex-row gap-6 md:justify-center">
+<div class="dvll-block dvll-block--centered flex flex-col-reverse md:flex-row gap-8 md:gap-6 md:justify-center">
     <div class="md:grid grid-cols-1 grid-rows-[1fr_auto_2fr] md:max-w-[400px] md:basis-1/2">
         <div class="row-start-2 md:py-4 lg:pr-6">
             <h2 class="heading-lv2 mb-6"><?= $block->title()->escape() ?></h2>
