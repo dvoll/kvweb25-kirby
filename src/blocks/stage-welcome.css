@@ -14,6 +14,14 @@
         }
     }
 
+    body:not(.welcome-animation) .stage-welcome .transition-drive {
+        transition: opacity .4s ease-in !important;
+    }
+    body:not(.welcome-animation) .stage-welcome .transition-flip {
+        /* transition: opacity .6s ease-in !important; */
+        --flip-start-delay: 0s;
+    }
+
     .stage-welcome__item {
         --real-position-x: calc(var(--position-x) - var(--col-count));
         --real-position-y: calc(var(--position-y) - var(--row-count));

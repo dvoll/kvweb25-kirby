@@ -41,7 +41,7 @@ $positionsShadow = [
     [2, 3],
 ];
 
-$imageStartDelay = 2.2;
+$imageStartDelay = 1.8;
 $baseDelay = 0.25; // seconds
 $xDelay = 0.06; // seconds per column
 $decay = 0.65;
@@ -50,12 +50,12 @@ $delay = 0;
 ?>
 <div
     class="dvll-block dvll-block--wide flex gap-4">
-    <div class="stage-welcome grid grid-cols-[auto_repeat(5,_1fr)] sm:grid-cols-[minmax(0,_calc(10%_+_50vw_-_25vh))_repeat(5,_1fr)] lg:grid-cols-[auto_repeat(5,_1fr)] grid-rows-[1fr_repeat(4,_auto)] lg:grid-rows-[1fr_repeat(4,_auto)] gap-1.5 md:gap-2 lg:gap-3 grow">
+    <div class="stage-welcome grid grid-cols-[auto_repeat(5,_1fr)] sm:grid-cols-[minmax(0,_calc(10%_+_50vw_-_25vh))_repeat(5,_1fr)] lg:grid-cols-[auto_repeat(5,_1fr)] grid-rows-[1fr_repeat(4,_auto)] lg:grid-rows-[1fr_repeat(4,_auto)] gap-1.5 md:gap-2 lg:gap-3 grow" style="--flip-start-delay: <?= $imageStartDelay ?>s;">
         <div class="stage-welcome__text-box col-start-1 -col-end-1 lg:col-start-1 lg:col-end-2 row-start-1 row-end-2 lg:row-start-1 lg:row-end-4 sm:-mb-8 md:-mb-20 lg:-mb-0 lg:-mr-20 text-4xl sm:text-[3.25rem] leading-10 sm:leading-14 pr-8 relative self-end py-8">
             <div class="flex flex-col max-w-min">
                 <div class="flex items-end gap-4">
-                    <span class="transition-drive transition-drive--to-right" style="--transition-delay: 0.6s;">Jugend.</span>
-                    <span class="size-10 transition-drive transition-drive--to-right" style="--transition-delay: .62s;">
+                    <span class="transition-drive transition--initial transition-drive--to-right" style="--transition-delay: 0.2s;">Jugend.</span>
+                    <span class="size-10 transition-drive transition--initial transition-drive--to-right" style="--transition-delay: .22s;">
                         <svg width="100%" height="100%" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                             <rect id="title-arrow1-box" x="0" y="0" width="50" height="50" style="fill:none;" />
                             <path d="M33.013,33.953c0,-2.307 -0.096,-6.061 -0.628,-9.687c-0.455,-3.095 -1.137,-6.129 -2.578,-7.76c-0.983,-1.112 -2.703,-1.545 -5.006,-1.856c-4.488,-0.607 -10.869,-0.356 -19.028,-0.268c-1.38,0.015 -2.512,-1.094 -2.526,-2.473c-0.015,-1.38 1.093,-2.512 2.473,-2.527c8.469,-0.091 15.092,-0.317 19.751,0.313c3.798,0.513 6.461,1.666 8.082,3.5c1.498,1.695 2.587,4.414 3.263,7.494c0.927,4.22 1.151,9.135 1.188,12.316c2.095,-1.757 4.208,-3.668 4.584,-4.004c1.028,-0.919 2.61,-0.831 3.53,0.197c0.919,1.029 0.831,2.611 -0.197,3.53c-0.73,0.653 -7.42,6.571 -9.543,7.67l-0.856,0.29l-0.754,0.045l-0.724,-0.114c-0.257,-0.066 -0.542,-0.166 -0.85,-0.307c-1.828,-0.839 -5.311,-4.002 -9.222,-7.335c-1.05,-0.894 -1.176,-2.474 -0.281,-3.524c0.894,-1.05 2.474,-1.176 3.524,-0.281c1.905,1.623 4.158,3.459 5.798,4.781Z" style="fill:var(--color-primary);" />
@@ -63,11 +63,11 @@ $delay = 0;
                     </span>
                 </div>
                 <div class="flex items-center gap-4">
-                    <span class="pl-6 transition-drive transition-drive--to-top" style="--transition-delay: 1.2s;">Gemeinschaft.</span>
+                    <span class="pl-6 transition-drive transition--initial transition-drive--to-top" style="--transition-delay: 0.8s;">Gemeinschaft.</span>
                 </div>
                 <div class="flex gap-4 justify-between mr-12">
-                    <span class="pl-14 transition-drive transition-drive--to-left" style="--transition-delay: 1.8s;">Aktiv.</span>
-                    <div class="size-10 transition-drive transition-drive--to-left" style="--transition-delay: 1.75s;">
+                    <span class="pl-14 transition-drive transition--initial transition-drive--to-left" style="--transition-delay: 1.4s;">Aktiv.</span>
+                    <div class="size-10 transition-drive transition--initial transition-drive--to-left" style="--transition-delay: 1.35s;">
                         <svg width="100%" height="100%" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                             <rect id="title-arrow2-box" x="0" y="0" width="50" height="50" style="fill:none;" />
                             <clipPath id="_clip1">
@@ -87,7 +87,7 @@ $delay = 0;
             <?php $position = $positions[$imageIndex] ?? ['x' => 0, 'y' => 0]; ?>
             <?php $positionStyle = '--position-x: ' . $position[0] . '; --position-y: ' . $position[1] . ';'; ?>
             <?php $delay = ($baseDelay * (1 - pow($decay, $position[1])) / (1 - $decay)) + ($position[0] * $xDelay); ?>
-            <div class="stage-welcome__item shadow-lg overflow-clip rounded-sm lg:rounded-md transition-flip" style="<?= $positionStyle ?> <?= '--transition-delay: ' . round($delay + $imageStartDelay, 3) . 's;' ?>">
+            <div class="stage-welcome__item shadow-lg overflow-clip rounded-sm lg:rounded-md transition-flip transition--initial" style="<?= $positionStyle ?> <?= '--transition-delay: ' . round($delay, 3) . 's;' ?>">
                 <?= snippet(
                     'picture',
                     [
