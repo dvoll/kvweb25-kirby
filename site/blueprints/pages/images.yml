@@ -33,16 +33,9 @@ tabs:
           template: image
         search: true
         columns:
-          alt:
-            label:
-              de: Alt-Text
-              en: Alt text
-            value: '{{ file.alt }}'
-          tags:
-            label:
-              de: Schlagwörter
-              en: Tags
-            type: tags
+          caption:
+            label: Bildunterschrift
+            value: '{{ file.caption }}'
         sortBy: filename desc
   grid:
     label: Rasteransicht
@@ -52,10 +45,10 @@ tabs:
         label: Bilder
         type: files
         template: image
-        layout: cardlets
+        layout: cards
         limit: 60
         uploads:
           template: image
-        info: '{{ file.alt.isNotEmpty ? file.filename : "" }}'
-        text: '{{ file.alt.or(file.filename) }}'
+        info: '{{ file.caption.excerpt(30).or("") }}'
+        text: '{{ file.filename }}'
         sortBy: filename desc
