@@ -1,0 +1,56 @@
+name: Verlinkung/Download
+icon: url
+label: "{{title}}"
+
+fields:
+  title:
+    label: Titel
+    type: text
+    help: |
+      Optional, außer für externe Links.
+      Wenn "Interne Seite" gewählt ist: Überschreibt den Titel (Teaser-Titel) einer internen Seite. 
+      Wenn "Download" gewählt ist: Überschreibt den Datei Titel des Downloads.
+  summary:
+    label: Kurzbeschreibung (Optional)
+    type: textarea
+    buttons: false
+    maxlength: 120
+    icon: text
+  itemType:
+    type: toggles
+    label: Typauswahl
+    reset: false
+    default: page
+    options:
+      - text: Interne Seite
+        value: page
+      - text: Externer Link
+        value: external
+      - text: Download
+        value: download
+  url:
+    label: Ziel
+    type: link
+    required: true
+    options:
+      - url
+    when:
+      itemType: external
+  urlPage:
+    label: Ziel
+    type: link
+    required: true
+    options:
+      - page
+    when: 
+      itemType: page
+  download:
+    type: files
+    extends: fields/downloads
+    label: Datei zum herunterladen
+    min: 1
+    max: 1
+    required: true
+    when: 
+      itemType: download
+  

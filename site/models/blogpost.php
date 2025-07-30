@@ -28,28 +28,31 @@ class BlogpostPage extends CustomBasePage
     }
 
     /**
-     * Get the link blocks from the field 'links'
+     * Get the link blocks from the field 'linksDownloads'
      * @return \Kirby\Cms\Blocks|\Kirby\Cms\Block[]|null
      */
-    public function myLinks(): ?Blocks
+    public function myLinksAndDownloads(): ?Blocks
     {
         /** @var \Kirby\Content\Field $linksField */
-        $linksField = $this->content()->get('links');
+        $linksField = $this->content()->get('linksDownloads');
         return $linksField->toBlocks();
     }
 
-    /**
-     * @return \Kirby\Cms\Files|\Kirby\Cms\File[]|null
-     */
-    public function myDownloads(): ?Files
+    public function getLinksAndDownloadsTitle(): ?string
     {
-        /** @var \Kirby\Content\Field $downloadsField */
-        $downloadsField = $this->content()->get('downloads');
-        return $downloadsField->toFiles();
+        $blocks = $this->myLinksAndDownloads();
+        $hasInternalPage = $blocks->findBy('itemtype', 'page');
+        $hasExternalLink = $blocks->findBy('itemtype', 'external');
+        $hasDownload = $blocks->findBy('itemtype', 'download');
+        return ($hasInternalPage || $hasExternalLink) && $hasDownload
+            ? 'Verlinkungen und Downloads'
+            : ($hasDownload ? 'Downloads' : 'Verlinkungen');
     }
 
     public function getContentImage(): ?File
     {
-        return $this->content()->get('image')->toFile();
+        /** @var \Kirby\Content\Field $imageField */
+        $imageField = $this->content()->get('image');
+        return $imageField->toFile();
     }
 }

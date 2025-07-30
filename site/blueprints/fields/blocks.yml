@@ -17,6 +17,7 @@ fieldsets:
       - gallery
       - text-image
       - video
+      - teaser-links-downloads
   otherGroup:
     label: Andere
     type: group

@@ -50,37 +50,17 @@ snippet('layout', slots: true); ?>
 <section class="dvll-section">
     <div class="dvll-section__layout">
         <?php
-        $downloads = $page->myDownloads();
-        $links = $page->myLinks();
-        if ((count($downloads) > 0) || (count($links) > 0)):
+        $links = $page->myLinksAndDownloads();
+        if (count($links) > 0):
         ?>
             <div class="dvll-block dvll-block--wide">
                 <h3 class="heading-lv3 mb-5">
-                    <?php
-                    if (count($links) > 0 && count($downloads) > 0) {
-                        echo 'Verlinkungen und Downloads';
-                    } elseif (count($downloads) > 0) {
-                        echo 'Downloads';
-                    } elseif (count($links) > 0) {
-                        echo 'Verlinkungen';
-                    }
-                    ?>
+                    <?= $page->getLinksAndDownloadsTitle() ?>
                 </h3>
                 <ul class="grid grid-cols-(--dvll-card-grid-cols--small) gap-3 w-full">
                     <?php foreach ($links as $link): ?>
                         <li class="">
                             <?= $link ?>
-                        </li>
-                    <?php endforeach; ?>
-                    <?php foreach ($downloads as $file): ?>
-                        <li class="">
-                            <?= snippet(
-                                'components/asset-card',
-                                [
-                                    'assetFile' => $file,
-                                    'class' => '',
-                                ]
-                            ); ?>
                         </li>
                     <?php endforeach; ?>
                 </ul>

@@ -11,14 +11,19 @@ use Kirby\Toolkit\Html;
  */
 
 $assetFile = $assetFile ?? null;
+$buttonTitle = $buttonTitle ?? null;
+$buttonText = $buttonText ?? null;
+
 $isFile = $assetFile ? true : false;
 $linkType = $linkType ?? ($isFile ? 'file' : 'external');
 $iconName = $isFile ? 'download' : ($linkType === 'external' ? 'external' : 'arrow-right');
 
-$title = $isFile ? ($assetFile->title()->isNotEmpty() ? $assetFile->title() : Str::before($assetFile->filename(), '.')) : ($title ?? 'Link');
-$text = $isFile ? $assetFile->filename() : ($text ?? '');
-$buttonTitle = $isFile ? 'Anzeigen/Herunterladen' : ($linkType === 'page' ? 'Gehe zur Seite' : 'Gehe zur externen Seite');
 $url = $isFile ? $assetFile->url() : ($url ?? '/');
+$title = $title ?? ($isFile ? ($assetFile->title()->isNotEmpty() ? $assetFile->title() : Str::before($assetFile->filename(), '.')) : $url);
+$text = $text ?? ($isFile ? $assetFile->filename() : '');
+
+$buttonTitle = $buttonTitle ?? ($isFile ? 'Anzeigen/Herunterladen' : ($linkType === 'page' ? 'Gehe zur Seite' : 'Gehe zur externen Seite'));
+$buttonText = $buttonText ?? $buttonTitle;
 
 $class = $class ?? '';
 
@@ -35,7 +40,7 @@ $class = $class ?? '';
         ]) ?>></a>
     <div class="h-full card__layout grid-cols-[3fr_1fr] @min-card-small-md:grid-cols-[2fr_1fr]">
         <div class="self-center py-4 pl-5 @min-card-small-md:pl-6">
-            <h3 class="heading-lv4 mb-1 -mr-3"><?= $title ?></h3>
+            <h3 class="heading-lv4 text-balance mb-1 -mr-3"><?= $title ?></h3>
             <?php if (!empty($text)): ?>
                 <p class="typo text-sm line-clamp-3 md:line-clamp-none italic">
                     <?= $text ?>
@@ -46,7 +51,7 @@ $class = $class ?? '';
                     'target' =>  in_array($linkType, ['external', 'file']) ? '_blank' : null,
                     'rel' => in_array($linkType, ['external', 'file']) ? 'noopener noreferrer' : null,
                     'class' => 'btn btn--ghost -ml-2 mt-4 mr-2',
-                ]) ?>><?= $buttonTitle ?><?= snippet('elements/icon', ['icon' => $iconName]) ?></a>
+                ]) ?>><?= $buttonText ?><?= snippet('elements/icon', ['icon' => $iconName]) ?></a>
         </div>
         <div class="bg-offwhite angled-cut angled-cut--small origin-right flex items-center justify-center pl-4 md:pl-6">
             <?php

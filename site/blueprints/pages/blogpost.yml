@@ -39,10 +39,8 @@ tabs:
             fields:
               tags:
                 extends: fields/tags-select
-              links:
-                extends: fields/links
-              downloads:
-                extends: fields/downloads
+              linksDownloads:
+                extends: fields/links-downloads
               event:
                 type: pages
                 label: Termin verknüpfen

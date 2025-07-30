@@ -59,37 +59,17 @@ snippet('layout', slots: true); ?>
             </div>
 
             <?php
-            $downloads = $page->myDownloads();
-            $links = $page->myLinks();
-            if ((count($downloads) > 0) || (count($links) > 0)):
+            $links = $page->myLinksAndDownloads();
+            if (count($links) > 0):
             ?>
                 <div class="dvll-block">
                     <h3 class="heading-lv3 mb-5">
-                        <?php
-                        if (count($links) > 0 && count($downloads) > 0) {
-                            echo 'Verlinkungen und Downloads';
-                        } elseif (count($downloads) > 0) {
-                            echo 'Downloads';
-                        } elseif (count($links) > 0) {
-                            echo 'Verlinkungen';
-                        }
-                        ?>
+                        <?= $page->getLinksAndDownloadsTitle() ?>
                     </h3>
-                    <ul class="flex flex-wrap gap-2 w-full">
+                    <ul class="flex flex-col gap-2">
                         <?php foreach ($links as $link): ?>
-                            <li class="w-full">
+                            <li>
                                 <?= $link ?>
-                            </li>
-                        <?php endforeach; ?>
-                        <?php foreach ($downloads as $file): ?>
-                            <li class="w-full">
-                                <?= snippet(
-                                    'components/asset-card',
-                                    [
-                                        'assetFile' => $file,
-                                        'class' => '',
-                                    ]
-                                ); ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>

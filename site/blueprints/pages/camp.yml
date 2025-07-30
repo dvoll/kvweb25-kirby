@@ -14,10 +14,8 @@ tabs:
           postMeta:
             type: fields
             fields:
-              links:
-                extends: fields/links
-              downloads:
-                extends: fields/downloads
+              linksDownloads:
+                extends: fields/links-downloads
       main:
         sections:
           stageSection:

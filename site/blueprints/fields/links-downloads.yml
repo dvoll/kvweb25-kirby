@@ -1,0 +1,5 @@
+label: Verlinkungen/Downloads
+type: blocks
+empty: Keine Verlinkungen oder Downloads angelegt.
+fieldsets:
+  - special--link-download-block

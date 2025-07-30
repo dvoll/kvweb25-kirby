@@ -1,0 +1,10 @@
+name: Verlinkungen & Downloads
+description: Block für eine Auflistung an Downloads und Links auf externe und interne Seiten  
+icon: download
+preview: fields
+wysiwyg: true
+
+fields:
+  items:
+    extends: fields/links-downloads
+    

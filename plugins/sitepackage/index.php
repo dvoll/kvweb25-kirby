@@ -45,6 +45,7 @@ App::plugin('dvll/sitepackage', [
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.yml',
         'blocks/text'      => __DIR__ . '/blocks/text/text.yml',
         'blocks/spacer'      => __DIR__ . '/blocks/spacer/spacer.yml',
+        'blocks/teaser-links-downloads'      => __DIR__ . '/blocks/teaser-links-downloads/teaser-links-downloads.yml',
     ],
     'snippets'   => [
         'blocks/gallery'      => __DIR__ . '/blocks/gallery/gallery.php',
@@ -59,6 +60,7 @@ App::plugin('dvll/sitepackage', [
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.php',
         'blocks/text'      => __DIR__ . '/blocks/text/text.php',
         'blocks/spacer'      => __DIR__ . '/blocks/spacer/spacer.php',
+        'blocks/teaser-links-downloads'      => __DIR__ . '/blocks/teaser-links-downloads/teaser-links-downloads.php',
     ],
     'blockModels' => [
         'teaser-blogposts' => TeaserBlogpostsBlock::class,
@@ -109,6 +111,7 @@ App::plugin('dvll/sitepackage', [
                     if ($eventSlug && empty($eventPageSet)) {
                         $events = $kirby->page('termine')->children()->published()->sortBy('start', 'asc');
                         $selectedEvent = $events->filter(fn($event) => $event->slug() === $eventSlug)->first();
+                        /** @var \Kirby\Cms\Page|null $selectedEvent */
                         if ($selectedEvent) {
                             $position = $selectedEvent->indexOf($events);
                             $customParams = array_merge(params(), ['page' => $position ? floor($position / 9) + 1 : 1]);
