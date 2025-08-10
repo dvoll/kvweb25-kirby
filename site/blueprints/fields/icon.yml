@@ -1,16 +1,16 @@
 type: select
 label: Icon
 options:
-  arrow-down: arrow-down
-  arrow-left: arrow-left
-  arrow-right: arrow-right
-  chevron-down: chevron-down
-  clock: clock
-  deskphone: deskphone
-  download: download
-  email: email
-  external: external
-  fact: fact
-  location: location
-  mobilephone: mobilephone
-  person: person
+  arrow-down: Pfeil nach unten
+  arrow-left: Pfeil nach links
+  arrow-right: Pfeil nach rechts
+  chevron-down: Chevron nach unten
+  clock: Uhr
+  deskphone: Tischtelefon
+  download: Herunterladen
+  email: E-Mail
+  external: extern
+  fact: Fakt
+  location: Standort
+  mobilephone: Mobiltelefon
+  person: Person
