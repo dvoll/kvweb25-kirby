@@ -56,12 +56,12 @@
     --color-gray-100: rgb(245, 242, 242);
     --color-gray-200: rgb(235, 230, 230);
     --color-gray-300: rgb(219, 209, 209);
-    --color-gray-400: rgb(176, 153, 153);
-    --color-gray-500: rgb(130, 107, 107);
-    --color-gray-600: rgb(102, 74, 74);
-    --color-gray-700: rgb(84, 54, 54);
-    --color-gray-800: rgb(56, 31, 31);
-    --color-gray-900: rgb(41, 15, 15);
+    --color-gray-400: rgb(164, 154, 154);
+    --color-gray-500: rgb(118, 110, 110);
+    --color-gray-600: rgb(90, 78, 78);
+    --color-gray-700: rgb(74, 56, 56);
+    --color-gray-800: rgb(48, 32, 32);
+    --color-gray-900: rgb(40, 20, 20);
     --color-gray-950: rgb(18, 3, 3);
 
     --breakpoint-sm: 40rem;
