@@ -9,7 +9,7 @@ use Kirby\Cms\Files;
 class BlogpostPage extends CustomBasePage
 {
     #[\Override]
-    public function shouldShowContactsInLayout(): array
+    public function getContactsDisplayInLayoutOptions(): array
     {
         return [
             'show' => false,

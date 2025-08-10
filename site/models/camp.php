@@ -41,8 +41,9 @@ class CampPage extends CustomBasePage
         $field = $this->content()->get('teaserDescription');
         return $field->toHtml();
     }
+
     #[\Override]
-    public function shouldShowContactsInLayout(): array
+    public function getContactsDisplayInLayoutOptions(): array
     {
         return [
             'show' => false,

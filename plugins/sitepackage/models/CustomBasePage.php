@@ -43,7 +43,7 @@ class CustomBasePage extends Page implements WithTeaserContentInterface
     /**
      * @return array<string, bool>
      */
-    public function shouldShowContactsInLayout(): array
+    public function getContactsDisplayInLayoutOptions(): array
     {
         /** @var \Kirby\Content\Field $contactsField */
         $contactsField = $this->content()->get('contactsSelect');
@@ -53,13 +53,13 @@ class CustomBasePage extends Page implements WithTeaserContentInterface
         if ($showContactOptions->isEmpty() && $contactsField->isNotEmpty()) {
             return [
                 'show' => true,
-                'showGeneral' => true,
+                'showPartGeneral' => true,
             ]; // Default to true if not set and contacts are available
         }
         if ($showContactOptions->isEmpty()) {
             return [
                 'show' => false,
-                'showGeneral' => false,
+                'showPartGeneral' => false,
             ]; // Default to false if not set and no contacts
         }
         if ($showContactOptions->value() === 'always'
@@ -67,18 +67,18 @@ class CustomBasePage extends Page implements WithTeaserContentInterface
         ) {
             return [
                 'show' => true,
-                'showGeneral' => true,
+                'showPartGeneral' => true,
             ];
         }
         if ($showContactOptions->value() === 'selected' && $contactsField->isNotEmpty()) {
             return [
                 'show' => true,
-                'showGeneral' => false,
+                'showPartGeneral' => false,
             ];
         }
         return [
             'show' => false,
-            'showGeneral' => false,
+            'showPartGeneral' => false,
         ];
     }
 }
