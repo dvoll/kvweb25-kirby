@@ -1,0 +1,7 @@
+name: Fakten
+icon: info
+wysiwyg: true
+preview: fields
+fields:
+  facts:
+    extends: fields/facts

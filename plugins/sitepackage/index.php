@@ -45,6 +45,7 @@ App::plugin('dvll/sitepackage', [
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.yml',
         'blocks/text'      => __DIR__ . '/blocks/text/text.yml',
         'blocks/spacer'      => __DIR__ . '/blocks/spacer/spacer.yml',
+        'blocks/facts'      => __DIR__ . '/blocks/facts/facts.yml',
         'blocks/teaser-links-downloads'      => __DIR__ . '/blocks/teaser-links-downloads/teaser-links-downloads.yml',
     ],
     'snippets'   => [
@@ -60,6 +61,7 @@ App::plugin('dvll/sitepackage', [
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.php',
         'blocks/text'      => __DIR__ . '/blocks/text/text.php',
         'blocks/spacer'      => __DIR__ . '/blocks/spacer/spacer.php',
+        'blocks/facts'      => __DIR__ . '/blocks/facts/facts.php',
         'blocks/teaser-links-downloads'      => __DIR__ . '/blocks/teaser-links-downloads/teaser-links-downloads.php',
     ],
     'blockModels' => [

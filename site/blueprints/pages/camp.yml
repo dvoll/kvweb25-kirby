@@ -68,24 +68,7 @@ tabs:
             type: fields
             fields:
               facts:
-                label: Fakten
-                type: structure
-                columns:
-                  icon:
-                    width: 1/5
-                  name:
-                    width: 2/5
-                  value:
-                    width: 2/5
-                fields:
-                  icon:
-                    extends: fields/icon
-                  name:
-                    label: Name des Fakts
-                    type: text
-                  value:
-                    label: Inhalt des Fakts
-                    type: text
+                extends: fields/facts
               campIntro:
                 label: Einleitung
                 type: textarea

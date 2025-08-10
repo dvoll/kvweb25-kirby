@@ -21,18 +21,18 @@ snippet('layout', slots: true); ?>
 <section id="inhalt" class="dvll-section--small-gap">
     <div class="dvll-section__layout dvll-section__layout--two-col">
         <?php if ($page->myStageType() === null): ?>
-            <div class="dvll-block dvll-block--narrow dvll-block--gap-sm">
+            <div class="dvll-block dvll-block--narrow">
                 <h1 class="heading-title"><?= $page->myTitle() ?></h1>
                 <?= snippet('components/breadcrumb', ['class' => 'mt-2']); ?>
             </div>
         <?php endif; ?>
-        <div class="dvll-block dvll-block--narrow">
-            <ul class="flex flex-wrap gap-6 py-4">
+        <div class="dvll-block dvll-block--wide">
+            <ul class="facts-list">
                 <?php foreach ($page->facts()->toStructure() as $fact): ?>
-                    <li class="fact">
-                        <h3><?= snippet('elements/icon', ['icon' => $fact->icon(), 'class' => 'w-3 h-3 inline']) ?><?= $fact->name()->html() ?></h3>
-                        <p><?= $fact->value()->html() ?></p>
-                    </li>
+                    <?= snippet('components/fact', [
+                        'fact' => $fact,
+                        'elName' => 'li'
+                    ]) ?>
                 <?php endforeach; ?>
             </ul>
 

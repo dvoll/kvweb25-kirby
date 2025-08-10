@@ -37,7 +37,13 @@
 }
 
 @layer components {
+    .facts-list {
+        @apply flex flex-wrap gap-x-3;
 
+        @media (min-width: 640px) {
+            @apply gap-y-2;
+        }
+    }
 }
 
 @layer utilities {
