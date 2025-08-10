@@ -15,16 +15,14 @@ $contactsDisplayOptions = $page->getContactsDisplayInLayoutOptions();
 $showContact = $contactsDisplayOptions['show'] ?? false;
 $showGeneralContact = $contactsDisplayOptions['showPartGeneral'] ?? false;
 $contactNeighbourBlockCount = 3;
+
+$contactDisplayed = false;
 ?>
 
 <section class="dvll-section">
-<?php if ($contactsDisplayOptions['show']): ?>
+<?php if ($showContact): ?>
     <div class="dvll-section__layout dvll-section__layout--two-col">
-        <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
-            <div class="dvll-block">
-                <?php snippet('components/contact', compact('contacts', 'showGeneralContact')) ?>
-            </div>
-        </div>
+
 <?php else: ?>
     <div class="dvll-section__layout">
 <?php endif; ?>
@@ -33,8 +31,17 @@ $contactNeighbourBlockCount = 3;
         <?php foreach ($blocks->toBlocks() as $block) : ?>
             <?php
             // Render the block using the block model if available
-            if ($block->type() === 'spacer' || ($contactsDisplayOptions['show'] && $contactNeighbourBlockCount === 0)): ?>
+            if ($block->type() === 'spacer' || ($showContact && $contactNeighbourBlockCount === 0)): ?>
                 <?php $contactNeighbourBlockCount = -1; ?>
+
+                <?php if ($showContact && ! $contactDisplayed): ?>
+                    <?php $contactDisplayed = true; ?>
+                    <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
+                        <div class="dvll-block">
+                            <?php snippet('components/contact', compact('contacts', 'showGeneralContact')) ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
 
     </div>
 </section>
@@ -45,5 +52,15 @@ $contactNeighbourBlockCount = 3;
             <?php endif; ?>
             <?= $block ?>
         <?php endforeach; ?>
+
+         <?php if ($showContact && ! $contactDisplayed): ?>
+            <?php $contactDisplayed = true; ?>
+            <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
+                <div class="dvll-block">
+                    <?php snippet('components/contact', compact('contacts', 'showGeneralContact')) ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
     </div>
 </section>
