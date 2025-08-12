@@ -88,9 +88,85 @@ App::plugin('dvll/sitepackage', [
     'routes' => function (\Kirby\Cms\App $kirby) {
         return [
             [
+                // API endpoint for fetching event details
+                'pattern' => 'event-api/event/(:all)',
+                'action' => function ($eventSlug) use ($kirby) {
+                    header('Content-Type: application/json');
+
+                    try {
+                        /** @var dvll\KirbyEvents\Models\EventPage|null $eventPage */
+                        $eventPage = $kirby->page('termine')->find($eventSlug);
+
+                        if (!$eventPage || !$eventPage->isPublished()) {
+                            http_response_code(404);
+                            return json_encode([
+                                'success' => false,
+                                'error' => 'Event not found'
+                            ], JSON_UNESCAPED_UNICODE);
+                        }
+
+                        // Get calendar links
+                        $eventLinks = \dvll\KirbyEvents\Models\EventPage::getCalendarLinks($eventPage);
+
+                        // Get connected blogposts
+                        $blogpostPages = $eventPage->getConnectedBlogposts();
+                        $blogposts = [];
+                        foreach ($blogpostPages as $blogpost) {
+                            $blogposts[] = [
+                                'title' => $blogpost->title()->value(),
+                                'text' => $blogpost->text()->excerpt(140)->value(),
+                                'url' => $blogpost->url()
+                            ];
+                        }
+
+                        // Get event tag information
+                        $tagInfo = $eventPage->getTagInfo();
+
+                        // Prepare event data
+                        $eventData = [
+                            'title' => $eventPage->title()->value(),
+                            'slug' => $eventPage->slug(),
+                            'description' => $eventPage->content()->get('description')->value(),
+                            'location' => $eventPage->content()->get('location')->value(),
+                            'isAllDay' => $eventPage->isAllDayEvent(),
+                            'hasMultipleDays' => $eventPage->hasMultipleDays(),
+                            'startDate' => $eventPage->getStartDate()->format('c'),
+                            'endDate' => $eventPage->getEndDateTime()->format('c'),
+                            'endDateOnly' => date('c', $eventPage->getEndDateOnly(useCorrection: true)),
+                            'calendarLinks' => $eventLinks,
+                            'blogposts' => $blogposts,
+                            'tag' => $tagInfo
+                        ];
+
+                        return json_encode([
+                            'success' => true,
+                            'event' => $eventData
+                        ], JSON_UNESCAPED_UNICODE);
+
+                    } catch (Exception $e) {
+                        http_response_code(500);
+                        return json_encode([
+                            'success' => false,
+                            'error' => 'Internal server error'
+                        ], JSON_UNESCAPED_UNICODE);
+                    }
+                }
+            ],
+            [
                 // Redirects from short "freizeiten" slugs to the current structure
-                'pattern' => '(:any)',
+                // Only match single word slugs, not paths that start with api/
+                'pattern' => '([^/]+)',
                 'action'  => function ($slug) {
+                    // Skip if this looks like an API call or other system path
+                    if (strpos($slug, 'api') === 0 || strpos($slug, 'panel') === 0 || strpos($slug, 'media') === 0) {
+                        /**
+                         * @var \Kirby\Http\Route $this
+                         * @phpstan-ignore variable.undefined, varTag.variableNotFound
+                         */
+                        $this->next();
+                        return;
+                    }
+
                     if ($page = page('freizeiten')->find($slug)) {
                         go("freizeiten/{$page->slug()}", 301);
                     }

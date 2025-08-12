@@ -91,15 +91,10 @@ snippet('layout', slots: true); ?>
 <div class="dvll-block dvll-block--wide grid grid-cols-(--dvll-card-grid-cols--small) gap-4 md:gap-6 md:justify-center auto-rows-fr">
 <?php
             endif;
-            $eventLinks = EventPage::getCalendarLinks($event);
 ?>
 <?= snippet('components/event-card', [
                 'event' => $event,
                 'buttonLabel' => 'Termindetails ansehen',
-                'showGoToOverviewButton' => false,
-                'isInitiallyOpen' => $selectedEventSlug === $event->slug(),
-                'googleCalendarLink' => $eventLinks['google'],
-                'outlookCalendarLink' => $eventLinks['outlook'],
             ]) ?>
 <?php endforeach ?>
 </div>
@@ -112,4 +107,8 @@ snippet('layout', slots: true); ?>
 <?php endif ?>
 </div>
 </section>
+
+<!-- Single shared event dialog for all event cards on the page -->
+<?= snippet('components/event-dialog', ['showGoToOverviewButton' => false]) ?>
+
 <?php endsnippet() ?>

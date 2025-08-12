@@ -89,4 +89,7 @@ cghooks.lock
 !/storage/content/.gitkeep
 /storage/.license
 
+# Site cache
+/site/cache/*
+
 /site/plugins/*

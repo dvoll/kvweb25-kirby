@@ -7,8 +7,12 @@ use dvll\Sitepackage\Models\CustomBasePage;
 class EventPage extends CustomBasePage
 {
 
+    /**
+     * Returns the tag associated with this event.
+     * @return \Kirby\Cms\Structure|null
+     */
     public function getTag() {
-        /** @var Kirby\Content\Field $eventCategory */
+        /** @var \Kirby\Content\Field $eventCategory */
         $eventCategory = $this->content()->get('category');
         $eventMatchingTag = site()->tags()->toStructure()->findBy('customuuid', $eventCategory->value());
         return $eventMatchingTag;
@@ -224,5 +228,50 @@ class EventPage extends CustomBasePage
         $query = http_build_query($params);
 
         return "https://outlook.live.com/calendar/0/deeplink/compose?$query";
+    }
+
+    /**
+     * Get event tag information for API responses
+     *
+     * @return array<string, mixed>|null Tag information with name and optional page data
+     */
+    public function getTagInfo(): ?array
+    {
+        $eventMatchingTag = $this->getTag();
+        /** @var ?CustomBasePage $eventTagPage */
+        $eventTagPage = $this->getTagPage();
+        $tagInfo = null;
+
+        if ($eventMatchingTag && $eventMatchingTag->isNotEmpty()) {
+            $tagInfo = [
+                'name' => $eventMatchingTag->name()->escape(),
+                'page' => null
+            ];
+
+            if ($eventTagPage !== null) {
+                $teaserImage = $eventTagPage->myTeaserImage();
+                $teaserImageData = null;
+
+                if ($teaserImage) {
+                    // Generate responsive image data using the teaser preset
+                    $teaserSrcSet = $teaserImage->srcset('teaser');
+                    $teaserImageData = [
+                        'url' => $teaserImage->crop(300, 300)->url(),
+                        'srcset' => $teaserSrcSet,
+                        'alt' => $eventTagPage->myTitle() ?: $eventTagPage->title()->value()
+                    ];
+                }
+
+                $tagInfo['page'] = [
+                    'title' => $eventTagPage->title()->value(),
+                    'url' => $eventTagPage->url(),
+                    'teaserTitle' => $eventTagPage->myTitle(),
+                    'teaserText' => \Kirby\Toolkit\Str::excerpt($eventTagPage->myTeaserText(), 130),
+                    'teaserImage' => $teaserImageData
+                ];
+            }
+        }
+
+        return $tagInfo;
     }
 }

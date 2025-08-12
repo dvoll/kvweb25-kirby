@@ -12,6 +12,7 @@ import "./main.css";
 
 import { DvllHeader } from "./components/header";
 import gallery from "./components/gallery";
+import eventDialog, { sharedEventDialog } from "./components/event-dialog";
 
 Alpine.plugin(collapse);
 Alpine.plugin(focus);
@@ -20,6 +21,8 @@ Alpine.plugin(focus);
 window.Alpine = Alpine;
 
 Alpine.data("gallery", gallery);
+Alpine.data("eventCard", eventDialog); // Individual event cards
+Alpine.data("sharedEventDialog", sharedEventDialog); // Single shared dialog
 
 Alpine.start();
 
