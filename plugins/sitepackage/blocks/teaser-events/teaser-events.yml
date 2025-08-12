@@ -6,12 +6,6 @@ preview: fields
 wysiwyg: true
 
 fields:
-  teaserTitle:
-    label: Teaser Titel
-    type: text
-    icon: title
-    width: 1/2
-    required: true
   source:
     label: Auswahl der anzuzeigenden Termine
     type: radio

@@ -6,20 +6,17 @@ preview: fields
 wysiwyg: true
 
 fields:
-  teaserTitle:
-    label: Teaser Titel
-    type: text
-    icon: title
-    width: 1/2
-    required: true
   showText:
     label: Auszug des Beitrags anzeigen
-    type: toggle
+    type: toggles
     default: false
-    width: 1/2
-    text:
-      - Wird aktuell nicht angezeigt
-      - Wird aktuell angezeigt
+    options:
+      - value: true
+        text: Auszug anzeigen
+        icon: check
+      - value: false
+        text: Auszug verstecken
+        icon: cancel
   source:
     label: Auswahl der anzuzeigenden Beiträge
     type: radio
