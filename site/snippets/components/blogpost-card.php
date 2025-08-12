@@ -19,10 +19,10 @@ $dynamicContent = $dynamicContent ?? false;
 <div class="card card--with-hover flex flex-col px-5 pt-5 pb-4 @min-card-md:px-6 @min-card-md:pb-4 @min-card-md:pt-6 relative <?= $class ?? '' ?> <?php e($teaser, 'bg-secondary justify-center items-center', 'justify-between') ?>">
     <?php if ($dynamicContent): ?>
         <a :href="blogpost.url"
-           class="absolute inset-0"
-           aria-hidden="true"
-           tabindex="-1"
-           :title="'Zum Beitrag: ' + blogpost.title"></a>
+            class="absolute inset-0"
+            aria-hidden="true"
+            tabindex="-1"
+            :title="'Zum Beitrag: ' + blogpost.title"></a>
     <?php else: ?>
         <a <?= Html::attr([
                 'href' => $url,
@@ -40,7 +40,7 @@ $dynamicContent = $dynamicContent ?? false;
         <?php else: ?>
             <h3 class="heading-lv3 pr-4 <?php e($teaser, 'text-gray-600 text-center') ?>"><?= $title ?></h3>
             <?php if (!empty($text)): ?>
-                <p class="max-w-96 text-sm text-contrast mt-2 <?php e($teaser, 'text-gray-600 text-center') ?>">
+                <p class="max-w-96 text-sm text-contrast mt-2 <?php e(strlen($title) > 29, 'line-clamp-2')?> <?php e($teaser, 'text-gray-600 text-center') ?>">
                     <?= $text ?>
                 </p>
             <?php endif; ?>
@@ -51,8 +51,8 @@ $dynamicContent = $dynamicContent ?? false;
         <?php if ($dynamicContent): ?>
             <span class="text-sm text-gray-500" x-show="blogpost.date" x-text="blogpost.date"></span>
             <a :href="blogpost.url"
-               class="btn btn--ghost ml-auto <?= $teaser ? 'text-gray-600 text-center' : '' ?>"
-               :aria-label="'Zum Beitrag: ' + blogpost.title">
+                class="btn btn--ghost ml-auto <?= $teaser ? 'text-gray-600 text-center' : '' ?>"
+                :aria-label="'Zum Beitrag: ' + blogpost.title">
                 <?= $buttonText ?><?= snippet('elements/icon') ?>
             </a>
         <?php else: ?>

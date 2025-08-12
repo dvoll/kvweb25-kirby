@@ -13,15 +13,6 @@ $teaserEvents = $block->myEvents()->limit(3);
 
 ?>
 
-<div class="dvll-block dvll-block--narrow dvll-block--gap-sm">
-    <div class="flex flex-row flex-wrap gap-4 md:gap-6">
-        <h2 class="heading-lv2"><?= $block->content()->get('teaserTitle')->escape() ?></h2>
-        <a <?= Html::attr([
-                'href' => $site->find('termine')->url(),
-                'class' => 'btn btn--secondary self-start',
-            ]) ?>>Alle Termine anzeigen<?= snippet('elements/icon') ?></a>
-    </div>
-</div>
 <div class="dvll-block dvll-block--wide">
     <div class="grid grid-cols-1 md:grid-cols-(--dvll-card-grid-cols--small) gap-4 md:gap-6 md:justify-center">
         <?php foreach ($teaserEvents as $teaserEvent): ?>
@@ -75,6 +66,16 @@ $teaserEvents = $block->myEvents()->limit(3);
             </div>
         <?php endif; ?>
     </div>
+    <?= snippet('components/event-dialog', ['showGoToOverviewButton' => true]) ?>
 </div>
 
-<?= snippet('components/event-dialog', ['showGoToOverviewButton' => true]) ?>
+<?php if ($teaserEvents->count() >= 3): ?>
+<div class="dvll-block dvll-block--narrow">
+    <div class="flex flex-row flex-wrap justify-end">
+        <a <?= Html::attr([
+                'href' => $site->find('termine')->url(),
+                'class' => 'btn btn--secondary self-start',
+            ]) ?>>Alle Termine anzeigen<?= snippet('elements/icon') ?></a>
+    </div>
+</div>
+<?php endif; ?>

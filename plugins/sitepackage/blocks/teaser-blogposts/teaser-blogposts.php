@@ -11,16 +11,7 @@ $teaserPages = $block->myBlogposts()->limit(3);
 
 ?>
 
-<div class="dvll-block dvll-block--narrow dvll-block--gap-sm">
-    <div class="flex flex-row flex-wrap gap-4 md:gap-6">
-        <h2 class="heading-lv2"><?= $block->content()->get('teaserTitle')->escape() ?></h2>
-        <a <?= Html::attr([
-                'href' => $site->find('blog')->url(),
-                'class' => 'btn btn--secondary self-start',
-            ]) ?>>Alle Beiträge anzeigen<?= snippet('elements/icon') ?></a>
-    </div>
-</div>
-<div class="dvll-block dvll-block--wide">
+<div class="dvll-block dvll-block--wide dvll-block--gap-sm">
     <div class="grid grid-cols-1 md:grid-cols-(--dvll-card-grid-cols--small) gap-4 md:gap-6 md:justify-center">
         <?php foreach ($teaserPages as $teaserPage): ?>
             <?= snippet('components/blogpost-card', [
@@ -49,3 +40,14 @@ $teaserPages = $block->myBlogposts()->limit(3);
         <?php endif; ?>
     </div>
 </div>
+
+<?php if ($teaserPages->count() >= 3): ?>
+<div class="dvll-block dvll-block--narrow">
+    <div class="flex flex-row flex-wrap justify-end">
+        <a <?= Html::attr([
+                'href' => $site->find('blog')->url(),
+                'class' => 'btn btn--secondary self-start',
+            ]) ?>>Alle Beiträge anzeigen<?= snippet('elements/icon') ?></a>
+    </div>
+</div>
+<?php endif; ?>
