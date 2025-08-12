@@ -4,6 +4,7 @@ use dvll\Sitepackage\Helpers\CustomGd;
 use dvll\Sitepackage\Helpers\CustomImageMagick;
 use dvll\Sitepackage\Models\LayoutWithContactBlock;
 use dvll\Sitepackage\Models\TeaserBlogpostsBlock;
+use dvll\Sitepackage\Models\TeaserEventsBlock;
 use Kirby\Cms\App;
 use Kirby\Data\Yaml;
 use Kirby\Filesystem\F;
@@ -41,6 +42,7 @@ App::plugin('dvll/sitepackage', [
         'blocks/stage-text-image'      => __DIR__ . '/blocks/stage-text-image/stage-text-image.yml',
         'blocks/stage-hero'      => __DIR__ . '/blocks/stage-hero/stage-hero.yml',
         'blocks/teaser-blogposts'      => __DIR__ . '/blocks/teaser-blogposts/teaser-blogposts.yml',
+        'blocks/teaser-events'      => __DIR__ . '/blocks/teaser-events/teaser-events.yml',
         'blocks/teaser-pages'      => __DIR__ . '/blocks/teaser-pages/teaser-pages.yml',
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.yml',
         'blocks/text'      => __DIR__ . '/blocks/text/text.yml',
@@ -57,6 +59,7 @@ App::plugin('dvll/sitepackage', [
         'blocks/stage-text-image'      => __DIR__ . '/blocks/stage-text-image/stage-text-image.php',
         'blocks/stage-hero'      => __DIR__ . '/blocks/stage-hero/stage-hero.php',
         'blocks/teaser-blogposts'      => __DIR__ . '/blocks/teaser-blogposts/teaser-blogposts.php',
+        'blocks/teaser-events'      => __DIR__ . '/blocks/teaser-events/teaser-events.php',
         'blocks/teaser-pages'      => __DIR__ . '/blocks/teaser-pages/teaser-pages.php',
         'blocks/text-image'      => __DIR__ . '/blocks/text-image/text-image.php',
         'blocks/text'      => __DIR__ . '/blocks/text/text.php',
@@ -66,6 +69,7 @@ App::plugin('dvll/sitepackage', [
     ],
     'blockModels' => [
         'teaser-blogposts' => TeaserBlogpostsBlock::class,
+        'teaser-events' => TeaserEventsBlock::class,
         'layout-with-contact' => LayoutWithContactBlock::class,
     ],
     'hooks' => [

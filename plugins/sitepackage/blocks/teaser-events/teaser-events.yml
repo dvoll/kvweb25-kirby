@@ -1,0 +1,29 @@
+name: Teaser (Termine)
+label: Block
+# description: Block für Teaser von Terminen/Events
+# icon: calendar
+preview: fields
+wysiwyg: true
+
+fields:
+  teaserTitle:
+    label: Teaser Titel
+    type: text
+    icon: title
+    width: 1/2
+    required: true
+  source:
+    label: Auswahl der anzuzeigenden Termine
+    type: radio
+    columns: 2
+    default: "upcoming"
+    required: true
+    options:
+      upcoming: Kommende Termine
+      tagged: Mit bestimmten Schlagworten 
+  tags:
+    extends: fields/tags
+    sortable: false
+    min: 1
+    when:
+      source: tagged

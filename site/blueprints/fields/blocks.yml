@@ -35,4 +35,5 @@ fieldsets:
     fieldsets:
       - teaser-pages
       - teaser-blogposts
+      - teaser-events
 
