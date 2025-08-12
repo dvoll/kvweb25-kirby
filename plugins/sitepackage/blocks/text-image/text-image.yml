@@ -32,8 +32,16 @@ fields:
     options:
       none: Keine Verlinkung
       link: Button mit Link
+  linklabel:
+    label: Linktext
+    required: true
+    type: text
+    icon: text
+    width: 1/2
+    when:
+      linkselection: link
   link:
-    label: Link
+    label: Linkziel
     required: true
     type: link
     options:
@@ -43,14 +51,6 @@ fields:
       - email
       - tel
     icon: link
-    width: 1/2
-    when:
-      linkselection: link
-  linklabel:
-    label: Label
-    required: true
-    type: text
-    icon: text
     width: 1/2
     when:
       linkselection: link
