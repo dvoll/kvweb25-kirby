@@ -5,52 +5,70 @@ icon: image
 preview: fields
 wysiwyg: true
 
-fields:
-  title:
-    label: Titel
-    type: text
-    icon: title
-    width: 2/3
-  description:
-    label: Beschreibung
-    type: textarea
-    icon: text
-    buttons: false
-    size: small
-    width: 2/3
-  image:
-    extends: fields/image
-    label: Bild
-    multiple: false
-    layout: cards
-    width: 1/2
-  linkselection:
-    label: Button mit Verlinkung (Optional)
-    type: radio
-    columns: 2
-    default: "none"
-    options:
-      none: Keine Verlinkung
-      link: Button mit Link
-  linklabel:
-    label: Linktext
-    required: true
-    type: text
-    icon: text
-    width: 1/2
-    when:
-      linkselection: link
-  link:
-    label: Linkziel
-    required: true
-    type: link
-    options:
-      - page
-      - url
-      - file
-      - email
-      - tel
-    icon: link
-    width: 1/2
-    when:
-      linkselection: link
+tabs:
+  main:
+    label: Inhalt
+    fields:
+      title:
+        label: Titel
+        type: text
+        icon: title
+        width: 2/3
+      description:
+        label: Beschreibung
+        type: textarea
+        icon: text
+        buttons: false
+        size: small
+        width: 2/3
+      image:
+        extends: fields/image
+        label: Bild
+        multiple: false
+        layout: cards
+        width: 1/2
+      linkselection:
+        label: Button mit Verlinkung (Optional)
+        type: radio
+        columns: 2
+        default: "none"
+        options:
+          none: Keine Verlinkung
+          link: Button mit Link
+      linklabel:
+        label: Linktext
+        required: true
+        type: text
+        icon: text
+        width: 1/2
+        when:
+          linkselection: link
+      link:
+        label: Linkziel
+        required: true
+        type: link
+        options:
+          - page
+          - url
+          - file
+          - email
+          - tel
+        icon: link
+        width: 1/2
+        when:
+          linkselection: link
+
+  settings:
+    label: Einstellungen
+    fields:
+      crop:
+        type: toggles
+        label: Bild zuschneiden
+        help: Aktivieren, um das Bild auf das 4/3 Format zuzuschneiden
+        default: true
+        required: true
+        options:
+          - value: true
+            text: Zuschneiden
+          - value: false
+            text: Nicht zuschneiden

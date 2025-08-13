@@ -16,6 +16,8 @@ $sizes = [
     '100vw'
 ];
 
+$shouldBeCropped = $block->content()->get('crop')->isEmpty() || $block->content()->get('crop')->isTrue(); // Default is crop
+
 // $linkObject = $block->content()->get('link')->toObject();
 
 ?>
@@ -41,11 +43,12 @@ $sizes = [
         'picture',
         [
             'image' => $block->image()->toFile(),
-            'cropRatio' => 4 / 3,
+            'cropRatio' => $shouldBeCropped ?  4 / 3 : null,
             'sizes' => A::join($sizes, ', '),
             'preset' => 'default',
             'class' => 'md:max-w-[400px] md:basis-1/2',
-            'imgClass' => 'rounded-md',
+            'imgClass' => 'rounded-md object-contain aspect-[4/3]',
+            'responsive' => !$shouldBeCropped
         ]
     ); ?>
 </div>
