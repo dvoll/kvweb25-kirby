@@ -45,7 +45,7 @@ $eventTagPage = $event->getTagPage();
                 'title' => 'Zu den Termindetails von: ' . $eventTitle->escape(),
             ]) ?>
             @click.prevent.stop="openModal()"></a>
-        <div class="grid grid-cols-[auto_1fr] grid-rows-[1fr_auto_minmax(auto,2fr)_auto] h-full">
+        <div class="grid grid-cols-[auto_1fr] grid-rows-[1fr_auto_minmax(auto,2fr)_auto] h-full min-h-32">
             <div class="row-span-4 bg-offwhite px-4 @min-card-small-md:px-4 py-4 flex flex-col items-center justify-center @min-card-small-md:min-w-[90px]">
                 <span class="ml-1 font-style font-semibold text-contrast text-3xl"><?= $eventStartDay ?>.</span>
                 <span class="font-style font-semibold text-contrast text-sm leading-3.5"><?= EventPage::getMonthString($eventStartDate, cut: true) ?></span>
