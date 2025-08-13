@@ -40,7 +40,7 @@ $class = $class ?? '';
         ]) ?>></a>
     <div class="h-full card__layout grid-cols-[3fr_1fr] @min-card-small-md:grid-cols-[2fr_1fr]">
         <div class="self-center py-4 pl-5 @min-card-small-md:pl-6">
-            <h3 class="heading-lv4 text-balance mb-1 -mr-3"><?= $title ?></h3>
+            <h3 class="heading-h4 text-balance mb-1 -mr-3"><?= $title ?></h3>
             <?php if (!empty($text)): ?>
                 <p class="typo text-sm line-clamp-3 md:line-clamp-none italic">
                     <?= $text ?>

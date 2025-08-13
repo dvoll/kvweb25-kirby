@@ -22,7 +22,7 @@ $showGoToOverviewButton = $showGoToOverviewButton ?? true;
                 <!-- Title and location only shown when data is loaded -->
                 <template x-if="eventData && !isLoading && !error">
                     <div class="w-full">
-                        <h3 class="heading-lv3 text-contrast" x-text="eventData?.title"></h3>
+                        <h3 class="heading-h3 text-contrast" x-text="eventData?.title"></h3>
                         <template x-if="eventData?.location">
                             <p class="font-body text-sm text-gray-600 flex items-center gap-0.5">
                                 <?= snippet('elements/icon', ['icon' => 'location', 'class' => 'size-4 shrink-0']) ?>
@@ -136,7 +136,7 @@ $showGoToOverviewButton = $showGoToOverviewButton ?? true;
             <template x-if="eventData?.blogposts?.length > 0 || eventData?.tag?.page">
                 <div>
                     <div class="mt-12 pl-4 md:pl-12 pr-4 md:pr-8">
-                        <h3 class="heading-lv3 text-contrast">Weitere Informationen</h3>
+                        <h3 class="heading-h3 text-contrast">Weitere Informationen</h3>
                     </div>
                     <div class="px-4 grid grid-cols-1 md:grid-cols-(--dvll-card-grid-cols) gap-4 md:justify-center mt-4">
                         <!-- Blogpost Cards -->

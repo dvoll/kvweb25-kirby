@@ -45,13 +45,13 @@ $sizes = [
     <div class="card__layout h-full @min-card-lg:grid-cols-[1fr_1fr] @min-card-xl:grid-cols-[3fr_1fr]">
         <div class="area-main self-center py-5 pl-5 @min-card-md:py-6 @min-card-md:pl-6">
             <?php if ($dynamicContent): ?>
-                <h3 class="heading-lv3 mb-3" x-text="eventData.tag.page.teaserTitle"></h3>
+                <h3 class="heading-h3 mb-3" x-text="eventData.tag.page.teaserTitle"></h3>
                 <p class="typo text-sm line-clamp-3 md:line-clamp-none" x-text="eventData.tag.page.teaserText"></p>
                 <a :href="eventData.tag.page.url" class="btn btn--secondary mt-6 md:mt-9 mr-2">
                     Zur Seite &#8222;<span x-text="eventData.tag.page.title"></span>&#8220;<?= snippet('elements/icon') ?>
                 </a>
             <?php else: ?>
-                <h3 class="heading-lv3 mb-3"><?= $title ?></h3>
+                <h3 class="heading-h3 mb-3"><?= $title ?></h3>
                 <?php if (!empty($text)): ?>
                     <p class="typo text-sm line-clamp-3 md:line-clamp-none">
                         <?= $text ?>

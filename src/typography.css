@@ -64,32 +64,32 @@
       line-height: var(--text-5xl--line-height);
     }
 
-    .heading-lv1 {
+    .heading-h1 {
       @apply font-style font-semibold;
       font-size: var(--text-5xl);
       line-height: var(--text-5xl--line-height);
     }
 
-    .heading-lv2 {
+    .heading-h2 {
       @apply font-style font-semibold;
       font-size: var(--text-2xl);
       line-height: var(--text-2xl--line-height);
     }
 
-    .heading-lv3 {
+    .heading-h3 {
       @apply font-style font-semibold;
       font-size: var(--text-xl);
       line-height: var(--text-xl--line-height);
     }
 
-    .heading-lv4 {
+    .heading-h4 {
       @apply font-style font-semibold;
       font-size: var(--text-lg);
       line-height: var(--text-lg--line-height);
     }
 
-    .heading-lv5,
-    .heading-lv6 {
+    .heading-h5,
+    .heading-h6 {
       @apply font-style font-normal;
       font-size: var(--text-lg);
       line-height: var(--text-lg--line-height);

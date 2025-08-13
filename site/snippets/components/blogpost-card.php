@@ -35,10 +35,10 @@ $dynamicContent = $dynamicContent ?? false;
 
     <div class="">
         <?php if ($dynamicContent): ?>
-            <h3 class="heading-lv3 pr-4 <?php e($teaser, 'text-gray-600 text-center') ?>" x-text="blogpost.title"></h3>
+            <h3 class="heading-h3 pr-4 <?php e($teaser, 'text-gray-600 text-center') ?>" x-text="blogpost.title"></h3>
             <p class="max-w-96 text-sm text-contrast mt-2 <?php e($teaser, 'text-gray-600 text-center') ?>" x-text="blogpost.text"></p>
         <?php else: ?>
-            <h3 class="heading-lv3 pr-4 <?php e($teaser, 'text-gray-600 text-center') ?>"><?= $title ?></h3>
+            <h3 class="heading-h3 pr-4 <?php e($teaser, 'text-gray-600 text-center') ?>"><?= $title ?></h3>
             <?php if (!empty($text)): ?>
                 <p class="max-w-96 text-sm text-contrast mt-2 <?php e(strlen($title) > 29, 'line-clamp-2')?> <?php e($teaser, 'text-gray-600 text-center') ?>">
                     <?= $text ?>

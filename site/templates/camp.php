@@ -54,7 +54,7 @@ snippet('layout', slots: true); ?>
         if (count($links) > 0):
         ?>
             <div class="dvll-block dvll-block--wide">
-                <h3 class="heading-lv3 mb-5">
+                <h3 class="heading-h3 mb-5">
                     <?= $page->getLinksAndDownloadsTitle() ?>
                 </h3>
                 <ul class="grid grid-cols-(--dvll-card-grid-cols--small) gap-3 w-full">

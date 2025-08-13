@@ -12,7 +12,7 @@ $showGeneralContact = $showGeneralContact ?? true;
 ?>
 <div class="rounded-md bg-offwhite pl-5 md:pl-6 pr-4 pb-6 md:pb-8 pt-5 md:pt-6 self-start flex flex-col gap-8">
     <div class="flex flex-col gap-4">
-        <h2 class="heading-lv2">Noch Fragen?<br>
+        <h2 class="heading-h2">Noch Fragen?<br>
             Melde dich bei uns!</h2>
         <?php if ($showGeneralContact): ?>
             <div class="">
@@ -43,7 +43,7 @@ $showGeneralContact = $showGeneralContact ?? true;
                         </div>
                     <?php endif ?>
                     <div class="flex flex-col">
-                        <h4 class="heading-lv4 mt-2"><?= $contact->name() ?></h4>
+                        <h4 class="heading-h4 mt-2"><?= $contact->name() ?></h4>
                         <?php if ($contact->subject()->isNotEmpty()): ?>
                             <p class="typo italic mb-1"><?= $contact->subject()->html() ?></p>
                         <?php endif ?>

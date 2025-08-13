@@ -25,7 +25,7 @@ snippet('layout', slots: true); ?>
         <?php endif; ?>
         <div class="dvll-block dvll-block--narrow dvll-block--gap-sm">
             <div class="font-style font-semibold text-sm text-gray-500 mb-2">Beitrag - <?= $page->date()->toDate("d.m.Y") ?></div>
-            <h1 class="heading-lv2"><?= $page->myTitle() ?></h1>
+            <h1 class="heading-h2"><?= $page->myTitle() ?></h1>
         </div>
         <div class="dvll-block dvll-block--narrow">
             <div class="typo typo--rte">
@@ -63,7 +63,7 @@ snippet('layout', slots: true); ?>
             if (count($links) > 0):
             ?>
                 <div class="dvll-block">
-                    <h3 class="heading-lv3 mb-5">
+                    <h3 class="heading-h3 mb-5">
                         <?= $page->getLinksAndDownloadsTitle() ?>
                     </h3>
                     <ul class="flex flex-col gap-2">

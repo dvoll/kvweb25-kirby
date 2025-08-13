@@ -84,7 +84,7 @@ snippet('layout', slots: true); ?>
                     : ($startMonthString . ' – ' . $endMonthString);
 ?>
 <div class="dvll-block dvll-block--narrow">
-    <h2 class="heading-lv2 text-contrast">
+    <h2 class="heading-h2 text-contrast">
         <?= $monthTitle ?><?= $showYear ? ' ' . $year : '' ?>
     </h2>
 </div>
