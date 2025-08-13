@@ -98,8 +98,7 @@ $sizes = [
                         'sizes' => A::join($sizes, ', '),
                         'preset' => 'teaser',
                         'class' => 'area-image angled-cut origin-right @min-card-lg:origin-center',
-                        'responsive' => true,
-                        'imgClass' => 'w-full h-full object-cover',
+                        'imgClass' => 'w-full h-full',
                     ]
                 ); ?>
             <?php else: ?>

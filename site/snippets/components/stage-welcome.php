@@ -92,12 +92,10 @@ $delay = 0;
                     'picture',
                     [
                         'image' => $stageImage,
-                        'cropRatio' => 4 / 3,
                         'sizes' => [],
                         'preset' => 'stageWelcome',
-                        'responsive' => true,
                         'class' => 'block w-full h-full stage-welcome__image ',
-                        'imgClass' => 'w-full h-full object-cover',
+                        'imgClass' => 'w-full h-full',
                         'alt' => '',
                     ]
                 ); ?>
