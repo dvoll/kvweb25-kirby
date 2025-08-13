@@ -37,10 +37,15 @@ return [
             '1500w' => ['width' => 1500, 'height' => 1200, 'crop' => true],
             '1920w' => ['width' => 1920, 'height' => 1200, 'crop' => true],
         ],
-        'stageWelcome' => [
+        'stageWelcomeBrighten' => [
             '1x'  => ['width' => 145, 'height' => 145, 'crop' => true, 'brighten' => true],
             '2x'  => ['width' => 290, 'height' => 290, 'crop' => true, 'brighten' => true],
             '3x'  => ['width' => 435, 'height' => 435, 'crop' => true, 'brighten' => true],
+        ],
+        'stageWelcome' => [
+            '1x'  => ['width' => 145, 'height' => 145, 'crop' => true],
+            '2x'  => ['width' => 290, 'height' => 290, 'crop' => true],
+            '3x'  => ['width' => 435, 'height' => 435, 'crop' => true],
         ],
         // Currently not in use:
         'teaser4to3' => [

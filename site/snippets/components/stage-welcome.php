@@ -88,17 +88,31 @@ $delay = 0;
             <?php $positionStyle = '--position-x: ' . $position[0] . '; --position-y: ' . $position[1] . ';'; ?>
             <?php $delay = ($baseDelay * (1 - pow($decay, $position[1])) / (1 - $decay)) + ($position[0] * $xDelay); ?>
             <div class="stage-welcome__item shadow-lg overflow-clip rounded-sm lg:rounded-md transition-flip transition--initial" style="<?= $positionStyle ?> <?= '--transition-delay: ' . round($delay, 3) . 's;' ?>">
-                <?= snippet(
-                    'picture',
-                    [
-                        'image' => $stageImage,
-                        'sizes' => [],
-                        'preset' => 'stageWelcome',
-                        'class' => 'block w-full h-full stage-welcome__image ',
-                        'imgClass' => 'w-full h-full',
-                        'alt' => '',
-                    ]
-                ); ?>
+                <?php if ($stageImage->extension() === 'png'): ?>
+                    <?= snippet(
+                        'picture',
+                        [
+                            'image' => $stageImage,
+                            'sizes' => [],
+                            'preset' => 'stageWelcome',
+                            'class' => 'block w-full h-full stage-welcome__image ',
+                            'imgClass' => 'w-full h-full',
+                            'alt' => '',
+                        ]
+                    ); ?>
+                <?php else: ?>
+                    <?= snippet(
+                        'picture',
+                        [
+                            'image' => $stageImage,
+                            'sizes' => [],
+                            'preset' => 'stageWelcomeBrighten',
+                            'class' => 'block w-full h-full stage-welcome__image ',
+                            'imgClass' => 'w-full h-full',
+                            'alt' => '',
+                        ]
+                    ); ?>
+                <?php endif; ?>
             </div>
             <?php $imageIndex++; ?>
         <?php endforeach; ?>
