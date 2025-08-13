@@ -96,7 +96,4 @@ tabs:
                 value: selected
               - text: "Nichts anzeigen"
                 value: never
-          layouts:
-            extends: fields/blocks-layout
-            pretty: true
   seo: seo/page
