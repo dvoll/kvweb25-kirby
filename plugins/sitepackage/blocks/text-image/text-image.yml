@@ -65,10 +65,10 @@ tabs:
         type: toggles
         label: Bild zuschneiden
         help: Aktivieren, um das Bild auf das 4/3 Format zuzuschneiden
-        default: true
+        default: crop
         required: true
         options:
-          - value: true
+          - value: crop
             text: Zuschneiden
-          - value: false
+          - value: nocrop
             text: Nicht zuschneiden

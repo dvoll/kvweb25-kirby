@@ -16,7 +16,7 @@ $sizes = [
     '100vw'
 ];
 
-$shouldBeCropped = $block->content()->get('crop')->isEmpty() || $block->content()->get('crop')->isTrue(); // Default is crop
+$shouldBeCropped = $block->content()->get('crop')->isEmpty() || $block->content()->get('crop')->value() !== 'nocrop'; // Default is crop
 
 // $linkObject = $block->content()->get('link')->toObject();
 
