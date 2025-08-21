@@ -2,8 +2,8 @@ title: Download
 blueprint: file
 
 accept:
-  extension: jpg, png, pdf, doc, docx, xls, xlsx, svg
-  mime: image/jpeg, image/png, application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, image/svg+xml
+  extension: jpg, png, pdf, doc, docx, xls, xlsx, svg, odt, ods
+  mime: image/jpeg, image/png, application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, image/svg+xml, application/vnd.oasis.opendocument.text, application/vnd.oasis.opendocument.spreadsheet
 focus: false
 fields:
   title:
