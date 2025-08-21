@@ -51,7 +51,6 @@
         @media (width >= 73.25rem) {
             column-gap: 1.5rem;
             grid-template-columns: 1fr repeat(9, calc((73.25rem - 15rem) / 9)) 1fr;
-
         }
     }
 
@@ -124,6 +123,23 @@
                     @apply col-start-2 col-end-7;
                 }
             }
+        }
+    }
+
+    .dvll-footer-list-layout {
+        display: flex;
+        flex-direction: column;
+
+        @media (width >= 12rem) {
+            display: grid;
+            --row-count: calc(var(--footer-item-count, 2) / 2);
+            --row-count-int: round(up, var(--row-count));
+            grid-template-rows: repeat(var(--row-count-int), 1fr);
+            grid-auto-flow: column dense;
+        }
+
+        @media (width >= 73.25rem) {
+            --row-count: calc(var(--footer-item-count, 3) / 3);
         }
     }
 }
