@@ -1,33 +1,49 @@
 {
-  "src/fonts/roboto/RobotoFlex-Regular.ttf": {
-    "file": "RobotoFlex-Regular-mt6ixy7w.ttf",
-    "src": "src/fonts/roboto/RobotoFlex-Regular.ttf"
+  "src/components/gallery.ts": {
+    "file": "gallery-BwpwmyXT.js",
+    "name": "gallery",
+    "src": "src/components/gallery.ts",
+    "isDynamicEntry": true,
+    "css": [
+      "gallery-ChRl9wZf.css"
+    ]
   },
   "src/fonts/roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf": {
     "file": "RobotoFlex-VariableFont_GRAD_XOPQ_XTRA_YOPQ_YTAS_YTDE_YTFI_YTLC_YTUC_opsz_slnt_wdth_wght-DJo2p2gK.ttf",
     "src": "src/fonts/roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf"
   },
+  "src/fonts/roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2": {
+    "file": "RobotoFlex-VariableFont_GRAD_XOPQ_XTRA_YOPQ_YTAS_YTDE_YTFI_YTLC_YTUC_opsz_slnt_wdth_wght-NxJfTCCF.woff2",
+    "src": "src/fonts/roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2"
+  },
   "src/fonts/sourcesanspro/SourceSansPro-Bold.otf": {
     "file": "SourceSansPro-Bold-BjJml8lq.otf",
     "src": "src/fonts/sourcesanspro/SourceSansPro-Bold.otf"
+  },
+  "src/fonts/sourcesanspro/SourceSansPro-Bold.woff2": {
+    "file": "SourceSansPro-Bold-CU6s1iOC.woff2",
+    "src": "src/fonts/sourcesanspro/SourceSansPro-Bold.woff2"
   },
   "src/fonts/sourcesanspro/SourceSansPro-Regular.otf": {
     "file": "SourceSansPro-Regular-so5UI2yf.otf",
     "src": "src/fonts/sourcesanspro/SourceSansPro-Regular.otf"
   },
+  "src/fonts/sourcesanspro/SourceSansPro-Regular.woff2": {
+    "file": "SourceSansPro-Regular-B2Z4YQ3U.woff2",
+    "src": "src/fonts/sourcesanspro/SourceSansPro-Regular.woff2"
+  },
+  "src/main.css": {
+    "file": "main-DoYH2M_W.css",
+    "src": "src/main.css",
+    "isEntry": true
+  },
   "src/main.ts": {
-    "file": "main-CzJOgz1P.js",
+    "file": "main-PhiWoVWD.js",
     "name": "main",
     "src": "src/main.ts",
     "isEntry": true,
-    "css": [
-      "main-CymBszqC.css"
-    ],
-    "assets": [
-      "RobotoFlex-VariableFont_GRAD_XOPQ_XTRA_YOPQ_YTAS_YTDE_YTFI_YTLC_YTUC_opsz_slnt_wdth_wght-DJo2p2gK.ttf",
-      "RobotoFlex-Regular-mt6ixy7w.ttf",
-      "SourceSansPro-Regular-so5UI2yf.otf",
-      "SourceSansPro-Bold-BjJml8lq.otf"
+    "dynamicImports": [
+      "src/components/gallery.ts"
     ]
   }
 }
