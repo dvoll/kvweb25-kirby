@@ -12,7 +12,7 @@ $footerPages = $site->children()->published();
             <div class="dvll-block dvll-block--wide grid grid-cols-subgrid gap-y-4 mb-4 md:mb-12">
                 <div class="self-end row-start-2 col-span-3 sm:row-start-auto sm:col-start-1 sm:col-span-1">
                     <a href="<?= $site->url() ?>" class="flex items-center gap-2 pointer-events-auto" title="<?= $site->title()->escape() ?>">
-                        <img src="/assets/logos/kv-buende25-logo_kreis-farbig.svg" alt="<?= $site->title()->escape() ?>" class="aspect-square w-full" />
+                        <img loading="lazy" src="/assets/logos/kv-buende25-logo_kreis-farbig.svg" alt="<?= $site->title()->escape() ?>" class="aspect-square w-full" />
                     </a>
                 </div>
                 <ul class="dvll-footer-list-layout row-start-1 col-span-full sm:col-start-3 sm:col-end-7 gap-y-4 gap-x-6 self-start justify-between mb-2" style="--footer-item-count: <?= $footerPages->count() ?>;">
@@ -39,7 +39,7 @@ $footerPages = $site->children()->published();
                     </ul> -->
 
                     <a href="<?= $site->url() ?>" class="flex items-center gap-2 pointer-events-auto" title="<?= $site->title()->escape() ?>">
-                        <img src="/assets/logos/logo.svg" alt="<?= $site->title()->escape() ?>" class="w-full" />
+                        <img loading="lazy" src="/assets/logos/logo.svg" alt="<?= $site->title()->escape() ?>" class="w-full" />
                     </a>
                 </div>
             </div>
