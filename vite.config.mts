@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => ({
         copyPublicDir: false,
         assetsDir: '',
         rollupOptions: {
-            input: ['src/main.ts']
+            input: ['src/main.ts', 'src/main.css'],
         }
     },
 
