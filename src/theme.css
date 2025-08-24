@@ -5,16 +5,9 @@
   font-style: normal;
   font-weight: 100 900;
   font-stretch: normal;
-  src: url("/src/fonts/roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf") format("truetype");
+  src: url("/src/fonts/roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2") format("woff2"),
+       url("/src/fonts/roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf") format("truetype");
   font-display: swap;
-}
-
-@font-face {
-  font-family: "RobotoFlex-Regular";
-  font-style: italic;
-  font-weight: 400;
-  font-stretch: normal;
-  src: url("/src/fonts/roboto/RobotoFlex-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -22,8 +15,9 @@
   font-style: normal;
   font-weight: 400;
   font-stretch: normal;
-  font-display: block;
-  src: url("/src/fonts/sourcesanspro/SourceSansPro-Regular.otf") format("opentype");
+  font-display: swap;
+  src: url("/src/fonts/sourcesanspro/SourceSansPro-Regular.woff2") format("woff2"),
+       url("/src/fonts/sourcesanspro/SourceSansPro-Regular.otf") format("opentype");
 }
 
 @font-face {
@@ -31,8 +25,9 @@
   font-style: normal;
   font-weight: 700;
   font-stretch: normal;
-  font-display: block;
-  src: url("/src/fonts/sourcesanspro/SourceSansPro-Bold.otf") format("opentype");
+  font-display: swap;
+  src: url("/src/fonts/sourcesanspro/SourceSansPro-Bold.woff2") format("woff2"),
+       url("/src/fonts/sourcesanspro/SourceSansPro-Bold.otf") format("opentype");
 }
 
 @theme {
@@ -95,8 +90,8 @@
     --text-6xl: 3.75rem;
     --text-6xl--line-height: 1.125;
 
-    --font-style: "RobotoFlex", sans-serif;
-    --font-body: "SourceSansPro", sans-serif;
+    --font-style: "RobotoFlex", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-body: "SourceSansPro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
     /* --breakpoint-xs: 30rem;
     --breakpoint-2xl: 100rem;

@@ -26,7 +26,10 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
     <meta name="apple-mobile-web-app-title" content="CVJM KV Bünde" />
     <link rel="manifest" href="/assets/favicons/site.webmanifest" />
 
-    <?= vite()->css('src/main.ts') ?>
+    <link rel="preload" href="<?= vite()->file('src/fonts/roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2') ?>" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="<?= vite()->file('src/fonts/sourcesanspro/SourceSansPro-Regular.woff2') ?>" as="font" type="font/woff2" crossorigin>
+
+    <?= vite()->css('src/main.css') ?>
 </head>
 
 <body class="flex flex-col min-h-screen antialiased overflow-x-clip bg-baseline">
