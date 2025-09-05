@@ -47,6 +47,15 @@ $xDelay = 0.06; // seconds per column
 $decay = 0.65;
 $delay = 0;
 
+$imgSizes = [
+    '(min-width: 80rem) 150px', // 1280
+    '(min-width: 64rem) 120px', // 1024
+    '(min-width: 32rem) 90px', // 512
+    '50px'
+];
+
+$imageSizeArray = A::join($imgSizes, ', ');
+
 ?>
 <div
     class="dvll-block dvll-block--wide flex gap-4">
@@ -93,7 +102,7 @@ $delay = 0;
                         'picture',
                         [
                             'image' => $stageImage,
-                            'sizes' => [],
+                            'sizes' => $imageSizeArray,
                             'preset' => 'stageWelcome',
                             'class' => 'block w-full h-full stage-welcome__image ',
                             'imgClass' => 'w-full h-full',
@@ -105,7 +114,7 @@ $delay = 0;
                         'picture',
                         [
                             'image' => $stageImage,
-                            'sizes' => [],
+                            'sizes' => $imageSizeArray,
                             'preset' => 'stageWelcomeBrighten',
                             'class' => 'block w-full h-full stage-welcome__image ',
                             'imgClass' => 'w-full h-full',

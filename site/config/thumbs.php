@@ -38,14 +38,18 @@ return [
             '1920w' => ['width' => 1920, 'height' => 1200, 'crop' => true],
         ],
         'stageWelcomeBrighten' => [
-            '1x'  => ['width' => 145, 'height' => 145, 'crop' => true, 'brighten' => true],
-            '2x'  => ['width' => 290, 'height' => 290, 'crop' => true, 'brighten' => true],
-            '3x'  => ['width' => 435, 'height' => 435, 'crop' => true, 'brighten' => true],
+            '50w'  => ['width' => 50, 'height' => 50, 'crop' => true, 'brighten' => true],
+            '90w'  => ['width' => 90, 'height' => 90, 'crop' => true, 'brighten' => true],
+            '150w'  => ['width' => 145, 'height' => 145, 'crop' => true, 'brighten' => true],
+            '290w'  => ['width' => 290, 'height' => 290, 'crop' => true, 'brighten' => true],
+            '400w'  => ['width' => 435, 'height' => 435, 'crop' => true, 'brighten' => true],
         ],
         'stageWelcome' => [
-            '1x'  => ['width' => 145, 'height' => 145, 'crop' => true],
-            '2x'  => ['width' => 290, 'height' => 290, 'crop' => true],
-            '3x'  => ['width' => 435, 'height' => 435, 'crop' => true],
+            '50w'  => ['width' => 50, 'height' => 50, 'crop' => true],
+            '90w'  => ['width' => 90, 'height' => 90, 'crop' => true],
+            '150w'  => ['width' => 145, 'height' => 145, 'crop' => true],
+            '290w'  => ['width' => 290, 'height' => 290, 'crop' => true],
+            '400w'  => ['width' => 435, 'height' => 435, 'crop' => true],
         ],
         // Currently not in use:
         'teaser4to3' => [
