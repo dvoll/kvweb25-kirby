@@ -39,6 +39,7 @@ $sublineLabel = $sublineLabel ?? null;
             'responsive' => true,
             'class' => 'absolute w-full h-full -z-1',
             'imgClass' => 'w-full h-full object-cover',
+            'lazy' => false
         ]
     ); ?>
     <div class="bg-[#352B2B] opacity-60"></div>
@@ -52,6 +53,7 @@ $sublineLabel = $sublineLabel ?? null;
                         'sizes' => A::join($logoSizes, ', '),
                         'preset' => 'campLogo',
                         'imgClass' => 'w-full h-auto',
+                        'lazy' => false
                     ]
                 ); ?>
             </div>
