@@ -1,11 +1,11 @@
 {
   "src/components/gallery.ts": {
-    "file": "gallery-BwpwmyXT.js",
+    "file": "gallery-Bwxgk-_2.js",
     "name": "gallery",
     "src": "src/components/gallery.ts",
     "isDynamicEntry": true,
     "css": [
-      "gallery-ChRl9wZf.css"
+      "gallery-BRdAmlvi.css"
     ]
   },
   "src/fonts/roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf": {
@@ -33,12 +33,12 @@
     "src": "src/fonts/sourcesanspro/SourceSansPro-Regular.woff2"
   },
   "src/main.css": {
-    "file": "main-DoYH2M_W.css",
+    "file": "main-BX4YnDcP.css",
     "src": "src/main.css",
     "isEntry": true
   },
   "src/main.ts": {
-    "file": "main-PhiWoVWD.js",
+    "file": "main-CW7Uv2J4.js",
     "name": "main",
     "src": "src/main.ts",
     "isEntry": true,
