@@ -54,7 +54,7 @@ if (is_a($image, 'Kirby\Cms\File') || is_a($image, 'Kirby\Filesystem\Asset')) :
     $focusPosition = $responsive && $image->focus()->isNotEmpty() ? $image->focus() : '50% 50%';
 ?>
 
-    <style nonce="<?= site()->nonce() ?>">
+    <style nonce="<?= page()->nonce('picture-nonce') ?>">
         .<?= $uniqueId ?> {
             --ratio: <?= $cropRatioStyle ?>; /* Currently not used! */
         }

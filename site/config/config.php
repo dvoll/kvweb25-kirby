@@ -112,5 +112,21 @@ return [
     ],
     'bnomei.securityheaders' => [
         'enabled' => Helper::getEnv("KIRBY_CSP_ENABLED", true),
+        'setter' => function ($instance) {
+            // https://github.com/paragonie/csp-builder
+            // #build-a-content-security-policy-programmatically
+            /** @var ParagonIE\CSPBuilder\CSPBuilder $csp */
+            $csp = $instance->csp();
+
+            // allowing all inline scripts and styles is
+            // not recommended, try using nonces instead
+            // $csp->setAllowUnsafeEval('script-src', true);
+            // $csp->setAllowUnsafeInline('script-src', true);
+            // $csp->setAllowUnsafeInline('style-src', true);
+
+            $nonce = $instance->setNonce('picture-nonce');
+            $csp->nonce('style-src', $nonce);
+
+        },
     ]
 ];
