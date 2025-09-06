@@ -73,4 +73,34 @@
             display: none;
         }
     }
+
+    .stage-welcome-item-1 { --position-x: 2; --position-y: 0; --transition-delay: .12s; }
+    .stage-welcome-item-2 { --position-x: 3; --position-y: 0; --transition-delay: .16s; }
+    .stage-welcome-item-3 { --position-x: 4; --position-y: 0; --transition-delay: .20s; }
+    .stage-welcome-item-4 { --position-x: 1; --position-y: 1; --transition-delay: .24s; }
+    .stage-welcome-item-5 { --position-x: 2; --position-y: 1; --transition-delay: .28s; }
+    .stage-welcome-item-6 { --position-x: 3; --position-y: 1; --transition-delay: .32s; }
+    .stage-welcome-item-7 { --position-x: 4; --position-y: 1; --transition-delay: .36s; }
+    .stage-welcome-item-8 { --position-x: 0; --position-y: 2; --transition-delay: .40s; }
+    .stage-welcome-item-9 { --position-x: 1; --position-y: 2; --transition-delay: .44s; }
+    .stage-welcome-item-10 { --position-x: 2; --position-y: 2; --transition-delay: .48s; }
+    .stage-welcome-item-11 { --position-x: 3; --position-y: 2; --transition-delay: .52s; }
+    .stage-welcome-item-12 { --position-x: 1; --position-y: 3; --transition-delay: .56s; }
+    .stage-welcome-item-13 { --position-x: 2; --position-y: 3; --transition-delay: .64s; }
+
+    .stage-welcome-shadow-1 {--position-x: 3; --position-y: 0; }
+    .stage-welcome-shadow-2 {--position-x: 2; --position-y: 0; }
+    .stage-welcome-shadow-3 {--position-x: 1; --position-y: 0; }
+    .stage-welcome-shadow-4 {--position-x: 0; --position-y: 0; }
+    .stage-welcome-shadow-5 {--position-x: 3; --position-y: 1; }
+    .stage-welcome-shadow-6 {--position-x: 2; --position-y: 1; }
+    .stage-welcome-shadow-7 {--position-x: 1; --position-y: 1; }
+    .stage-welcome-shadow-8 {--position-x: 4; --position-y: 1; }
+    .stage-welcome-shadow-9 {--position-x: 3; --position-y: 2; }
+    .stage-welcome-shadow-10 {--position-x: 2; --position-y: 2; }
+    .stage-welcome-shadow-11 {--position-x: 1; --position-y: 2; }
+    .stage-welcome-shadow-12 {--position-x: 3; --position-y: 3; }
+    .stage-welcome-shadow-13 {--position-x: 2; --position-y: 3; }
 }
+
+

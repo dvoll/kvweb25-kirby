@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import 'swiper/css';
+import './gallery-custom-swiper.css';
 import './gallery.css';
 import { defineComponent } from './../utils/define-component';
 
@@ -25,13 +25,11 @@ const gallery = defineComponent(() => ({
             },
             on: {
                 slideChange: () => {
-                    console.log('slide changed');
                     this.isEnd = this.swiper?.isEnd || false;
                     this.isBeginning = this.swiper?.isBeginning || false;
                     this.currentSlide = this.swiper?.activeIndex || 0;
                 },
                 init: () => {
-                    console.log('swiper initialized');
                     this.isEnd = this.swiper?.isEnd || false;
                     this.isBeginning = this.swiper?.isBeginning || false;
                     this.currentSlide = this.swiper?.activeIndex || 0;

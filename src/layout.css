@@ -132,14 +132,16 @@
 
         @media (width >= 12rem) {
             display: grid;
-            --row-count: calc(var(--footer-item-count, 2) / 2);
+            --row-count: calc(var(--footer-item-count, 12) / 2);
             --row-count-int: round(up, var(--row-count));
             grid-template-rows: repeat(var(--row-count-int), 1fr);
             grid-auto-flow: column dense;
+            justify-content: space-around;
         }
 
         @media (width >= 73.25rem) {
-            --row-count: calc(var(--footer-item-count, 3) / 3);
+            --row-count: calc(var(--footer-item-count, 12) / 3);
+            justify-content: space-between;
         }
     }
 }

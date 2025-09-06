@@ -6,7 +6,7 @@ $footerPages = $site->children()->published();
 
 ?>
 
-<footer class="dvll-container">
+<footer class="dvll-container" x-data>
     <div class="dvll-section dvll-section--real-top mb-0">
         <div class="dvll-section__layout">
             <div class="dvll-block dvll-block--wide grid grid-cols-subgrid gap-y-4 mb-4 md:mb-12">
@@ -15,7 +15,7 @@ $footerPages = $site->children()->published();
                         <img width="300" height="300" loading="lazy" src="/assets/logos/kv-buende25-logo_kreis-farbig.svg" alt="<?= $site->title()->escape() ?>" class="aspect-square w-full" />
                     </a>
                 </div>
-                <ul class="dvll-footer-list-layout row-start-1 col-span-full sm:col-start-3 sm:col-end-7 gap-y-4 gap-x-6 self-start justify-between mb-2" style="--footer-item-count: <?= $footerPages->count() ?>;">
+                <ul class="dvll-footer-list-layout row-start-1 col-span-full sm:col-start-3 sm:col-end-7 gap-y-4 gap-x-6 self-start mb-2" :style='<?php echo json_encode(['--footer-item-count' => $footerPages->count()]); ?>'>
                     <?php foreach ($footerPages as $footerPage): ?>
                         <li>
                             <a href="<?= $footerPage->url() ?>" class="btn btn--ghost">

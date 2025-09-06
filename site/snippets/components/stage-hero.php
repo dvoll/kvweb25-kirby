@@ -29,8 +29,7 @@ $sublineLabel = $sublineLabel ?? null;
 
 ?>
 <div
-    class="dvll-section dvll-section--real-top grid grid-stacked w-full relative overflow-clip rounded-b-2xl shadow-md"
-    style="min-height: 95vh; min-height: 95svh;">
+    class="dvll-section dvll-section--real-top grid grid-stacked w-full relative overflow-clip rounded-b-2xl shadow-md min-h-[95svh]">
     <?= snippet(
         'picture',
         [
@@ -65,10 +64,10 @@ $sublineLabel = $sublineLabel ?? null;
                 </div>
             <?php endif; ?>
         </div>
-        <div class="row-start-4 justify-self-center">
+        <div class="row-start-4 justify-self-center" x-data>
             <button
                 class="btn btn--ghost flex flex-col text-white hover:text-contrast mb-2 cursor-pointer"
-                onclick="document.querySelector('#inhalt').scrollIntoView({ behavior: 'smooth', block: 'start' })">
+                @click="document.querySelector('#inhalt').scrollIntoView({ behavior: 'smooth', block: 'start' })">
                 <span>Zu den Inhalten</span>
                 <?= snippet(
                     'elements/icon',

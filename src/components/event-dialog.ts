@@ -3,7 +3,7 @@ import type { AlpineComponent } from 'alpinejs'
 interface EventDialogData {
     modalOpen: boolean
     isLoading: boolean
-    eventData: any
+    eventData: { blogposts?: any[]; tag?: { page?: any } } | null
     error: string | null
     eventSlug: string
 }
@@ -14,7 +14,8 @@ interface EventDialogMethods {
     fetchEventData(): Promise<void>
     updateUrlParams(): void
     removeUrlParams(): void
-    formatDate(dateString: string, options: Intl.DateTimeFormatOptions): string
+    formatDate(dateString: string, options: Intl.DateTimeFormatOptions): string,
+    hasBlogpostOrTags(): boolean
 }
 
 // Shared dialog component (single instance on page)
@@ -27,12 +28,9 @@ export function sharedEventDialog(): AlpineComponent<EventDialogData & EventDial
         eventSlug: '',
 
         init() {
-            console.log('Shared event dialog initialized')
-
             // Listen for global event dialog open requests
             document.addEventListener('open-event-dialog', (event: Event) => {
                 const customEvent = event as CustomEvent<{ slug: string }>
-                console.log('Received global open-event-dialog event:', customEvent.detail)
                 this.eventSlug = customEvent.detail.slug
                 this.openModal()
             })
@@ -52,10 +50,11 @@ export function sharedEventDialog(): AlpineComponent<EventDialogData & EventDial
             // Watch modalOpen changes
             this.$watch('modalOpen', (value) => {
                 if (value) {
-                    console.log('open modal')
                     const modal = this.$refs.eventModal as HTMLDialogElement
+                    const closeButton = this.$refs.eventModalCloseButton as HTMLButtonElement | undefined;
                     if (modal) {
-                        modal.showModal()
+                        closeButton?.focus();
+                        modal.showModal();
                         this.updateUrlParams()
 
                         // Fetch event data if not already loaded or if slug changed
@@ -64,7 +63,6 @@ export function sharedEventDialog(): AlpineComponent<EventDialogData & EventDial
                         }
                     }
                 } else {
-                    console.log('close modal')
                     const modal = this.$refs.eventModal as HTMLDialogElement
                     if (modal) {
                         modal.close()
@@ -171,6 +169,10 @@ export function sharedEventDialog(): AlpineComponent<EventDialogData & EventDial
         formatDate(dateString: string, options: Intl.DateTimeFormatOptions): string {
             const date = new Date(dateString)
             return new Intl.DateTimeFormat('de-DE', options).format(date)
+        },
+
+        hasBlogpostOrTags() {
+            return (this.eventData?.blogposts?.length ?? 0) > 0 || !!this.eventData?.tag?.page;
         }
     }
 }
@@ -180,17 +182,11 @@ export function eventCard(): AlpineComponent<{ eventSlug: string; openModal(): v
     return {
         eventSlug: '',
 
-        init() {
-            console.log('Event card initialized with slug:', this.eventSlug)
-        },
-
         openModal() {
-            console.log('Event card openModal called for slug:', this.eventSlug)
             // Dispatch global event for shared dialog
             const event = new CustomEvent('open-event-dialog', {
                 detail: { slug: this.eventSlug }
             })
-            console.log('Dispatching global event:', event)
             document.dispatchEvent(event)
         }
     }

@@ -48,11 +48,25 @@ foreach ($srcSets as $setKey => $set) {
 }
 $defaultSrcset = A::first($srcsetsDefault);
 
-if (is_a($image, 'Kirby\Cms\File') || is_a($image, 'Kirby\Filesystem\Asset')) : ?>
+if (is_a($image, 'Kirby\Cms\File') || is_a($image, 'Kirby\Filesystem\Asset')) :
+    $uniqueId = 'picture-style-' . md5($image->id() . $preset . ($cropRatio ?? '') . ($responsive ? 'responsive' : ''));
+    $cropRatioStyle = $cropRatio ?? $image->ratio();
+    $focusPosition = $responsive && $image->focus()->isNotEmpty() ? $image->focus() : '50% 50%';
+?>
+
+    <style nonce="<?= site()->nonce() ?>">
+        .<?= $uniqueId ?> {
+            --ratio: <?= $cropRatioStyle ?>; /* Currently not used! */
+        }
+        <?php if ($responsive): ?>
+        .<?= $uniqueId ?> > img {
+            object-position: <?= $focusPosition ?>;
+        }
+        <?php endif; ?>
+    </style>
 
     <picture <?= attr([
-                    'class' => [$class ?? ''],
-                    'style' => '--ratio: ' . ($cropRatio ?? $image->ratio()) . ';',
+                    'class' => [$class ?? '', $uniqueId],
                     ...$attr
                 ]) ?>>
 
@@ -74,8 +88,7 @@ if (is_a($image, 'Kirby\Cms\File') || is_a($image, 'Kirby\Filesystem\Asset')) : 
                         'height' => $cropRatio ? floor($image->thumb($defaultSrcset)->width() / $cropRatio) : $image->thumb($defaultSrcset)->height(),
                         'alt' => $alt ?? (is_a($image, 'Kirby\Cms\File') ? $image->alt() : null),
                         'loading' => $lazy ? "lazy" : null,
-                        'class' => [$imgClass ?? 'w-full'],
-                        'style' => $responsive ? 'object-position: '  . ($image->focus()->isNotEmpty() ? $image->focus() : '50% 50%') : '',
+                        'class' => [$imgClass ?? 'w-full']
                     ]) ?>>
 
         <?php endif ?>

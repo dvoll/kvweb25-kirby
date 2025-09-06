@@ -109,5 +109,8 @@ return [
     ],
     'johannschopplich.kirbylog' => [
         'filename' => Helper::getEnv("KIRBYLOG_FILENAME", 'test.log'),
+    ],
+    'bnomei.securityheaders' => [
+        'enabled' => Helper::getEnv("KIRBY_CSP_ENABLED", true),
     ]
 ];
