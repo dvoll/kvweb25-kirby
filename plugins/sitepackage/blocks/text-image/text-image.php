@@ -25,7 +25,7 @@ $shouldBeCropped = $block->content()->get('crop')->isEmpty() || $block->content(
     <div class="md:grid grid-cols-1 grid-rows-[1fr_auto_2fr] md:max-w-[400px] md:basis-1/2">
         <div class="row-start-2 md:py-4 lg:pr-6">
             <h2 class="heading-h2 mb-6"><?= $block->title()->escape() ?></h2>
-            <div class="typo typo--rte">
+            <div class=" typo typo--reading-size typo--rte">
                 <?= $block->description()->kirbytext() ?>
             </div>
             <?php if ($block->link()->isNotEmpty() && $block->linkLabel()->isNotEmpty()): ?>

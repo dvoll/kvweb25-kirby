@@ -28,7 +28,7 @@ snippet('layout', slots: true); ?>
             <h1 class="heading-h2"><?= $page->myTitle() ?></h1>
         </div>
         <div class="dvll-block dvll-block--narrow">
-            <div class="typo typo--rte">
+            <div class=" typo typo--reading-size typo--rte">
                 <?= $page->content()->get('text')->kirbytext()->permalinksToUrls(); ?>
             </div>
         </div>

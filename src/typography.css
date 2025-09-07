@@ -2,8 +2,10 @@
 @layer base {
     .typo {
       @apply font-body text-base text-contrast;
-
-
+    }
+    .typo--reading-size {
+        @apply text-lg;
+        @apply leading-7;
     }
     .typo--rte {
         p:has(+ p) {

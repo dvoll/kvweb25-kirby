@@ -38,7 +38,7 @@ snippet('layout', slots: true); ?>
 
         </div>
         <div class="dvll-block dvll-block--narrow">
-            <div class="typo typo--rte"><?= $page->campIntro()->kirbytext()->permalinksToUrls(); ?></div>
+            <div class=" typo typo--reading-size typo--rte"><?= $page->campIntro()->kirbytext()->permalinksToUrls(); ?></div>
         </div>
         <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
             <div class="dvll-block">
