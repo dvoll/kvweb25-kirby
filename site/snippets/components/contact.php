@@ -43,7 +43,7 @@ $showGeneralContact = $showGeneralContact ?? true;
                         </div>
                     <?php endif ?>
                     <div class="flex flex-col">
-                        <h4 class="heading-h4 mt-2"><?= $contact->name() ?></h4>
+                        <h4 class="heading-h4 mt-2 text-balance"><?= $contact->name() ?></h4>
                         <?php if ($contact->subject()->isNotEmpty()): ?>
                             <p class="typo italic mb-1"><?= $contact->subject()->html() ?></p>
                         <?php endif ?>
