@@ -10,9 +10,9 @@
     <div class="col-start-1 col-end-5">
         <div class="md:py-4">
             <h1 class="heading-title mb-6 text-balance"><?= $page->myTitle() ?></h1>
-            <p class="typo">
+            <div class="typo text-lg leading-6 typo--rte">
                 <?= $block->description()->kirbytext() ?>
-            </p>
+            </div>
             <?= snippet('components/breadcrumb', ['class' => 'mt-3']); ?>
         </div>
     </div>

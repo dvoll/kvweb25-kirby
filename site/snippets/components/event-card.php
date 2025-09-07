@@ -59,7 +59,7 @@ $eventTagPage = $event->getTagPage();
                 <?php endif; ?>
             </div>
             <div class="col-start-2 row-start-2 px-3 @min-card-md:px-4 flex flex-col">
-                <h3 class="heading-h3 text-contrast pr-4"><?= Str::excerpt($eventTitle->escape(), 38) ?></h3>
+                <h3 class="heading-card text-contrast pr-4"><?= Str::excerpt($eventTitle->escape(), 38) ?></h3>
             </div>
             <div class="col-start-2 row-start-3 px-3 @min-card-md:px-4 pb-1 flex flex-row flex-wrap-reverse items-center gap-x-2 gap-y-1">
                 <?php if ($eventMatchingTag && $eventMatchingTag->isNotEmpty()): ?>

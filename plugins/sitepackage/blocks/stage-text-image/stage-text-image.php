@@ -22,9 +22,9 @@ $sizes = [
     <div class="col-start-1 col-end-4 md:grid grid-cols-1 grid-rows-[1fr_auto_2fr]">
         <div class="row-start-2 md:py-4 lg:pr-6">
             <h1 class="heading-title mb-6 text-balance"><?= $page->myTitle() ?></h1>
-            <p class="typo">
+            <div class="typo text-lg leading-6 typo--rte">
                 <?= $block->description()->kirbytext() ?>
-            </p>
+</div>
             <?= snippet('components/breadcrumb', ['class' => 'mt-3']); ?>
         </div>
     </div>

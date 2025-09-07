@@ -29,7 +29,7 @@ $teaserEvents = $block->myEvents()->limit(3);
                     tabindex="-1"
                     title="Zu allen Terminen"></a>
 
-                <h3 class="heading-h3 text-gray-600 text-center pr-4">Hier gibt es gerade keine passenden Termine</h3>
+                <h3 class="heading-card text-gray-600 text-center pr-4">Hier gibt es gerade keine passenden Termine</h3>
                 <p class="max-w-96 text-sm text-gray-600 text-center mt-2">
                     Schau doch mal auf der Seite mit allen Terminen vorbei
                 </p>

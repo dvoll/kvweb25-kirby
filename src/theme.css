@@ -75,9 +75,11 @@
     --text-base--line-height: 1.425;
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(4 / 3);
-    --text-xl: 1.25rem;
+    --text-lg2: 1.25rem;
+    --text-lg2--line-height: 1.2;
+    --text-xl: 1.325rem;
     --text-xl--line-height: 1.2;
-    --text-2xl: 1.5rem;
+    --text-2xl: 1.625rem;
     --text-2xl--line-height: 1.2;
     /* --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(1.75 / 1.5); */
