@@ -3,7 +3,6 @@
 use dvll\KirbyEvents\Models\EventPage;
 use dvll\KirbyEvents\Models\EventsPage;
 use Kirby\Cms\App;
-use Kirby\Uuid\Uuid;
 
 App::plugin('dvll/kirby-events', [
     'options' => [
@@ -55,7 +54,7 @@ App::plugin('dvll/kirby-events', [
                             return true;
                         }
                     ]
-                    ]
+                ]
             ];
         }
     ]

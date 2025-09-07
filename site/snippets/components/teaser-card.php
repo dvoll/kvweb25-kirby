@@ -46,14 +46,14 @@ $sizes = [
         <div class="area-main self-center py-5 pl-5 @min-card-md:py-6 @min-card-md:pl-6">
             <?php if ($dynamicContent): ?>
                 <h3 class="heading-card mb-3" x-text="eventData.tag.page.teaserTitle"></h3>
-                <p class="typo text-sm line-clamp-3 md:line-clamp-none" x-text="eventData.tag.page.teaserText"></p>
+                <p class="typo text-base line-clamp-3 md:line-clamp-none" x-text="eventData.tag.page.teaserText"></p>
                 <a :href="eventData.tag.page.url" class="btn btn--secondary mt-6 md:mt-9 mr-2">
                     Zur Seite &#8222;<span x-text="eventData.tag.page.title"></span>&#8220;<?= snippet('elements/icon') ?>
                 </a>
             <?php else: ?>
                 <h3 class="heading-card mb-3"><?= $title ?></h3>
                 <?php if (!empty($text)): ?>
-                    <p class="typo text-sm line-clamp-3 md:line-clamp-none">
+                    <p class="typo text-base line-clamp-3 md:line-clamp-none">
                         <?= $text ?>
                     </p>
                 <?php endif; ?>

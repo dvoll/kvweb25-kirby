@@ -118,7 +118,7 @@ App::plugin('dvll/sitepackage', [
                         foreach ($blogpostPages as $blogpost) {
                             $blogposts[] = [
                                 'title' => $blogpost->title()->value(),
-                                'text' => $blogpost->text()->excerpt(140)->value(),
+                                'text' => $blogpost->text()->excerpt(120)->value(),
                                 'url' => $blogpost->url()
                             ];
                         }

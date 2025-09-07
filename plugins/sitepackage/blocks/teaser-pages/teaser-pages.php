@@ -24,7 +24,7 @@ if ($source === 'selection') {
             <?= snippet('components/teaser-card', [
                 'title' => $teaserPage->myTitle(),
                 'buttonTitle' => $teaserPage->title(),
-                'text' => Str::excerpt($teaserPage->myTeaserText(), 130),
+                'text' => Str::excerpt($teaserPage->myTeaserText(), 120),
                 'image' => $teaserPage->myTeaserImage(),
                 'url' => $teaserPage->url(),
             ]) ?>
