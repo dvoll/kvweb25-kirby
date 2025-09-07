@@ -9,6 +9,16 @@
 
 $teaserPages = $block->myBlogposts()->limit(3);
 
+
+$fmt = new IntlDateFormatter(
+    'de-DE',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    'Europe/Berlin',
+    IntlDateFormatter::GREGORIAN,
+    'MMMM Y'
+);
+
 ?>
 
 <div class="dvll-block dvll-block--wide dvll-block--gap-sm">
@@ -18,6 +28,7 @@ $teaserPages = $block->myBlogposts()->limit(3);
                 'title' => $teaserPage->title(),
                 'text' => $block->showText()->toBool() ? $teaserPage->text()->excerpt(140) : null,
                 'url' => $teaserPage->url(),
+                'date' => $teaserPage->date()->toDate($fmt),
             ]) ?>
         <?php endforeach; ?>
         <?php if ($teaserPages->count() === 0): ?>
@@ -42,12 +53,12 @@ $teaserPages = $block->myBlogposts()->limit(3);
 </div>
 
 <?php if ($teaserPages->count() >= 3): ?>
-<div class="dvll-block dvll-block--narrow">
-    <div class="flex flex-row flex-wrap justify-end">
-        <a <?= Html::attr([
-                'href' => $site->find('blog')->url(),
-                'class' => 'btn btn--secondary self-start',
-            ]) ?>>Alle Beiträge anzeigen<?= snippet('elements/icon') ?></a>
+    <div class="dvll-block dvll-block--narrow">
+        <div class="flex flex-row flex-wrap justify-end">
+            <a <?= Html::attr([
+                    'href' => $site->find('blog')->url(),
+                    'class' => 'btn btn--secondary self-start',
+                ]) ?>>Alle Beiträge anzeigen<?= snippet('elements/icon') ?></a>
+        </div>
     </div>
-</div>
 <?php endif; ?>
