@@ -112,5 +112,14 @@ return [
     ],
     'bnomei.securityheaders' => [
         'enabled' => Helper::getEnv("KIRBY_CSP_ENABLED", true),
+        'setter' => function ($instance) {
+            // https://github.com/paragonie/csp-builder
+            // #build-a-content-security-policy-programmatically
+            /** @var ParagonIE\CSPBuilder\CSPBuilder $csp */
+            $csp = $instance->csp();
+
+            // Allow video and audio from same origin
+            $csp->addSource('media-src', "'self'");
+        },
     ]
 ];

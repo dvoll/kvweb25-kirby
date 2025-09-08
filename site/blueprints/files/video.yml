@@ -1,0 +1,15 @@
+title: Video
+blueprint: file
+accept:
+  extension: mp4
+  type: video
+
+fields:
+  alt:
+    label: Alternativtext (momentan nicht genutzt)
+    type: text
+    width: 1/2
+    disabled: true
+    help: 
+      text: |
+        Der Alternativtext wird angezeigt, wenn das Video nicht geladen werden kann. Er wird auch von Screenreadern verwendet, um den Inhalt des Videos zu beschreiben.
