@@ -118,8 +118,9 @@ return [
             /** @var ParagonIE\CSPBuilder\CSPBuilder $csp */
             $csp = $instance->csp();
 
-            // Allow video and audio from same origin
-            $csp->addSource('media-src', "'self'");
+            // Allow audio, video and frame from same origin
+            $csp->setSelfAllowed('media-src', true);
+            $csp->setSelfAllowed('frame-ancestors', true);
         },
     ]
 ];
