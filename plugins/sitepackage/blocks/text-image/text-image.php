@@ -18,13 +18,19 @@ $sizes = [
 
 $shouldBeCropped = $block->content()->get('crop')->isEmpty() || $block->content()->get('crop')->value() !== 'nocrop'; // Default is crop
 
+$caption = $block->caption()->isNotEmpty() ? $block->caption()->html() : ($block->image()->isNotEmpty() && $block->image()->toFile()->caption()->isNotEmpty() ? $block->image()->toFile()->caption()->html() : null);
+
+$orderReverse = $block->content()->get('imagePosition')->isNotEmpty() && $block->content()->get('imagePosition')->value() === 'left';
+
 // $linkObject = $block->content()->get('link')->toObject();
 
 ?>
-<div class="dvll-block dvll-block--centered flex flex-col-reverse md:flex-row gap-8 md:gap-6 md:justify-center">
-    <div class="md:grid grid-cols-1 grid-rows-[1fr_auto_2fr] md:max-w-[400px] md:basis-1/2">
-        <div class="row-start-2 md:py-4 lg:pr-6">
-            <h2 class="heading-h2 mb-6"><?= $block->title()->escape() ?></h2>
+<div class="dvll-block dvll-block--centered flex flex-col-reverse <?= $orderReverse ? 'md:flex-row-reverse' : 'md:flex-row' ?> gap-8 md:gap-6 md:justify-center">
+    <div class="md:grid grid-cols-1 grid-rows-[1fr_auto_2fr] md:basis-1/2">
+        <div class="row-start-2 <?= $orderReverse ? 'lg:pl-6' : 'lg:pr-6' ?>">
+            <?php if ($block->title()->isNotEmpty()): ?>
+                <h2 class="heading-h2 text-balance mb-6"><?= $block->title()->escape() ?></h2>
+            <?php endif; ?>
             <div class=" typo typo--reading-size typo--rte">
                 <?= $block->description()->kirbytext() ?>
             </div>
@@ -39,16 +45,23 @@ $shouldBeCropped = $block->content()->get('crop')->isEmpty() || $block->content(
 
         </div>
     </div>
-    <?= snippet(
-        'picture',
-        [
-            'image' => $block->image()->toFile(),
-            'cropRatio' => $shouldBeCropped ?  4 / 3 : null,
-            'sizes' => A::join($sizes, ', '),
-            'preset' => 'default',
-            'class' => 'md:max-w-[400px] md:basis-1/2',
-            'imgClass' => 'rounded-md object-contain aspect-[4/3]',
-            'responsive' => !$shouldBeCropped
-        ]
-    ); ?>
+    <figure class="md:basis-1/2">
+        <?= snippet(
+            'picture',
+            [
+                'image' => $block->image()->toFile(),
+                'cropRatio' => $shouldBeCropped ?  4 / 3 : null,
+                'sizes' => A::join($sizes, ', '),
+                'preset' => 'default',
+                'alt' => $block->alt()->isNotEmpty() ? $block->alt()->value() : null,
+                'imgClass' => 'w-full rounded-md object-contain aspect-[4/3]',
+                'responsive' => !$shouldBeCropped
+            ]
+        ); ?>
+        <?php if (!empty($caption)) : ?>
+            <figcaption class="text-body text-sm text-contrast mt-2 mx-4 max-w-[40rem]">
+                <?= $caption ?>
+            </figcaption>
+        <?php endif; ?>
+    </figure>
 </div>

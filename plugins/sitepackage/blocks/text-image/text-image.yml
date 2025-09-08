@@ -27,6 +27,16 @@ tabs:
         multiple: false
         layout: cards
         width: 1/2
+      imageposition:
+        type: toggles
+        label: Position des Bilds
+        default: right
+        # required: true // TODO: Add required when element was adapted
+        options:
+          - value: left
+            text: Bild links
+          - value: right
+            text: Bild rechts
       linkselection:
         label: Button mit Verlinkung (Optional)
         type: radio
@@ -72,3 +82,15 @@ tabs:
             text: Zuschneiden
           - value: nocrop
             text: Nicht zuschneiden
+      caption:
+        label: field.blocks.image.caption
+        type: text
+        icon: text
+        help: Überschreibt die Bildunterschrift, welche in der Bilddatei gespeichert ist.
+        width: 1/2
+      alt:
+        label: Alternativtext
+        type: text
+        icon: title
+        help: Überschreibt den Alternativtext, welcher in der Bilddatei gespeichert ist.
+        width: 1/2
