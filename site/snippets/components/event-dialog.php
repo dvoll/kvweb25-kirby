@@ -117,21 +117,19 @@ $showGoToOverviewButton = $showGoToOverviewButton ?? true;
                                     class="btn btn--secondary">
                                     Termin als Datei herunterladen<?= snippet('elements/icon', ['icon' => 'download']) ?>
                                 </a>
-                                <template x-if="eventData.calendarLinks">
-                                    <template x-if="eventData.calendarLinks.google">
-                                        <a :href="eventData.calendarLinks.google"
-                                            target="_blank"
-                                            class="btn btn--secondary">
-                                            Zum Google Kalender hinzufügen<?= snippet('elements/icon', ['icon' => 'external']) ?>
-                                        </a>
-                                    </template>
-                                    <template x-if="eventData.calendarLinks.outlook">
-                                        <a :href="eventData.calendarLinks.outlook"
-                                            target="_blank"
-                                            class="btn btn--secondary">
-                                            Zum Outlook Kalender hinzufügen<?= snippet('elements/icon', ['icon' => 'external']) ?>
-                                        </a>
-                                    </template>
+                                <template x-if="eventData.calendarLinks ? eventData.calendarLinks.google : false">
+                                    <a :href="eventData.calendarLinks.google"
+                                        target="_blank"
+                                        class="btn btn--secondary">
+                                        Zum Google Kalender hinzufügen<?= snippet('elements/icon', ['icon' => 'external']) ?>
+                                    </a>
+                                </template>
+                                <template x-if="eventData.calendarLinks ? eventData.calendarLinks.outlook : false">
+                                    <a :href="eventData.calendarLinks.outlook"
+                                        target="_blank"
+                                        class="btn btn--secondary">
+                                        Zum Outlook Kalender hinzufügen<?= snippet('elements/icon', ['icon' => 'external']) ?>
+                                    </a>
                                 </template>
                             </div>
                         </div>
