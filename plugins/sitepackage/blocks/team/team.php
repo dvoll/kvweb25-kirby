@@ -35,9 +35,9 @@ $layout = $block->layout()->or('flex flex-wrap');
             <?php endif ?>
             <h4 class="heading-h4 mt-2 text-center text-balance"><?= $contact->name() ?></h4>
             <?php if ($contact->subject()->isNotEmpty()): ?>
-                <p class="typo italic mb-1"><?= $contact->subject()->html() ?></p>
+                <p class="typo italic text-center mb-1"><?= $contact->subject()->html() ?></p>
             <?php endif ?>
-            <?php if ($contact->phone()->isNotEmpty()): ?>
+            <?php if ($contact->email()->isNotEmpty()): ?>
                 <a class="inline gap-1 text-sm text-contrast py-0.5 text-center max-w-full overflow-hidden text-ellipsis text-nowrap" href="mailto:<?= Str::encode($contact->email()->html()) ?>" title="<?= Str::encode($contact->email()->html()) ?>"><?= snippet('elements/icon', ['icon' => 'email', 'class' => 'size-4 inline']) ?> <span class="dvll-link dvll-link--small "><?= Str::encode($contact->email()->html()) ?></span></a>
             <?php endif ?>
             <?php if ($contact->phone()->isNotEmpty()): ?>
