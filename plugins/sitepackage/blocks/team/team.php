@@ -22,7 +22,7 @@ $layout = $block->layout()->or('flex flex-wrap');
                     class="rounded-full shrink-0 w-[75px] h-[75px] sm:w-[100px] sm:h-[100px]"
                     alt="Profilbild von <?= $contact->name()->escape() ?>"
                     src="<?= $image->thumb(['width' => 100, 'height' => 100, 'crop' => true])->url() ?>"
-                    srcset="<?= $image->srcset('profilePicture') ?>"
+                    srcset="<?= $image->srcset('profilePictureBigger') ?>"
                     width="100"
                     height="100">
             <?php else: ?>

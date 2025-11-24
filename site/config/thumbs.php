@@ -24,6 +24,11 @@ return [
             '2x'  => ['width' => 150, 'height' => 150, 'crop' => true],
             '3x'  => ['width' => 225, 'height' => 225, 'crop' => true],
         ],
+        'profilePictureBigger' => [
+            '1x'  => ['width' => 100, 'height' => 100, 'crop' => true],
+            '2x'  => ['width' => 200, 'height' => 200, 'crop' => true],
+            '3x'  => ['width' => 300, 'height' => 300, 'crop' => true],
+        ],
         'campLogo' => [
             '1x'  => ['width' => 420],
             '2x'  => ['width' => 840],
