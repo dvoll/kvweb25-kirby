@@ -79,9 +79,18 @@ tabs:
                 size: large
               image:
                 extends: fields/image
-                label: Bild (Optional)
-                multiple: false
+                label: Primäres Bild oder primäre Bilder (Optional)
+                multiple: true
+                max: 3
                 layout: cards
+              additionalImages:
+                extends: fields/image
+                label: Zusätzliche Bilder (Optional)
+                multiple: true
+                layout: cards
+                size: small
+                image:
+                  ratio: 1/1
           contentSection: false
 
   settings:

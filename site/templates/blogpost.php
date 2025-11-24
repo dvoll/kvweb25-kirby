@@ -12,8 +12,11 @@ $sizes = [
     '100vw'
 ];
 
-$contentImage = $page->getContentImage();
-$caption = ($contentImage && $contentImage->caption()->isNotEmpty()) ? $contentImage->caption()->html() : null;
+$contentImages = $page->content()->get('image')->toFiles();
+$galleryImagesField = $page->content()->get('additionalImages');
+$galleryImages = $galleryImagesField->toFiles();
+// $contentImage = $contentImages->first();
+// $caption = ($contentImage && $contentImage->caption()->isNotEmpty()) ? $contentImage->caption()->html() : null;
 
 snippet('layout', slots: true); ?>
 <section class="dvll-section">
@@ -32,25 +35,28 @@ snippet('layout', slots: true); ?>
                 <?= $page->content()->get('text')->kirbytext()->permalinksToUrls(); ?>
             </div>
         </div>
-        <?php if ($contentImage): ?>
-            <div class="dvll-block dvll-block--narrow">
-                <figure>
-                    <?= snippet(
-                        'picture',
-                        [
-                            'image' => $contentImage,
-                            'sizes' => A::join($sizes, ', '),
-                            'preset' => 'default',
-                            'alt' => ($contentImage && $contentImage->alt()->isNotEmpty()) ? $contentImage->alt()->html() : null,
-                        ]
-                    ); ?>
-                    <?php if (!empty($caption)) : ?>
-                        <figcaption class="text-sm text-contrast mt-2 mx-4">
-                            <?= $caption ?>
-                        </figcaption>
-                    <?php endif; ?>
-                </figure>
-            </div>
+        <?php if ($contentImages): ?>
+            <?php foreach ($contentImages as $contentImage): ?>
+                <?php $caption = ($contentImage && $contentImage->caption()->isNotEmpty()) ? $contentImage->caption()->html() : null; ?>
+                <div class="dvll-block dvll-block--narrow">
+                    <figure>
+                        <?= snippet(
+                            'picture',
+                            [
+                                'image' => $contentImage,
+                                'sizes' => A::join($sizes, ', '),
+                                'preset' => 'default',
+                                'alt' => ($contentImage && $contentImage->alt()->isNotEmpty()) ? $contentImage->alt()->html() : null,
+                            ]
+                        ); ?>
+                        <?php if (!empty($caption)) : ?>
+                            <figcaption class="text-sm text-contrast mt-2 mx-4">
+                                <?= $caption ?>
+                            </figcaption>
+                        <?php endif; ?>
+                    </figure>
+                </div>
+            <?php endforeach; ?>
         <?php endif; ?>
         <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
             <div class="dvll-block">
@@ -78,6 +84,13 @@ snippet('layout', slots: true); ?>
         </div>
     </div>
 </section>
+<?php if($galleryImages): ?>
+    <section class="dvll-section">
+        <div class="dvll-section__layout">
+            <?= snippet('components/gallery', ['images' => $galleryImagesField]) ?>
+        </div>
+    </section>
+<?php endif; ?>
 <?php if (($selectedTags = $page->selectedTags()) && $selectedTags->isNotEmpty()): ?>
     <section class="dvll-section">
         <div class="dvll-section__layout">
