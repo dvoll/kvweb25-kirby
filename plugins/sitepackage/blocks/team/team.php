@@ -2,17 +2,14 @@
 
 /** @var Kirby\Cms\Block $block */
 
-// use dvll\Sitepackage\Helpers\UuidSelectFieldHelper;
+use dvll\Sitepackage\Helpers\UuidSelectFieldHelper;
 
-// $contacts = UuidSelectFieldHelper::getCollectionForUuids(
-//     site()->contacts(), // sourceStructureField
-//     $block->contacts(), // entriesFieldWithUuids
-//     'name', // fieldToCheckNotEmpty
-//     true // selectionIsEntryField (since block->contacts is a uuid list)
-// );
-
-$contacts = $block->content()->get('contactList')->toStructure();
-
+$contacts = UuidSelectFieldHelper::getCollectionForUuids(
+    site()->contacts(), // sourceStructureField
+    $block->contacts(), // entriesFieldWithUuids
+    'name', // fieldToCheckNotEmpty
+    true // selectionIsEntryField (since block->contacts is a uuid list)
+);
 
 $layout = $block->layout()->or('flex flex-wrap');
 ?>
