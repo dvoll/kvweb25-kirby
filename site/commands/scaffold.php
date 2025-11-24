@@ -87,6 +87,18 @@ return [
             ]);
         }
 
+        if (!page('contact')) {
+            $cli->info('Creating empty contact page...');
+            $page = Page::create([
+                'slug' => 'contact',
+                'template' => 'contact',
+                'content' => [
+                    'title' => 'Kontakt',
+                ],
+                'draft' => false,
+            ]);
+        }
+
         if (!page('images')) {
             $cli->info('Creating images page...');
             $page = Page::create([
