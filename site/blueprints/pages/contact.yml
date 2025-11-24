@@ -1,0 +1,34 @@
+title: Freizeiten
+blueprint: page
+
+extends: layouts/default
+
+image:
+  icon: telephone
+
+tabs:
+  content:
+    columns:
+      main:
+        sections:
+          modelSection:
+            type: fields
+            fields:
+              contactFormRecipientEmail:
+                label: Kontaktformular E-Mail
+                type: email
+                icon: email
+                width: 1/2
+                help: "An diese E-Mail-Adresse werden die Nachrichten des Kontaktformulars gesendet."
+              
+          # contentSection:
+          #   fields:
+          #     stage: 
+          #       extends: fields/stage-blocks
+          #       fieldsets:
+          #         - stage-text
+
+              
+  settings:
+    sections:
+      teaserFields: false

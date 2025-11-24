@@ -19,6 +19,7 @@ tabs:
               - blogposts
               - camps
               - events
+              - contact
           errorPages:
             label: Fehlerseite
             type: pages
