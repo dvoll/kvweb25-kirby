@@ -13,20 +13,20 @@ $contacts = UuidSelectFieldHelper::getCollectionForUuids(
 
 $layout = $block->layout()->or('flex flex-wrap');
 ?>
-<div class="dvll-block dvll-block--wide <?= $layout === 'grid' ? 'grid grid-cols-2 gap-6' : 'flex flex-wrap gap-6 justify-evenly' ?>">
+<div class="dvll-block dvll-block--centered <?= $layout === 'grid' ? 'grid grid-cols-2 gap-6' : 'flex flex-wrap gap-6 justify-evenly' ?>">
     <?php foreach ($contacts as $contact): ?>
-        <div class="flex flex-col items-center max-w-40 overflow-clip">
+        <div class="flex flex-col items-center w-32 sm:w-40 overflow-clip">
             <?php /** @var \Kirby\Cms\File $image */ ?>
             <?php if ($contact->photo()->isNotEmpty() && $image = $contact->photo()->toFile()): ?>
                 <img
-                    class="rounded-full shrink-0"
+                    class="rounded-full shrink-0 w-[75px] h-[75px] sm:w-[100px] sm:h-[100px]"
                     alt="Profilbild von <?= $contact->name()->escape() ?>"
                     src="<?= $image->thumb(['width' => 100, 'height' => 100, 'crop' => true])->url() ?>"
                     srcset="<?= $image->srcset('profilePicture') ?>"
                     width="100"
                     height="100">
             <?php else: ?>
-                <div class="bg-gray-200 rounded-full shrink-0 w-[100px] h-[100px]">
+                <div class="bg-gray-200 rounded-full shrink-0 w-[75px] h-[75px] sm:w-[100px] sm:h-[100px]">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full h-full p-3 text-gray-400">
                         <circle cx="12" cy="8" r="4" />
                         <path d="M12 14c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5z" />
