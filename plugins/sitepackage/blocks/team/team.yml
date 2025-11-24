@@ -1,0 +1,24 @@
+title: Team Galerie
+preview: fields
+wysiwyg: true
+fields:
+  contactList:
+    label: Liste der anzuzeigenden Personen
+    type: structure
+    fields:
+      subject:
+        type: text
+        label: Themengebiet
+      photo:
+        label: Foto
+        type: files
+        multiple: false
+      name:
+        label: Name
+        type: text
+      email:
+        label: E-Mail
+        type: email
+      phone:
+        label: Telefon
+        type: tel

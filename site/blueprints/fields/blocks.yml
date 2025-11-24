@@ -29,6 +29,7 @@ fieldsets:
       - spacer
       - facts
       - faq
+      - team
   teaser:
     label: Teaser
     type: group

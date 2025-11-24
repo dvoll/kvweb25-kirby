@@ -50,6 +50,7 @@ App::plugin('dvll/sitepackage', [
         'blocks/spacer'      => __DIR__ . '/blocks/spacer/spacer.yml',
         'blocks/facts'      => __DIR__ . '/blocks/facts/facts.yml',
         'blocks/teaser-links-downloads'      => __DIR__ . '/blocks/teaser-links-downloads/teaser-links-downloads.yml',
+        'blocks/team'      => __DIR__ . '/blocks/team/team.yml',
     ],
     'snippets'   => [
         'blocks/gallery'      => __DIR__ . '/blocks/gallery/gallery.php',
@@ -68,6 +69,7 @@ App::plugin('dvll/sitepackage', [
         'blocks/spacer'      => __DIR__ . '/blocks/spacer/spacer.php',
         'blocks/facts'      => __DIR__ . '/blocks/facts/facts.php',
         'blocks/teaser-links-downloads'      => __DIR__ . '/blocks/teaser-links-downloads/teaser-links-downloads.php',
+        'blocks/team'      => __DIR__ . '/blocks/team/team.php',
     ],
     'blockModels' => [
         'teaser-blogposts' => TeaserBlogpostsBlock::class,
