@@ -71,3 +71,11 @@ columns:
         width: 6/12
         text: |
           Die Schlagwörter auch mit Terminen verwendet werden. So können beispielsweise alle Termine mit dem Schlagwort "Zeltlager" auf den passenden Seiten angezeigt werden. Dafür muss in der Beschreibung des Google Kalender Termins das Schlagwort mit eckigen Klammern angegeben werden, z.B. `[Zeltlager]`
+      footer:
+        label: Footer
+        type: headline
+      footerNavigation:
+        label: Footer Navigation
+        width: 1/2
+        type: pages
+          
