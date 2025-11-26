@@ -47,6 +47,8 @@ $sizes = [
                     </div>
                     <div class="flex gap-1">
                         <button
+                            title="Vorheriges Bild in Galerie"
+                            aria-label="Vorheriges Bild in Galerie"
                             class="btn btn--secondary p-4"
                             @click="prev()"
                             :disabled="isBeginning">
@@ -59,6 +61,8 @@ $sizes = [
                             ) ?>
                         </button>
                         <button
+                            title="Nächstes Bild in Galerie"
+                            aria-label="Nächstes Bild in Galerie"
                             class="btn btn--secondary p-4"
                             @click="next()"
                             :disabled="isEnd">
