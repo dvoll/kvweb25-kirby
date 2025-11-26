@@ -36,12 +36,12 @@ return [
             '3x'  => ['width' => 1260],
         ],
         'stageHero' => [
-            '300w'  => ['width' => 300, 'height' => 400, 'crop' => true, 'quality' => 80],
-            '600w'  => ['width' => 500, 'height' => 400, 'crop' => true, 'quality' => 80],
-            '900w'  => ['width' => 800, 'height' => 600, 'crop' => true, 'quality' => 80],
-            '1200w' => ['width' => 900, 'height' => 700, 'crop' => true, 'quality' => 80],
-            '1500w' => ['width' => 1200, 'height' => 750, 'crop' => true, 'quality' => 80],
-            '1920w' => ['width' => 1620, 'height' => 800, 'crop' => true, 'quality' => 80],
+            '300w'  => ['width' => 300, 'height' => 400, 'crop' => true, 'quality' => 60],
+            '600w'  => ['width' => 500, 'height' => 400, 'crop' => true, 'quality' => 60],
+            '900w'  => ['width' => 800, 'height' => 600, 'crop' => true, 'quality' => 60],
+            '1200w' => ['width' => 900, 'height' => 700, 'crop' => true, 'quality' => 60],
+            '1500w' => ['width' => 1200, 'height' => 750, 'crop' => true, 'quality' => 60],
+            '1920w' => ['width' => 1620, 'height' => 800, 'crop' => true, 'quality' => 60],
         ],
         'stageWelcomeBrighten' => [
             '50w'  => ['width' => 50, 'height' => 50, 'crop' => true, 'brighten' => true, 'quality' => 60],
