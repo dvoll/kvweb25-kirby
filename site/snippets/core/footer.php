@@ -46,7 +46,7 @@ $footerPages = $site->content()->get('footerNavigation')->toPages()->published()
             </div>
             <div class="dvll-block dvll-block--full mb-0 flex justify-end">
                 <div class="bg-offwhite px-4 py-2 rounded-tl-lg">
-                    <p class="font-style font-semibold text-gray-500 text-sm">Unterstützt von und gebaut mit <a class="dvll-link font-semibold inline-flex gap-1" href="https://getkirby.com/" target="_blank" rel="noopener" referrerpolicy="no-referrer">Kirby CMS<?= snippet('elements/icon', ['icon' => 'external', 'class' => 'size-3 self-center']) ?></a></p>
+                    <p class="font-style font-semibold text-gray-600 text-sm">Unterstützt von und gebaut mit <a class="dvll-link font-semibold inline-flex gap-1" href="https://getkirby.com/" target="_blank" rel="noopener" referrerpolicy="no-referrer">Kirby CMS<?= snippet('elements/icon', ['icon' => 'external', 'class' => 'size-3 self-center']) ?></a></p>
                 </div>
             </div>
         </div>
