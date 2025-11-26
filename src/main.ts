@@ -45,9 +45,6 @@ customElements.define('dvll-header', DvllHeader);
 
 window.addEventListener("DOMContentLoaded", () => {
     // Initialize Alpine
-    requestAnimationFrame(() => {
-        initializeAlpine();
-    });
 
     requestAnimationFrame(() => {
     // Stage welcome animation check and trigger
@@ -62,5 +59,8 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         }
     });
+
+    initializeAlpine();
+
 });
 
