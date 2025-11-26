@@ -16,6 +16,7 @@ use Kirby\Toolkit\A;
  *
  * @var bool|null $responsive Whether to use responsive images, defaults to false
  * @var bool|null $lazy Whether to use lazy loading, defaults to true
+ * @var bool|null $fetchpriority Whether to use fetch priority, defaults to false
  * */
 
 $cropRatio ??= null;
@@ -24,6 +25,7 @@ $clientBlur ??= true;
 $attr ??= [];
 $imgClass ??= null;
 $lazy ??= true;
+$fetchpriority ??= false;
 $responsive ??= false;
 $sizes ??= '100vw';
 
@@ -40,6 +42,9 @@ foreach ($srcSets as $setKey => $set) {
     ];
     if (isset($set['brighten']) === true) {
         $srcsetsDefault[$setKey]['brighten'] = $set['brighten'];
+    }
+    if (isset($set['quality']) === true) {
+        $srcsetsDefault[$setKey]['quality'] = $set['quality'];
     }
     $srcsetsWebp[$setKey] = [
         ...$srcsetsDefault[$setKey],
@@ -75,6 +80,7 @@ if (is_a($image, 'Kirby\Cms\File') || is_a($image, 'Kirby\Filesystem\Asset')) :
                         'height' => $cropRatio ? floor($image->thumb($defaultSrcset)->width() / $cropRatio) : $image->thumb($defaultSrcset)->height(),
                         'alt' => $alt ?? (is_a($image, 'Kirby\Cms\File') ? $image->alt() : null),
                         'loading' => $lazy ? "lazy" : null,
+                        'fetchpriority' => $fetchpriority ? "high" : null,
                         'class' => [$imgClass ?? 'w-full'],
                         ':style' => json_encode([
                             'object-position' => $focusPosition

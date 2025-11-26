@@ -29,7 +29,7 @@ $sublineLabel = $sublineLabel ?? null;
 
 ?>
 <div
-    class="dvll-section dvll-section--real-top grid grid-stacked w-full relative overflow-clip rounded-b-2xl shadow-md min-h-[95svh]">
+    class="dvll-section dvll-section--real-top grid grid-stacked w-full relative overflow-clip rounded-b-2xl shadow-md min-h-[95svh] ">
     <?= snippet(
         'picture',
         [
@@ -39,7 +39,8 @@ $sublineLabel = $sublineLabel ?? null;
             'responsive' => true,
             'class' => 'absolute w-full h-full -z-1',
             'imgClass' => 'w-full h-full object-cover',
-            'lazy' => false
+            'lazy' => false,
+            'fetchpriority' => true
         ]
     ); ?>
     <div class="bg-[#352B2B] opacity-60"></div>
