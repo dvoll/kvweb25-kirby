@@ -21,7 +21,7 @@ $sizes = [
     '(min-width: 57rem) 175px', // 912
     '(min-width: 49.5rem) 200px', // 792
     '(min-width: 28.125rem) 280px', // 450
-    '200px'
+    '175px'
 ]
 
 ?>
@@ -94,11 +94,11 @@ $sizes = [
                     'picture',
                     [
                         'image' => $image,
-                        'cropRatio' => 4 / 3,
+                        'responsive' => true,
                         'sizes' => A::join($sizes, ', '),
                         'preset' => 'teaser',
                         'class' => 'area-image angled-cut origin-right @min-card-lg:origin-center',
-                        'imgClass' => 'w-full h-full',
+                        'imgClass' => 'w-full h-full object-cover',
                     ]
                 ); ?>
             <?php else: ?>
