@@ -82,6 +82,7 @@ Header set X-Content-Type-Options "nosniff"
 
   # JS
   ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
 
   # Images
   ExpiresByType image/jpeg "access plus 1 year"
