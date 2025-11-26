@@ -1,7 +1,5 @@
 import Alpine from "@alpinejs/csp";
 
-import ElementEntranceObserver from "./utils/element-entrance-observer";
-
 import { DvllHeader } from "./components/header";
 import eventDialog, { sharedEventDialog } from "./components/event-dialog";
 
@@ -42,24 +40,27 @@ async function initializeAlpine() {
     Alpine.start();
 }
 
-// Initialize Alpine
-initializeAlpine();
 
 customElements.define('dvll-header', DvllHeader);
 
 window.addEventListener("DOMContentLoaded", () => {
+    // Initialize Alpine
+    requestAnimationFrame(() => {
+        initializeAlpine();
+    });
+
+    requestAnimationFrame(() => {
     // Stage welcome animation check and trigger
-    if (location.pathname === "/") {
-        const hasSeenWelcomeAnimation = sessionStorage.getItem("hasSeenWelcomeAnimation");
-        if (!hasSeenWelcomeAnimation) {
-            document.body.classList.add("welcome-animation");
-            sessionStorage.setItem("hasSeenWelcomeAnimation", "true");
+        if (location.pathname === "/") {
+            const hasSeenWelcomeAnimation = sessionStorage.getItem("hasSeenWelcomeAnimation");
+            if (!hasSeenWelcomeAnimation) {
+                document.body.classList.add("welcome-animation");
+                sessionStorage.setItem("hasSeenWelcomeAnimation", "true");
+            }
+            document.querySelectorAll(".stage-welcome .transition-flip, .stage-welcome .transition-drive").forEach((el) => {
+                el.classList.remove("transition--initial");
+            });
         }
-        document.querySelectorAll(".stage-welcome .transition-flip, .stage-welcome .transition-drive").forEach((el) => {
-            el.classList.remove("transition--initial");
-        });
-    }
+    });
 });
 
-const entranceObserver = new ElementEntranceObserver();
-entranceObserver.startObserving();
