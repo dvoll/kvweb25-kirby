@@ -16,7 +16,7 @@ if (
         'loop'        => $block->loop()->toBool(),
         'muted'       => $block->muted()->toBool() || $block->autoplay()->toBool(),
         'playsinline' => $block->autoplay()->toBool(),
-        'poster'      => $block->poster()->toFile()?->url(),
+        'poster'      => $block->poster()->toFile()->resize(400)?->url(),
         'preload'     => $block->preload()->value(),
         'class' => 'w-full rounded-md object-cover',
     ]);
