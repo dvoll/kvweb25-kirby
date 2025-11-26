@@ -12,7 +12,7 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
 ?>
 
 <!DOCTYPE html>
-<html lang="<?= $kirby->language()?->code() ?>">
+<html lang="<?= $kirby->language()?->code() ?? 'de-DE' ?>">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,6 +28,7 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
 
     <link rel="preload" href="<?= vite()->file('src/fonts/roboto/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2') ?>" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="<?= vite()->file('src/fonts/sourcesanspro/SourceSansPro-Regular.woff2') ?>" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="<?= vite()->file('src/fonts/sourcesanspro/SourceSansPro-Bold.woff2') ?>" as="font" type="font/woff2" crossorigin>
 
     <?= vite()->css('src/main.css') ?>
 </head>

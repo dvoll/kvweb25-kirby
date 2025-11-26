@@ -61,7 +61,7 @@ class Menu
         }
 
         $data = [
-            'label' => $label || !isset($page) ? t($label, $label) : $page->title()->value(),
+            'label' => $label || !isset($page) ? 'Fallback Titel' : $page->title()->value(),
             'link' => $link,
             'current' => $current ?? fn () =>
             str_contains(static::path(), $link)
