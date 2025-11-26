@@ -16,7 +16,7 @@ $footerPages = $site->content()->get('footerNavigation')->toPages()->published()
                         <img width="300" height="300" loading="lazy" src="/assets/logos/kv-buende25-logo_kreis-farbig.svg" alt="<?= $site->title()->escape() ?>" class="aspect-square w-full" />
                     </a>
                 </div>
-                <ul class="dvll-footer-list-layout row-start-1 col-span-full sm:col-start-3 sm:col-end-7 gap-y-4 gap-x-6 self-start mb-2" :style='<?php echo json_encode(['--footer-item-count' => $footerPages->count()]); ?>'>
+                <ul class="dvll-footer-list-layout row-start-1 col-span-full sm:col-start-3 sm:col-end-7 gap-y-4 gap-x-6 self-end mb-2" :style='<?php echo json_encode(['--footer-item-count' => $footerPages->count()]); ?>'>
                     <?php foreach ($footerPages as $footerPage): ?>
                         <li>
                             <a href="<?= $footerPage->url() ?>" class="btn btn--ghost">
