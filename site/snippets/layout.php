@@ -30,7 +30,9 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
     <link rel="preload" href="<?= vite()->file('src/fonts/sourcesanspro/SourceSansPro-Regular.woff2') ?>" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="<?= vite()->file('src/fonts/sourcesanspro/SourceSansPro-Bold.woff2') ?>" as="font" type="font/woff2" crossorigin>
 
-    <?= vite()->css('src/main.css') ?>
+    <link rel="preload" href="<?= vite()->file('src/main.css') ?>" as="style" type="text/css" crossorigin>
+
+    <?= vite()->css('src/main.css', ['crossorigin' => 'anonymous']) ?>
 </head>
 
 <body class="flex flex-col min-h-screen antialiased overflow-x-clip bg-baseline">
@@ -40,7 +42,7 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
         <?= $slot ?>
     </main>
     <?php snippet('core/footer') ?>
-    <?= vite()->js('src/main.ts') ?>
+    <?= vite()->js('src/main.ts', ['defer' => true]) ?>
     <?php snippet('seo/schemas') ?>
     <?php snippet('core/svg-sprite') ?>
 </body>
