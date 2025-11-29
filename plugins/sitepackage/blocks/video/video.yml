@@ -74,7 +74,7 @@ fields:
     label: field.blocks.video.preload
     type: select
     width: 2/3
-    default: auto
+    default: metadata
     options:
       - auto
       - metadata
