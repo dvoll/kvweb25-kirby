@@ -43,7 +43,7 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
         <?= $slot ?>
     </main>
     <?php snippet('core/footer') ?>
-    <?= vite()->js('src/main.ts', ['defer' => true, 'crossorigin' => 'anonymous']) ?>
+    <?= vite()->js('src/main.ts', ['async' => true, 'crossorigin' => 'anonymous']) ?>
     <?php snippet('seo/schemas') ?>
     <?php snippet('core/svg-sprite') ?>
 </body>

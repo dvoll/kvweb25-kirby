@@ -40,14 +40,9 @@ async function initializeAlpine() {
     Alpine.start();
 }
 
-
-customElements.define('dvll-header', DvllHeader);
-
-window.addEventListener("DOMContentLoaded", () => {
-    // Initialize Alpine
-
+function startStageWelcomeAnimation() {
     requestAnimationFrame(() => {
-    // Stage welcome animation check and trigger
+        // Stage welcome animation check and trigger
         if (location.pathname === "/") {
             const hasSeenWelcomeAnimation = sessionStorage.getItem("hasSeenWelcomeAnimation");
             if (!hasSeenWelcomeAnimation) {
@@ -59,8 +54,18 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         }
     });
+}
 
+
+customElements.define('dvll-header', DvllHeader);
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+        startStageWelcomeAnimation();
+        initializeAlpine();
+    });
+} else {
+    startStageWelcomeAnimation();
     initializeAlpine();
-
-});
+}
 
