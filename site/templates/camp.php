@@ -47,12 +47,12 @@ snippet('layout', slots: true); ?>
         </div>
     </div>
 </section>
+<?php
+    $links = $page->myLinksAndDownloads();
+    if (count($links) > 0):
+?>
 <section class="dvll-section">
     <div class="dvll-section__layout">
-        <?php
-        $links = $page->myLinksAndDownloads();
-        if (count($links) > 0):
-        ?>
             <div class="dvll-block dvll-block--wide">
                 <h3 class="heading-h3 mb-5">
                     <?= $page->getLinksAndDownloadsTitle() ?>
@@ -65,8 +65,8 @@ snippet('layout', slots: true); ?>
                     <?php endforeach; ?>
                 </ul>
             </div>
-        <?php endif; ?>
-    </div>
-</section>
+        </div>
+    </section>
+<?php endif; ?>
 <?php snippet('core/layouts'); ?>
 <?php endsnippet() ?>
