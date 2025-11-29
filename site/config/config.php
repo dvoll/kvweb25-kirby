@@ -53,6 +53,7 @@ return [
     'routes' => [],
     'tobimori.seo' => [
         'lang' => 'de_DE',
+        'locale' => 'de_DE',
         'canonicalBase' => Helper::getEnv("APP_URL"),
         'files' => [
             'parent' => 'site.find("page://images")',
