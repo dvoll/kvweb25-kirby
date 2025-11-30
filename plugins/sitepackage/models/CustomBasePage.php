@@ -81,4 +81,13 @@ class CustomBasePage extends Page implements WithTeaserContentInterface
             'showPartGeneral' => false,
         ];
     }
+
+    public function metaDefaults(?string $lang = null): array
+    {
+        return [
+            // you can use field names (from blueprint)
+            'metaDescription' => $this->myTeaserText(),
+            'title' => $this->myTitle(),
+        ];
+    }
 }
