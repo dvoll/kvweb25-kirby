@@ -39,7 +39,7 @@ return function ($kirby, $pages, $page) {
                     'template' => 'contact-form-notification',
                     'from'     => 'kontaktformular@cvjm-kreisverband.de',
                     'replyTo'  => $data['email'],
-                    'to'       => 'info@cvjm-kreisverband.de',
+                    'to'       => $page->content()->get('contactFormRecipientEmail')->or('info@cvjm-kreisverband.de')->value(),
                     'subject'  => esc($data['name']) . ' hat Ihnen eine Nachricht über Ihr Kontaktformular gesendet',
                     'data'     => [
                         'text'   => esc($data['text']),
