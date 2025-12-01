@@ -38,7 +38,7 @@ $layout = $block->layout()->or('flex flex-wrap');
                 <p class="typo italic text-center mb-1"><?= $contact->subject()->html() ?></p>
             <?php endif ?>
             <?php if ($contact->email()->isNotEmpty()): ?>
-                <a class="inline gap-1 text-sm text-contrast py-0.5 text-center max-w-full overflow-hidden text-ellipsis text-nowrap" href="mailto:<?= Str::encode($contact->email()->html()) ?>" title="<?= Str::encode($contact->email()->html()) ?>"><?= snippet('elements/icon', ['icon' => 'email', 'class' => 'size-4 inline']) ?> <span class="dvll-link dvll-link--small "><?= Str::encode($contact->email()->html()) ?></span></a>
+                <a class="inline text-sm text-contrast py-0.5 text-center max-w-full overflow-hidden text-ellipsis text-nowrap" href="mailto:<?= Str::encode($contact->email()->html()) ?>" title="<?= Str::encode($contact->email()->html()) ?>"><?= snippet('elements/icon', ['icon' => 'email', 'class' => 'size-4 inline']) ?> <span class="dvll-link dvll-link--small "><?= Str::encode($contact->email()->html()) ?></span></a>
             <?php endif ?>
             <?php if ($contact->phone()->isNotEmpty()): ?>
                 <a class="flex gap-1 text-sm text-contrast py-0.5 text-center" href="tel:<?= Str::encode($contact->phone()->html()) ?>"><?= snippet('elements/icon', ['icon' => 'mobilephone', 'class' => 'w-4 pt-1 shrink-0']) ?> <span class="dvll-link dvll-link--small text-wrap"><?= Str::encode($contact->phone()->html()) ?></span></a>
