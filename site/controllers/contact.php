@@ -1,4 +1,7 @@
 <?php
+
+use dvll\Sitepackage\Helpers\Helper;
+
 return function ($kirby, $pages, $page) {
 
     $alert = null;
@@ -37,10 +40,10 @@ return function ($kirby, $pages, $page) {
             try {
                 $kirby->email([
                     'template' => 'contact-form-notification',
-                    'from'     => 'kontaktformular@cvjm-kreisverband.de',
+                    'from'     => Helper::getEnv("KIRBY_MAIL_FROM"),
                     'replyTo'  => $data['email'],
                     'to'       => $page->content()->get('contactFormRecipientEmail')->or('info@cvjm-kreisverband.de')->value(),
-                    'subject'  => esc($data['name']) . ' hat Ihnen eine Nachricht über Ihr Kontaktformular gesendet',
+                    'subject'  => 'Eine neue Nachricht über das Kontaktformular von "' . Str::short(esc($data['name']), 12, '...') . '"',
                     'data'     => [
                         'text'   => esc($data['text']),
                         'sender' => esc($data['name']),
