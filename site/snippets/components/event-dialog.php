@@ -19,7 +19,7 @@ $showGoToOverviewButton = $showGoToOverviewButton ?? true;
             <!-- Shared Header for all states -->
             <div class="bg-offwhite flex flex-col items-start pl-4 md:pl-12 pr-4 md:pr-5 pt-4 pb-4 gap-2 sticky top-0">
                 <button x-ref="eventModalCloseButton" class="self-end btn btn--ghost hover:bg-tertiary hover:text-baseline" @click="closeModal()">
-                    Schließen<?= snippet('elements/icon', ['icon' => 'external']) ?>
+                    Schließen<?= snippet('elements/icon', ['icon' => 'cross']) ?>
                 </button>
                 <!-- Title and location only shown when data is loaded -->
                 <template x-if="eventData && !isLoading && !error">
