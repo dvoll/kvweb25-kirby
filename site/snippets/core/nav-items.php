@@ -33,7 +33,7 @@ if ($items->isNotEmpty()): ?>
     <dialog id="mobile-nav-modal" class="any-modal">
         <nav class="mobile-nav">
             <ul class="flex flex-col flex-wrap gap-4 font-style text-sm text-contrast font-semibold mx-1">
-                <button class="main-nav-close-button block btn btn--secondary py-4 m-1">Menü schließen</button>
+                <button class="main-nav-close-button self-end btn btn--secondary btn--medium m-1 mt-4">Navigation schließen <?= snippet('elements/icon', ['icon' => 'cross']) ?></button>
                 <?php foreach ($items as $item): ?>
                     <li class="relative"><a class="nav-link px-4" <?php e($item->isOpen(), 'aria-current="page"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
                         <?php $subMenu = $item->children()->listed(); ?>

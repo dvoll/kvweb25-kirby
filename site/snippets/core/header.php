@@ -8,8 +8,8 @@
             <a href="<?= $site->url() ?>" class="flex items-center gap-2 pointer-events-auto" title="<?= $site->title()->escape() ?>">
                 <img src="/assets/logos/logo.svg" alt="<?= $site->title()->escape() ?>" width="300" height="120" class="w-[8rem] md:w-[11.5rem] transition-transform origin-left md:origin-top-left group-[.scrolled]:scale-75" />
             </a>
-            <div class="nav py-2 pl-4 md:-mr-3 pointer-events-auto">
-                <button class="md:hidden main-nav-button btn btn--secondary">Menü öffnen</button>
+            <div class="nav py-1 md:py-2 pl-2 md:pl-4 -mr-1 md:-mr-3 pointer-events-auto">
+                <button aria-label="Hauptnavigation öffnen" title="Hauptnavigation öffnen" class="md:hidden main-nav-button btn btn--ghost btn--icon-left btn--medium"><?= snippet('elements/icon', ['icon' => 'hamburger', 'class' => 'size-4 scale-x-[1.2]']) ?> Navigation</button>
                 <?= snippet('core/nav-items') ?>
             </div>
         </div>
