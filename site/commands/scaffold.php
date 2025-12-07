@@ -87,10 +87,10 @@ return [
             ]);
         }
 
-        if (!page('contact')) {
+        if (!page('kontakt')) {
             $cli->info('Creating empty contact page...');
             $page = Page::create([
-                'slug' => 'contact',
+                'slug' => 'kontakt',
                 'template' => 'contact',
                 'content' => [
                     'title' => 'Kontakt',
