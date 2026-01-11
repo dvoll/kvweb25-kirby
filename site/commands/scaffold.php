@@ -27,6 +27,19 @@ return [
         kirby()->impersonate('kirby');
         $cli->info('Scaffolding kirby...');
 
+        if (!page('images')) {
+            $cli->info('Creating images page...');
+            $page = Page::create([
+                'slug' => 'images',
+                'template' => 'images',
+                'content' => [
+                    'uuid' => 'images',
+                    'title' => 'Bilder'
+                ],
+            ]);
+            $page->changeStatus('unlisted');
+        }
+
         if (!page('home')) {
             $cli->info('Creating empty home page...');
             $page = Page::create([
@@ -35,6 +48,7 @@ return [
                 'content' => [
                     'title' => 'CVJM Kreisverband Bünde'
                 ],
+                'draft' => false,
             ]);
             $page->changeStatus('listed');
         }
@@ -97,19 +111,6 @@ return [
                 ],
                 'draft' => false,
             ]);
-        }
-
-        if (!page('images')) {
-            $cli->info('Creating images page...');
-            $page = Page::create([
-                'slug' => 'images',
-                'template' => 'images',
-                'content' => [
-                    'uuid' => 'images',
-                    'title' => 'Bilder'
-                ],
-            ]);
-            $page->changeStatus('unlisted');
         }
 
         $cli->info('Scaffolding done!');
