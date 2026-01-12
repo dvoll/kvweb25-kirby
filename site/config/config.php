@@ -73,7 +73,10 @@ return [
         ]
     ],
     'auth' => [
-        'methods' => ['password', 'password-reset'],
+        // 'methods' => function () {
+        //     return Helper::getEnv("KIRBY_FORCE_PASSWORD_LOGIN", false) ? ['password', 'password-reset'] : ['code', 'password'];
+        // },
+        'methods' => Helper::getEnv("KIRBY_FORCE_PASSWORD_LOGIN", false) ? ['password', 'password-reset'] : ['code', 'password'],
         'challenge' => [
             'email' => [
                 'from' => Helper::getEnv("KIRBY_MAIL_FROM"),
