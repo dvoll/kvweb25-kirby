@@ -11,8 +11,6 @@ RedirectMatch 301 ^/unsere-arbeit/jungschar/?$ /weitere-arbeit/gruppenangebote
 RedirectMatch 301 ^/der-kreisverband/spenden-2/?$ /spenden
 RedirectMatch 301 ^/der-kreisverband/ortsvereine/?$ /ueber-uns/ortsvereine
 RedirectMatch 301 ^/unsere-arbeit/club-camp/?$ /freizeiten/club-camp
-RedirectMatch 301 ^/kontakt/?$ /kontakt
-RedirectMatch 301 ^/spenden/?$ /spenden
 RedirectMatch 301 ^/unsere-arbeit/sport/?$ /weitere-arbeit/sport
 RedirectMatch 301 ^/oldau/?$ /freizeiten/level-up
 RedirectMatch 301 ^/unsere-arbeit/freizeitarbeit/?$ /freizeiten
