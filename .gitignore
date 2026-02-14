@@ -48,7 +48,7 @@ dist
 !public/assets/dist
 .dev
 content/home/.lock
-# .vite
+/public/.htaccess
 
 # CS Fixer
 # --------

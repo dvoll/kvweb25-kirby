@@ -23,6 +23,7 @@ jobs:
       - name: Deploy Specific Files via Rsync
         run: |
           rsync -avz --delete \
+            --exclude='public/.htaccess.example'
             --include='plugins/***' \
             --include='public/***' \
             --include='site/***' \
