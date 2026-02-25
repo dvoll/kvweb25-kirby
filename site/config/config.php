@@ -3,7 +3,6 @@
 use dvll\Sitepackage\Helpers\Menu;
 use dvll\Sitepackage\Helpers\Helper;
 use Kirby\Panel\Ui\Buttons\ViewButton;
-use tobimori\Seo\RobotsViewButton;
 
 require_once __DIR__ . '/../../vendor/vlucas/phpdotenv/src/Dotenv.php';
 
@@ -28,12 +27,21 @@ return [
                 },
                 'customRobots' => function (Kirby\Cms\Page $page, Kirby\Cms\App $kirby) {
                     if (($user = $kirby->user()) && $user->isAdmin()) {
-                        return new RobotsViewButton($page);
+                        try {
+                            if (class_exists(\tobimori\Seo\Buttons\RobotsViewButton::class)) {
+                                return new \tobimori\Seo\Buttons\RobotsViewButton($page);
+                            } else {
+                                throw new \Exception('RobotsViewButton class not found');
+                            }
+                        } catch (\Throwable $e) {
+                            // fallback to disabled view button on any error
+                            kirbylog('[dvll.view-buttons] Error adding seo robots view button: ' . $e->getMessage(), Helper::KIRBYLOG_LVL_ERROR);
+                        }
                     }
                     return new ViewButton(
                         model: $page,
                         disabled: true,
-                        style: 'display: none'
+                        style: 'display: block'
                     );
                 },
             ]
@@ -59,6 +67,7 @@ return [
             'parent' => 'site.find("page://images")',
             'template' => 'image'
         ],
+        'tobimori.seo.robots.active' => true,
     ],
     /** Email */
     'email' => [
