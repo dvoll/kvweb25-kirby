@@ -9,7 +9,7 @@
 /** @var \Kirby\Content\Field $contacts */
 $contacts = $page->myContacts();
 
-snippet('layout', slots: true); ?>
+snippet('base', slots: true); ?>
 
 <?php snippet('core/stage'); ?>
 

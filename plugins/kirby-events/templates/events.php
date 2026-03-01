@@ -22,7 +22,7 @@ $events = $events->paginate([
     ])
 ]);
 
-snippet('layout', slots: true); ?>
+snippet('base', slots: true); ?>
 
 <?php snippet('core/stage'); ?>
 

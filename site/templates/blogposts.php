@@ -9,7 +9,7 @@
 $paginatedList = $page->children()->listed()->sortBy('date', 'desc')->paginate(9);
 $pagination = $paginatedList->pagination();
 
-snippet('layout', slots: true); ?>
+snippet('base', slots: true); ?>
 
 <?php snippet('core/stage'); ?>
 

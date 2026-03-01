@@ -7,7 +7,7 @@
 /** @var Kirby\Content\Field $stageField */
 $stageField = $page->content()->get('stage');
 
-snippet('layout', slots: true); ?>
+snippet('base', slots: true); ?>
 <?php if ($page->myStageType() === null): ?>
     <?php snippet('components/stage-hero', [
         'image' => $page->content()->get('heroImage')->toFile(),

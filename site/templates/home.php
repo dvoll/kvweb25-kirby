@@ -6,7 +6,7 @@
  * @var Kirby\Cms\Site $site
  */
 
-snippet('layout', slots: true); ?>
+snippet('base', slots: true); ?>
     <section class="dvll-section">
         <div class="dvll-section__layout">
             <?php snippet('components/stage-welcome'); ?>

@@ -18,7 +18,7 @@ $galleryImages = $galleryImagesField->toFiles();
 // $contentImage = $contentImages->first();
 // $caption = ($contentImage && $contentImage->caption()->isNotEmpty()) ? $contentImage->caption()->html() : null;
 
-snippet('layout', slots: true); ?>
+snippet('base', slots: true); ?>
 <section class="dvll-section">
     <div class="dvll-section__layout dvll-section__layout--two-col md:pt-6">
         <?php if (($blogPage = site()->find('blog')) && $blogPage->isNotEmpty() && $blogPage->isVisible()): ?>

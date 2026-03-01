@@ -6,7 +6,7 @@
  * @var Kirby\Cms\Site $site
  */
 
-snippet('layout', slots: true); ?>
+snippet('base', slots: true); ?>
     <?php snippet('core/stage'); ?>
     <?php snippet('core/layouts'); ?>
 <?php endsnippet() ?>
