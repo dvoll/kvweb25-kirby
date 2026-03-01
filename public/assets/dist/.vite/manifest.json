@@ -1,6 +1,6 @@
 {
   "src/components/gallery.ts": {
-    "file": "gallery-Bwxgk-_2.js",
+    "file": "gallery-C_UORwsc.js",
     "name": "gallery",
     "src": "src/components/gallery.ts",
     "isDynamicEntry": true,
@@ -33,12 +33,16 @@
     "src": "src/fonts/sourcesanspro/SourceSansPro-Regular.woff2"
   },
   "src/main.css": {
-    "file": "main-Dvg_As2Y.css",
+    "file": "main-DKgKx7gl.css",
     "src": "src/main.css",
-    "isEntry": true
+    "isEntry": true,
+    "name": "main",
+    "names": [
+      "main.css"
+    ]
   },
   "src/main.ts": {
-    "file": "main-eKkrl1X-.js",
+    "file": "main-NEhCoAUp.js",
     "name": "main",
     "src": "src/main.ts",
     "isEntry": true,
