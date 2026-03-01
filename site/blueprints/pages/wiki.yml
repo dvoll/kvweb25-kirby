@@ -1,0 +1,11 @@
+title: Wiki
+blueprint: page
+
+icon: grid
+image:
+  query: page.myTeaserImage
+  cover: true
+  back: 'var(--theme-accent)'
+  color: 'var(--theme-primary)'
+
+extends: layouts/wiki-layout

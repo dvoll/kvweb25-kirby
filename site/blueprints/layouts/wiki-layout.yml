@@ -1,0 +1,81 @@
+blueprint: page
+
+image:
+  query: page.myTeaserImage
+  cover: true
+  back: 'var(--theme-accent)'
+  color: 'var(--theme-primary)'
+
+buttons:
+  # - robots
+  # - customRobots
+  - settings
+  - status
+  # preview
+  - customPreview
+  - open
+
+tabs:
+  pages: false
+  model: false
+  content:
+    label: Inhalt
+    icon: text
+    columns:
+      main:
+        width: 2/3
+        sections:
+          stageSection:
+            type: fields
+            fields:
+              sectionHeadlineStage:
+                label: Bühne
+                type: headline
+                help: "Ein gut klingender Titel und eine kurze Zusammenfassung für den Seitenanfang. Diese Inhalte werden bei Verlinkungen (\"Teaser\") auf anderen Seiten verwendet."
+                width: 2/3
+              stage:
+                extends: fields/stage-blocks
+          mainSectionIntro:
+            type: fields
+            fields:
+              sectionHeadlineContent:
+                label: Inhalt
+                type: headline
+                help: Hier ist Platz für alle weiteren Inhalte der Seite.
+          modelSection: false
+          contentSection:
+            type: fields
+            fields:
+              
+              blocks:
+                extends: fields/blocks
+      sidebar:
+        width: 1/3
+        sections:
+          children:
+            label: Unterseiten
+            type: pages
+            template: wiki
+          contactsSection:
+            type: fields
+            fields:
+              contactsSelect:
+                extends: fields/contacts-select
+  settings:
+    label: Einstellungen
+    icon: cog
+    sections:
+      settingsSectionIntro:
+        type: fields
+        fields:
+          settingsSectionHeadline:
+            label: Einstellungen
+            type: headline
+      teaserFields: false
+        # extends: sections/page-teaser
+      allChildren:
+        label: Alle Unterseiten
+        type: pages
+      allFiles:
+        label: Alle Dateien
+        type: files
