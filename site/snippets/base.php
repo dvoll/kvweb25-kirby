@@ -39,7 +39,7 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
 <body class="flex flex-col min-h-screen antialiased overflow-x-clip bg-baseline">
     <?php snippet('core/skip-nav') ?>
     <?php snippet('core/header') ?>
-    <main id="main" class="flex-grow dvll-container">
+    <main id="main" class="grow dvll-container dvll-container--full-width">
         <?= $slot ?>
     </main>
     <?php snippet('core/footer') ?>

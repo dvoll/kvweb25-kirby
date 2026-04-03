@@ -6,29 +6,34 @@
  */
 
 snippet('base-wiki', slots: true); ?>
-<?php snippet('core/header-wiki') ?>
 
-<?php // left sidebar
-?>
-<?php snippet('wiki/sidebar-left') ?>
+<div class="grid grid-cols-1 lg:grid-cols-[var(--left-w)_minmax(0,1fr)] xl:grid-cols-[var(--left-w)_minmax(0,1fr)_var(--right-w)] min-h-dvh pt-(--header-h)">
 
-<?php // right outline
-?>
-<?php snippet('wiki/sidebar-right') ?>
-
-<main id="main" class="min-h-screen bg-white" role="main" style="--header-h:4rem; --left-w:18rem; --right-w:16rem;">
-    <div class="pt-[var(--header-h)]">
-        <div class="max-w-[96rem] mx-auto">
-            <div class="relative">
-                <article class="prose mx-auto max-w-none pl-[calc(var(--left-w)+1rem)] pr-[calc(var(--right-w)+1rem)]">
-              <?php
-                // Use the core layouts snippet to render blocks and preserve custom block layouts
-                snippet('core/layouts');
-              ?>
-                </article>
-            </div>
+    <?php // Left sidebar — page navigation
+    ?>
+    <div class="max-lg:hidden">
+        <div class="sticky h-full top-(--header-h) max-h-[calc(100dvh-var(--header-h))] overflow-y-auto">
+            <?php snippet('wiki/sidebar-left') ?>
         </div>
     </div>
-</main>
+
+    <?php // Main content
+    ?>
+    <main id="main" class="min-w-0 bg-white">
+        <article class="grow dvll-container dvll-container--wiki">
+            <?php snippet('core/stage'); ?>
+            <?php snippet('core/layouts') ?>
+        </article>
+    </main>
+
+    <?php // Right sidebar — table of contents
+    ?>
+    <div class="max-xl:hidden">
+        <div class="sticky h-full top-(--header-h) max-h-[calc(100dvh-var(--header-h))] overflow-y-auto">
+            <?php snippet('wiki/sidebar-right') ?>
+        </div>
+    </div>
+
+</div>
 
 <?php endsnippet() ?>

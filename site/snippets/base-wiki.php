@@ -12,7 +12,7 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
 ?>
 
 <!DOCTYPE html>
-<html lang="<?= $kirby->language()?->code() ?? 'de-DE' ?>">
+<html lang="<?= $kirby->language()?->code() ?? 'de-DE' ?>" class="scroll-pt-16">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,12 +36,10 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
     <?= vite()->css('src/main.css', ['crossorigin' => 'anonymous']) ?>
 </head>
 
-<body class="flex flex-col min-h-screen antialiased overflow-x-clip bg-baseline layout-sidebar-wiki" style="--header-h:3.5rem; --left-w:18rem; --right-w:16rem;">
+<body class="min-h-dvh antialiased bg-baseline layout-sidebar-wiki" style="--header-h:3.5rem; --left-w:18rem; --right-w:16rem;">
     <?php snippet('core/skip-nav') ?>
     <?php snippet('core/header-wiki') ?>
-    <main id="main" class="flex-grow">
-        <?= $slot ?>
-    </main>
+    <?= $slot ?>
     <?= vite()->js('src/main.ts', ['async' => true, 'crossorigin' => 'anonymous']) ?>
     <?php snippet('core/svg-sprite') ?>
 </body>

@@ -5,6 +5,6 @@
 $level = $block->level()->or('h2');
 ?>
 
-<div class="dvll-block dvll-block--narrow dvll-block--gap-sm">
+<div id="<?= htmlspecialchars($block->text()->slug()) ?>" class="dvll-block dvll-block--narrow dvll-block--gap-sm">
     <<?= $level ?> class="heading-<?= $level ?>"><?= $block->text() ?></<?= $level ?>>
 </div>

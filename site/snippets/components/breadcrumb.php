@@ -7,6 +7,11 @@
 
 $class = $class ?? '';
 $breadcrumb = $site->breadcrumb();
+
+if ($breadcrumb->has('wiki')) {
+    // trim breadcrumb to wiki root
+    $breadcrumb = $breadcrumb->offset(1);
+}
 ?>
 
 <?php if ($breadcrumb->count() > 1): ?>

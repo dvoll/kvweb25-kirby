@@ -6,18 +6,20 @@
  */
 ?>
 
-<header class="fixed w-full top-0 z-30 pointer-events-none">
-  <div class="max-w-[96rem] mx-auto dvll-container">
-    <div class="flex items-center justify-between h-14 px-4 md:px-6 pointer-events-auto">
-      <a href="<?= $site->url() ?>" class="flex items-center gap-2" title="<?= $site->title()->escape() ?>">
-        <img src="/assets/logos/logo.svg" alt="<?= $site->title()->escape() ?>" class="w-28 md:w-32" />
-      </a>
-      <div class="flex items-center gap-3">
-        <?php if ($kirby->user()): ?>
-          <?php $panelUrl = $page->panel()->url() ?? '/panel' ?>
-          <a href="<?= $panelUrl ?>" class="btn btn--ghost btn--small" title="Edit page in Panel">Edit</a>
-        <?php endif ?>
-      </div>
+<header class="fixed w-full top-0 z-30 pointer-events-none bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-384 mx-auto dvll-container">
+        <div class="flex items-center justify-between h-(--header-h) px-4 md:px-6 pointer-events-auto">
+            <a href="<?= $site->find('wiki')->url() ?? $site->url() ?>" class="flex items-center gap-2 font-style font-semibold" title="<?= $site->title()->escape() ?>">
+                <img src="/assets/logos/logo.svg" alt="<?= $site->title()->escape() ?>" class="w-24 md:w-28" />
+                KV Wiki
+            </a>
+            <ul class="flex items-center gap-3">
+                <li><a href="<?= $site->url() ?>" class="btn btn--ghost btn--icon-left" title="Seite im Panel bearbeiten"><?= snippet('elements/icon', ['icon' => 'external']) ?> Zur Hauptseite</a></li>
+                <?php if ($kirby->user()): ?>
+                    <?php $panelUrl = $page->panel()->url() ?? '/panel' ?>
+                    <li><a href="<?= $panelUrl ?>" class="btn btn--ghost" title="Seite im Panel bearbeiten">Seite bearbeiten</a></li>
+                <?php endif ?>
+            </ul>
+        </div>
     </div>
-  </div>
 </header>

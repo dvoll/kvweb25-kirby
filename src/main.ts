@@ -2,6 +2,7 @@ import Alpine from "@alpinejs/csp";
 
 import { DvllHeader } from "./components/header";
 import eventDialog, { sharedEventDialog } from "./components/event-dialog";
+import scrollToId from "./components/scroll-to-id";
 
 // suggested in the Alpine docs:
 // make Alpine on window available for better DX
@@ -9,6 +10,7 @@ window.Alpine = Alpine;
 
 Alpine.data("eventCard", eventDialog); // Individual event cards
 Alpine.data("sharedEventDialog", sharedEventDialog); // Single shared dialog
+Alpine.data("scrollToId", scrollToId);
 
 
 // Function to initialize Alpine

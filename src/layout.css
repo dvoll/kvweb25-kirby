@@ -4,6 +4,7 @@
         display: flex;
         flex-direction: column;
         align-content: start;
+        container: dvll-container / inline-size;
     }
 
     .dvll-section {
@@ -19,7 +20,7 @@
             @apply pt-0;
         }
 
-        @media (width >= 48rem) {
+        @container dvll-container (width >= 48rem) {
             @apply mb-24;
         }
 
@@ -30,7 +31,7 @@
     .dvll-section--small-gap {
         scroll-margin-block-start: 6rem;
         @apply mb-8;
-        @media (width >= 48rem) {
+        @container dvll-container (width >= 48rem) {
             @apply mb-12;
         }
     }
@@ -44,23 +45,24 @@
             overflow-x: clip;
         }
 
-        @media (width >= 48rem) {
+        @container dvll-container (width >= 48rem) {
             column-gap: 1.5rem;
 
         }
-        @media (width >= 73.25rem) {
+
+        @container dvll-container (width >= 73.25rem) {
             column-gap: 1.5rem;
             grid-template-columns: 1fr repeat(9, calc((73.25rem - 15rem) / 9)) 1fr;
         }
     }
 
     .dvll-section__full-grid-layout {
-        @apply max-w-[73.25rem] mx-auto;
+        @apply max-w-293 mx-auto;
         padding-inline: 1rem;
         display: grid;
         grid-template-columns: repeat(9, 1fr);
         column-gap: 1.5rem;
-        @media (width >= 48rem) {
+        @container dvll-container (width >= 48rem) {
             padding-inline: 1.5rem;
         }
     }
@@ -78,7 +80,7 @@
             @apply col-start-2 col-end-11;
 
             .dvll-section__layout--two-col & {
-                @media (width >= 64rem) {
+                @container dvll-container (width >= 64rem) {
                     @apply col-start-2 col-end-8;
                 }
             }
@@ -91,12 +93,12 @@
         &.dvll-block--centered {
             @apply col-start-2 col-end-11;
 
-            @media (width >= 64rem) {
+            @container dvll-container (width >= 64rem) {
                 @apply col-start-3 col-end-10;
             }
 
             .dvll-section__layout--two-col & {
-                @media (width >= 64rem) {
+                @container dvll-container (width >= 64rem) {
                     @apply col-start-2 col-end-8;
                 }
             }
@@ -105,7 +107,7 @@
         &.dvll-block--sidebar {
             @apply col-start-2 col-end-11;
 
-            @media (width >= 64rem) {
+            @container dvll-container (width >= 64rem) {
                 @apply col-start-8 col-span-3;
             }
         }
@@ -113,13 +115,13 @@
         &.dvll-block--narrow {
             @apply col-start-2 col-end-11;
 
-            @media (width >= 64rem) {
+            @container dvll-container (width >= 64rem) {
                 @apply col-start-3 col-end-9;
             }
 
             .dvll-section__layout--two-col & {
 
-                @media (width >= 64rem) {
+                @container dvll-container (width >= 64rem) {
                     @apply col-start-2 col-end-7;
                 }
             }
@@ -130,7 +132,7 @@
         display: flex;
         flex-direction: column;
 
-        @media (width >= 12rem) {
+        @container dvll-container (width >= 12rem) {
             display: grid;
             --row-count: calc(var(--footer-item-count, 12) / 2);
             --row-count-int: round(up, var(--row-count));
@@ -139,7 +141,7 @@
             justify-content: space-around;
         }
 
-        @media (width >= 73.25rem) {
+        @container dvll-container (width >= 73.25rem) {
             --row-count: calc(var(--footer-item-count, 12) / 3);
             justify-content: space-between;
         }
