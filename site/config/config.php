@@ -2,6 +2,7 @@
 
 use dvll\Sitepackage\Helpers\Menu;
 use dvll\Sitepackage\Helpers\Helper;
+use dvll\Sitepackage\Helpers\WikiAccess;
 use Kirby\Panel\Ui\Buttons\ViewButton;
 
 require_once __DIR__ . '/../../vendor/vlucas/phpdotenv/src/Dotenv.php';
@@ -51,6 +52,7 @@ return [
         'pages' => [
             'active' => Helper::getEnv('KIRBY_CACHE'),
             'prefix' => 'pages',
+            'ignore' => fn (Kirby\Cms\Page $page) => WikiAccess::isWikiPage($page),
         ],
         'uuid' => [
             'active' => Helper::getEnv('KIRBY_CACHE'),
@@ -103,6 +105,8 @@ return [
             $menu[] = '-';
             $menu['blog'] = Menu::page('Blog', 'draft', page('blog'));
             $menu['camps'] = Menu::page('Freizeiten', 'file-document', page('freizeiten'));
+            $menu[] = '-';
+            $menu['wiki'] = Menu::page('Wiki', 'file-document', page('wiki'));
         }
         if ($user && $user->role()->permissions()->for('pages', 'read')) {
             $menu[] = '-';

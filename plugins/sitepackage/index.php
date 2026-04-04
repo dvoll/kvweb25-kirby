@@ -2,10 +2,12 @@
 
 use dvll\Sitepackage\Helpers\CustomGd;
 use dvll\Sitepackage\Helpers\CustomImageMagick;
+use dvll\Sitepackage\Helpers\WikiAccess;
 use dvll\Sitepackage\Models\LayoutWithContactBlock;
 use dvll\Sitepackage\Models\TeaserBlogpostsBlock;
 use dvll\Sitepackage\Models\TeaserEventsBlock;
 use Kirby\Cms\App;
+use Kirby\Data\Data;
 use Kirby\Data\Yaml;
 use Kirby\Filesystem\F;
 use Kirby\Http\Uri;
@@ -95,6 +97,14 @@ App::plugin('dvll/sitepackage', [
     ],
     'routes' => function (\Kirby\Cms\App $kirby) {
         return [
+            [
+                'pattern' => 'wiki-logout',
+                'action' => function () use ($kirby) {
+                    WikiAccess::clearGuestAccess($kirby);
+
+                    go($kirby->page('wiki')?->url() ?? $kirby->site()->url());
+                }
+            ],
             [
                 // API endpoint for fetching event details
                 'pattern' => 'event-api/event/(:all)',

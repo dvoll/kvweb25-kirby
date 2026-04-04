@@ -5,10 +5,53 @@
  *  @var Kirby\Cms\App $kirby */
 
 use dvll\Sitepackage\Helpers\Helper;
+use dvll\Sitepackage\Helpers\WikiAccess;
 
 if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
     go('/panel');
 }
+
+$showGuestLogin = false;
+$guestLoginError = null;
+
+if (WikiAccess::isWikiPage($page)) {
+    $userCanAccessWiki = WikiAccess::currentUserCanAccess($kirby);
+
+    if ($kirby->user() && $userCanAccessWiki === false) {
+        go($site->url());
+    }
+
+    if ($userCanAccessWiki === false && WikiAccess::hasGuestAccess($kirby) === false) {
+        if (WikiAccess::guestLoginEnabled() === false) {
+            go($site->url());
+        }
+
+        if ($kirby->request()->is('POST') && get('wiki_guest_login')) {
+            $password = (string)get('password', '');
+
+            if (csrf(get('csrf')) !== true) {
+                $guestLoginError = 'Die Anmeldung konnte nicht verarbeitet werden.';
+            } elseif ($invalid = invalid(
+                ['password' => $password],
+                ['password' => ['required']],
+                ['password' => 'Bitte geben Sie ein Passwort ein.']
+            )) {
+                $guestLoginError = reset($invalid) ?: 'Die Anmeldung konnte nicht verarbeitet werden.';
+            } elseif (WikiAccess::verifyGuestPassword($password) === false) {
+                $guestLoginError = 'Das Passwort ist ungültig.';
+            } else {
+                WikiAccess::activateGuestAccess($kirby);
+                go($page->url());
+            }
+        }
+
+        $showGuestLogin = true;
+    }
+}
+
+$content = $showGuestLogin
+    ? snippet('wiki/login-form', ['page' => $page, 'guestLoginError' => $guestLoginError], true)
+    : $slot;
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +82,7 @@ if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
 <body class="min-h-dvh antialiased bg-baseline layout-sidebar-wiki" style="--header-h:3.5rem; --left-w:18rem; --right-w:16rem;">
     <?php snippet('core/skip-nav') ?>
     <?php snippet('core/header-wiki') ?>
-    <?= $slot ?>
+    <?= $content ?>
     <?= vite()->js('src/main.ts', ['async' => true, 'crossorigin' => 'anonymous']) ?>
     <?php snippet('core/svg-sprite') ?>
 </body>

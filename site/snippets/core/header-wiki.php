@@ -4,6 +4,11 @@
  * Compact header for wiki pages
  * @var dvll\Sitepackage\Models\CustomBasePage $page
  */
+
+use dvll\Sitepackage\Helpers\WikiAccess;
+
+$userCanAccessWiki = WikiAccess::currentUserCanAccess($kirby);
+$hasGuestAccess = WikiAccess::hasGuestAccess($kirby);
 ?>
 
 <header class="fixed w-full top-0 z-30 pointer-events-none bg-white/95 backdrop-blur-sm border-b border-gray-200">
@@ -15,9 +20,11 @@
             </a>
             <ul class="flex items-center gap-3">
                 <li><a href="<?= $site->url() ?>" class="btn btn--ghost btn--icon-left" title="Seite im Panel bearbeiten"><?= snippet('elements/icon', ['icon' => 'external']) ?> Zur Hauptseite</a></li>
-                <?php if ($kirby->user()): ?>
+                <?php if ($userCanAccessWiki): ?>
                     <?php $panelUrl = $page->panel()->url() ?? '/panel' ?>
                     <li><a href="<?= $panelUrl ?>" class="btn btn--ghost" title="Seite im Panel bearbeiten">Seite bearbeiten</a></li>
+                <?php elseif ($hasGuestAccess): ?>
+                    <li><a href="/wiki-logout" class="btn btn--ghost" title="Wiki-Zugang beenden">Gast-Zugang beenden</a></li>
                 <?php endif ?>
             </ul>
         </div>
