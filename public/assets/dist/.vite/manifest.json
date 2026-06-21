@@ -33,7 +33,7 @@
     "src": "src/fonts/sourcesanspro/SourceSansPro-Regular.woff2"
   },
   "src/main.css": {
-    "file": "main-DKgKx7gl.css",
+    "file": "main-BgctezgL.css",
     "src": "src/main.css",
     "isEntry": true,
     "name": "main",
@@ -42,7 +42,7 @@
     ]
   },
   "src/main.ts": {
-    "file": "main-NEhCoAUp.js",
+    "file": "main-BsSH0O4E.js",
     "name": "main",
     "src": "src/main.ts",
     "isEntry": true,
