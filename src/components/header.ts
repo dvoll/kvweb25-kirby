@@ -39,6 +39,30 @@ export class DvllHeader extends HTMLElement {
         mainMenuCloseButton?.addEventListener('click', () => {
             modal.close();
         });
+
+        const mobileNavToggles = this.querySelectorAll<HTMLButtonElement>('.mobile-nav-toggle');
+        mobileNavToggles.forEach((toggle) => {
+            const submenuId = toggle.getAttribute('aria-controls');
+            if (!submenuId) {
+                return;
+            }
+            const submenu = this.querySelector(`#${submenuId}`) as HTMLElement | null;
+            if (!submenu) {
+                return;
+            }
+
+            toggle.addEventListener('click', () => {
+                const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!isOpen));
+                submenu.classList.toggle('hidden');
+                toggle.querySelector('.mobile-nav-toggle-icon')?.classList.toggle('rotate-180');
+            });
+        });
+
+        modal.addEventListener('close', () => {
+            this.closeAllMobileSubmenus();
+        });
+
         // Add event listeners to nav links with submenus
         const navLinks = this.querySelectorAll('nav.desktop-nav > ul > li > .nav-link');
         navLinks.forEach((link) => {
@@ -75,18 +99,29 @@ export class DvllHeader extends HTMLElement {
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 this.closeAllSubmenus();
+                this.closeAllMobileSubmenus();
             }
         });
     }
 
     closeAllSubmenus() {
-        const navLinks = this.querySelectorAll('nav > ul > li > .nav-link');
+        const navLinks = this.querySelectorAll('nav.desktop-nav > ul > li > .nav-link');
         navLinks.forEach((link) => {
             link.classList.remove('nav-link--open-submenu');
             const submenu = link.nextElementSibling;
             if (!submenu) return;
             submenu.classList.remove('nav-submenu--open');
-
         });
+    }
+
+    closeAllMobileSubmenus() {
+        const mobileNavToggles = this.querySelectorAll<HTMLButtonElement>('.mobile-nav-toggle');
+        mobileNavToggles.forEach((toggle) => {
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.querySelector('.mobile-nav-toggle-icon')?.classList.remove('rotate-180');
+        });
+
+        const mobileSubmenus = this.querySelectorAll<HTMLElement>('.mobile-nav-submenu');
+        mobileSubmenus.forEach((submenu) => submenu.classList.add('hidden'));
     }
 }
