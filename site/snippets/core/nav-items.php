@@ -51,14 +51,14 @@ if (count($items) > 0): ?>
         <ul class="flex flex-row flex-wrap gap-x-2 gap-y-1 font-style text-sm text-contrast font-semibold">
             <?php foreach ($items as $item): ?>
                 <?php
-                    $externalIcon = ($item['isExternal'] || $item['newTab']) ? snippet('elements/icon', ['icon' => 'external', 'class' => 'size-4 self-center'], true) : '';
-                    $linkAttrs = [
-                        'class' => 'nav-link px-4 flex gap-2 items-center group',
-                        'href' => $item['url'],
-                        'aria-current' => isset($item['page']) && $item['page']?->isOpen() ? 'page' : null,
-                        'target' => $item['newTab'] ? '_blank' : null,
-                        'rel' => $item['newTab'] ? 'noopener' : null,
-                    ];
+                $externalIcon = ($item['isExternal'] || $item['newTab']) ? snippet('elements/icon', ['icon' => 'external', 'class' => 'size-4 self-center'], true) : '';
+                $linkAttrs = [
+                    'class' => 'nav-link px-4 flex gap-2 items-center group',
+                    'href' => $item['url'],
+                    'aria-current' => isset($item['page']) && $item['page']?->isOpen() ? 'page' : null,
+                    'target' => $item['newTab'] ? '_blank' : null,
+                    'rel' => $item['newTab'] ? 'noopener' : null,
+                ];
                 ?>
                 <li class="relative">
                     <a <?= attr($linkAttrs) ?>>
@@ -71,9 +71,9 @@ if (count($items) > 0): ?>
                         <ul class="nav-submenu bg-gray-100 card none flex-col p-1">
                             <li>
                                 <a class="nav-link py-3 rounded-md" <?= attr([
-                                        'href' => $item['url'],
-                                        'aria-current' => $item['page']->isOpen() ? 'page' : null,
-                                    ]) ?>>
+                                                                        'href' => $item['url'],
+                                                                        'aria-current' => $item['page']->isOpen() ? 'page' : null,
+                                                                    ]) ?>>
                                     <?= $item['label']->html() ?>
                                 </a>
                             </li>
@@ -81,9 +81,9 @@ if (count($items) > 0): ?>
                             <?php foreach ($subMenu as $subItem): ?>
                                 <li>
                                     <a class="nav-link rounded-md" <?= attr([
-                                            'href' => $subItem->url(),
-                                            'aria-current' => $item['page']->isOpen() ? 'page' : null,
-                                        ]) ?>>
+                                                                        'href' => $subItem->url(),
+                                                                        'aria-current' => $item['page']->isOpen() ? 'page' : null,
+                                                                    ]) ?>>
                                         <?= $subItem->title() ?>
                                     </a>
                                 </li>
@@ -101,14 +101,14 @@ if (count($items) > 0): ?>
                 <button class="main-nav-close-button self-end btn btn--secondary btn--medium m-1 mt-4">Navigation schließen <?= snippet('elements/icon', ['icon' => 'cross']) ?></button>
                 <?php foreach ($items as $index => $item): ?>
                     <?php
-                        $externalIcon = ($item['isExternal'] || $item['newTab']) ? snippet('elements/icon', ['icon' => 'external', 'class' => 'size-3 self-center'], true) : '';
-                        $linkAttrs = [
-                            'class' => 'nav-link px-3 py-4 flex gap-2 items-center',
-                            'href' => $item['url'],
-                            'aria-current' => isset($item['page']) && $item['page']?->isOpen() ? 'page' : null,
-                            'target' => $item['newTab'] ? '_blank' : null,
-                            'rel' => $item['newTab'] ? 'noopener' : null,
-                        ];
+                    $externalIcon = ($item['isExternal'] || $item['newTab']) ? snippet('elements/icon', ['icon' => 'external', 'class' => 'size-3 self-center'], true) : '';
+                    $linkAttrs = [
+                        'class' => 'nav-link px-3 py-4 flex gap-2 items-center',
+                        'href' => $item['url'],
+                        'aria-current' => isset($item['page']) && $item['page']?->isOpen() ? 'page' : null,
+                        'target' => $item['newTab'] ? '_blank' : null,
+                        'rel' => $item['newTab'] ? 'noopener' : null,
+                    ];
                     ?>
                     <li class="relative">
                         <?php if ($item['hasSubMenu']): ?>
@@ -122,7 +122,7 @@ if (count($items) > 0): ?>
                             ]; ?>
                             <button type="button" class="mobile-nav-toggle btn btn--ghost btn--medium flex items-center justify-between w-full text-left py-4" aria-expanded="false" aria-controls="mobile-nav-submenu-<?= $index ?>">
                                 <span><?= $item['label']->html() ?></span>
-                                <?= snippet('elements/icon', ['icon' => 'chevron-down', 'class' => 'size-4 mobile-nav-toggle-icon'], true) ?>
+                                <?= snippet('elements/icon', ['icon' => 'chevron-down', 'class' => 'size-4 mobile-nav-toggle-icon transition-transform duration-200'], true) ?>
                                 <span class="sr-only">Untermenü für <?= $item['label']->escape() ?> umschalten</span>
                             </button>
                             <ul id="mobile-nav-submenu-<?= $index ?>" class="mobile-nav-submenu my-1 pl-4 hidden flex flex-col gap-1" aria-label="Untermenü für <?= $item['label']->escape() ?>">
@@ -136,9 +136,9 @@ if (count($items) > 0): ?>
                                 <?php foreach ($subMenu as $subItem): ?>
                                     <li>
                                         <a class="nav-link py-4" <?= attr([
-                                                'href' => $subItem->url(),
-                                                'aria-current' => $item['page']->isOpen() ? 'page' : null
-                                            ]) ?>>
+                                                                        'href' => $subItem->url(),
+                                                                        'aria-current' => $item['page']->isOpen() ? 'page' : null
+                                                                    ]) ?>>
                                             <?= $subItem->title() ?>
                                         </a>
                                     </li>

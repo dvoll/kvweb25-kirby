@@ -65,16 +65,4 @@
             opacity: 1;
         }
     }
-
-    .mobile-nav-submenu {
-        @apply hidden;
-    }
-
-    .mobile-nav-toggle-icon {
-        transition: transform .2s ease-in-out;
-    }
-
-    .rotate-180 {
-        transform: rotate(180deg);
-    }
 }
