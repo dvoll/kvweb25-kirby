@@ -71,6 +71,37 @@ columns:
         width: 6/12
         text: |
           Die Schlagwörter auch mit Terminen verwendet werden. So können beispielsweise alle Termine mit dem Schlagwort "Zeltlager" auf den passenden Seiten angezeigt werden. Dafür muss in der Beschreibung des Google Kalender Termins das Schlagwort mit eckigen Klammern angegeben werden, z.B. `[Zeltlager]`
+      headlineMainNavigation:
+        label: Hauptnavigation
+        type: headline
+        width: 7/12
+        help: |
+          Hauptnavigation-Einträge können als interne Seite oder externe URL angelegt und per Drag & Drop sortiert werden. Nur veröffentlichte Seiten werden in der Navigation ausgegeben.
+      mainNavigation:
+        label: Hauptnavigation
+        type: structure
+        width: 1/1
+        columns:
+          label: 2/5
+          link: 2/5
+          newTab: 1/5
+        fields:
+          label:
+            label: Titel
+            type: text
+            required: true
+          link:
+            label: Ziel
+            type: link
+            options:
+              - page
+              - url
+            required: true
+          newTab:
+            label: In neuem Tab öffnen
+            type: toggle
+            default: false
+            help: Öffnet externe Links in einem neuen Browser-Tab.
       footer:
         label: Footer
         type: headline
