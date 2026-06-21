@@ -5,7 +5,7 @@
  *  @var Kirby\Cms\App $kirby */
 
 use dvll\Sitepackage\Helpers\Helper;
-use dvll\Sitepackage\Helpers\WikiAccess;
+use dvll\KirbyWiki\WikiAccess;
 
 if (Helper::getEnv('PAGE_VIEW_LOGIN') && !$kirby->user()) {
     go('/panel');

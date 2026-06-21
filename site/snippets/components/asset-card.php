@@ -2,15 +2,18 @@
 
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\Html;
+use Kirby\Toolkit\Str;
 
 /**
  * @var \Kirby\Cms\Block $block
  *
  * @var \Kirby\Cms\File|null $assetFile
+ * @var string|null $assetUrl
  * @var Field|null $link
  */
 
 $assetFile = $assetFile ?? null;
+$assetUrl = $assetUrl ?? null;
 $buttonTitle = $buttonTitle ?? null;
 $buttonText = $buttonText ?? null;
 
@@ -18,7 +21,7 @@ $isFile = $assetFile ? true : false;
 $linkType = $linkType ?? ($isFile ? 'file' : 'external');
 $iconName = $isFile ? 'download' : ($linkType === 'external' ? 'external' : 'arrow-right');
 
-$url = $isFile ? $assetFile->url() : ($url ?? '/');
+$url = $isFile ? ($assetUrl ?? $assetFile->url()) : ($url ?? '/');
 $title = $title ?? ($isFile ? ($assetFile->title()->isNotEmpty() ? $assetFile->title() : Str::before($assetFile->filename(), '.')) : $url);
 $text = $text ?? ($isFile ? $assetFile->filename() : '');
 

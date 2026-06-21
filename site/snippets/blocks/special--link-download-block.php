@@ -7,6 +7,7 @@ $type = $block->itemType()->value();
 $internalPage = $block->urlPage()->toPage();
 $internalPageTitle = $internalPage ? $internalPage->title() : null;
 $internalPageLongTitle = $internalPage ? $internalPage->myTitle() : null;
+$downloadFile = $block->download()->toFile();
 ?>
 
 <?= snippet(
@@ -17,7 +18,8 @@ $internalPageLongTitle = $internalPage ? $internalPage->myTitle() : null;
         'url' => $type === 'external' ? $block->url()->toUrl() : $block->urlPage()->toUrl(),
         'class' => '',
         'linkType' => $type,
-        'assetFile' => $block->download()->toFile(),
+        'assetFile' => $downloadFile,
+        'assetUrl' => $downloadFile?->frontendUrl(),
         'buttonTitle' => $type === 'page' ? $internalPageTitle : null,
         'buttonText' => $type === 'page' ? 'Zur Seite &#8222;' . $internalPageTitle . '&#8220;' : null,
     ]

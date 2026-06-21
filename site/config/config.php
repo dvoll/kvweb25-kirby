@@ -2,7 +2,7 @@
 
 use dvll\Sitepackage\Helpers\Menu;
 use dvll\Sitepackage\Helpers\Helper;
-use dvll\Sitepackage\Helpers\WikiAccess;
+use dvll\KirbyWiki\WikiAccess;
 use Kirby\Panel\Ui\Buttons\ViewButton;
 
 require_once __DIR__ . '/../../vendor/vlucas/phpdotenv/src/Dotenv.php';

@@ -1,0 +1,9 @@
+name: Verlinkungen & Downloads
+description: Block fuer eine Auflistung an Downloads und Links auf externe und interne Seiten
+icon: download
+preview: fields
+wysiwyg: true
+
+fields:
+  items:
+    extends: fields/wiki-links-downloads

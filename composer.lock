@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9706faf9c1adf3b45af738e61259a3f3",
+    "content-hash": "8dc96308805d20d4dc57b895c66abf7b",
     "packages": [
         {
             "name": "arnoson/kirby-vite",
@@ -334,6 +334,38 @@
                 }
             ],
             "description": "Event plugin for a Google calendar integration",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "dvll/kirby-wiki",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "./plugins/kirby-wiki",
+                "reference": "a174f53fdbbdf95f57a91f0dfb133f1af22cf53f"
+            },
+            "require": {
+                "dvll/sitepackage": "@dev",
+                "getkirby/composer-installer": "^1.2"
+            },
+            "type": "kirby-plugin",
+            "autoload": {
+                "psr-4": {
+                    "dvll\\KirbyWiki\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dario Voll",
+                    "email": "dariovoll@gmail.com"
+                }
+            ],
+            "description": "Wiki access and protected download plugin for the KvWeb project",
             "transport-options": {
                 "relative": true
             }
@@ -5964,6 +5996,7 @@
     "minimum-stability": "alpha",
     "stability-flags": {
         "dvll/kirby-events": 20,
+        "dvll/kirby-wiki": 20,
         "dvll/sitepackage": 20
     },
     "prefer-stable": false,

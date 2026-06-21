@@ -5,7 +5,7 @@
  * @var dvll\Sitepackage\Models\CustomBasePage $page
  */
 
-use dvll\Sitepackage\Helpers\WikiAccess;
+use dvll\KirbyWiki\WikiAccess;
 
 $userCanAccessWiki = WikiAccess::currentUserCanAccess($kirby);
 $hasGuestAccess = WikiAccess::hasGuestAccess($kirby);

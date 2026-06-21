@@ -48,7 +48,7 @@ tabs:
             fields:
               
               blocks:
-                extends: fields/blocks
+                extends: fields/wiki-blocks
       sidebar:
         width: 1/3
         sections:

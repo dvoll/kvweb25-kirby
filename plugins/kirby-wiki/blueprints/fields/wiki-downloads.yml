@@ -1,0 +1,7 @@
+label: Wiki-Downloads
+type: files
+layout: cardlets
+text: "{{ file.title.isNotEmpty ? file.title : file.filename }}"
+info: "{{ file.title.isNotEmpty ? file.filename : '' }}"
+uploads: wiki-download
+query: page.files.filterBy("template", "in", ["wiki-download"])
