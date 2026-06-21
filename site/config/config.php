@@ -9,8 +9,30 @@ require_once __DIR__ . '/../../vendor/vlucas/phpdotenv/src/Dotenv.php';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(realpath(__DIR__ . '/../../'));
 $dotenv->load();
 
+$contentSalt = Helper::getEnv('KIRBY_CONTENT_SALT');
+$cookieKey   = Helper::getEnv('KIRBY_COOKIE_KEY');
+
+if (is_string($contentSalt) === true) {
+    $contentSalt = trim($contentSalt);
+}
+
+if (is_string($cookieKey) === true) {
+    $cookieKey = trim($cookieKey);
+}
+
+if ($contentSalt === '' || $contentSalt === null) {
+    $contentSalt = hash('sha256', (string)(realpath(__DIR__ . '/../../') ?: __DIR__));
+}
+
+if (is_string($cookieKey) && $cookieKey !== '') {
+    Kirby\Http\Cookie::$key = $cookieKey;
+}
+
 return [
     'url'=> Helper::getEnv('APP_URL', 'http://localhost:8000'),
+    'content' => [
+        'salt' => $contentSalt,
+    ],
     'thumbs' => require __DIR__ . '/thumbs.php',
     'panel' => [
         'language' => 'de',
