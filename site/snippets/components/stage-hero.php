@@ -68,9 +68,9 @@ $sublineLabel = $sublineLabel ?? null;
             <?php endif; ?>
         </div>
         <div class="row-start-4 justify-self-center" x-data>
-            <button
-                class="btn btn--ghost flex flex-col text-white hover:text-contrast mb-2 cursor-pointer"
-                @click="document.querySelector('#inhalt').scrollIntoView({ behavior: 'smooth', block: 'start' })">
+                <button
+                    class="btn btn--ghost flex flex-col text-white hover:text-contrast mb-2 cursor-pointer"
+                    @click="$dispatch('scroll-to-inhalt')">
                 <span>Zu den Inhalten</span>
                 <?= snippet(
                     'elements/icon',

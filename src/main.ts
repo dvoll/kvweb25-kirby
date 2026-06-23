@@ -59,6 +59,14 @@ function startStageWelcomeAnimation() {
 
 customElements.define('dvll-header', DvllHeader);
 
+// Global listener for Alpine-dispatched scroll events (avoids using `document` in CSP expressions)
+document.addEventListener('scroll-to-inhalt', () => {
+    const target = document.querySelector('#inhalt');
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+});
+
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
         startStageWelcomeAnimation();
