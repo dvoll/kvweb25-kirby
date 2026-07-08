@@ -32,8 +32,12 @@ snippet('base', slots: true); ?>
                         <img
                             class="rounded-full w-55 h-55 object-cover"
                             alt="Profilbild von <?= $first->name()->escape() ?>"
-                            src="<?= $image->thumb(['width' => 440, 'height' => 440, 'crop' => true])->url() ?>"
-                            srcset="<?= $image->srcset('profilePicture') ?>"
+                            src="<?= $image->thumb(['width' => 220, 'height' => 220, 'crop' => true])->url() ?>"
+                            srcset="<?= $image->srcset([
+                                        '1x'  => ['width' => 220, 'height' => 220, 'crop' => true, 'quality' => 70],
+                                        '2x'  => ['width' => 440, 'height' => 440, 'crop' => true, 'quality' => 70],
+                                        '3x'  => ['width' => 660, 'height' => 660, 'crop' => true, 'quality' => 70],
+                                    ]) ?>"
                             width="220" height="220">
                     <?php else: ?>
                         <div class="rounded-full w-55 h-55 bg-gray-100 flex items-center justify-center">
