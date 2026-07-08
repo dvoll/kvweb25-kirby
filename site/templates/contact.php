@@ -1,10 +1,15 @@
 <?php
+use Kirby\Toolkit\Str;
 
 /**
  * @var Kirby\Cms\App $kirby
  * @var Kirby\Cms\Page $page
  * @var Kirby\Cms\Site $site
+ * @var bool $success
+ * @var array|null $alert
+ * @var string $contactFormToken
  */
+
 
 /** @var \Kirby\Content\Field $contacts */
 $contacts = $page->myContacts();
@@ -25,13 +30,13 @@ snippet('base', slots: true); ?>
                 <div class="flex flex-col sm:flex-row gap-6 sm:gap-12 items-start">
                     <?php if ($image): ?>
                         <img
-                            class="rounded-full w-[220px] h-[220px] object-cover"
+                            class="rounded-full w-55 h-55 object-cover"
                             alt="Profilbild von <?= $first->name()->escape() ?>"
                             src="<?= $image->thumb(['width' => 440, 'height' => 440, 'crop' => true])->url() ?>"
                             srcset="<?= $image->srcset('profilePicture') ?>"
                             width="220" height="220">
                     <?php else: ?>
-                        <div class="rounded-full w-[220px] h-[220px] bg-gray-100 flex items-center justify-center">
+                        <div class="rounded-full w-55 h-55 bg-gray-100 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 text-gray-400">
                                 <circle cx="12" cy="8" r="4" />
                                 <path d="M12 14c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5z" />
@@ -82,6 +87,7 @@ snippet('base', slots: true); ?>
 
                 <form method="post" action="<?= $page->url() ?>" class="space-y-6 bg-white p-6 rounded-lg shadow-sm" novalidate>
                     <p class="typo">Für eine möglichst einfache Kontaktaufnahme, schreibe uns Dein Anliegen gerne über folgendes Formular:</p>
+                    <input type="hidden" name="contact_form_token" value="<?= esc($contactFormToken, 'attr') ?>">
                     <div class="sr-only" aria-hidden="true">
                         <label for="contact-form-website">Website</label>
                         <input
@@ -124,7 +130,7 @@ snippet('base', slots: true); ?>
                             name="email"
                             value="<?= esc($data['email'] ?? '', 'attr') ?>"
                             required
-                            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]"
+                            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                             aria-invalid="contact-form-<?= $emailErr ? 'true' : 'false' ?>"
                             <?= $emailErr ? 'aria-describedby="email-error"' : '' ?>>
                         <?php if ($emailErr): ?>
@@ -142,7 +148,7 @@ snippet('base', slots: true); ?>
                             name="text"
                             rows="6"
                             required
-                            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] resize-vertical"
+                            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-vertical"
                             aria-invalid="contact-form-<?= $textErr ? 'true' : 'false' ?>"
                             <?= $textErr ? 'aria-describedby="text-error"' : '' ?>><?= esc($data['text'] ?? '') ?></textarea>
                         <?php if ($textErr): ?>
