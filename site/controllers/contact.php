@@ -9,7 +9,7 @@ return function ($kirby, $pages, $page) {
     if ($kirby->request()->is('POST') && get('submit')) {
 
         // check the honeypot
-        if (empty(get('website')) === false) {
+        if (trim((string)get('website')) !== '') {
             go($page->url());
         }
 

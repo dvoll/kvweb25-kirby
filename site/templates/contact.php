@@ -48,7 +48,8 @@ snippet('base', slots: true); ?>
                             <?php if ($first->email()->isNotEmpty()): ?>
                                 <p class="text-base text-contrast flex flex-col">
                                     <span class="text-sm">E-Mail:</span>
-                                    <a class="flex gap-1 items-center" href="mailto:<?= Str::encode($first->email()->html()) ?>" title="<?= Str::encode($first->email()->html()) ?>"><?= snippet('elements/icon', ['icon' => 'email', 'class' => 'size-4 shrink-0']) ?> <span class="dvll-link"><?= Str::encode($first->email()->html()) ?></span></a></p>
+                                    <a class="flex gap-1 items-center" href="mailto:<?= Str::encode($first->email()->html()) ?>" title="<?= Str::encode($first->email()->html()) ?>"><?= snippet('elements/icon', ['icon' => 'email', 'class' => 'size-4 shrink-0']) ?> <span class="dvll-link"><?= Str::encode($first->email()->html()) ?></span></a>
+                                </p>
                             <?php endif ?>
                             <?php if ($first->phone()->isNotEmpty()): ?>
                                 <p class="text-base text-contrast flex flex-col">
@@ -81,9 +82,16 @@ snippet('base', slots: true); ?>
 
                 <form method="post" action="<?= $page->url() ?>" class="space-y-6 bg-white p-6 rounded-lg shadow-sm" novalidate>
                     <p class="typo">Für eine möglichst einfache Kontaktaufnahme, schreibe uns Dein Anliegen gerne über folgendes Formular:</p>
-                    <div class="sr-only">
-                        <label for="contact-form-website">Website <abbr title="required">*</abbr></label>
-                        <input type="url" id="contact-form-website" name="website" tabindex="-1" autocomplete="off">
+                    <div class="sr-only" aria-hidden="true">
+                        <label for="contact-form-website">Website</label>
+                        <input
+                            type="text"
+                            id="contact-form-website"
+                            name="website"
+                            tabindex="-1"
+                            autocomplete="nope"
+                            autocapitalize="off"
+                            spellcheck="false">
                     </div>
 
                     <div>
@@ -97,7 +105,7 @@ snippet('base', slots: true); ?>
                             name="name"
                             value="<?= esc($data['name'] ?? '', 'attr') ?>"
                             required
-                            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]"
+                            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                             aria-invalid="contact-form-<?= $nameErr ? 'true' : 'false' ?>"
                             <?= $nameErr ? 'aria-describedby="name-error"' : '' ?>>
                         <?php if ($nameErr): ?>
