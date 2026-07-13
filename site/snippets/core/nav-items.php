@@ -1,7 +1,6 @@
 <?php
 
 /** @var Kirby\Cms\Site $site */
-
 $mainNavigation = $site->content()->get('mainNavigation');
 $items = [];
 
@@ -71,9 +70,9 @@ if (count($items) > 0): ?>
                         <ul class="nav-submenu bg-gray-100 card none flex-col p-1">
                             <li>
                                 <a class="nav-link py-3 rounded-md" <?= attr([
-                                                                        'href' => $item['url'],
-                                                                        'aria-current' => $item['page']->isOpen() ? 'page' : null,
-                                                                    ]) ?>>
+                                    'href' => $item['url'],
+                                    'aria-current' => $item['page']->isOpen() ? 'page' : null,
+                                ]) ?>>
                                     <?= $item['label']->html() ?>
                                 </a>
                             </li>
@@ -81,9 +80,9 @@ if (count($items) > 0): ?>
                             <?php foreach ($subMenu as $subItem): ?>
                                 <li>
                                     <a class="nav-link rounded-md" <?= attr([
-                                                                        'href' => $subItem->url(),
-                                                                        'aria-current' => $item['page']->isOpen() ? 'page' : null,
-                                                                    ]) ?>>
+                                        'href' => $subItem->url(),
+                                        'aria-current' => $item['page']->isOpen() ? 'page' : null,
+                                    ]) ?>>
                                         <?= $subItem->title() ?>
                                     </a>
                                 </li>
@@ -136,9 +135,9 @@ if (count($items) > 0): ?>
                                 <?php foreach ($subMenu as $subItem): ?>
                                     <li>
                                         <a class="nav-link py-4" <?= attr([
-                                                                        'href' => $subItem->url(),
-                                                                        'aria-current' => $item['page']->isOpen() ? 'page' : null
-                                                                    ]) ?>>
+                                            'href' => $subItem->url(),
+                                            'aria-current' => $item['page']->isOpen() ? 'page' : null,
+                                        ]) ?>>
                                             <?= $subItem->title() ?>
                                         </a>
                                     </li>

@@ -6,7 +6,6 @@
  *
  * Info: Problem with alpine csp: x-if has no optimization so that "x != null && x.prop" is not working
  */
-
 $showGoToOverviewButton = $showGoToOverviewButton ?? true;
 
 ?>
@@ -159,9 +158,9 @@ $showGoToOverviewButton = $showGoToOverviewButton ?? true;
                 <?php if ($showGoToOverviewButton): ?>
                     <div class="flex flex-col px-4 mt-4">
                         <a <?= Html::attr([
-                                'href' => '/termine',
-                                'class' => 'btn btn--ghost self-center',
-                            ]) ?>>Alle Termine ansehen<?= snippet('elements/icon') ?></a>
+                            'href' => '/termine',
+                            'class' => 'btn btn--ghost self-center',
+                        ]) ?>>Alle Termine ansehen<?= snippet('elements/icon') ?></a>
                     </div>
                 <?php endif; ?>
             </div> <!-- End Content State -->

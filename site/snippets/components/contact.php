@@ -1,12 +1,11 @@
 <?php
 
 /**
- * @var \Kirby\Content\Field $contact
- * @var \Kirby\Cms\Collection<\Kirby\Content\Field>|null $contacts
- * @var \Kirby\Cms\File $image
- * @var \Kirby\Cms\User $user
+ * @var Kirby\Content\Field $contact
+ * @var Kirby\Cms\Collection<Kirby\Content\Field>|null $contacts
+ * @var Kirby\Cms\File $image
+ * @var Kirby\Cms\User $user
  */
-
 $showGeneralContact = $showGeneralContact ?? true;
 
 ?>
@@ -25,7 +24,7 @@ $showGeneralContact = $showGeneralContact ?? true;
         <div class="flex flex-col gap-6">
             <?php foreach ($contacts as $contact): ?>
                 <div class="flex gap-4 items-start">
-                    <?php /** @var \Kirby\Cms\File $image */ ?>
+                    <?php /** @var Kirby\Cms\File $image */ ?>
                     <?php if ($contact->photo()->isNotEmpty() && $image = $contact->photo()->toFile()): ?>
                         <img
                             class="rounded-full shrink-0"

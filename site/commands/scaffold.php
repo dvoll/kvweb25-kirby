@@ -14,7 +14,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
  */
 
 use Kirby\CLI\CLI;
@@ -34,7 +33,7 @@ return [
                 'template' => 'images',
                 'content' => [
                     'uuid' => 'images',
-                    'title' => 'Bilder'
+                    'title' => 'Bilder',
                 ],
             ]);
             $page->changeStatus('unlisted');
@@ -46,7 +45,7 @@ return [
                 'slug' => 'home',
                 'template' => 'home',
                 'content' => [
-                    'title' => 'CVJM Kreisverband Bünde'
+                    'title' => 'CVJM Kreisverband Bünde',
                 ],
                 'draft' => false,
             ]);
@@ -59,7 +58,7 @@ return [
                 'slug' => 'error',
                 'template' => 'error',
                 'content' => [
-                    'title' => 'Fehlerseite'
+                    'title' => 'Fehlerseite',
                 ],
                 'draft' => false,
             ]);
@@ -114,5 +113,5 @@ return [
         }
 
         $cli->info('Scaffolding done!');
-    }
+    },
 ];

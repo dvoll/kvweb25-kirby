@@ -1,13 +1,13 @@
 <?php
 
-$crop    = $crop ?? false;
-$ratio   = $ratio ?? 'auto';
-$images  = $images->toFiles();
+$crop = $crop ?? false;
+$ratio = $ratio ?? 'auto';
+$images = $images->toFiles();
 
 $sizes = [
     '(min-width: 73.25rem) 1124px', // 1172
     '(min-width: 40rem) 100vw', // 640
-    '140vw'
+    '140vw',
 ];
 ?>
 
@@ -25,13 +25,13 @@ $sizes = [
                             'picture',
                             [
                                 'image' => $image,
-                                'cropRatio' => $shouldBeCropped ?  16 / 9 : null,
+                                'cropRatio' => $shouldBeCropped ? 16 / 9 : null,
                                 'responsive' => true,
                                 'preset' => 'default',
                                 'imgClass' => 'w-full h-full object-cover ' . ($shouldBeCropped ? 'sm:object-cover' : 'sm:object-contain sm:!object-center'),
                                 'class' => 'block aspect-square sm:aspect-video rounded-md bg-offwhite overflow-clip ' . (!$shouldBeCropped ? 'shadow-md shadow-offwhite-shadow/10' : 'shadow-lg shadow-offwhite-shadow/20'),
                                 'sizes' => A::join($sizes, ', '),
-                            ]
+                            ],
                         ); ?>
                         <div class="font-body text-sm text-contrast ml-4 mt-4 md:mt-4 mr-[9.625rem] pr-4 max-w-[40rem] min-h-[3rem]" :class="currentSlide === <?= $key ?> ? 'opacity-100' : 'opacity-0'">
                             <?= $image->caption()->kt() ?>
@@ -56,8 +56,8 @@ $sizes = [
                                 'elements/icon',
                                 [
                                     'icon' => 'chevron-down',
-                                    'class' => 'ml-0 size-4 rotate-90'
-                                ]
+                                    'class' => 'ml-0 size-4 rotate-90',
+                                ],
                             ) ?>
                         </button>
                         <button
@@ -70,8 +70,8 @@ $sizes = [
                                 'elements/icon',
                                 [
                                     'icon' => 'chevron-down',
-                                    'class' => 'ml-0 size-4 -rotate-90'
-                                ]
+                                    'class' => 'ml-0 size-4 -rotate-90',
+                                ],
                             ) ?>
                         </button>
                     </div>

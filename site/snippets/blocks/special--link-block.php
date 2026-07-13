@@ -1,6 +1,6 @@
 <?php
 
-/** @var \Kirby\Cms\Block $block */
+/** @var Kirby\Cms\Block $block */
 ?>
 
 <?= snippet(
@@ -11,5 +11,5 @@
         'url' => $block->url()->toUrl(),
         'class' => '',
         'linkType' => Str::startsWith($block->url(), 'page://') ? 'page' : 'external',
-    ]
+    ],
 ); ?>

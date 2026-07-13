@@ -4,7 +4,7 @@
  * @var HomePage $page
  */
 
-/** @var \Kirby\Content\Field $imagesField */
+/** @var Kirby\Content\Field $imagesField */
 $imagesField = $page->content()->get('welcomeStageImages');
 
 $images = $imagesField->toFiles();
@@ -15,7 +15,7 @@ $imgSizes = [
     '(min-width: 80rem) 150px', // 1280
     '(min-width: 64rem) 120px', // 1024
     '(min-width: 32rem) 90px', // 512
-    '50px'
+    '50px',
 ];
 
 $imageSizeArray = A::join($imgSizes, ', ');
@@ -70,7 +70,7 @@ $imageSizeArray = A::join($imgSizes, ', ');
                             'imgClass' => 'w-full h-full',
                             'alt' => '',
                             'lazy' => false,
-                        ]
+                        ],
                     ); ?>
                 <?php else: ?>
                     <?= snippet(
@@ -83,7 +83,7 @@ $imageSizeArray = A::join($imgSizes, ', ');
                             'imgClass' => 'w-full h-full',
                             'alt' => '',
                             'lazy' => false,
-                        ]
+                        ],
                     ); ?>
                 <?php endif; ?>
             </div>

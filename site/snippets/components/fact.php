@@ -1,7 +1,6 @@
 <?php
 
-/** @var \Kirby\Content\Field $fact */
-
+/** @var Kirby\Content\Field $fact */
 $elName = $elName ?? 'p';
 $icon = $fact->icon()->isNotEmpty() ? $fact->icon() : 'fact';
 ?>

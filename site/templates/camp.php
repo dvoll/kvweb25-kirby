@@ -31,7 +31,7 @@ snippet('base', slots: true); ?>
                 <?php foreach ($page->facts()->toStructure() as $fact): ?>
                     <?= snippet('components/fact', [
                         'fact' => $fact,
-                        'elName' => 'li'
+                        'elName' => 'li',
                     ]) ?>
                 <?php endforeach; ?>
             </ul>
@@ -49,8 +49,8 @@ snippet('base', slots: true); ?>
 </section>
 <?php
     $links = $page->myLinksAndDownloads();
-    if (count($links) > 0):
-?>
+if (count($links) > 0):
+    ?>
 <section class="dvll-section">
     <div class="dvll-section__layout">
             <div class="dvll-block dvll-block--wide">

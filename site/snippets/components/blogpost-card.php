@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @var \Kirby\Cms\File|null $image
+ * @var Kirby\Cms\File|null $image
  * @var string|null $title
  * @var string|null $text
  * @var string|null $url
@@ -25,12 +25,12 @@ $dynamicContent = $dynamicContent ?? false;
             :title="'Zum Beitrag: ' + blogpost.title"></a>
     <?php else: ?>
         <a <?= Html::attr([
-                'href' => $url,
-                'class' => 'absolute inset-0',
-                'aria-hidden' => 'true',
-                'tabindex' => '-1',
-                'title' => 'Zum Beitrag: ' . $title,
-            ]) ?>></a>
+            'href' => $url,
+            'class' => 'absolute inset-0',
+            'aria-hidden' => 'true',
+            'tabindex' => '-1',
+            'title' => 'Zum Beitrag: ' . $title,
+        ]) ?>></a>
     <?php endif; ?>
 
     <div class="">
@@ -60,10 +60,10 @@ $dynamicContent = $dynamicContent ?? false;
                 <span class="text-sm text-gray-500"><?= Html::encode($date) ?></span>
             <?php endif; ?>
             <a <?= Html::attr([
-                    'href' => $url,
-                    'class' => 'btn btn--ghost ml-auto ' . ($teaser ? 'text-gray-600 text-center' : ''),
-                    'aria-label' => 'Zum Beitrag: ' . $title,
-                ]) ?>><?= $buttonText ?><?= snippet('elements/icon') ?></a>
+                'href' => $url,
+                'class' => 'btn btn--ghost ml-auto ' . ($teaser ? 'text-gray-600 text-center' : ''),
+                'aria-label' => 'Zum Beitrag: ' . $title,
+            ]) ?>><?= $buttonText ?><?= snippet('elements/icon') ?></a>
         <?php endif; ?>
     </div>
 </div>

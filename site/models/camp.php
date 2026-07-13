@@ -4,45 +4,46 @@ use dvll\Sitepackage\Helpers\UuidSelectFieldHelper;
 use dvll\Sitepackage\Models\CustomBasePage;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
-use Kirby\Cms\Files;
 
 class CampPage extends CustomBasePage
 {
-    #[\Override]
+    #[Override]
     public function myStageType(): ?string
     {
         return null;
     }
 
-    #[\Override]
+    #[Override]
     public function myTeaserImage(): ?File
     {
-        /** @var \Kirby\Content\Field $field */
+        /** @var Kirby\Content\Field $field */
         $field = $this->content()->get('heroImage');
+
         return $field->toFile();
     }
 
-    #[\Override]
+    #[Override]
     public function myTitle(): ?string
     {
         $teaserTitle = $this->content()->get('teaserTitle');
 
-        if ($teaserTitle->isNotEmpty() && $teaserTitle instanceof \Kirby\Content\Field) {
+        if ($teaserTitle->isNotEmpty() && $teaserTitle instanceof Kirby\Content\Field) {
             return $teaserTitle->toHtml();
         }
 
         return $this->title()->toHtml();
     }
 
-    #[\Override]
+    #[Override]
     public function myTeaserText(): ?string
     {
-        /** @var \Kirby\Content\Field $field */
+        /** @var Kirby\Content\Field $field */
         $field = $this->content()->get('teaserDescription');
+
         return $field->toHtml();
     }
 
-    #[\Override]
+    #[Override]
     public function getContactsDisplayInLayoutOptions(): array
     {
         return [
@@ -52,23 +53,25 @@ class CampPage extends CustomBasePage
     }
 
     /**
-     * @return \Kirby\Cms\Collection<\Kirby\Content\Field>|null
+     * @return Kirby\Cms\Collection<Kirby\Content\Field>|null
      */
-    public function myContacts(): ?\Kirby\Cms\Collection
+    public function myContacts(): ?Kirby\Cms\Collection
     {
-        /** @var \Kirby\Content\Field $contactsField */
+        /** @var Kirby\Content\Field $contactsField */
         $contactsField = $this->content()->get('contactsSelect');
+
         return UuidSelectFieldHelper::getCollectionForUuids(site()->contacts(), $contactsField, 'name');
     }
 
     /**
      * Get the link blocks from the field 'linksDownloads'
-     * @return \Kirby\Cms\Blocks|\Kirby\Cms\Block[]|null
+     * @return Blocks|Kirby\Cms\Block[]|null
      */
     public function myLinksAndDownloads(): ?Blocks
     {
-        /** @var \Kirby\Content\Field $linksField */
+        /** @var Kirby\Content\Field $linksField */
         $linksField = $this->content()->get('linksDownloads');
+
         return $linksField->toBlocks();
     }
 
@@ -78,6 +81,7 @@ class CampPage extends CustomBasePage
         $hasInternalPage = $blocks->findBy('itemtype', 'page');
         $hasExternalLink = $blocks->findBy('itemtype', 'external');
         $hasDownload = $blocks->findBy('itemtype', 'download');
+
         return ($hasInternalPage || $hasExternalLink) && $hasDownload
             ? 'Verlinkungen und Downloads'
             : ($hasDownload ? 'Downloads' : 'Verlinkungen');

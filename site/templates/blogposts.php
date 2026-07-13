@@ -5,7 +5,6 @@
  * @var Kirby\Cms\Page $page
  * @var Kirby\Cms\Site $site
  */
-
 $paginatedList = $page->children()->listed()->sortBy('date', 'desc')->paginate(9);
 $pagination = $paginatedList->pagination();
 

@@ -1,12 +1,11 @@
 <?php
 
 /**
- * @var dvll\KirbyEvents\Models\EventPage $event
+ * @var EventPage $event
  * @var Kirby\Cms\Site $site
  */
 
 use dvll\KirbyEvents\Models\EventPage;
-use dvll\Sitepackage\Helpers\UuidSelectFieldHelper;
 use Kirby\Toolkit\Html;
 use Kirby\Toolkit\Str;
 
@@ -31,19 +30,18 @@ $eventEndDateTime = $event->getEndDateTime();
 $eventMatchingTag = $event->getTag();
 $eventTagPage = $event->getTagPage();
 
-
 ?>
 <div class="flex flex-col"
      x-data="eventCard()"
      x-init="eventSlug = '<?= $eventSlug ?>'">
     <div class="card card--with-hover flex flex-col relative h-full">
         <a <?= Html::attr([
-                'href' => $eventUrl,
-                'class' => 'absolute inset-0',
-                'aria-hidden' => 'true',
-                'tabindex' => '-1',
-                'title' => 'Zu den Termindetails von: ' . $eventTitle->escape(),
-            ]) ?>
+            'href' => $eventUrl,
+            'class' => 'absolute inset-0',
+            'aria-hidden' => 'true',
+            'tabindex' => '-1',
+            'title' => 'Zu den Termindetails von: ' . $eventTitle->escape(),
+        ]) ?>
             @click.prevent.stop="openModal()"></a>
         <div class="grid grid-cols-[auto_1fr] grid-rows-[1fr_auto_minmax(auto,2fr)_auto] h-full min-h-32">
             <div class="row-span-4 bg-offwhite px-4 @min-card-small-md:px-4 py-4 flex flex-col items-center justify-center @min-card-small-md:min-w-[90px]">
@@ -81,9 +79,9 @@ $eventTagPage = $event->getTagPage();
             </div>
             <div class="col-start-2 row-start-4 justify-self-end px-3 pb-1.5 @min-card-md:px-4">
                 <button <?= Html::attr([
-                            'class' => 'btn btn--ghost ml-auto ',
-                            'aria-label' => 'Dialog mit Termindetails von: ' . $eventTitle->escape() . ' öffnen.',
-                        ]) ?>
+                    'class' => 'btn btn--ghost ml-auto ',
+                    'aria-label' => 'Dialog mit Termindetails von: ' . $eventTitle->escape() . ' öffnen.',
+                ]) ?>
                     @click.prevent.stop="openModal()"><?= $buttonLabel ?><?= snippet('elements/icon', ['icon' => 'external']) ?></button>
             </div>
         </div>

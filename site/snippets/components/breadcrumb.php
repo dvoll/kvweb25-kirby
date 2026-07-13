@@ -4,7 +4,6 @@
  *  @var Kirby\Cms\Site $site
  *  @var Kirby\Cms\App $kirby
  */
-
 $class = $class ?? '';
 $breadcrumb = $site->breadcrumb();
 ?>

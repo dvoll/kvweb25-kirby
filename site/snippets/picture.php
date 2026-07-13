@@ -18,7 +18,6 @@ use Kirby\Toolkit\A;
  * @var bool|null $lazy Whether to use lazy loading, defaults to true
  * @var bool|null $fetchpriority Whether to use fetch priority, defaults to false
  * */
-
 $cropRatio ??= null;
 $preset ??= 'default';
 $clientBlur ??= true;
@@ -48,50 +47,50 @@ foreach ($srcSets as $setKey => $set) {
     }
     $srcsetsWebp[$setKey] = [
         ...$srcsetsDefault[$setKey],
-        'format' => 'webp'
+        'format' => 'webp',
     ];
 }
 $defaultSrcset = A::first($srcsetsDefault);
 
 if (is_a($image, 'Kirby\Cms\File') || is_a($image, 'Kirby\Filesystem\Asset')) :
     $focusPosition = $responsive && $image->focus()->isNotEmpty() ? $image->focus() : '50% 50%';
-?>
+    ?>
 
     <picture <?= attr([
-                    'class' => [$class ?? ''],
-                    ...$attr
-                ]) ?>>
+        'class' => [$class ?? ''],
+        ...$attr,
+    ]) ?>>
 
         <?php if ($image->extension() == 'svg') : ?>
             <?= svg($image) ?>
         <?php else : ?>
 
             <source <?= attr([
-                        'type' => "image/webp",
-                        'srcset' => $image->srcset($srcsetsWebp),
-                        'sizes' => $sizes,
-                    ]) ?>>
+                'type' => 'image/webp',
+                'srcset' => $image->srcset($srcsetsWebp),
+                'sizes' => $sizes,
+            ]) ?>>
 
             <img <?= attr([
-                        'src' => $image->thumb($defaultSrcset)->url(),
-                        'srcset' => $image->srcset($srcsetsDefault),
-                        'sizes' => $sizes,
-                        'width' => $image->thumb($defaultSrcset)->width(),
-                        'height' => $cropRatio ? floor($image->thumb($defaultSrcset)->width() / $cropRatio) : $image->thumb($defaultSrcset)->height(),
-                        'alt' => $alt ?? (is_a($image, 'Kirby\Cms\File') ? $image->alt() : null),
-                        'loading' => $lazy ? "lazy" : null,
-                        'fetchpriority' => $fetchpriority ? "high" : null,
-                        'class' => [$imgClass ?? 'w-full'],
-                        ':style' => json_encode([
-                            'object-position' => $focusPosition
-                        ]),
-                    ]) ?>>
+                'src' => $image->thumb($defaultSrcset)->url(),
+                'srcset' => $image->srcset($srcsetsDefault),
+                'sizes' => $sizes,
+                'width' => $image->thumb($defaultSrcset)->width(),
+                'height' => $cropRatio ? floor($image->thumb($defaultSrcset)->width() / $cropRatio) : $image->thumb($defaultSrcset)->height(),
+                'alt' => $alt ?? (is_a($image, 'Kirby\Cms\File') ? $image->alt() : null),
+                'loading' => $lazy ? 'lazy' : null,
+                'fetchpriority' => $fetchpriority ? 'high' : null,
+                'class' => [$imgClass ?? 'w-full'],
+                ':style' => json_encode([
+                    'object-position' => $focusPosition,
+                ]),
+            ]) ?>>
 
         <?php endif ?>
     </picture>
 
 <?php
-// Dummy element that will be rendered when specified image is not an image
-else : ?>
+    // Dummy element that will be rendered when specified image is not an image
+    else : ?>
     <picture <?= attr(['class' => $class ?? '']) ?>></picture>
 <?php endif ?>

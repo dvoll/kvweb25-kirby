@@ -13,7 +13,7 @@ return [
             'description' => 'Force override of blocks',
             'default' => false,
             'noValue' => true,
-        ]
+        ],
     ],
     'command' => static function (CLI $cli): void {
         kirby()->impersonate('kirby');
@@ -21,9 +21,9 @@ return [
 
         $pages = site()->index(true)->filter('template', 'in', ['layout', 'blogposts', 'camps', 'camp', 'events']);
         foreach ($pages as $page) {
-            if ($page->blocks()->isNotEmpty() && $cli->arg('force')){
+            if ($page->blocks()->isNotEmpty() && $cli->arg('force')) {
                 $cli->shout('Force override for Page ' . $page->title() . '');
-            } elseif ($page->blocks()->isNotEmpty()){
+            } elseif ($page->blocks()->isNotEmpty()) {
                 $cli->info('[Skip] Page ' . $page->title() . ' has blocks, skipping...');
                 continue;
             }
@@ -31,7 +31,7 @@ return [
             $first = true;
             foreach ($page->layouts()->toBlocks() as $layoutBlock) {
                 if (!$first) {
-                    $blocks[] = ["content" => [], "isHidden" => false, "type" => "spacer"];
+                    $blocks[] = ['content' => [], 'isHidden' => false, 'type' => 'spacer'];
                 }
                 $blocks = array_merge($blocks, $layoutBlock->col1()->toBlocks()->toArray());
                 $first = false;
@@ -65,5 +65,5 @@ return [
         // }
 
         $cli->success('Migration done!');
-    }
+    },
 ];

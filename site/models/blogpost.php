@@ -4,11 +4,10 @@ use dvll\Sitepackage\Helpers\UuidSelectFieldHelper;
 use dvll\Sitepackage\Models\CustomBasePage;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
-use Kirby\Cms\Files;
 
 class BlogpostPage extends CustomBasePage
 {
-    #[\Override]
+    #[Override]
     public function getContactsDisplayInLayoutOptions(): array
     {
         return [
@@ -18,23 +17,25 @@ class BlogpostPage extends CustomBasePage
     }
 
     /**
-     * @return \Kirby\Cms\Collection<\Kirby\Content\Field>|null
+     * @return Kirby\Cms\Collection<Kirby\Content\Field>|null
      */
-    public function selectedTags(): ?\Kirby\Cms\Collection
+    public function selectedTags(): ?Kirby\Cms\Collection
     {
-        /** @var \Kirby\Content\Field $tagsField */
+        /** @var Kirby\Content\Field $tagsField */
         $tagsField = $this->content()->get('tags');
+
         return UuidSelectFieldHelper::getCollectionForUuids(site()->tags(), $tagsField, 'name');
     }
 
     /**
      * Get the link blocks from the field 'linksDownloads'
-     * @return \Kirby\Cms\Blocks|\Kirby\Cms\Block[]|null
+     * @return Blocks|Kirby\Cms\Block[]|null
      */
     public function myLinksAndDownloads(): ?Blocks
     {
-        /** @var \Kirby\Content\Field $linksField */
+        /** @var Kirby\Content\Field $linksField */
         $linksField = $this->content()->get('linksDownloads');
+
         return $linksField->toBlocks();
     }
 
@@ -44,6 +45,7 @@ class BlogpostPage extends CustomBasePage
         $hasInternalPage = $blocks->findBy('itemtype', 'page');
         $hasExternalLink = $blocks->findBy('itemtype', 'external');
         $hasDownload = $blocks->findBy('itemtype', 'download');
+
         return ($hasInternalPage || $hasExternalLink) && $hasDownload
             ? 'Verlinkungen und Downloads'
             : ($hasDownload ? 'Downloads' : 'Verlinkungen');
@@ -51,8 +53,9 @@ class BlogpostPage extends CustomBasePage
 
     public function getContentImage(): ?File
     {
-        /** @var \Kirby\Content\Field $imageField */
+        /** @var Kirby\Content\Field $imageField */
         $imageField = $this->content()->get('image');
+
         return $imageField->toFile();
     }
 }
