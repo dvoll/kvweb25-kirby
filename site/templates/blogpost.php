@@ -3,13 +3,11 @@
 /**
  * @var BlogpostPage $page
  */
-
-
 $sizes = [
     '(min-width: 80rem) 610px', // 1280
     '(min-width: 64rem) 860px', // 1024
     '(min-width: 48rem) 680px', // 768
-    '100vw'
+    '100vw',
 ];
 
 $contentImages = $page->content()->get('image')->toFiles();
@@ -27,7 +25,7 @@ snippet('base', slots: true); ?>
             </div>
         <?php endif; ?>
         <div class="dvll-block dvll-block--narrow dvll-block--gap-sm">
-            <div class="font-style font-semibold text-sm text-gray-500 mb-2">Beitrag - <?= $page->date()->toDate("d.m.Y") ?></div>
+            <div class="font-style font-semibold text-sm text-gray-500 mb-2">Beitrag - <?= $page->date()->toDate('d.m.Y') ?></div>
             <h1 class="heading-h2"><?= $page->myTitle() ?></h1>
         </div>
         <div class="dvll-block dvll-block--narrow">
@@ -47,7 +45,7 @@ snippet('base', slots: true); ?>
                                 'sizes' => A::join($sizes, ', '),
                                 'preset' => 'default',
                                 'alt' => ($contentImage && $contentImage->alt()->isNotEmpty()) ? $contentImage->alt()->html() : null,
-                            ]
+                            ],
                         ); ?>
                         <?php if (!empty($caption)) : ?>
                             <figcaption class="text-sm text-contrast mt-2 mx-4">
@@ -66,8 +64,8 @@ snippet('base', slots: true); ?>
 
             <?php
             $links = $page->myLinksAndDownloads();
-            if (count($links) > 0):
-            ?>
+if (count($links) > 0):
+    ?>
                 <div class="dvll-block">
                     <h3 class="heading-h3 mb-5">
                         <?= $page->getLinksAndDownloadsTitle() ?>
@@ -84,7 +82,7 @@ snippet('base', slots: true); ?>
         </div>
     </div>
 </section>
-<?php if($galleryImages): ?>
+<?php if ($galleryImages): ?>
     <section class="dvll-section">
         <div class="dvll-section__layout">
             <?= snippet('components/gallery', ['images' => $galleryImagesField]) ?>

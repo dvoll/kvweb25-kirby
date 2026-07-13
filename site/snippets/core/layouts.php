@@ -5,11 +5,11 @@
  * @var array<string, mixed> $contacts
  */
 
-/** @var \Kirby\Content\Field $blocks */
+/** @var Kirby\Content\Field $blocks */
 $blocks = $page->content()->get('blocks');
 
-/** @var \Kirby\Content\Field $contacts */
-$contacts = $page->myContacts() ;
+/** @var Kirby\Content\Field $contacts */
+$contacts = $page->myContacts();
 
 $contactsDisplayOptions = $page->getContactsDisplayInLayoutOptions();
 $showContact = $contactsDisplayOptions['show'] ?? false;
@@ -34,7 +34,7 @@ $contactDisplayed = false;
             if ($block->type() === 'spacer' || ($showContact && $contactNeighbourBlockCount === 0)): ?>
                 <?php $contactNeighbourBlockCount = -1; ?>
 
-                <?php if ($showContact && ! $contactDisplayed): ?>
+                <?php if ($showContact && !$contactDisplayed): ?>
                     <?php $contactDisplayed = true; ?>
                     <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
                         <div class="dvll-block">
@@ -53,7 +53,7 @@ $contactDisplayed = false;
             <?= $block ?>
         <?php endforeach; ?>
 
-         <?php if ($showContact && ! $contactDisplayed): ?>
+         <?php if ($showContact && !$contactDisplayed): ?>
             <?php $contactDisplayed = true; ?>
             <div class="dvll-block dvll-block--sidebar lg:row-start-1 lg:row-span-[30]">
                 <div class="dvll-block">

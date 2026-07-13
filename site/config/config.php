@@ -1,7 +1,7 @@
 <?php
 
-use dvll\Sitepackage\Helpers\Menu;
 use dvll\Sitepackage\Helpers\Helper;
+use dvll\Sitepackage\Helpers\Menu;
 use Kirby\Panel\Ui\Buttons\ViewButton;
 
 require_once __DIR__ . '/../../vendor/vlucas/phpdotenv/src/Dotenv.php';
@@ -10,7 +10,7 @@ $dotenv = Dotenv\Dotenv::createUnsafeImmutable(realpath(__DIR__ . '/../../'));
 $dotenv->load();
 
 $contentSalt = Helper::getEnv('KIRBY_CONTENT_SALT');
-$cookieKey   = Helper::getEnv('KIRBY_COOKIE_KEY');
+$cookieKey = Helper::getEnv('KIRBY_COOKIE_KEY');
 
 if (is_string($contentSalt) === true) {
     $contentSalt = trim($contentSalt);
@@ -21,7 +21,7 @@ if (is_string($cookieKey) === true) {
 }
 
 if ($contentSalt === '' || $contentSalt === null) {
-    $contentSalt = hash('sha256', (string)(realpath(__DIR__ . '/../../') ?: __DIR__));
+    $contentSalt = hash('sha256', (string) (realpath(__DIR__ . '/../../') ?: __DIR__));
 }
 
 if (is_string($cookieKey) && $cookieKey !== '') {
@@ -50,24 +50,25 @@ return [
                 'customRobots' => function (Kirby\Cms\Page $page, Kirby\Cms\App $kirby) {
                     if (($user = $kirby->user()) && $user->isAdmin()) {
                         try {
-                            if (class_exists(\tobimori\Seo\Buttons\RobotsViewButton::class)) {
-                                return new \tobimori\Seo\Buttons\RobotsViewButton($page);
+                            if (class_exists(tobimori\Seo\Buttons\RobotsViewButton::class)) {
+                                return new tobimori\Seo\Buttons\RobotsViewButton($page);
                             } else {
-                                throw new \Exception('RobotsViewButton class not found');
+                                throw new Exception('RobotsViewButton class not found');
                             }
-                        } catch (\Throwable $e) {
+                        } catch (Throwable $e) {
                             // fallback to disabled view button on any error
                             kirbylog('[dvll.view-buttons] Error adding seo robots view button: ' . $e->getMessage(), Helper::KIRBYLOG_LVL_ERROR);
                         }
                     }
+
                     return new ViewButton(
                         model: $page,
                         disabled: true,
-                        style: 'display: block'
+                        style: 'display: block',
                     );
                 },
-            ]
-        ]
+            ],
+        ],
     ],
     'cache' => [
         'pages' => [
@@ -84,10 +85,10 @@ return [
     'tobimori.seo' => [
         'lang' => 'de_DE',
         'locale' => 'de_DE',
-        'canonicalBase' => Helper::getEnv("APP_URL"),
+        'canonicalBase' => Helper::getEnv('APP_URL'),
         'files' => [
             'parent' => 'site.find("page://images")',
-            'template' => 'image'
+            'template' => 'image',
         ],
         'tobimori.seo.robots.active' => true,
     ],
@@ -95,25 +96,25 @@ return [
     'email' => [
         'transport' => [
             'type' => 'smtp',
-            'host' => Helper::getEnv("KIRBY_MAIL_HOST"),
-            'port' => (int) Helper::getEnv("KIRBY_MAIL_PORT"),
+            'host' => Helper::getEnv('KIRBY_MAIL_HOST'),
+            'port' => (int) Helper::getEnv('KIRBY_MAIL_PORT'),
             'security' => Helper::getEnv('KIRBY_MAIL_SECURITY'),
             'auth' => Helper::getEnv('KIRBY_MAIL_AUTH'),
-            'username' => Helper::getEnv("KIRBY_MAIL_USER"),
-            'password' => Helper::getEnv("KIRBY_MAIL_PASS")
-        ]
+            'username' => Helper::getEnv('KIRBY_MAIL_USER'),
+            'password' => Helper::getEnv('KIRBY_MAIL_PASS'),
+        ],
     ],
     'auth' => [
         // 'methods' => function () {
         //     return Helper::getEnv("KIRBY_FORCE_PASSWORD_LOGIN", false) ? ['password', 'password-reset'] : ['code', 'password'];
         // },
-        'methods' => Helper::getEnv("KIRBY_FORCE_PASSWORD_LOGIN", false) ? ['password', 'password-reset'] : ['code', 'password'],
+        'methods' => Helper::getEnv('KIRBY_FORCE_PASSWORD_LOGIN', false) ? ['password', 'password-reset'] : ['code', 'password'],
         'challenge' => [
             'email' => [
-                'from' => Helper::getEnv("KIRBY_MAIL_FROM"),
+                'from' => Helper::getEnv('KIRBY_MAIL_FROM'),
                 'fromName' => 'CVJM Kreisverband Bünde e.V.',
-            ]
-        ]
+            ],
+        ],
     ],
     'panel.menu' => function () {
         $menu = [
@@ -143,10 +144,10 @@ return [
         ],
     ],
     'johannschopplich.kirbylog' => [
-        'filename' => Helper::getEnv("KIRBYLOG_FILENAME", 'test.log'),
+        'filename' => Helper::getEnv('KIRBYLOG_FILENAME', 'test.log'),
     ],
     'bnomei.securityheaders' => [
-        'enabled' => Helper::getEnv("KIRBY_CSP_ENABLED", true),
+        'enabled' => Helper::getEnv('KIRBY_CSP_ENABLED', true),
         'setter' => function ($instance) {
             // https://github.com/paragonie/csp-builder
             // #build-a-content-security-policy-programmatically
@@ -157,5 +158,5 @@ return [
             $csp->setSelfAllowed('media-src', true);
             $csp->setSelfAllowed('frame-ancestors', true);
         },
-    ]
+    ],
 ];

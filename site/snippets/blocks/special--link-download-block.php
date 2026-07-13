@@ -1,7 +1,6 @@
 <?php
 
-/** @var \Kirby\Cms\Block $block */
-
+/** @var Kirby\Cms\Block $block */
 $type = $block->itemType()->value();
 /** @var dvll\Sitepackage\Models\CustomBasePage|null $internalPage */
 $internalPage = $block->urlPage()->toPage();
@@ -20,5 +19,5 @@ $internalPageLongTitle = $internalPage ? $internalPage->myTitle() : null;
         'assetFile' => $block->download()->toFile(),
         'buttonTitle' => $type === 'page' ? $internalPageTitle : null,
         'buttonText' => $type === 'page' ? 'Zur Seite &#8222;' . $internalPageTitle . '&#8220;' : null,
-    ]
+    ],
 ); ?>

@@ -5,7 +5,7 @@ use Kirby\Template\Template;
 
 class CampsPage extends CustomBasePage
 {
-    #[\Override]
+    #[Override]
     public function template(): Template
     {
         return $this->kirby()->template('layout');

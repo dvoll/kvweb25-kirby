@@ -4,7 +4,6 @@ use dvll\Sitepackage\Helpers\Helper;
 use Kirby\Toolkit\Str;
 
 return function ($kirby, $pages, $page) {
-
     $alert = null;
     $data = false;
     $success = false;
@@ -14,15 +13,14 @@ return function ($kirby, $pages, $page) {
     }
 
     if ($kirby->request()->is('POST') && get('submit')) {
-
         // check the honeypot
-        if (trim((string)get('website')) !== '') {
+        if (trim((string) get('website')) !== '') {
             go($page->url());
         }
 
-        $postedToken = (string)get('contact_form_token');
+        $postedToken = (string) get('contact_form_token');
         $sessionToken = $_SESSION['contact_form']['token'] ?? '';
-        $sessionTimestamp = (int)($_SESSION['contact_form']['timestamp'] ?? 0);
+        $sessionTimestamp = (int) ($_SESSION['contact_form']['timestamp'] ?? 0);
         unset($_SESSION['contact_form']);
 
         $now = time();
@@ -35,7 +33,7 @@ return function ($kirby, $pages, $page) {
         $data = [
             'name'  => get('name'),
             'email' => get('email'),
-            'text'  => get('text')
+            'text'  => get('text'),
         ];
 
         $rules = [
@@ -47,7 +45,7 @@ return function ($kirby, $pages, $page) {
         $messages = [
             'name'  => 'Bitte geben Sie einen gültigen Namen ein.',
             'email' => 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
-            'text'  => 'Bitte geben Sie einen Text mit maximal 3000 Zeichen ein.'
+            'text'  => 'Bitte geben Sie einen Text mit maximal 3000 Zeichen ein.',
         ];
 
         if ($invalid = invalid($data, $rules, $messages)) {
@@ -70,7 +68,7 @@ return function ($kirby, $pages, $page) {
                             'sender'     => esc($data['name']),
                             'senderMail' => esc($data['email']),
                             'siteName'   => esc($kirby->site()->title()),
-                        ]
+                        ],
                     ]);
                 } catch (Exception $error) {
                     if (option('debug')) {

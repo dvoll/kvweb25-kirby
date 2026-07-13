@@ -1,7 +1,6 @@
 <?php
 
 use Kirby\CLI\CLI;
-use Kirby\Cms\Page;
 
 return [
     'description' => 'Flush Google Calendar events cache',
@@ -18,5 +17,5 @@ return [
         } else {
             $cli->error('Failed to flush event cache.');
         }
-    }
+    },
 ];

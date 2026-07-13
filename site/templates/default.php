@@ -2,7 +2,6 @@
 /**
  * @var Kirby\Cms\Site $site
  */
-
 ?>
 <?php
 kirby()->response()->code(404); // set status code

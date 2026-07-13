@@ -10,8 +10,7 @@ use Kirby\Toolkit\Str;
  * @var string $contactFormToken
  */
 
-
-/** @var \Kirby\Content\Field $contacts */
+/** @var Kirby\Content\Field $contacts */
 $contacts = $page->myContacts();
 
 snippet('base', slots: true); ?>
@@ -24,9 +23,9 @@ snippet('base', slots: true); ?>
         <div class="dvll-block dvll-block--narrow flex items-center justify-center">
             <?php if ($contacts && $contacts->isNotEmpty()):
                 $first = $contacts->first();
-                /** @var \Kirby\Cms\File|null $image */
+                /** @var Kirby\Cms\File|null $image */
                 $image = $first->photo()->isNotEmpty() ? $first->photo()->toFile() : null;
-            ?>
+                ?>
                 <div class="flex flex-col sm:flex-row gap-6 sm:gap-12 items-start">
                     <?php if ($image): ?>
                         <img

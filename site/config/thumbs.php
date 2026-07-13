@@ -63,7 +63,7 @@ return [
             '600w'  => ['width' => 600, 'height' => 450, 'crop' => true],
             '900w'  => ['width' => 900, 'height' => 675, 'crop' => true],
             '1200w' => ['width' => 1200, 'height' => 900, 'crop' => true],
-            '1800w' => ['width' => 1800, 'height' => 1350, 'crop' => true]
+            '1800w' => ['width' => 1800, 'height' => 1350, 'crop' => true],
         ],
-    ]
+    ],
 ];

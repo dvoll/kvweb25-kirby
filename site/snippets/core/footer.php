@@ -20,7 +20,7 @@ $footerPages = $site->content()->get('footerNavigation')->toPages()->published()
                     <?php foreach ($footerPages as $footerPage): ?>
                         <li>
                             <a href="<?= $footerPage->url() ?>" class="btn btn--ghost">
-                                <?= $footerPage->title()->html() ?><? snippet('elements/icon') ?>
+                                <?= $footerPage->title()->html() ?><?php snippet('elements/icon') ?>
                             </a>
                         </li>
                     <?php endforeach; ?>
