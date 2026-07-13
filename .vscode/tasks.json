@@ -1,0 +1,85 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Docker: Start Containers (Standard)",
+            "type": "shell",
+            "command": "docker compose up -d",
+            "problemMatcher": [],
+            "group": "none",
+            "detail": "Starts the Docker Compose services in the background."
+        },
+        {
+            "label": "Docker: Start Containers (with Xdebug)",
+            "type": "shell",
+            "command": "XDEBUG_MODE=debug docker compose up -d",
+            "problemMatcher": [],
+            "group": "none",
+            "detail": "Starts the Docker Compose services with Xdebug mode enabled."
+        },
+        {
+            "label": "Docker: Stop Containers",
+            "type": "shell",
+            "command": "docker compose down",
+            "problemMatcher": [],
+            "group": "none",
+            "detail": "Stops and removes the running Docker Compose containers."
+        },
+        {
+            "label": "Kirby: Scaffold Pages",
+            "type": "shell",
+            "command": "docker compose exec php8-4 /var/www/html/vendor/bin/kirby scaffold",
+            "problemMatcher": [],
+            "group": "none",
+            "detail": "Runs Kirby database/page schema scaffolding inside the php8-4 container."
+        },
+        {
+            "label": "Kirby: Generate TS Types",
+            "type": "shell",
+            "command": "docker compose exec php8-4 /var/www/html/vendor/bin/kirby types:create",
+            "problemMatcher": [],
+            "group": "none",
+            "detail": "Generates TypeScript types for Kirby fields/blueprints."
+        },
+        {
+            "label": "Kirby: Flush Event Cache",
+            "type": "shell",
+            "command": "docker compose exec php8-4 /var/www/html/vendor/bin/kirby flush-event-cache",
+            "problemMatcher": [],
+            "group": "none",
+            "detail": "Flushes the Google Calendar synchronization event cache."
+        },
+        {
+            "label": "PHP: Code Styling Format (PHP CS Fixer)",
+            "type": "shell",
+            "command": "docker compose exec php8-4 ./vendor/bin/php-cs-fixer fix",
+            "problemMatcher": [],
+            "group": "none",
+            "detail": "Formats the PHP codebase using rules defined in .php-cs-fixer.dist.php."
+        },
+        {
+            "label": "PHP: Static Analysis (PHPStan)",
+            "type": "shell",
+            "command": "docker compose exec php8-4 ./vendor/bin/phpstan analyse",
+            "problemMatcher": [],
+            "group": "none",
+            "detail": "Runs PHPStan static analysis rules defined in phpstan.neon."
+        },
+        {
+            "label": "Frontend: Run Dev Server",
+            "type": "shell",
+            "command": "npm run dev",
+            "problemMatcher": [],
+            "group": "none",
+            "detail": "Starts the local Vite dev server for hot-reloaded assets."
+        },
+        {
+            "label": "Frontend: Build Production Assets",
+            "type": "shell",
+            "command": "npm run build",
+            "problemMatcher": [],
+            "group": "build",
+            "detail": "Compiles TypeScript files and bundles CSS/JS assets for production."
+        }
+    ]
+}

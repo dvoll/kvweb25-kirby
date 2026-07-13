@@ -21,6 +21,7 @@ pnpm-lock.yaml
 *.sublime-workspace
 /.vscode/*
 !/.vscode/launch.json
+!/.vscode/tasks.json
 !/.vscode/extensions.json
 /.idea
 
