@@ -3,14 +3,18 @@ name: Shared Verification
 on:
   workflow_call:
 
+permissions:
+  contents: read
+
 jobs:
-  test:
-    name: Run Tests
+  php-verification:
+    name: PHP Lint & Test
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -35,8 +39,32 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist
 
+      - name: Check PHP Code Style (PHP CS Fixer)
+        run: ./vendor/bin/php-cs-fixer fix --dry-run --diff --ansi
+
       - name: Run Static Analysis (PHPStan)
         run: ./vendor/bin/phpstan analyse --memory-limit=512M
 
       - name: Run Test Suite (Pest)
         run: ./vendor/bin/pest
+
+  frontend-verification:
+    name: Frontend Compilation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile and Build Assets
+        run: npm run build

@@ -3,7 +3,15 @@ name: Staging Deployment
 on:
   push:
     branches:
-      - main
+      - dev
+  workflow_dispatch:
+
+concurrency:
+  group: staging-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -13,10 +21,30 @@ jobs:
     name: Deploy to Staging
     needs: test
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+
+      - name: Validate Environment Secrets
+        run: |
+          if [ -z "${{ secrets.DEPLOY_SSH_KEY }}" ]; then
+            echo "ERROR: DEPLOY_SSH_KEY secret is not set!"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DEPLOY_SSH_HOST }}" ]; then
+            echo "ERROR: DEPLOY_SSH_HOST secret is not set!"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DEPLOY_SSH_USER }}" ]; then
+            echo "ERROR: DEPLOY_SSH_USER secret is not set!"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DEPLOY_SSH_PATH_STAGING }}" ]; then
+            echo "ERROR: DEPLOY_SSH_PATH_STAGING secret is not set!"
+            exit 1
+          fi
 
       - name: Setup SSH Key
         run: |
@@ -25,8 +53,17 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H ${{ secrets.DEPLOY_SSH_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy Specific Files via Rsync
+      - name: Execute Symlink Deployment on Remote Server
         run: |
+          TARGET_PATH="${{ secrets.DEPLOY_SSH_PATH_STAGING }}"
+          RELEASE_NAME=$(date +%Y%m%d%H%M%S)
+          RELEASE_PATH="${TARGET_PATH}/releases/${RELEASE_NAME}"
+
+          echo "Initializing release directory structure on server..."
+          ssh -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }} \
+            "mkdir -p ${TARGET_PATH}/releases ${TARGET_PATH}/shared ${TARGET_PATH}/shared/storage ${TARGET_PATH}/shared/public/media"
+
+          echo "Uploading files to release directory via Rsync..."
           rsync -avz --delete \
             --exclude='public/.htaccess.example' \
             --include='plugins/***' \
@@ -38,21 +75,39 @@ jobs:
             --include='README.md' \
             --exclude='*' \
             -e "ssh -i ~/.ssh/deploy_key" ./ \
-            ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }}:${{ secrets.DEPLOY_SSH_PATH_STAGING }}
+            ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }}:${RELEASE_PATH}/
 
-      - name: Run Composer Install on Server
-        run: |
-          ssh -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }} << 'EOF'
-            cd ${{ secrets.DEPLOY_SSH_PATH_STAGING }}
+          echo "Preparing shared resources, dependencies, and swap on server..."
+          ssh -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }} << EOF
+            set -e
+            TARGET_PATH="${TARGET_PATH}"
+            RELEASE_NAME="${RELEASE_NAME}"
+            RELEASE_PATH="${RELEASE_PATH}"
+
+            cd \${RELEASE_PATH}
+
+            # Symlink shared assets/configuration files
+            ln -sfn ../../shared/.env .env
+            ln -sfn ../../shared/content content
+            ln -sfn ../../shared/storage storage
+            
+            rm -rf public/media
+            ln -sfn ../../../shared/public/media public/media
+
+            # Run composer install
             php8.4-cli ~/composer.phar install --no-progress --no-dev --optimize-autoloader
-          EOF
 
-      - name: Run deployment optimizations
-        run: |
-          ssh -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }} << 'EOF'
-            cd ${{ secrets.DEPLOY_SSH_PATH_STAGING }}
+            # Warm caches and run scaffolding
             php8.4-cli ./vendor/bin/kirby scaffold
             php8.4-cli ./vendor/bin/kirby clear:cache uuid
             php8.4-cli ./vendor/bin/kirby clear:cache pages
             php8.4-cli ./vendor/bin/kirby clear:cache uuid:populate
+
+            # Switch current symlink atomically
+            ln -sfn releases/\${RELEASE_NAME} \${TARGET_PATH}/current_tmp
+            mv -Tf \${TARGET_PATH}/current_tmp \${TARGET_PATH}/current
+
+            # Prune older releases (keep last 5)
+            cd \${TARGET_PATH}/releases
+            ls -1t | tail -n +6 | xargs rm -rf 2>/dev/null || true
           EOF
