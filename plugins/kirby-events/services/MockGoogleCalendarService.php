@@ -26,7 +26,7 @@ class MockGoogleCalendarService
             ],
             [
                 'summary' => 'Mädchenzeltlager Sommer 2024',
-                'description' => 'Das Zeltlager für Mädchen bietet viele Aktivitäten und gemeinsames Zelten.'
+                'description' => '[Zeltlager] Das Zeltlager für Mädchen bietet viele Aktivitäten und gemeinsames Zelten.'
             ],
             [
                 'summary' => 'Oldie Zeltlager Rückblick',
@@ -86,7 +86,7 @@ class MockGoogleCalendarService
                 // Multi-day all-day event
                 $startDate = "$nextYear-$month-$day";
                 $endDate = date('Y-m-d', strtotime("$startDate +3 day"));
-                $mockEvents[] = new EventEntity([
+                $mockEvents[] = new EventEntity(...[
                     'id' => "mock-event-" . ($idx + 1),
                     'summary' => $cat['summary'],
                     'description' => $cat['description'],
@@ -101,7 +101,7 @@ class MockGoogleCalendarService
                 // All-day event
                 $startDate = "$nextYear-$month-$day";
                 $endDate = date('Y-m-d', strtotime("$startDate +1 day"));
-                $mockEvents[] = new EventEntity([
+                $mockEvents[] = new EventEntity(...[
                     'id' => "mock-event-" . ($idx + 1),
                     'summary' => $cat['summary'],
                     'description' => $cat['description'],
@@ -116,7 +116,7 @@ class MockGoogleCalendarService
                 // Timed event
                 $start = "$nextYear-$month-$day" . "T09:00:00+00:00";
                 $end = "$nextYear-$month-$day" . "T10:00:00+00:00";
-                $mockEvents[] = new EventEntity([
+                $mockEvents[] = new EventEntity(...[
                     'id' => "mock-event-" . ($idx + 1),
                     'summary' => $cat['summary'],
                     'description' => $cat['description'],
@@ -169,7 +169,7 @@ class MockGoogleCalendarService
                 // Multi-day all-day event
                 $startDate = "$nextYear-$month-$day";
                 $endDate = date('Y-m-d', strtotime("$startDate +3 day"));
-                $mockEvents[] = new EventEntity([
+                $mockEvents[] = new EventEntity(...[
                     'id' => $id,
                     'summary' => $summary,
                     'description' => $description,
@@ -184,7 +184,7 @@ class MockGoogleCalendarService
                 // All-day event (single day)
                 $startDate = "$nextYear-$month-$day";
                 $endDate = date('Y-m-d', strtotime("$startDate +1 day"));
-                $mockEvents[] = new EventEntity([
+                $mockEvents[] = new EventEntity(...[
                     'id' => $id,
                     'summary' => $summary,
                     'description' => $description,
@@ -199,7 +199,7 @@ class MockGoogleCalendarService
                 // Timed event
                 $start = "$nextYear-$month-$day" . "T09:00:00+00:00";
                 $end = "$nextYear-$month-$day" . "T10:00:00+00:00";
-                $mockEvents[] = new EventEntity([
+                $mockEvents[] = new EventEntity(...[
                     'id' => $id,
                     'summary' => $summary,
                     'description' => $description,
@@ -225,7 +225,7 @@ class MockGoogleCalendarService
             if ($i % 2 === 0) {
                 $startDate = "$nextYear-$month-$day";
                 $endDate = date('Y-m-d', strtotime("$startDate +1 day"));
-                $mockEvents[] = new EventEntity([
+                $mockEvents[] = new EventEntity(...[
                     'id' => "mock-event-$i",
                     'summary' => $summary,
                     'description' => $description,
@@ -239,7 +239,7 @@ class MockGoogleCalendarService
             } else {
                 $start = "$nextYear-$month-$day" . "T09:00:00+00:00";
                 $end = "$nextYear-$month-$day" . "T10:00:00+00:00";
-                $mockEvents[] = new EventEntity([
+                $mockEvents[] = new EventEntity(...[
                     'id' => "mock-event-$i",
                     'summary' => $summary,
                     'description' => $description,

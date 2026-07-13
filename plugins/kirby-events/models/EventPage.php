@@ -111,9 +111,17 @@ class EventPage extends CustomBasePage
     }
 
 
+    /**
+     * @return \Kirby\Cms\Pages<\Kirby\Cms\Page>|null
+     */
     public function getConnectedBlogposts(): ?\Kirby\Cms\Pages
     {
-        $blogPosts = $this->site()->find('blog')->children()->listed()->filter(fn($page) => $page->event()->isNotEmpty() &&  array_find_key($page->event()->yaml(), function ($blogpostEventId) {
+        $blog = $this->site()->find('blog');
+        if (!$blog) {
+            return new \Kirby\Cms\Pages();
+        }
+        
+        $blogPosts = $blog->children()->listed()->filter(fn($page) => $page->event()->isNotEmpty() &&  array_find_key($page->event()->yaml(), function ($blogpostEventId) {
             return $blogpostEventId === $this->uuid()->toString();
         }) !== null );
         return $blogPosts;

@@ -61,8 +61,8 @@ class Helper
     /**
      * Ensures each item in a structure array has a unique customuuid. If missing or duplicate, generates a new one.
      * Returns a new array, does not mutate the input.
-     * @param array<string, mixed> $structure The structure array (e.g., from a YAML field)
-     * @return array<string, mixed> The structure array with unique customuuids
+     * @param array<int, array<string, mixed>> $structure The structure array (e.g., from a YAML field)
+     * @return array<int, array<string, mixed>> The structure array with unique customuuids
      */
     public static function ensureUniqueCustomUuids(array $structure): array
     {
