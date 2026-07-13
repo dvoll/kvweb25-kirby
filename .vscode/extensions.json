@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "felixfbecker.php-debug",
+        "redhat.vscode-yaml",
+        "bradlc.vscode-tailwindcss",
+        "bmewburn.vscode-intelephense-client"
+    ]
+}
