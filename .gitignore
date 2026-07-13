@@ -95,3 +95,7 @@ cghooks.lock
 /site/cache/*
 
 /site/plugins/*
+
+# Tests temporary directory
+/tests/tmp
+

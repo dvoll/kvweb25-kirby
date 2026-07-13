@@ -6,7 +6,12 @@ on:
       - v*
 
 jobs:
+  test:
+    uses: ./.github/workflows/run-tests.yml
+
   deploy:
+    name: Deploy to Production
+    needs: test
     runs-on: ubuntu-latest
 
     steps:

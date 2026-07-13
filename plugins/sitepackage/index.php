@@ -99,18 +99,15 @@ App::plugin('dvll/sitepackage', [
                 // API endpoint for fetching event details
                 'pattern' => 'event-api/event/(:all)',
                 'action' => function ($eventSlug) use ($kirby) {
-                    header('Content-Type: application/json');
-
                     try {
                         /** @var dvll\KirbyEvents\Models\EventPage|null $eventPage */
                         $eventPage = $kirby->page('termine')->find($eventSlug);
 
                         if (!$eventPage || !$eventPage->isPublished()) {
-                            http_response_code(404);
-                            return json_encode([
+                            return Kirby\Http\Response::json([
                                 'success' => false,
                                 'error' => 'Event not found'
-                            ], JSON_UNESCAPED_UNICODE);
+                            ], 404);
                         }
 
                         // Get calendar links
@@ -146,17 +143,16 @@ App::plugin('dvll/sitepackage', [
                             'tag' => $tagInfo
                         ];
 
-                        return json_encode([
+                        return Kirby\Http\Response::json([
                             'success' => true,
                             'event' => $eventData
-                        ], JSON_UNESCAPED_UNICODE);
+                        ]);
 
                     } catch (Exception $e) {
-                        http_response_code(500);
-                        return json_encode([
+                        return Kirby\Http\Response::json([
                             'success' => false,
                             'error' => 'Internal server error'
-                        ], JSON_UNESCAPED_UNICODE);
+                        ], 500);
                     }
                 }
             ],
@@ -176,7 +172,7 @@ App::plugin('dvll/sitepackage', [
                     }
 
                     if ($page = page('freizeiten')->find($slug)) {
-                        go("freizeiten/{$page->slug()}", 301);
+                        return Kirby\Http\Response::redirect("freizeiten/{$page->slug()}", 301);
                     }
 
                     /**
@@ -201,7 +197,7 @@ App::plugin('dvll/sitepackage', [
                         if ($selectedEvent) {
                             $position = $selectedEvent->indexOf($events);
                             $customParams = array_merge(params(), ['page' => $position ? floor($position / 9) + 1 : 1]);
-                            go(new Uri($kirby->url('current'), [
+                            return Kirby\Http\Response::redirect(new Uri($kirby->url('current'), [
                                 'params' => $customParams,
                                 'query' => ['event' => $eventSlug, 'event-page-set' => 'true']
                             ]));

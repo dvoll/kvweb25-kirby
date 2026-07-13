@@ -80,6 +80,30 @@
             "problemMatcher": [],
             "group": "build",
             "detail": "Compiles TypeScript files and bundles CSS/JS assets for production."
+        },
+        {
+            "label": "PHP: Run Pest Tests (All)",
+            "type": "shell",
+            "command": "docker compose exec php8-4 ./vendor/bin/pest",
+            "problemMatcher": [],
+            "group": "test",
+            "detail": "Runs the entire Pest unit and integration test suite."
+        },
+        {
+            "label": "PHP: Run Pest Tests (Unit)",
+            "type": "shell",
+            "command": "docker compose exec php8-4 ./vendor/bin/pest tests/Unit",
+            "problemMatcher": [],
+            "group": "test",
+            "detail": "Runs only the Pest unit tests."
+        },
+        {
+            "label": "PHP: Run Pest Tests (Integration)",
+            "type": "shell",
+            "command": "docker compose exec php8-4 ./vendor/bin/pest tests/Integration",
+            "problemMatcher": [],
+            "group": "test",
+            "detail": "Runs only the Pest integration tests."
         }
     ]
 }

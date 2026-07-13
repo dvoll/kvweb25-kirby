@@ -6,7 +6,12 @@ on:
       - main
 
 jobs:
+  test:
+    uses: ./.github/workflows/run-tests.yml
+
   deploy:
+    name: Deploy to Staging
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
