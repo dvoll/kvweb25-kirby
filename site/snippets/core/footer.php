@@ -3,7 +3,7 @@
 /** @var Kirby\Cms\Site $site */
 
 // $footerPages = $site->children()->published();
-$footerPages = $site->content()->get('footerNavigation')->toPages()->published();
+$footerPages = $site->footerNavigation()->toPages()->published();
 
 ?>
 

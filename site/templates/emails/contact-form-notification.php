@@ -1,3 +1,11 @@
+<?php
+/**
+ * @var string $siteName
+ * @var string $sender
+ * @var string $senderMail
+ * @var string $text
+ */
+?>
 Jemand hat das Kontaktformular auf "<?= $siteName ?>" ausgefüllt.
 
 Name aus dem Formular:

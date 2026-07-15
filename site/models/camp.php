@@ -5,6 +5,14 @@ use dvll\Sitepackage\Models\CustomBasePage;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
 
+/**
+ * @method Kirby\Content\Field facts()
+ * @method Kirby\Content\Field campIntro()
+ * @method Kirby\Content\Field heroImage()
+ * @method Kirby\Content\Field heroLogo()
+ * @method Kirby\Content\Field heroSubline()
+ * @method Kirby\Content\Field heroSublineLabel()
+ */
 class CampPage extends CustomBasePage
 {
     #[Override]

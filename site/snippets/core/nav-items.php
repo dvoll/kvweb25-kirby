@@ -1,7 +1,7 @@
 <?php
 
 /** @var Kirby\Cms\Site $site */
-$mainNavigation = $site->content()->get('mainNavigation');
+$mainNavigation = $site->mainNavigation();
 $items = [];
 
 if ($mainNavigation->isNotEmpty()) {
@@ -54,7 +54,7 @@ if (count($items) > 0): ?>
                 $linkAttrs = [
                     'class' => 'nav-link px-4 flex gap-2 items-center group',
                     'href' => $item['url'],
-                    'aria-current' => isset($item['page']) && $item['page']?->isOpen() ? 'page' : null,
+                    'aria-current' => (isset($item['page']) && $item['page'] instanceof Kirby\Cms\Page && $item['page']->isOpen()) ? 'page' : null,
                     'target' => $item['newTab'] ? '_blank' : null,
                     'rel' => $item['newTab'] ? 'noopener' : null,
                 ];
@@ -104,7 +104,7 @@ if (count($items) > 0): ?>
                     $linkAttrs = [
                         'class' => 'nav-link px-3 py-4 flex gap-2 items-center',
                         'href' => $item['url'],
-                        'aria-current' => isset($item['page']) && $item['page']?->isOpen() ? 'page' : null,
+                        'aria-current' => (isset($item['page']) && $item['page'] instanceof Kirby\Cms\Page && $item['page']->isOpen()) ? 'page' : null,
                         'target' => $item['newTab'] ? '_blank' : null,
                         'rel' => $item['newTab'] ? 'noopener' : null,
                     ];

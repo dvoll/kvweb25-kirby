@@ -21,7 +21,7 @@ snippet('base', slots: true); ?>
 <section class="dvll-section">
     <div class="dvll-section__layout">
         <div class="dvll-block dvll-block--narrow flex items-center justify-center">
-            <?php if ($contacts && $contacts->isNotEmpty()):
+            <?php if ($contacts->isNotEmpty()):
                 $first = $contacts->first();
                 /** @var Kirby\Cms\File|null $image */
                 $image = $first->photo()->isNotEmpty() ? $first->photo()->toFile() : null;
