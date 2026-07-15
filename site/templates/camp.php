@@ -10,10 +10,10 @@ $stageField = $page->content()->get('stage');
 snippet('base', slots: true); ?>
 <?php if ($page->myStageType() === null): ?>
     <?php snippet('components/stage-hero', [
-        'image' => $page->content()->get('heroImage')->toFile(),
-        'logo' => $page->content()->get('heroLogo')->toFile(),
-        'subline' => $page->content()->get('heroSubline'),
-        'sublineLabel' => $page->content()->get('heroSublineLabel'),
+        'image' => $page->heroImage()->toFile(),
+        'logo' => $page->heroLogo()->toFile(),
+        'subline' => $page->heroSubline(),
+        'sublineLabel' => $page->heroSublineLabel(),
     ]); ?>
 <?php else: ?>
     <?php snippet('core/stage'); ?>

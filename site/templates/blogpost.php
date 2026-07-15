@@ -10,7 +10,11 @@ $sizes = [
     '100vw',
 ];
 
-$contentImages = $page->content()->get('image')->toFiles();
+/** @var Kirby\Content\Field $imageField */
+$imageField = $page->content()->get('image');
+$contentImages = $imageField->toFiles();
+
+/** @var Kirby\Content\Field $galleryImagesField */
 $galleryImagesField = $page->content()->get('additionalImages');
 $galleryImages = $galleryImagesField->toFiles();
 // $contentImage = $contentImages->first();
@@ -30,7 +34,11 @@ snippet('base', slots: true); ?>
         </div>
         <div class="dvll-block dvll-block--narrow">
             <div class=" typo typo--reading-size typo--rte">
-                <?= $page->content()->get('text')->kirbytext()->permalinksToUrls(); ?>
+                <?php
+                /** @var Kirby\Content\Field $textField */
+                $textField = $page->content()->get('text');
+echo $textField->kirbytext()->permalinksToUrls();
+?>
             </div>
         </div>
         <?php if ($contentImages): ?>

@@ -2,7 +2,7 @@
 
 $crop = $crop ?? false;
 $ratio = $ratio ?? 'auto';
-$images = $images->toFiles();
+$images = isset($images) ? $images->toFiles() : new Kirby\Cms\Files();
 
 $sizes = [
     '(min-width: 73.25rem) 1124px', // 1172

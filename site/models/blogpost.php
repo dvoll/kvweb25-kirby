@@ -5,6 +5,9 @@ use dvll\Sitepackage\Models\CustomBasePage;
 use Kirby\Cms\Blocks;
 use Kirby\Cms\File;
 
+/**
+ * @method Kirby\Content\Field date()
+ */
 class BlogpostPage extends CustomBasePage
 {
     #[Override]

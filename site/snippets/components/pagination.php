@@ -1,5 +1,6 @@
 <?php
 
+$pagination = $pagination ?? null;
 $labelNext = $labelNext ?? 'Mehr Termine';
 $labelPrev = $labelPrev ?? 'Frühere Termine';
 

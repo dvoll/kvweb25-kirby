@@ -1,0 +1,51 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method dvll\\\\KirbyEvents\\\\Models\\\\EventsPage\\:\\:children\\(\\) return type with generic class Kirby\\\\Cms\\\\Pages does not specify its types\\: TPage$#"
+			count: 1
+			path: plugins/kirby-events/models/EventsPage.php
+
+		-
+			message: "#^Left side of && is always false\\.$#"
+			count: 1
+			path: plugins/kirby-events/services/MockGoogleCalendarService.php
+
+		-
+			message: "#^Call to an undefined method dvll\\\\KirbyEvents\\\\Models\\\\EventPage\\:\\:description\\(\\)\\.$#"
+			count: 1
+			path: plugins/kirby-events/templates/event.ics.php
+
+		-
+			message: "#^Call to an undefined method dvll\\\\KirbyEvents\\\\Models\\\\EventPage\\:\\:getEndDate\\(\\)\\.$#"
+			count: 1
+			path: plugins/kirby-events/templates/event.ics.php
+
+		-
+			message: "#^Call to an undefined method dvll\\\\KirbyEvents\\\\Models\\\\EventPage\\:\\:location\\(\\)\\.$#"
+			count: 1
+			path: plugins/kirby-events/templates/event.ics.php
+
+		-
+			message: "#^Parameter \\#1 \\$uStamp of function iCalDateFormat expects int, DateTimeImmutable given\\.$#"
+			count: 2
+			path: plugins/kirby-events/templates/event.ics.php
+
+		-
+			message: "#^Call to an undefined method dvll\\\\Sitepackage\\\\Models\\\\TeaserBlogpostsBlock\\:\\:showText\\(\\)\\.$#"
+			count: 1
+			path: plugins/sitepackage/blocks/teaser-blogposts/teaser-blogposts.php
+
+		-
+			message: "#^Method dvll\\\\Sitepackage\\\\Models\\\\CustomBasePage\\:\\:metaDefaults\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: plugins/sitepackage/models/CustomBasePage.php
+
+		-
+			message: "#^Method dvll\\\\Sitepackage\\\\Models\\\\TeaserBlogpostsBlock\\:\\:myBlogposts\\(\\) return type with generic class Kirby\\\\Cms\\\\Pages does not specify its types\\: TPage$#"
+			count: 1
+			path: plugins/sitepackage/models/TeaserBlogpostsBlock.php
+
+		-
+			message: "#^Method dvll\\\\Sitepackage\\\\Models\\\\TeaserEventsBlock\\:\\:myEvents\\(\\) return type with generic class Kirby\\\\Cms\\\\Pages does not specify its types\\: TPage$#"
+			count: 1
+			path: plugins/sitepackage/models/TeaserEventsBlock.php

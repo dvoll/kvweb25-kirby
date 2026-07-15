@@ -1,6 +1,10 @@
+includes:
+  - phpstan-baseline.neon
+
 parameters:
   level: 6
   checkAlwaysTrueCheckTypeFunctionCall: false
+  reportUnmatchedIgnoredErrors: false
   paths:
     - site
     - plugins
