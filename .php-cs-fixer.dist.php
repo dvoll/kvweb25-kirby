@@ -146,11 +146,12 @@ $rules = [
 ];
 
 $finder = PhpCsFixer\Finder::create()
-->name('*.php')
-->exclude('plugins')->ignoreDotFiles(true)
-->ignoreVCS(true)
-
-->in(__DIR__.'/site/');
+    ->name('*.php')
+    ->notName('vite.config.php')
+    ->exclude('plugins')
+    ->ignoreDotFiles(true)
+    ->ignoreVCS(true)
+    ->in(__DIR__ . '/site/');
 
 return (new Config)
     ->setFinder($finder)
