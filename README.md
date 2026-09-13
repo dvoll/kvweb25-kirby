@@ -2,11 +2,11 @@
 
 ## Scaffolding
 
-`docker compose exec -it php /var/www/html/vendor/bin/kirby scaffold`
+`docker compose exec -it php8-4 /var/www/html/vendor/bin/kirby scaffold`
 
-`docker compose exec -it php composer install`
+`docker compose exec -it php8-4 composer install`
 
-`docker compose exec -it php /var/www/html/vendor/bin/kirby types:create`
+`docker compose exec -it php8-4 /var/www/html/vendor/bin/kirby types:create`
 
 ## Debugging
 
